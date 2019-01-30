@@ -11,7 +11,7 @@ import axios from "axios";
 import Login from './components/Login';
 import Profile from './components/Profile';
 import Signup from './components/Signup';
-import Video from './components/Video';
+import Camera from './components/Camera';
 import Navbar from './components/Navbar';
 
 // Here is if we have an id_token in localStorage
@@ -28,7 +28,7 @@ ReactDOM.render(
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={Signup} />
             <Route exact path="/profile" component={Profile} />
-            <Route exact path="/video" component={Video} />
+            <Route exact path="/camera" component={Camera} />
         </div>
     </Router>
     , document.getElementById('root')

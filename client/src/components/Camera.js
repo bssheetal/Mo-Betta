@@ -25,7 +25,7 @@ class Video extends Component {
     videoDisplay = () => {
         const player = document.getElementById('player');
         const constraints = {
-            video: true,
+            video: true
         };
 
         // Attach the video stream to the video element and autoplay.
@@ -46,8 +46,6 @@ class Video extends Component {
         // Draw the video frame to the canvas.
         context.drawImage(player, 0, 0, canvas.width, canvas.height);
 
-        player.pause();
-
         const a = document.createElement("a");
         a.href = canvas.toDataURL();
         a.download = "download";
@@ -62,9 +60,15 @@ class Video extends Component {
     handleOnClickPlay = e => {
         e.preventDefault();
         const player = document.getElementById('player');
-       
+
         player.play();
-        
+    };
+
+    handleOnClickStop = e => {
+        e.preventDefault();
+        const player = document.getElementById('player');
+
+        player.pause();
     };
 
     render() {
@@ -72,10 +76,18 @@ class Video extends Component {
             <div className="container Profile">
                 <h1>On the Video page!</h1>
 
-                <video id="player" autoPlay width="320" height="240"></video>
-                <button id="capture" onClick={this.handleOnClickCapture}>Capture</button>
-                <button id="play" onClick={this.handleOnClickPlay}>Play</button>
-                <canvas id="canvas" width="320" height="240"></canvas>
+                <div>
+                    {/* <video id="player" controls autoPlay width="320" height="240"></video> */}
+                    <video id="player" autoPlay width="320" height="240"></video>
+                    <canvas id="canvas" width="320" height="240"></canvas>
+
+                    <div>
+                        <button id="capture" onClick={this.handleOnClickCapture}>Capture</button>
+                        <button id="play" onClick={this.handleOnClickPlay}>Play</button>
+                        <button id="stop" onClick={this.handleOnClickStop}>Stop</button>
+                    </div>
+
+                </div>
 
                 <Link to="/">Go home</Link>
             </div>

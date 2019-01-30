@@ -28,7 +28,7 @@ class App extends Component {
           <h2>Welcome {this.props.user.email}</h2>
         </div>
         <p className="App-intro">
-          <Link to='/video'>Go to Video</Link>
+          <button type="button" className="btn btn-light" ><Link to='/camera'>Go to Camera</Link></button>
           <button type="button" className="btn btn-primary" onClick={this.goToEditProfile}>Go to Profile</button>
           <button type="button" className="btn btn-danger" onClick={this.handleLogout}>Logout</button>
         </p>
