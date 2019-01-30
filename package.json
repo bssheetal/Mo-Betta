@@ -19,6 +19,7 @@
     "nodemon": "^1.18.3"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "bcrypt-nodejs": "^0.0.3",
     "express": "^4.16.4",
     "express-jwt": "^5.3.1",
