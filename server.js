@@ -7,6 +7,7 @@ const morgan = require('morgan'); // used to see requests
 const app = express();
 const db = require('./models');
 const PORT = process.env.PORT || 3001;
+const routes = require("./routes");
 
 // Setting CORS so that any website can
 // Access our API
@@ -23,6 +24,8 @@ app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.use(routes);
+
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/appDB', {useNewUrlParser: true});
 mongoose.set('useCreateIndex', true);
 
@@ -30,6 +33,8 @@ mongoose.set('useCreateIndex', true);
 const isAuthenticated = exjwt({
   secret: 'all sorts of code up in here'
 });
+
+// Add routes, both API and view
 
 
 // LOGIN ROUTE
@@ -86,6 +91,8 @@ app.use(function (err, req, res, next) {
     next(err);
   }
 });
+
+
 
 // Send every request to the React app
 // Define any API routes before this runs
