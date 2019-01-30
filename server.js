@@ -8,6 +8,7 @@ const app = express();
 const db = require('./models');
 const PORT = process.env.PORT || 3001;
 const routes = require("./routes");
+var bodyParser = require('body-parser');
 
 // Setting CORS so that any website can
 // Access our API
@@ -21,8 +22,8 @@ app.use((req, res, next) => {
 app.use(morgan('dev'));
 
 // Setting up express to use json and set it to req.body
-app.use(express.json({limit: '50mb'}));
-app.use(express.urlencoded({ extended: true }, {limit: '50mb'}));
+app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.urlencoded({ extended: true }, {limit: '50mb'}));
 
 app.use(routes);
 
