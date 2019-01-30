@@ -47,9 +47,10 @@ class Video extends Component {
         context.drawImage(player, 0, 0, canvas.width, canvas.height);
 
         const a = document.createElement("a");
-        a.href = canvas.toDataURL();
-        a.download = "download";
-        a.click();
+        console.log(canvas.toDataURL());
+        // a.href = canvas.toDataURL();
+        // a.download = "download";
+        // a.click();
 
         // var image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");  // here is the most important part because if you dont replace you will get a DOM 18 exception.
 
@@ -73,7 +74,7 @@ class Video extends Component {
 
     render() {
         return (
-            <div className="container Profile">
+            <div className="container Camera">
                 <h1>On the Video page!</h1>
 
                 <div>
