@@ -3,6 +3,8 @@ import logo from './logo.svg';
 import './App.css';
 import AuthService from './components/AuthService';
 import withAuth from './components/withAuth';
+import { Link } from 'react-router-dom';
+
 const Auth = new AuthService();
 
 class App extends Component {
@@ -26,6 +28,7 @@ class App extends Component {
           <h2>Welcome {this.props.user.email}</h2>
         </div>
         <p className="App-intro">
+          <Link to='/video'>Go to Video</Link>
           <button type="button" className="btn btn-primary" onClick={this.goToEditProfile}>Go to Profile</button>
           <button type="button" className="btn btn-danger" onClick={this.handleLogout}>Logout</button>
         </p>
