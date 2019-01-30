@@ -31,6 +31,14 @@ class App extends Component {
           <button type="button" className="btn btn-light" ><Link to='/camera'>Go to Camera</Link></button>
           <button type="button" className="btn btn-primary" onClick={this.goToEditProfile}>Go to Profile</button>
           <button type="button" className="btn btn-danger" onClick={this.handleLogout}>Logout</button>
+
+          <div>
+            <iframe title="video1" width="320" height="240" src="https://www.youtube.com/embed/RwrT4A_Oh6g?list=RDRwrT4A_Oh6g" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+          <div>
+            <iframe title="video2" width="320" height="240" src="https://www.youtube.com/embed/amLf7PRa1QU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+
         </p>
       </div>
     );
