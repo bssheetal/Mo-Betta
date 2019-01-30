@@ -45,15 +45,21 @@ class Video extends Component {
 
         // Draw the video frame to the canvas.
         context.drawImage(player, 0, 0, canvas.width, canvas.height);
-
-        const a = document.createElement("a");
         console.log(canvas.toDataURL());
+
+        const data = {imageData:canvas.toDataURL()}
+        API.facialRecognition(data)
+        .then(res => {
+            console.log(res.data);
+        })
+        .catch(err => console.log(err));
+
+        // const a = document.createElement("a");
         // a.href = canvas.toDataURL();
         // a.download = "download";
         // a.click();
 
         // var image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");  // here is the most important part because if you dont replace you will get a DOM 18 exception.
-
         // window.location.href = image; // it will save locally
 
     }

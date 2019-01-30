@@ -7,5 +7,9 @@ export default {
   // sign up a user to our service
   signUpUser: (username, email, password) => {
     return axios.post('api/signup', {username: username, email: email, password: password});
+  },
+
+  facialRecognition: (imagedata) => {
+    return axios.post('/api/faceplusplus/faceanalyze', imagedata);
   }
 };
