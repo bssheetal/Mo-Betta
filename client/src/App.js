@@ -23,6 +23,26 @@ class App extends Component {
     this.props.history.replace('/camera');
   };
 
+  goToProductive = () => {
+    this.props.history.replace('/productive');
+  };
+
+  goToBored = () => {
+    this.props.history.replace('/bored');
+  };
+
+  goToHungry = () => {
+    this.props.history.replace('/hungry');
+  };
+
+  goToOutdoorsy = () => {
+    this.props.history.replace('/outdoorsy');
+  };
+
+  goToUplift = () => {
+    this.props.history.replace('/uplift');
+  };
+
   render() {
     console.log(process.env.REACT_APP_SECRET_CODE);
     return (
@@ -32,15 +52,32 @@ class App extends Component {
           <h2>Welcome {this.props.user.email}</h2>
         </div>
         <p className="App-intro">
-          <button type="button" className="btn btn-light rounded-0 mr-2" onClick={this.goToCamera} >Go to Camera</button>
-          <button type="button" className="btn btn-primary rounded-0 mr-2" onClick={this.goToEditProfile}>Go to Profile</button>
-          <button type="button" className="btn btn-danger rounded-0 mr-2" onClick={this.handleLogout}>Logout</button>
-
           <div>
-            <iframe title="video1" width="320" height="240" src="https://www.youtube.com/embed/RwrT4A_Oh6g?list=RDRwrT4A_Oh6g" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <button type="button" className="btn btn-success rounded-0 m-2" onClick={this.goToProductive} >Go to Productive</button>
           </div>
           <div>
-            <iframe title="video2" width="320" height="240" src="https://www.youtube.com/embed/amLf7PRa1QU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <button type="button" className="btn btn-warning rounded-0 m-2" onClick={this.goToCamera} >Go to Camera</button>
+          </div>
+          <div>
+            <button type="button" className="btn btn-success rounded-0 m-2" onClick={this.goToBored} >Go to Bored</button>
+          </div>
+          <div>
+            <button type="button" className="btn btn-warning rounded-0 m-2" onClick={this.goToHungry} >Go to Hungry</button>
+          </div>
+          <div>
+            <button type="button" className="btn btn-success rounded-0 m-2" onClick={this.goToOutdoorsy} >Go to Outdoorsy</button>
+          </div>
+          <div>
+            <button type="button" className="btn btn-warning rounded-0 m-2" onClick={this.goToUplift} >Go to Uplift</button>
+          </div>
+          <button type="button" className="btn btn-primary rounded-0 m-2" onClick={this.goToEditProfile}>Go to Profile</button>
+          <button type="button" className="btn btn-danger rounded-0 m-2" onClick={this.handleLogout}>Logout</button>
+
+          <div>
+            {/* <iframe title="video1" width="320" height="240" src="https://www.youtube.com/embed/RwrT4A_Oh6g?list=RDRwrT4A_Oh6g" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> */}
+          </div>
+          <div>
+            {/* <iframe title="video2" width="320" height="240" src="https://www.youtube.com/embed/amLf7PRa1QU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> */}
             <News />
           </div>
 
