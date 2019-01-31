@@ -9,6 +9,9 @@ const db = require('./models');
 const PORT = process.env.PORT || 3001;
 const routes = require("./routes");
 var bodyParser = require('body-parser');
+//Scraping
+var axios = require("axios");
+var cheerio = require("cheerio");
 
 // Setting CORS so that any website can
 // Access our API
