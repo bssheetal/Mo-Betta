@@ -10,7 +10,7 @@ var cheerio = require('cheerio');
 class News extends Component {
     constructor() {
         super();
-    state = {
+    this.state = {
         username: "",
         email: "",
         parentComponent: "",
