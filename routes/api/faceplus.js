@@ -16,7 +16,6 @@ router.post("/faceanalyze", (req, response) => {
     var parameters = {
         return_attributes: 'emotion',
         image_base64: req.body.imageData
-
     };
 
 
@@ -31,12 +30,12 @@ router.post("/faceanalyze", (req, response) => {
         var maxvalue = 0;
         var maxvaluekey = null;
         for (var i = 0; i < emotionsarr.length; i++) {
-            
+
             if (emotionsarr[i] > maxvalue) {
                 maxvalue = emotionsarr[i];
-                maxvaluekey = emotionskeys [i];
+                maxvaluekey = emotionskeys[i];
             }
-            
+
         }
         response.json(maxvaluekey);
     });
