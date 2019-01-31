@@ -3,6 +3,9 @@ import withAuth from './withAuth';
 import API from '../utils/API';
 var axios = require('axios');
 var cheerio = require('cheerio');
+//url for proxy server to make requests from apis
+
+
 
 class News extends Component {
     state = {
@@ -16,7 +19,7 @@ class News extends Component {
         API.getUser(this.props.user.id).then(res => {
             this.setState({
                 username: res.data.username,
-                email: res.data.email,
+                email: res.data.email
                 // parentComponent: ??????
             })
         });
@@ -32,37 +35,55 @@ class News extends Component {
 
     scrapreNews = () => {
 
-        // app.get("/scrape", function (req, res) {
-        axios.get("http://www.usatoday.com/money/markets/").then(function (response) {
+        console.log("test");
 
-            var $ = cheerio.load(response.data);
+        // CORS error fix
+        var corsAnywhereUrl = "https://cors-anywhere.herokuapp.com/";
+        let geocodeAPIUrl = "http://www.usatoday.com/money/markets/";
+        let url = corsAnywhereUrl + geocodeAPIUrl
 
-            $('a[itemprop="url"]').each(function (i, element) {
+        axios.get(url).then(function (response) {
 
-                var result = {};
+                var $ = cheerio.load(response.data);
 
-                result.link = ("www.usatoday.com" + $(this).attr("href"));
+                $('a[itemprop="url"]').each(function (i, element) {
 
-                result.title = $(this)
-                    .find('p[itemprop="headline"]')
-                    .text();
+                    var result = {};
 
-                result.image = $(this)
-                    .find('img[itemprop="image"]')
-                    .attr("src");
+                    result.link = ("www.usatoday.com" + $(this).attr("href"));
 
-                console.log(result);
-            });
+                    result.title = $(this)
+                        .find('p[itemprop="headline"]')
+                        .text();
 
-            // // Send a message to the client
-            // res.send("Scrape Complete");
-        })
-            .then(data => {
+                    result.image = $(this)
+                        .find('img[itemprop="image"]')
+                        .attr("src");
+
+                
+                    this.setState({
+                        news: result
+                    })
+                        console.log(this.state.news);
+                });
+            })
+            .then(result => {
                 this.setState({
-                    news: data
+                    news: result
                 })
+            }).catch(function (error) {
+                if (error.response) {
+                    console.log(error.response.headers);
+                }
+                else if (error.request) {
+                    console.log(error.request);
+                }
+                else {
+                    console.log(error.message);
+                }
+                console.log(error.config);
             });
-        // });
+            console.log(this.state.news);
     }
 
     render() {
