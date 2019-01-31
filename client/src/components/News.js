@@ -8,13 +8,15 @@ var cheerio = require('cheerio');
 
 
 class News extends Component {
+    constructor() {
+        super();
     state = {
         username: "",
         email: "",
         parentComponent: "",
         news: {}
     }
-
+}
     componentDidMount() {
         API.getUser(this.props.user.id).then(res => {
             this.setState({
@@ -44,29 +46,29 @@ class News extends Component {
 
         axios.get(url).then(function (response) {
 
-                var $ = cheerio.load(response.data);
+            var $ = cheerio.load(response.data);
 
-                $('a[itemprop="url"]').each(function (i, element) {
+            $('a[itemprop="url"]').each(function (i, element) {
 
-                    var result = {};
+                var result = {};
 
-                    result.link = ("www.usatoday.com" + $(this).attr("href"));
+                result.link = ("www.usatoday.com" + $(this).attr("href"));
 
-                    result.title = $(this)
-                        .find('p[itemprop="headline"]')
-                        .text();
+                result.title = $(this)
+                    .find('p[itemprop="headline"]')
+                    .text();
 
-                    result.image = $(this)
-                        .find('img[itemprop="image"]')
-                        .attr("src");
+                result.image = $(this)
+                    .find('img[itemprop="image"]')
+                    .attr("src");
 
-                
-                    this.setState({
-                        news: result
-                    })
-                        console.log(this.state.news);
-                });
-            })
+
+                this.setState({
+                    news: result
+                })
+                console.log(this.state.news);
+            });
+        })
             .then(result => {
                 this.setState({
                     news: result
@@ -83,7 +85,7 @@ class News extends Component {
                 }
                 console.log(error.config);
             });
-            console.log(this.state.news);
+        console.log(this.state.news);
     }
 
     render() {
