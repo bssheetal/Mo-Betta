@@ -3,20 +3,25 @@ import withAuth from './withAuth';
 import API from '../utils/API';
 var axios = require('axios');
 var cheerio = require('cheerio');
+//url for proxy server to make requests from apis
+
+
 
 class News extends Component {
+    constructor() {
+        super();
     state = {
         username: "",
         email: "",
         parentComponent: "",
         news: {}
     }
-
+}
     componentDidMount() {
         API.getUser(this.props.user.id).then(res => {
             this.setState({
                 username: res.data.username,
-                email: res.data.email,
+                email: res.data.email
                 // parentComponent: ??????
             })
         });
@@ -32,8 +37,14 @@ class News extends Component {
 
     scrapreNews = () => {
 
-        // app.get("/scrape", function (req, res) {
-        axios.get("http://www.usatoday.com/money/markets/").then(function (response) {
+        console.log("test");
+
+        // CORS error fix
+        var corsAnywhereUrl = "https://cors-anywhere.herokuapp.com/";
+        let geocodeAPIUrl = "http://www.usatoday.com/money/markets/";
+        let url = corsAnywhereUrl + geocodeAPIUrl
+
+        axios.get(url).then(function (response) {
 
             var $ = cheerio.load(response.data);
 
@@ -51,18 +62,30 @@ class News extends Component {
                     .find('img[itemprop="image"]')
                     .attr("src");
 
-                console.log(result);
-            });
 
-            // // Send a message to the client
-            // res.send("Scrape Complete");
-        })
-            .then(data => {
                 this.setState({
-                    news: data
+                    news: result
                 })
+                console.log(this.state.news);
             });
-        // });
+        })
+            .then(result => {
+                this.setState({
+                    news: result
+                })
+            }).catch(function (error) {
+                if (error.response) {
+                    console.log(error.response.headers);
+                }
+                else if (error.request) {
+                    console.log(error.request);
+                }
+                else {
+                    console.log(error.message);
+                }
+                console.log(error.config);
+            });
+        console.log(this.state.news);
     }
 
     render() {
