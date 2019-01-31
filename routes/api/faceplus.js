@@ -1,75 +1,45 @@
+var keys = require("../../keys.js");
+var facerecognitionKey = "Bks_XP_htVac2PChn4oWlL9v_7ukGWjP";
+var facerecognitionsecret = "-JQADoPa44FewvVy9VXKq_j5G9jsDICg";
 const router = require("express").Router();
 const axios = require("axios");
 var fs = require("fs");
 var facepp = require('face-plusplus-node');
 
-// Route /api/faceplusplus/faceanalyze
-// router.post("/faceanalyze", (req, res) => {
-//     axios
-//         .post(`https://api-us.faceplusplus.com/facepp/v3/detect`, {
-//             api_key: "Bks_XP_htVac2PChn4oWlL9v_7ukGWjP",
-//             api_secret: "-JQADoPa44FewvVy9VXKq_j5G9jsDICg",
-//             image_base64: req.body.imageData
-//         })
-//         .then(facePlusPlusData => {
-//             console.log(facePlusPlusData)
-//             res.json(facePlusPlusData.data);
-//         })
-//         .catch(error => {
-//             console.log(error);
-//             res.status(400).json({ error: "you got an error" });
-//         });
-// });
-
-// // Route /api/faceplusplus/emotiondetection
-// router.post("/emotiondetection", (req, res) => {
-//     console.log("Inside emotiondetection");
-//     axios.post(`https://api-us.faceplusplus.com/facepp/v3/face/analyze`, { data }).then(emotiondata => {
-//         res.json(emotiondata.data);
-//     }).then(emotiondata => {
-//         console.log(emotiondata)
-//         res.json(emotiondata.data);
-//     })
-//         .catch(error => {
-//             console.log(error);
-//             res.status(400).json({ error: "you got an error" });
-//         });
-// });
 
 
 router.post("/faceanalyze", (req, response) => {
     console.log("Inside emotiondetection");
-    facepp.setApiKey('Bks_XP_htVac2PChn4oWlL9v_7ukGWjP');
-    facepp.setApiSecret('-JQADoPa44FewvVy9VXKq_j5G9jsDICg');
+    console.log("facerecognition key is" + facerecognitionKey);
+    facepp.setApiKey(facerecognitionKey);
+    facepp.setApiSecret(facerecognitionsecret);
     var parameters = {
-
-        image_url:'http://tineye.com/images/widgets/mona.jpg',
-
-        return_attributes: 'emotion'
+        return_attributes: 'emotion',
+        image_base64: req.body.imageData
 
     };
 
 
     facepp.post('/detect', parameters, function (err, res) {
-
         console.log(res);
-        // console.log(res.faces.attributes[0]);
         console.log(res.faces[0]);
-
-
+        //response.json(res.faces[0].attributes.emotion);
+        var emotions = res.faces[0].attributes.emotion
+        let emotionskeys = Object.keys(emotions);
+        let emotionsarr = Object.values(emotions);
+        //response.json(max_emotion);
+        var maxvalue = 0;
+        var maxvaluekey = null;
+        for (var i = 0; i < emotionsarr.length; i++) {
+            
+            if (emotionsarr[i] > maxvalue) {
+                maxvalue = emotionsarr[i];
+                maxvaluekey = emotionskeys [i];
+            }
+            
+        }
+        response.json(maxvaluekey);
     });
-    // var parametersemotion = {
-
-    //     face_tokens: res.face_token,
-
-    //     return_attributes: 'emotion'
-
-    // };
-
-    // faceapp.post('/analyze', parametersemotion, function (req, response) {
-    //     console.log(response);
-
-    // });
-
 })
+
 module.exports = router;
