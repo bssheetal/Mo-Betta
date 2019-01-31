@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import withAuth from '../../components/withAuth';
 import API from '../../utils/API';
 import { Link } from 'react-router-dom';
-
+import "./style.css";
 class Camera extends Component {
 
     state = {
@@ -79,6 +79,9 @@ class Camera extends Component {
         player.pause();
     };
 
+    chooseFile = e => {
+        const imagefilename = document.getElementById("fileInput").click();
+    }
     render() {
         return (
             <div className="container Camera">
@@ -99,7 +102,7 @@ class Camera extends Component {
                 <div>
                     <input type="file" id="fileInput" name="fileInput" />
                 </div>
-                <button type="button" onclick="chooseFile();">choose file</button>
+                <button type="button" onclick={this.chooseFile}>Upload Image</button>
                 <Link to="/">Go home</Link>
             </div>
         )
