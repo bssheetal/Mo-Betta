@@ -95,7 +95,6 @@ class Video extends Component {
                     </div>
 
                 </div>
-                {/* ="height:0px;overflow:hidden" */}
                 <div>
                     <input type="file" id="fileInput" name="fileInput" />
                 </div>
