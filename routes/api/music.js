@@ -8,7 +8,9 @@ var spotify = new Spotify({
     secret: '34bf60c1f8e3402294f060254f829845'
 });
 
-
+router.get("/", (req, res) => {
+    res.json("music");
+});
 
 var getMeSpotify = function (songName) {
     if (songName === undefined) {
@@ -42,4 +44,4 @@ var getMeSpotify = function (songName) {
 
 getMeSpotify("Sad");
 
-// module.exports = router;
+module.exports = router;
