@@ -11,5 +11,9 @@ export default {
 
   facialRecognition: (imagedata) => {
     return axios.post('/api/faceplusplus/faceanalyze', imagedata);
+  },
+
+  spotify: (mood) => {
+    return axios.get('', mood);
   }
 };

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import withAuth from './withAuth';
-import API from '../utils/API';
+import withAuth from '../../components/withAuth';
+import API from '../../utils/API';
 import { Link } from 'react-router-dom';
 
-class Video extends Component {
+class Camera extends Component {
 
     state = {
         username: "",
@@ -35,6 +35,7 @@ class Video extends Component {
             });
     };
 
+
     handleOnClickCapture = e => {
         e.preventDefault();
 
@@ -47,12 +48,12 @@ class Video extends Component {
         context.drawImage(player, 0, 0, canvas.width, canvas.height);
         console.log(canvas.toDataURL());
 
-        const data = {imageData:canvas.toDataURL()}
+        const data = { imageData: canvas.toDataURL() }
         API.facialRecognition(data)
-        .then(res => {
-            console.log(res.data);
-        })
-        .catch(err => console.log(err));
+            .then(res => {
+                console.log(res.data);
+            })
+            .catch(err => console.log(err));
 
         // const a = document.createElement("a");
         // a.href = canvas.toDataURL();
@@ -95,11 +96,15 @@ class Video extends Component {
                     </div>
 
                 </div>
-
+                {/* ="height:0px;overflow:hidden" */}
+                <div>
+                    <input type="file" id="fileInput" name="fileInput" />
+                </div>
+                <button type="button" onclick="chooseFile();">choose file</button>
                 <Link to="/">Go home</Link>
             </div>
         )
     }
 }
 
-export default withAuth(Video);
+export default withAuth(Camera);
