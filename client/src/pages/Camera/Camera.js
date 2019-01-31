@@ -3,7 +3,7 @@ import withAuth from '../../components/withAuth';
 import API from '../../utils/API';
 import { Link } from 'react-router-dom';
 
-class Video extends Component {
+class Camera extends Component {
 
     state = {
         username: "",
@@ -34,6 +34,7 @@ class Video extends Component {
                 player.srcObject = stream;
             });
     };
+
 
     handleOnClickCapture = e => {
         e.preventDefault();
@@ -105,4 +106,4 @@ class Video extends Component {
     }
 }
 
-export default withAuth(Video);
+export default withAuth(Camera);
