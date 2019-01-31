@@ -3,7 +3,6 @@ import logo from './logo.svg';
 import './App.css';
 import AuthService from './components/AuthService';
 import withAuth from './components/withAuth';
-import { Link } from 'react-router-dom';
 
 const Auth = new AuthService();
 
@@ -19,6 +18,10 @@ class App extends Component {
     this.props.history.replace('/profile');
   };
 
+  goToCamera = () => {
+    this.props.history.replace('/camera');
+  };
+
   render() {
     console.log(process.env.REACT_APP_SECRET_CODE);
     return (
@@ -28,7 +31,7 @@ class App extends Component {
           <h2>Welcome {this.props.user.email}</h2>
         </div>
         <p className="App-intro">
-          <button type="button" className="btn btn-light rounded-0 mr-2" ><Link to='/camera'>Go to Camera</Link></button>
+          <button type="button" className="btn btn-light rounded-0 mr-2" onClick={this.goToCamera} >Go to Camera</button>
           <button type="button" className="btn btn-primary rounded-0 mr-2" onClick={this.goToEditProfile}>Go to Profile</button>
           <button type="button" className="btn btn-danger rounded-0 mr-2" onClick={this.handleLogout}>Logout</button>
 
