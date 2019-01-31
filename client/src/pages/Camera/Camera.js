@@ -48,12 +48,12 @@ class Camera extends Component {
         context.drawImage(player, 0, 0, canvas.width, canvas.height);
         console.log(canvas.toDataURL());
 
-        const data = {imageData:canvas.toDataURL()}
+        const data = { imageData: canvas.toDataURL() }
         API.facialRecognition(data)
-        .then(res => {
-            console.log(res.data);
-        })
-        .catch(err => console.log(err));
+            .then(res => {
+                console.log(res.data);
+            })
+            .catch(err => console.log(err));
 
         // const a = document.createElement("a");
         // a.href = canvas.toDataURL();
@@ -96,7 +96,11 @@ class Camera extends Component {
                     </div>
 
                 </div>
-
+                {/* ="height:0px;overflow:hidden" */}
+                <div>
+                    <input type="file" id="fileInput" name="fileInput" />
+                </div>
+                <button type="button" onclick="chooseFile();">choose file</button>
                 <Link to="/">Go home</Link>
             </div>
         )
