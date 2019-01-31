@@ -39,16 +39,13 @@ var facepp = require('face-plusplus-node');
 
 router.post("/faceanalyze", (req, response) => {
     console.log("Inside emotiondetection");
+
     facepp.setApiKey('Bks_XP_htVac2PChn4oWlL9v_7ukGWjP');
     facepp.setApiSecret('-JQADoPa44FewvVy9VXKq_j5G9jsDICg');
     var parameters = {
-
-        image_url:'http://tineye.com/images/widgets/mona.jpg',
-
-        return_attributes: 'emotion'
-
-    };
-
+        return_attributes: 'emotion',
+        image_base64: req.body.imageData
+    }
 
     facepp.post('/detect', parameters, function (err, res) {
 
@@ -56,20 +53,8 @@ router.post("/faceanalyze", (req, response) => {
         // console.log(res.faces.attributes[0]);
         console.log(res.faces[0]);
 
-
+        response.json(res.faces[0].attributes.emotion);
     });
-    // var parametersemotion = {
-
-    //     face_tokens: res.face_token,
-
-    //     return_attributes: 'emotion'
-
-    // };
-
-    // faceapp.post('/analyze', parametersemotion, function (req, response) {
-    //     console.log(response);
-
-    // });
-
 })
+
 module.exports = router;
