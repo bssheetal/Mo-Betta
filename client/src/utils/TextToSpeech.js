@@ -9,23 +9,23 @@ function speakVoice(words) {
     if (words !== '') {
       const utterThis = new SpeechSynthesisUtterance(words);
       utterThis.onend = function (event) {
-        console.log('SpeechSynthesisUtterance.onend');
+        console.log('text-to-sppech.onend');
       }
       utterThis.onerror = function (event) {
-        console.error('SpeechSynthesisUtterance.onerror');
+        console.error('text-to-speech.onerror');
       }
       
       for (let voice of voices)
       {
-        if ((voice.lang === 'en-US') && (voice.name === 'Victoria'))
+        if ((voice.lang === 'en-US') && (voice.name === 'Alex'))
         {
           utterThis.voice = voice;
         }
       }
 
-      utterThis.pitch = 1.2;
+      utterThis.pitch = 1;
       utterThis.rate = 1;
-      console.log(utterThis);
+      // console.log(utterThis);
       synth.speak(utterThis);
     }
 };

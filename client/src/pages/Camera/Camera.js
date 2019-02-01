@@ -11,7 +11,10 @@ class Camera extends Component {
     state = {
         username: "",
         email: "",
-        speechText: ""
+        speechText: "",
+        choice: "camera",
+        emotion: ""
+        // btnCapture: 
     };
 
     componentDidMount() {
@@ -25,7 +28,7 @@ class Camera extends Component {
         this.videoDisplay();
 
         setTimeout(() => {
-            TextToSpeech.speak(`Hi ${this.state.username}, do you want to take a picture?`);
+            TextToSpeech.speak(`Hi ${this.state.username}, do you want to take a picture? If yes, please say YES and look at the camera. If no, please say load an image or choose my emotion.`);
         }, 100);
 
     };
@@ -41,6 +44,17 @@ class Camera extends Component {
         });
 
         SpeechRecognition.stop();
+        setTimeout(() => {
+            console.log(this.state.speechText);
+
+            if (this.state.speechText) this.handleOnClickCapture("");
+            // switch (this.state.speechText) {
+            //     case "yes":
+            //         this.handleOnClickCapture("");
+            //         break;
+            //     default:
+            // };
+        }, 100);
     };
 
     videoDisplay = () => {
@@ -58,7 +72,7 @@ class Camera extends Component {
 
 
     handleOnClickCapture = e => {
-        e.preventDefault();
+        if (e) e.preventDefault();
 
         console.log('video capture');
         const player = document.getElementById('player');
@@ -73,8 +87,13 @@ class Camera extends Component {
         API.facialRecognition(data)
             .then(res => {
                 console.log(res.data);
+                this.setState({
+                    emotion: res.data
+                });
             })
             .catch(err => console.log(err));
+
+        // player.pause();
 
         // const a = document.createElement("a");
         // a.href = canvas.toDataURL();
@@ -86,19 +105,19 @@ class Camera extends Component {
 
     }
 
-    handleOnClickPlay = e => {
-        e.preventDefault();
-        const player = document.getElementById('player');
+    // handleOnClickPlay = e => {
+    //     e.preventDefault();
+    //     const player = document.getElementById('player');
 
-        player.play();
-    };
+    //     player.play();
+    // };
 
-    handleOnClickStop = e => {
-        e.preventDefault();
-        const player = document.getElementById('player');
+    // handleOnClickStop = e => {
+    //     e.preventDefault();
+    //     const player = document.getElementById('player');
 
-        player.pause();
-    };
+    //     player.pause();
+    // };
 
 
     previewFile = e => {
@@ -132,32 +151,31 @@ class Camera extends Component {
                 <h1>On the Video page!</h1>
 
                 <div>
-                    {/* <video id="player" controls autoPlay width="320" height="240"></video> */}
-                    <video id="player" autoPlay width="320" height="240"></video>
+                    <video id="player" controls autoPlay width="320" height="240"></video>
                     <canvas id="canvas" width="320" height="240"></canvas>
-
-                    <div>
-                        <button id="capture" onClick={this.handleOnClickCapture}>Capture</button>
-                        <button id="play" onClick={this.handleOnClickPlay}>Play</button>
-                        <button id="stop" onClick={this.handleOnClickStop}>Stop</button>
-
-                        <React.Fragment>
-                            <KeyHandler
-                                keyEventName={KEYDOWN}
-                                keyValue="s"
-                                onKeyHandle={this.speak}
-                            />
-                            <KeyHandler
-                                keyEventName={KEYUP}
-                                keyValue="s"
-                                onKeyHandle={this.getSpeechText}
-                            />
-                            <p>{this.state.speechText}</p>
-                        </React.Fragment>
-
-                    </div>
-
                 </div>
+
+                <div>
+                    <button id="capture" onClick={this.handleOnClickCapture}>Capture</button>
+                    {/* <button id="play" onClick={this.handleOnClickPlay}>Play</button>
+                        <button id="stop" onClick={this.handleOnClickStop}>Stop</button> */}
+                </div>
+
+                <React.Fragment>
+                    <KeyHandler
+                        keyEventName={KEYDOWN}
+                        keyValue="s"
+                        onKeyHandle={this.speak}
+                    />
+                    <KeyHandler
+                        keyEventName={KEYUP}
+                        keyValue="s"
+                        onKeyHandle={this.getSpeechText}
+                    />
+                    <p>{this.state.speechText}</p>
+                    <p>{this.state.emotion}</p>
+                </React.Fragment>
+
                 <div>
                     {/* here ref is added as by default input parameter comes with sometext which cannot be overridden so had to make display none and add a reference that on buttonclick the event in inputgets triggered*/}
                     <input type="file" id="fileInput" onChange={this.previewFile} ref={fileInput => this.fileInput = fileInput} />
