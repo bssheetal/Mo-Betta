@@ -25,20 +25,28 @@ class News extends Component {
             })
             console.log("=========data======")
             console.log(res.data);
-            console.log("========state========")
-            console.log(this.state.news);
+            // console.log("========state========")
+            // console.log(this.state.news);
         });
     }
 
     render() {
+        console.log("========state========")
+        console.log(this.state.news);
+
 
         return (
             <div className="News">
                 <h3>News Dump</h3>
-                {this.state.news.title}
-                {this.state.news.link}
-                {this.state.news.image}
-                {/* {this.state.news} */}
+                <ul>
+                {this.state.news.map(item => (
+                <li>
+                {item.title},
+                {item.link},
+                {item.image},
+                </li>   
+                ))}
+                </ul>
             </div>
         );
     }
