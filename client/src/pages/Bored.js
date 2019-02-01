@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import withAuth from '../components/withAuth';
-import API from '../utils/API';
+// import API from '../utils/API';
 import { Link } from 'react-router-dom';
 
 class Bored extends Component {
