@@ -100,11 +100,13 @@ app.use(function (err, req, res, next) {
 app.get("/news", isAuthenticated, (req, res) => {
 
   console.log("Scrape");
-  var result = {};
+  var allResult = [];
+  var resObject = {};
   axios.get("http://www.usatoday.com/money/markets/").then(function (response) {
+    var result = {};
     var $ = cheerio.load(response.data);
     $('a[itemprop="url"]').each(function (i, element) {
-    
+
       result.link = ("www.usatoday.com" + $(this).attr("href"));
       result.title = $(this)
         .find('p[itemprop="headline"]')
@@ -112,12 +114,16 @@ app.get("/news", isAuthenticated, (req, res) => {
       result.image = $(this)
         .find('img[itemprop="image"]')
         .attr("src");
-      console.log("==============================")
+      console.log("==========RESULT==============")
       console.log(result);
-      console.log("==============================")
+      resObject = {link: result.link, title: result.title, image: result.image};
+      allResult.push(resObject);
+      // allResult = allResult + result;
 
     })
-    res.send(result);
+    console.log("============ALL==============")
+    console.log(allResult);
+    res.send(allResult);
   }).catch(err => console.log(err));
 });
 

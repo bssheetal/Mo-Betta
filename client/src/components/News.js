@@ -7,7 +7,7 @@ class News extends Component {
         username: "",
         email: "",
         parentComponent: "",
-        news: {}
+        news: []
     }
 
     componentDidMount() {
@@ -18,11 +18,15 @@ class News extends Component {
             })
         });
 
-        API.scrapeNews(this.props.result).then(res => {
+        API.scrapeNews(this.props.allResult).then(res => {
             this.setState({
-                news: res
+                news: res.data
                 // parentComponent: ??????
             })
+            console.log("=========data======")
+            console.log(res.data);
+            console.log("========state========")
+            console.log(this.state.news);
         });
     }
 
@@ -34,6 +38,7 @@ class News extends Component {
                 {this.state.news.title}
                 {this.state.news.link}
                 {this.state.news.image}
+                {/* {this.state.news} */}
             </div>
         );
     }
