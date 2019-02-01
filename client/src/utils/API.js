@@ -16,6 +16,6 @@ export default {
   spotify: (mood) => {
     return axios.get('', mood);
   },
-
   
 };
+
