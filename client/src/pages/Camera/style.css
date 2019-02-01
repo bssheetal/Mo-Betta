@@ -1,5 +1,11 @@
 #fileInput
 {
     height:0px;
-    overflow:hidden
+    display:none
+}
+
+#previewimage
+{
+    height:300px;
+    width:300px;
 }
