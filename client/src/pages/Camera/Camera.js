@@ -11,8 +11,7 @@ class Camera extends Component {
     state = {
         username: "",
         email: "",
-        speechText: "",
-        showMenu: false
+        speechText: ""
     };
 
     componentDidMount() {
@@ -36,12 +35,12 @@ class Camera extends Component {
     };
 
     getSpeechText = () => {
-        SpeechRecognition.stop();
-
         var speechText = SpeechRecognition.getResult();
         this.setState({
             speechText: speechText
         });
+
+        SpeechRecognition.stop();
     };
 
     videoDisplay = () => {
@@ -102,6 +101,30 @@ class Camera extends Component {
     };
 
 
+    previewFile = e => {
+        var preview = document.querySelector('img');
+        var file = document.querySelector('input[type=file]').files[0];
+        var reader = new FileReader();
+
+        reader.addEventListener("load", function () {
+            preview.src = reader.result;
+        }, false);
+
+        if (file) {
+            reader.readAsDataURL(file);
+        }
+
+    }
+
+    findemotion = e => {
+        var data = { imageData: document.getElementById('previewimage').getAttribute("src") }
+        console.log(data);
+        API.facialRecognition(data)
+            .then(res => {
+                console.log(res.data);
+            })
+            .catch(err => console.log(err));
+    }
     render() {
 
         return (
@@ -135,13 +158,16 @@ class Camera extends Component {
                     </div>
 
                 </div>
-                {/* ="height:0px;overflow:hidden" */}
                 <div>
-                    <input type="file" id="fileInput" name="fileInput" />
+                    {/* here ref is added as by default input parameter comes with sometext which cannot be overridden so had to make display none and add a reference that on buttonclick the event in inputgets triggered*/}
+                    <input type="file" id="fileInput" onChange={this.previewFile} ref={fileInput => this.fileInput = fileInput} />
+                    <img src="" id="previewimage" onLoad={this.findemotion} alt="" />
+                    <button onClick={() => this.fileInput.click()}>Upload Image</button>
                 </div>
-                <button type="button" onClick="chooseFile();">choose file</button>
+
                 <Link to="/">Go home</Link>
             </div>
+
         )
     }
 
