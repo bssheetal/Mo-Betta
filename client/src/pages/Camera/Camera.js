@@ -7,7 +7,8 @@ class Camera extends Component {
 
     state = {
         username: "",
-        email: ""
+        email: "",
+        mood: "happiness"
     };
 
     componentDidMount() {
