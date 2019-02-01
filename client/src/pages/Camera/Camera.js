@@ -2,13 +2,19 @@ import React, { Component } from 'react';
 import withAuth from '../../components/withAuth';
 import API from '../../utils/API';
 import { Link } from 'react-router-dom';
+import TextToSpeech from "../../utils/TextToSpeech";
+import SpeechRecognition from "../../utils/SpeechRecognition"
+import KeyHandler, { KEYUP, KEYDOWN } from 'react-key-handler';
 
 class Camera extends Component {
 
     state = {
         username: "",
         email: "",
-        mood: "happiness"
+        speechText: "",
+        choice: "camera",
+        emotion: ""
+        // btnCapture: 
     };
 
     componentDidMount() {
@@ -21,7 +27,35 @@ class Camera extends Component {
 
         this.videoDisplay();
 
-    }
+        setTimeout(() => {
+            TextToSpeech.speak(`Hi ${this.state.username}, do you want to take a picture? If yes, please say YES and look at the camera. If no, please say load an image or choose my emotion.`);
+        }, 100);
+
+    };
+
+    speak = () => {
+        SpeechRecognition.start();
+    };
+
+    getSpeechText = () => {
+        var speechText = SpeechRecognition.getResult();
+        this.setState({
+            speechText: speechText
+        });
+
+        SpeechRecognition.stop();
+        setTimeout(() => {
+            console.log(this.state.speechText);
+
+            if (this.state.speechText) this.handleOnClickCapture("");
+            // switch (this.state.speechText) {
+            //     case "yes":
+            //         this.handleOnClickCapture("");
+            //         break;
+            //     default:
+            // };
+        }, 100);
+    };
 
     videoDisplay = () => {
         const player = document.getElementById('player');
@@ -38,7 +72,7 @@ class Camera extends Component {
 
 
     handleOnClickCapture = e => {
-        e.preventDefault();
+        if (e) e.preventDefault();
 
         console.log('video capture');
         const player = document.getElementById('player');
@@ -47,14 +81,19 @@ class Camera extends Component {
 
         // Draw the video frame to the canvas.
         context.drawImage(player, 0, 0, canvas.width, canvas.height);
-        console.log(canvas.toDataURL());
+        // console.log(canvas.toDataURL());
 
         const data = { imageData: canvas.toDataURL() }
         API.facialRecognition(data)
             .then(res => {
                 console.log(res.data);
+                this.setState({
+                    emotion: res.data
+                });
             })
             .catch(err => console.log(err));
+
+        // player.pause();
 
         // const a = document.createElement("a");
         // a.href = canvas.toDataURL();
@@ -66,46 +105,90 @@ class Camera extends Component {
 
     }
 
-    handleOnClickPlay = e => {
-        e.preventDefault();
-        const player = document.getElementById('player');
+    // handleOnClickPlay = e => {
+    //     e.preventDefault();
+    //     const player = document.getElementById('player');
 
-        player.play();
-    };
+    //     player.play();
+    // };
 
-    handleOnClickStop = e => {
-        e.preventDefault();
-        const player = document.getElementById('player');
+    // handleOnClickStop = e => {
+    //     e.preventDefault();
+    //     const player = document.getElementById('player');
 
-        player.pause();
-    };
+    //     player.pause();
+    // };
 
+
+    previewFile = e => {
+        var preview = document.querySelector('img');
+        var file = document.querySelector('input[type=file]').files[0];
+        var reader = new FileReader();
+
+        reader.addEventListener("load", function () {
+            preview.src = reader.result;
+        }, false);
+
+        if (file) {
+            reader.readAsDataURL(file);
+        }
+
+    }
+
+    findemotion = e => {
+        var data = { imageData: document.getElementById('previewimage').getAttribute("src") }
+        console.log(data);
+        API.facialRecognition(data)
+            .then(res => {
+                console.log(res.data);
+            })
+            .catch(err => console.log(err));
+    }
     render() {
+
         return (
             <div className="container Camera">
                 <h1>On the Video page!</h1>
 
                 <div>
-                    {/* <video id="player" controls autoPlay width="320" height="240"></video> */}
-                    <video id="player" autoPlay width="320" height="240"></video>
+                    <video id="player" controls autoPlay width="320" height="240"></video>
                     <canvas id="canvas" width="320" height="240"></canvas>
-
-                    <div>
-                        <button id="capture" onClick={this.handleOnClickCapture}>Capture</button>
-                        <button id="play" onClick={this.handleOnClickPlay}>Play</button>
-                        <button id="stop" onClick={this.handleOnClickStop}>Stop</button>
-                    </div>
-
                 </div>
-                {/* ="height:0px;overflow:hidden" */}
+
                 <div>
-                    <input type="file" id="fileInput" name="fileInput" />
+                    <button id="capture" onClick={this.handleOnClickCapture}>Capture</button>
+                    {/* <button id="play" onClick={this.handleOnClickPlay}>Play</button>
+                        <button id="stop" onClick={this.handleOnClickStop}>Stop</button> */}
                 </div>
-                <button type="button" onclick="chooseFile();">choose file</button>
+
+                <React.Fragment>
+                    <KeyHandler
+                        keyEventName={KEYDOWN}
+                        keyValue="s"
+                        onKeyHandle={this.speak}
+                    />
+                    <KeyHandler
+                        keyEventName={KEYUP}
+                        keyValue="s"
+                        onKeyHandle={this.getSpeechText}
+                    />
+                    <p>{this.state.speechText}</p>
+                    <p>{this.state.emotion}</p>
+                </React.Fragment>
+
+                <div>
+                    {/* here ref is added as by default input parameter comes with sometext which cannot be overridden so had to make display none and add a reference that on buttonclick the event in inputgets triggered*/}
+                    <input type="file" id="fileInput" onChange={this.previewFile} ref={fileInput => this.fileInput = fileInput} />
+                    <img src="" id="previewimage" onLoad={this.findemotion} alt="" />
+                    <button onClick={() => this.fileInput.click()}>Upload Image</button>
+                </div>
+
                 <Link to="/">Go home</Link>
             </div>
+
         )
     }
+
 }
 
 export default withAuth(Camera);
