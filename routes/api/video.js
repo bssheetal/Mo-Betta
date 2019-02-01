@@ -1,3 +1,29 @@
+const axios = require('axios');
+const router = require('express').Router();
+
+router.get("/video", (req, res) => {
+    var searchText = req.body.searchText;
+
+    if (searchText) {
+        var input = {
+            key: "AIzaSyDRoM4iF7sZ807Iv__tG3KzEa2hRNBXHbM",
+            q: searchText,
+            part: "snippet",
+            order: "relevance",
+            maxResults: 5,
+            type: "video"
+        };
+
+        axios.get("")
+            .then(response => {
+
+            })
+            .catch(err => console.log(err));
+
+    } else {
+
+    };
+});
 // function to search Youtube for relevant videos based on the 'order' parameter
 // The order parameter specifies the method that will be used to order resources in the API response. Options are: 'relevance', 'viewCount', 'rating', 'date', 'title', 'videoCount'
 // maxResults: 0-50

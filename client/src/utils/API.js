@@ -6,7 +6,7 @@ export default {
   },
   // sign up a user to our service
   signUpUser: (username, email, password) => {
-    return axios.post('api/signup', {username: username, email: email, password: password});
+    return axios.post('api/signup', { username: username, email: email, password: password });
   },
 
   facialRecognition: (imagedata) => {
@@ -15,5 +15,12 @@ export default {
 
   spotify: (mood) => {
     return axios.get('/api/music', mood);
+    return axios.get('', mood);
+  },
+
+  scrapeNews: (result) => {
+    return axios.get('/news');
   }
+  
 };
+
