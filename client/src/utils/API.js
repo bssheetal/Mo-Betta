@@ -20,4 +20,6 @@ export default {
   scrapeNews: (result) => {
     return axios.get('/news');
   }
+  
 };
+
