@@ -2,12 +2,17 @@ import React, { Component } from 'react';
 import withAuth from '../../components/withAuth';
 import API from '../../utils/API';
 import { Link } from 'react-router-dom';
+import TextToSpeech from "../../utils/TextToSpeech";
+import SpeechRecognition from "../../utils/SpeechRecognition"
+import KeyHandler, { KEYUP, KEYDOWN } from 'react-key-handler';
 
 class Camera extends Component {
 
     state = {
         username: "",
-        email: ""
+        email: "",
+        speechText: "",
+        showMenu: false
     };
 
     componentDidMount() {
@@ -20,7 +25,24 @@ class Camera extends Component {
 
         this.videoDisplay();
 
-    }
+        setTimeout(() => {
+            TextToSpeech.speak(`Hi ${this.state.username}, do you want to take a picture?`);
+        }, 100);
+
+    };
+
+    speak = () => {
+        SpeechRecognition.start();
+    };
+
+    getSpeechText = () => {
+        SpeechRecognition.stop();
+
+        var speechText = SpeechRecognition.getResult();
+        this.setState({
+            speechText: speechText
+        });
+    };
 
     videoDisplay = () => {
         const player = document.getElementById('player');
@@ -46,7 +68,7 @@ class Camera extends Component {
 
         // Draw the video frame to the canvas.
         context.drawImage(player, 0, 0, canvas.width, canvas.height);
-        console.log(canvas.toDataURL());
+        // console.log(canvas.toDataURL());
 
         const data = { imageData: canvas.toDataURL() }
         API.facialRecognition(data)
@@ -79,7 +101,9 @@ class Camera extends Component {
         player.pause();
     };
 
+
     render() {
+
         return (
             <div className="container Camera">
                 <h1>On the Video page!</h1>
@@ -93,6 +117,21 @@ class Camera extends Component {
                         <button id="capture" onClick={this.handleOnClickCapture}>Capture</button>
                         <button id="play" onClick={this.handleOnClickPlay}>Play</button>
                         <button id="stop" onClick={this.handleOnClickStop}>Stop</button>
+
+                        <React.Fragment>
+                            <KeyHandler
+                                keyEventName={KEYDOWN}
+                                keyValue="s"
+                                onKeyHandle={this.speak}
+                            />
+                            <KeyHandler
+                                keyEventName={KEYUP}
+                                keyValue="s"
+                                onKeyHandle={this.getSpeechText}
+                            />
+                            <p>{this.state.speechText}</p>
+                        </React.Fragment>
+
                     </div>
 
                 </div>
@@ -100,11 +139,12 @@ class Camera extends Component {
                 <div>
                     <input type="file" id="fileInput" name="fileInput" />
                 </div>
-                <button type="button" onclick="chooseFile();">choose file</button>
+                <button type="button" onClick="chooseFile();">choose file</button>
                 <Link to="/">Go home</Link>
             </div>
         )
     }
+
 }
 
 export default withAuth(Camera);
