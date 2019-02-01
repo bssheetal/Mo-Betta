@@ -12,6 +12,11 @@ router.get("/", (req, res) => {
     res.json("music");
 });
 
+var getArtistNames = function(artist) {
+    return artist.name;
+
+  };
+
 var getMeSpotify = function (songName) {
     if (songName === undefined) {
         songName = "Happy";
@@ -20,7 +25,8 @@ var getMeSpotify = function (songName) {
     spotify.search(
         {
             type: "track",
-            query: songName
+            query: songName,
+            limit: 5
         },
         function (err, data) {
             if (err) {
@@ -42,6 +48,6 @@ var getMeSpotify = function (songName) {
     );
 };
 
-getMeSpotify("Sad");
+getMeSpotify("Happy");
 
 module.exports = router;
