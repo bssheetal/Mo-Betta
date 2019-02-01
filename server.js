@@ -96,6 +96,42 @@ app.use(function (err, req, res, next) {
   }
 });
 
+app.get("/scrape", isAuthenticated, (req, res) => {
+
+  axios.get("http://www.usatoday.com/money/markets/").then(function (response) {
+
+    var $ = cheerio.load(response.data);
+
+      $('a[itemprop="url"]').each(function (i, element) {
+ 
+      var result = {};
+
+      result.link =("www.usatoday.com" + $(this).attr("href"));
+
+  
+      result.title = $(this)
+        .find('p[itemprop="headline"]')
+        .text();
+
+      result.image = $(this)
+        .find('img[itemprop="image"]')
+        .attr("src");
+
+        res.send(result);
+        console.log(result);
+    });
+    res.send(result);
+    console.log(result);
+  });
+  res.send(result);
+  console.log(result);
+});
+
+
+
+
+
+
 
 
 // Send every request to the React app

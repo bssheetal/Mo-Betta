@@ -18,6 +18,7 @@ import Hungry from './pages/Hungry';
 import Outdoorsy from './pages/Outdoorsy';
 import Uplift from './pages/Uplift';
 import Navbar from './components/Navbar';
+import News from './components/News';
 
 // Here is if we have an id_token in localStorage
 if(localStorage.getItem("id_token")) {
@@ -39,6 +40,7 @@ ReactDOM.render(
             <Route exact path="/hungry" component={Hungry} />
             <Route exact path="/outdoorsy" component={Outdoorsy} />
             <Route exact path="/uplift" component={Uplift} />
+            <Route exact path="/news" component={News} />
         </div>
     </Router>
     , document.getElementById('root')
