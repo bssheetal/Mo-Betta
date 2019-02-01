@@ -25,12 +25,12 @@ app.use((req, res, next) => {
 app.use(morgan('dev'));
 
 // Setting up express to use json and set it to req.body
-app.use(bodyParser.json({limit: '50mb'}));
-app.use(bodyParser.urlencoded({ extended: true }, {limit: '50mb'}));
+app.use(bodyParser.json({ limit: '50mb' }));
+app.use(bodyParser.urlencoded({ extended: true }, { limit: '50mb' }));
 
 app.use(routes);
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/appDB', {useNewUrlParser: true});
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/appDB', { useNewUrlParser: true });
 mongoose.set('useCreateIndex', true);
 
 // Init the express-jwt middleware
@@ -47,14 +47,14 @@ app.post('/api/login', (req, res) => {
     email: req.body.email
   }).then(user => {
     user.verifyPassword(req.body.password, (err, isMatch) => {
-      if(isMatch && !err) {
+      if (isMatch && !err) {
         let token = jwt.sign({ id: user._id, email: user.email }, 'all sorts of code up in here', { expiresIn: 129600 }); // Sigining the token
-        res.json({success: true, message: "Token Issued!", token: token, user: user});
+        res.json({ success: true, message: "Token Issued!", token: token, user: user });
       } else {
-        res.status(401).json({success: false, message: "Authentication failed. Wrong password."});
+        res.status(401).json({ success: false, message: "Authentication failed. Wrong password." });
       }
     });
-  }).catch(err => res.status(404).json({success: false, message: "User not found", error: err}));
+  }).catch(err => res.status(404).json({ success: false, message: "User not found", error: err }));
 });
 
 // SIGNUP ROUTE
@@ -68,10 +68,10 @@ app.post('/api/signup', (req, res) => {
 // to access
 app.get('/api/user/:id', isAuthenticated, (req, res) => {
   db.User.findById(req.params.id).then(data => {
-    if(data) {
+    if (data) {
       res.json(data);
     } else {
-      res.status(404).send({success: false, message: 'No user found'});
+      res.status(404).send({ success: false, message: 'No user found' });
     }
   }).catch(err => res.status(400).send(err));
 });
@@ -96,50 +96,37 @@ app.use(function (err, req, res, next) {
   }
 });
 
-app.get("/scrape", isAuthenticated, (req, res) => {
 
+app.get("/news", isAuthenticated, (req, res) => {
+
+  console.log("Scrape");
+  var result = {};
   axios.get("http://www.usatoday.com/money/markets/").then(function (response) {
-
     var $ = cheerio.load(response.data);
-
-      $('a[itemprop="url"]').each(function (i, element) {
- 
-      var result = {};
-
-      result.link =("www.usatoday.com" + $(this).attr("href"));
-
-  
+    $('a[itemprop="url"]').each(function (i, element) {
+    
+      result.link = ("www.usatoday.com" + $(this).attr("href"));
       result.title = $(this)
         .find('p[itemprop="headline"]')
         .text();
-
       result.image = $(this)
         .find('img[itemprop="image"]')
         .attr("src");
+      console.log("==============================")
+      console.log(result);
+      console.log("==============================")
 
-        res.send(result);
-        console.log(result);
-    });
+    })
     res.send(result);
-    console.log(result);
-  });
-  res.send(result);
-  console.log(result);
+  }).catch(err => console.log(err));
 });
-
-
-
-
-
-
-
 
 // Send every request to the React app
 // Define any API routes before this runs
-app.get("*", function(req, res) {
+app.get("*", function (req, res) {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
 
-app.listen(PORT, function() {
+app.listen(PORT, function () {
   console.log(`🌎 ==> Server now on port ${PORT}!`);
 });

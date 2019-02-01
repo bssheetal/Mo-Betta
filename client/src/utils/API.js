@@ -17,7 +17,7 @@ export default {
     return axios.get('', mood);
   },
 
-  scrapeNews: (news) => {
-    return axios.get('/news', news)
+  scrapeNews: (result) => {
+    return axios.get('/news');
   }
 };
