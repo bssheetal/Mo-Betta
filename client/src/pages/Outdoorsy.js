@@ -4,11 +4,21 @@ import API from '../utils/API';
 import { Link } from 'react-router-dom';
 
 class Outdoorsy extends Component {
+    handleOnClickButton = e =>  {
+        e.preventDefault();
+
+        API.spotify("outdoorsy")
+            .then(res => {
+                console.log(res.data);
+            })
+            .catch(err => console.log(err));
+    };
+
     render() {
         return (
             <div>
                 <h1>Outdoorsy</h1>
-
+                <button onClick={this.handleOnClickButton}>get music list</button>
                 <Link to="/">Go home</Link>
             </div>
         );

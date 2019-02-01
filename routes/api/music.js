@@ -8,14 +8,17 @@ var spotify = new Spotify({
     secret: '34bf60c1f8e3402294f060254f829845'
 });
 
+// /api/music
 router.get("/", (req, res) => {
+    console.log(req.body.mood);
     res.json("music");
 });
 
-var getArtistNames = function(artist) {
+
+var getArtistNames = function (artist) {
     return artist.name;
 
-  };
+};
 
 var getMeSpotify = function (songName) {
     if (songName === undefined) {
