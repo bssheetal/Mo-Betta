@@ -124,7 +124,7 @@ class Camera extends Component {
 
                 </div>
                 <div>
-                    {/* here ref is added as by default input parameter comes with sometext which cannot be overridden so had to make display none and add a reference that on buttonclick the event in inputgets triggered*/}
+                    {/* here ref is added becoz functionality by default of input parameter comes with sometext which cannot be overridden so had to make display none and add a reference that on buttonclick the event in inputgets triggered*/}
                     <input type="file" id="fileInput" onChange={this.previewFile} ref={fileInput=>this.fileInput=fileInput} />  
                     <img src="" id="previewimage"  onLoad={this.findemotion} alt=""/>
                     <button onClick={()=>this.fileInput.click()}>Upload Image</button>

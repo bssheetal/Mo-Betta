@@ -17,5 +17,4 @@ export default {
     return axios.get('', mood);
   },
 
-  
 };
