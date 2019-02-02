@@ -5,8 +5,8 @@ const router = require("express").Router();
 const axios = require("axios");
 var fs = require("fs");
 var facepp = require('face-plusplus-node');
-
-
+// var facerecognitionKey=keys.facerecognition.id;
+// var facerecognitionsecret=keys.facerecognition.secret;
 
 router.post("/faceanalyze", (req, response) => {
     console.log("Inside emotiondetection");
