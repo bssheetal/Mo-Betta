@@ -17,5 +17,9 @@ export default {
     return axios.get('', mood);
   },
   
+  video: (search, numOfResults)=> {
+    console.log(search);
+    return axios.get('/api/video', {params: {q: search, maxResults: numOfResults}})
+  }
 };
 
