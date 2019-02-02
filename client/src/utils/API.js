@@ -1,4 +1,5 @@
 import axios from 'axios';
+
 export default {
   // Gets a single user by id
   getUser: (id) => {
@@ -6,7 +7,7 @@ export default {
   },
   // sign up a user to our service
   signUpUser: (username, email, password) => {
-    return axios.post('api/signup', {username: username, email: email, password: password});
+    return axios.post('api/signup', { username: username, email: email, password: password });
   },
 
   facialRecognition: (imagedata) => {
@@ -14,7 +15,15 @@ export default {
   },
 
   spotify: (mood) => {
-    return axios.get('', mood);
+    return axios.get('/api/music', mood);
+  },
+
+  scrapeNews: (result) => {
+    return axios.get('/news');
+  },
+
+  stocks:(stockname)=>{
+    return axios.get('/api/mobetta/searchstock/'+stockname);
   },
   
   video: (search, numOfResults)=> {
