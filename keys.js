@@ -3,6 +3,6 @@ exports.stocks={
 }
 
 exports.facerecognition={
-    id:process.env.FACEPLUS_ID
-    
+    id:process.env.REACT_APP_FACEPLUS_ID,
+    secret:process.env.REACT_APP_FACEPLUS_SECRET
 }

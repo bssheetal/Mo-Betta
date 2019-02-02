@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import TextToSpeech from "../../utils/TextToSpeech";
 import SpeechRecognition from "../../utils/SpeechRecognition"
 import KeyHandler, { KEYUP, KEYDOWN } from 'react-key-handler';
-
+import "./style.css";
 class Camera extends Component {
 
     state = {
@@ -161,6 +161,13 @@ class Camera extends Component {
                         <button id="stop" onClick={this.handleOnClickStop}>Stop</button> */}
                 </div>
 
+                <div>
+                {/* here ref is added becoz functionality by default of input parameter comes with sometext which cannot be overridden so had to make display none and add a reference that on buttonclick the event in inputgets triggered*/}
+                    <input type="file" id="fileInput" onChange={this.previewFile} ref={fileInput=>this.fileInput=fileInput} />  
+                    <img src="" id="previewimage"  onLoad={this.findemotion} alt=""/>
+                    <button onClick={()=>this.fileInput.click()}>Upload Image</button>
+                </div>
+
                 <React.Fragment>
                     <KeyHandler
                         keyEventName={KEYDOWN}
@@ -175,13 +182,6 @@ class Camera extends Component {
                     <p>{this.state.speechText}</p>
                     <p>{this.state.emotion}</p>
                 </React.Fragment>
-
-                <div>
-                    {/* here ref is added as by default input parameter comes with sometext which cannot be overridden so had to make display none and add a reference that on buttonclick the event in inputgets triggered*/}
-                    <input type="file" id="fileInput" onChange={this.previewFile} ref={fileInput => this.fileInput = fileInput} />
-                    <img src="" id="previewimage" onLoad={this.findemotion} alt="" />
-                    <button onClick={() => this.fileInput.click()}>Upload Image</button>
-                </div>
 
                 <Link to="/">Go home</Link>
             </div>

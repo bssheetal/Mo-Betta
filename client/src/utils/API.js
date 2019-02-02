@@ -1,4 +1,5 @@
 import axios from 'axios';
+
 export default {
   // Gets a single user by id
   getUser: (id) => {
@@ -20,6 +21,10 @@ export default {
 
   scrapeNews: (result) => {
     return axios.get('/news');
+  },
+
+  stocks:(stockname)=>{
+    return axios.get('/api/mobetta/searchstock/'+stockname);
   }
   
 };
