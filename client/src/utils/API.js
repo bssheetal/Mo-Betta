@@ -24,7 +24,7 @@ export default {
   },
 
   stocks:(stockname)=>{
-    return axios.get('/api/mobetta/searchstock/'+stockname);
+      return axios.get('/api/mobetta/searchstock/'+stockname);
   }
   
 };

@@ -35,7 +35,6 @@ router.post("/faceanalyze", (req, response) => {
                 maxvalue = emotionsarr[i];
                 maxvaluekey = emotionskeys[i];
             }
-
         }
         response.json(maxvaluekey);
     });
