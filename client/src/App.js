@@ -4,6 +4,7 @@ import './App.css';
 import AuthService from './components/AuthService';
 import withAuth from './components/withAuth';
 import News from './components/News';
+import PodCast from './components/PodCast';
 
 const Auth = new AuthService();
 
@@ -79,6 +80,7 @@ class App extends Component {
           <div>
             {/* <iframe title="video2" width="320" height="240" src="https://www.youtube.com/embed/amLf7PRa1QU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> */}
             <News />
+            <PodCast />
           </div>
 
         </p>
