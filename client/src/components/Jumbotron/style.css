@@ -1,0 +1,35 @@
+.jumbotron {
+    background-repeat: repeat;
+    background-size: 50%;
+    height: 70vh;
+    background: linear-gradient(-45deg,#fff59d,#a5d6a7,#ffee58,#66bb6a);
+    background-color: #fff59d;
+    
+    animation: Gradient 5s ease infinite;
+
+    /* background: #ffd600;
+    
+    animation: mymove 15s;
+  animation-fill-mode: forwards;
+  animation-play-state: running;
+  animation-iteration-count: infinite; */
+  
+}
+
+/* @keyframes mymove {
+
+    to { background-color: #63a35c;}
+  } */
+
+@keyframes Gradient {
+
+    to { background-color: #63a35c;}
+    /* 0%{background-position:10% 0%}
+    50%{background-position:91% 100%}
+    100%{background-position:10% 0%} */
+}
+/* @-webkit-keyframes Gradient {
+    0%{background-position:10% 0%}
+    50%{background-position:91% 100%}
+    100%{background-position:10% 0%}
+}  */

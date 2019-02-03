@@ -14,7 +14,7 @@ import Signup from './pages/Signup';
 import Camera from './pages/Camera/Camera';
 import Productive from './pages/Productive';
 import Bored from './pages/Bored';
-import Hungry from './pages/Hungry';
+import Hungry from './pages/Hungry/Hungry';
 import Outdoorsy from './pages/Outdoorsy';
 import Uplift from './pages/Uplift';
 import Navbar from './components/Navbar';

@@ -1,0 +1,49 @@
+.navbar {
+    background-color: #f4f4f4;
+}
+
+.nav-link {
+    color: rgba(0,0,0,.5);
+}
+.navbar .container-fluid .navbar-brand {
+    font-family: 'Parisienne', cursive;
+    font-size: 30pt;
+    font-weight: 900;
+}
+.mood-icon {
+    font-size: 3rem;
+}
+
+.mood-icon:hover {
+    /* animation: shake 0.5s;  */
+    transform: scale(1.2);
+    cursor: alias;
+}
+
+.ihungry {
+    color: #ffd600;
+}
+
+.betta,
+.ilaugh {
+    color: #63a35c;
+}
+
+.swings,
+.ismile {
+    color: #1e87f0;
+}
+
+.aka,
+.ineutral {
+    color: #FAA050;
+}
+.mood,
+.isad {
+    color: #795DA7;
+}
+
+.mo,
+.iangry {
+    color: #f0506e;
+}
