@@ -35,15 +35,17 @@ class PodCast extends Component {
         // console.log("========state========")
         // console.log(this.state.podCasts);
 
+
         // let targetUrl = 'https://rss.acast.com/eggchasers'
-        let targetUrl = 'https://rss.acast.com/eggchasers'
+        let targetUrl = 'https://rss.acast.com/businessdaily'
+
 
         return (
             <div className="Pods">
                 <h3>PodCast Dump</h3>
                 {/* Please note: the search and library functions are just provided for demo purposes and not included in this source code. */}
                 <PodcastPlayer url={targetUrl}
-                feedMaxHeight = "100px"
+                    feedMaxHeight="100px"
                 />
             </div>
         );
