@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { Link } from 'react-router-dom';
 import AuthService from '../AuthService';
+// import { removeDotSegments } from "uri-js";
+import Bounce from 'react-reveal/Bounce';
+import "./style.css"
 
 class Navbar extends Component {
     constructor() {
@@ -37,19 +40,37 @@ class Navbar extends Component {
 
     render() {
         return (
-            <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-                <div className="container">
-                    <Link className="navbar-brand" to="/">Mo Betta a.k.a. Mood Swings</Link>
-                    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon"></span>
-                    </button>
-                    <div className="collapse navbar-collapse" id="navbarNav">
-                        <ul className="navbar-nav mr-auto">
-                        </ul>
-                        {this.showNavigation()}
+            <nav className="navbar navbar-expand-lg sticky-top">
+                <div className="container-fluid">
+                    <div className="d-md-flex">
+                        <Bounce top><span className="navbar-brand mo">Mo</span></Bounce>
+                        <Bounce bottom><span className="navbar-brand betta">Betta</span></Bounce>
+                        <span className="navbar-brand aka">a.k.a.</span>
+                        <Bounce left><span className="navbar-brand mood">Mood</span></Bounce>
+                        <Bounce right><span className="navbar-brand swings">Swings</span></Bounce>
+                    </div>
+
+                    <div className="d-md-flex">
+                        <Link className="mood-icon iangry ml-5" to="/relax"><i className="fas fa-angry"></i></Link>
+                        <Link className="mood-icon isad ml-5" to="/uplift"><i className="fas fa-frown"></i></Link>
+                        <Link className="mood-icon ineutral ml-5" to="/bored"><i className="fas fa-meh"></i></Link>
+                        <Link className="mood-icon ismile ml-5" to="/productive"><i className="fas fa-smile-beam"></i></Link>
+                        <Link className="mood-icon ilaugh ml-5" to="/outdoorsy"><i className="fas fa-laugh-beam"></i></Link>
+                        <Link className="mood-icon ihungry ml-5" to="/hungry"><i className="fas fa-grin-tongue"></i></Link>
+                    </div>
+
+                    <div className="d-md-flex">
+                        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                            <span className="navbar-toggler-icon"></span>
+                        </button>
+                        <div className="collapse navbar-collapse" id="navbarNav">
+                            <ul className="navbar-nav mr-auto">
+                            </ul>
+                            {this.showNavigation()}
+                        </div>
                     </div>
                 </div>
-            </nav>
+            </nav >
         )
     }
 }
