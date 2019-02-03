@@ -16,7 +16,6 @@ export default {
 
   spotify: (mood) => {
     return axios.get('/api/music', mood);
-    return axios.get('', mood);
   },
 
   scrapeNews: (result) => {
@@ -25,7 +24,11 @@ export default {
 
   stocks:(stockname)=>{
       return axios.get('/api/mobetta/searchstock/'+stockname);
-  }
+  },
   
+  video: (search, numOfResults)=> {
+    console.log(search);
+    return axios.get('/api/video', {params: {q: search, maxResults: numOfResults}})
+  }
 };
 
