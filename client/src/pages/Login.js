@@ -21,7 +21,8 @@ class Login extends Component {
       .then(res => {
         // once user is logged in
         // take them to their profile page
-        this.props.history.replace(`/profile`);
+        // this.props.history.replace(`/profile`);
+        this.props.history.replace(`/productive`);
       })
       .catch(err => {
         alert(err.response.data.message)

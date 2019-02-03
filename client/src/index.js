@@ -12,11 +12,12 @@ import Login from './pages/Login';
 import Profile from './pages/Profile';
 import Signup from './pages/Signup';
 import Camera from './pages/Camera/Camera';
-import Productive from './pages/Productive';
-import Bored from './pages/Bored';
+import Productive from './pages/Productive/Productive';
+import Bored from './pages/Bored/Bored';
 import Hungry from './pages/Hungry/Hungry';
-import Outdoorsy from './pages/Outdoorsy';
-import Uplift from './pages/Uplift';
+import Outdoorsy from './pages/Outdoorsy/Outdoorsy';
+import Uplift from './pages/Uplift/Uplift';
+import Relax from "./pages/Relax/Relax";
 import Navbar from './components/Navbar';
 import News from './components/News';
 
@@ -40,6 +41,7 @@ ReactDOM.render(
             <Route exact path="/hungry" component={Hungry} />
             <Route exact path="/outdoorsy" component={Outdoorsy} />
             <Route exact path="/uplift" component={Uplift} />
+            <Route exact path="/relax" component={Relax} />
             <Route exact path="/news" component={News} />
         </div>
     </Router>

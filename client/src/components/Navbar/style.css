@@ -14,13 +14,14 @@
     font-size: 3rem;
 }
 
-.mood-icon:hover {
+.ihungry {
+    color: #ffd600;
+}
+
+.ihungry:hover {
     /* animation: shake 0.5s;  */
     transform: scale(1.2);
     cursor: alias;
-}
-
-.ihungry {
     color: #ffd600;
 }
 
@@ -29,8 +30,22 @@
     color: #63a35c;
 }
 
+.ilaugh:hover {
+    /* animation: shake 0.5s;  */
+    transform: scale(1.2);
+    cursor: alias;
+    color: #63a35c;
+}
+
 .swings,
 .ismile {
+    color: #1e87f0;
+}
+
+.ineutral:hover {
+    /* animation: shake 0.5s;  */
+    transform: scale(1.2);
+    cursor: alias;
     color: #1e87f0;
 }
 
@@ -38,12 +53,34 @@
 .ineutral {
     color: #FAA050;
 }
+
+.ineutral:hover {
+    /* animation: shake 0.5s;  */
+    transform: scale(1.2);
+    cursor: alias;
+    color: #FAA050;
+}
+
 .mood,
 .isad {
     color: #795DA7;
 }
 
+.isad:hover {
+    /* animation: shake 0.5s;  */
+    transform: scale(1.2);
+    cursor: alias;
+    color: #795DA7;
+}
+
 .mo,
 .iangry {
+    color: #f0506e;
+}
+
+.iangry:hover {
+    /* animation: shake 0.5s;  */
+    transform: scale(1.2);
+    cursor: alias;
     color: #f0506e;
 }

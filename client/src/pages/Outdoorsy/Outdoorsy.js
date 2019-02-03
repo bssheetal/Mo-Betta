@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
-import withAuth from '../components/withAuth';
-import API from '../utils/API';
+import withAuth from '../../components/withAuth';
+import API from '../../utils/API';
 import { Link } from 'react-router-dom';
+import Jumbotron from '../../components/Jumbotron';
+import './style.css';
 
-class Uplift extends Component {
-    handleOnClickButton = e =>  {
+class Outdoorsy extends Component {
+    handleOnClickButton = e => {
         e.preventDefault();
 
-        API.spotify("uplift")
+        API.spotify("outdoorsy")
             .then(res => {
                 console.log(res.data);
             })
@@ -17,7 +19,10 @@ class Uplift extends Component {
     render() {
         return (
             <div>
-                <h1>Uplift</h1>
+                <Jumbotron>
+                    <h1>Outdoorsy</h1>
+                </Jumbotron>
+
                 <button onClick={this.handleOnClickButton}>get music list</button>
                 <Link to="/">Go home</Link>
             </div>
@@ -25,4 +30,4 @@ class Uplift extends Component {
     }
 }
 
-export default withAuth(Uplift);
+export default withAuth(Outdoorsy);

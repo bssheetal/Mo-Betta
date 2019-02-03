@@ -6,10 +6,14 @@ class Video extends Component {
         result: []
     };
 
-    handleOnClickBtn = e => {
-        e.preventDefault();
+    componentDidMount() {
+        this.handleOnClickBtn("");
+    };
 
-        API.video("CNBC", 1)
+    handleOnClickBtn = e => {
+        if (e) e.preventDefault();
+
+        API.video("CNBC news", 5)
             .then(res => {
                 console.log(res.data);
                 this.setState({
@@ -21,20 +25,23 @@ class Video extends Component {
 
     render() {
         return (
-            <div className="container">
+            <div className="container-fluid text-center">
                 <button onClick={this.handleOnClickBtn} >get video</button>
-                {this.state.result.map((item, index) => (
-                    <iframe
-                        key={"video"+index}
-                        title={"video"+index}
-                        width="320"
-                        height="240"
-                        src={item}
-                        frameBorder="0"
-                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen
-                    ></iframe>
-                ))}
+                <div>
+                    {this.state.result.map((item, index) => (
+                        <iframe
+                            key={"video" + index}
+                            title={"video" + index}
+                            width="320"
+                            height="240"
+                            src={item}
+                            frameBorder="0"
+                            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                            allowFullScreen
+                        ></iframe>
+                    ))}
+                </div>
+
             </div>
         );
     }

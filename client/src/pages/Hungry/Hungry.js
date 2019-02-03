@@ -30,16 +30,18 @@ class Hungry extends Component {
     };
 
     render() {
-        // const styles = {
-        //     jumbotron: {
-        //         backgroundImage: `url(${bgImage})`
-        //     }
-        // };
+        const styles = {
+            jumbotron: {
+                // backgroundImage: `url(${bgImage})`
+                background: 'linear-gradient(-45deg,#fff59d,#a5d6a7,#ffee58,#66bb6a)',
+                backgroundColor: '#fff59d'
+            }
+        };
 
         return (
             <div className="container-fluid hungry">
                 <Jumbotron
-                // style={styles.jumbotron}
+                style={styles.jumbotron}
                 >
                     <div className="display-4 mb-5 goodfood">good food good mood</div>
                     <img className="food-image mr-5 mt-5 mt-5" src={imgFood1} alt="food1" onClick={this.goHome}></img>
