@@ -1,0 +1,16 @@
+.goodfood {
+    color: #757575;
+    font-weight: bolder;
+    font-size: 50pt;
+    letter-spacing: 5px
+}
+
+.food-image {
+    border-radius: 50%;
+}
+
+.food-image:hover {
+    /* animation: shake 0.5s;  */
+    transform: scale(1.1);
+    cursor: pointer;
+}

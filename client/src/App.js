@@ -4,6 +4,7 @@ import './App.css';
 import AuthService from './components/AuthService';
 import withAuth from './components/withAuth';
 import News from './components/News';
+import PodCast from './components/PodCast';
 
 const Auth = new AuthService();
 
@@ -74,11 +75,8 @@ class App extends Component {
           <button type="button" className="btn btn-danger rounded-0 m-2" onClick={this.handleLogout}>Logout</button>
 
           <div>
-            {/* <iframe title="video1" width="320" height="240" src="https://www.youtube.com/embed/RwrT4A_Oh6g?list=RDRwrT4A_Oh6g" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> */}
-          </div>
-          <div>
-            {/* <iframe title="video2" width="320" height="240" src="https://www.youtube.com/embed/amLf7PRa1QU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> */}
             <News />
+            <PodCast />
           </div>
 
         </p>

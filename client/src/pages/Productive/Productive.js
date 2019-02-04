@@ -142,6 +142,17 @@ class Productive extends Component {
                     </div>
                     <Link to="/">Go home</Link>
                 </div>
+
+                <Jumbotron>
+                    <Button onClick={this.handleOnClickButton}>get music list</Button>
+                </Jumbotron>
+
+
+                {/* <Jumbotron>
+                    <Video />
+                </Jumbotron> */}
+
+                <Link to="/">Go home</Link>
             </div>
         );
     }

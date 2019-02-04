@@ -32,6 +32,8 @@
     "mongoose": "^5.4.6",
     "morgan": "^1.9.1",
     "node-spotify-api": "^1.0.7",
-    "react-file-base64": "^1.0.3"
+    "react-file-base64": "^1.0.3",
+    "react-reveal": "^1.2.2",
+    "react-rss-podcast-player": "^1.0.0"
   }
 }

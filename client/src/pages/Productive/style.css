@@ -97,3 +97,9 @@ button {
     text-shadow: none;
     font: 400 13.3333px Arial;
 }
+
+.title {
+    color: black;
+    font-size: 28pt;
+    font-weight: bolder;
+}

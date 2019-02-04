@@ -4,6 +4,8 @@
     height: 70vh;
     /* background: linear-gradient(-45deg,#fff59d,#a5d6a7,#ffee58,#66bb6a);
     background-color: #fff59d; */
+    /* background: linear-gradient(-45deg,#fff59d,#a5d6a7,#ffee58,#66bb6a); */
+    background-color: #fff;
     
     animation: Gradient 5s ease infinite;
 

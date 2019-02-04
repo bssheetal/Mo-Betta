@@ -9,3 +9,11 @@
     height:300px;
     width:300px;
 }
+
+#player {
+    border-radius: 50%;
+}
+
+#canvas {
+    visibility: hidden;
+}
