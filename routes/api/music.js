@@ -3,6 +3,7 @@ const router = require("express").Router();
 var Spotify = require('node-spotify-api');
 // var spotify = new Spotify(keys.music.id);
 
+
 var spotify = new Spotify({
     id: '608f7a893412478fb1dffc23cf6bd0c5',
     secret: '34bf60c1f8e3402294f060254f829845'
@@ -51,6 +52,6 @@ var getMeSpotify = function (songName) {
     );
 };
 
-getMeSpotify("Happy");
+getMeSpotify();
 
 module.exports = router;
