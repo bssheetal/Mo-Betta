@@ -2085,19 +2085,6 @@ react-file-base64@^1.0.3:
   dependencies:
     react "^15.6.1"
 
-<<<<<<< HEAD
-react-icon-base@2.1.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/react-icon-base/-/react-icon-base-2.1.0.tgz#a196e33fdf1e7aaa1fda3aefbb68bdad9e82a79d"
-  integrity sha1-oZbjP98eeqof2jrvu2i9rZ6Cp50=
-
-react-icons@^2.2.7:
-  version "2.2.7"
-  resolved "https://registry.yarnpkg.com/react-icons/-/react-icons-2.2.7.tgz#d7860826b258557510dac10680abea5ca23cf650"
-  integrity sha512-0n4lcGqzJFcIQLoQytLdJCE0DKSA9dkwEZRYoGrIDJZFvIT6Hbajx5mv9geqhqFiNjUgtxg8kPyDfjlhymbGFg==
-  dependencies:
-    react-icon-base "2.1.0"
-
 react-reveal@^1.2.2:
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/react-reveal/-/react-reveal-1.2.2.tgz#f47fbc44debc4c185ae2163a215a9e822c7adfef"
@@ -2105,23 +2092,7 @@ react-reveal@^1.2.2:
   dependencies:
     prop-types "^15.5.10"
 
-react-rss-podcast-player@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/react-rss-podcast-player/-/react-rss-podcast-player-1.0.0.tgz#b41a3d7dac8841c42b421bffcaec047f0604e188"
-  integrity sha512-5wnymU2/Zo9r++kl5fnD1fX//21DsvAinnnsuisov0643KPgKp6b0nPqa0PmA2BO0g/EZrC4jQ3K/ZeDlPwZBw==
-  dependencies:
-    extract-text-webpack-plugin "^3.0.2"
-    moment "^2.22.2"
-    react "^15.5.4"
-    react-dom "^15.6.1"
-    react-icons "^2.2.7"
-    rss-parser "^3.4.2"
-    webpack "^3.4.1"
-
-react@^15.5.4, react@^15.6.1:
-=======
 react@^15.6.1:
->>>>>>> 2ffe2049a9e8641db384cd631ec6454112e42b74
   version "15.6.2"
   resolved "https://registry.yarnpkg.com/react/-/react-15.6.2.tgz#dba0434ab439cfe82f108f0f511663908179aa72"
   integrity sha1-26BDSrQ5z+gvEI8PURZjkIF5qnI=

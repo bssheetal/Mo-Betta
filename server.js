@@ -100,7 +100,7 @@ app.use(function (err, req, res, next) {
 
 app.get("/news", isAuthenticated, (req, res) => {
 
-  console.log("Scrape");
+  // console.log("Scrape");
   var allResult = [];
   var resObject = {};
   axios.get("http://www.usatoday.com/money/markets/").then(function (response) {
@@ -115,15 +115,15 @@ app.get("/news", isAuthenticated, (req, res) => {
       result.image = $(this)
         .find('img[itemprop="image"]')
         .attr("src");
-      console.log("==========RESULT==============")
-      console.log(result);
+      // console.log("==========RESULT==============")
+      // console.log(result);
       resObject = {link: result.link, title: result.title, image: result.image};
       allResult.push(resObject);
       // allResult = allResult + result;
 
     })
-    console.log("============ALL==============")
-    console.log(allResult);
+    // console.log("============ALL==============")
+    // console.log(allResult);
     res.send(allResult);
   }).catch(err => console.log(err));
 });
