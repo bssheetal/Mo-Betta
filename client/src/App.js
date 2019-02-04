@@ -73,10 +73,6 @@ class App extends Component {
           <button type="button" className="btn btn-primary rounded-0 m-2" onClick={this.goToEditProfile}>Go to Profile</button>
           <button type="button" className="btn btn-danger rounded-0 m-2" onClick={this.handleLogout}>Logout</button>
 
-          <div>
-            <News />
-          </div>
-
         </p>
       </div>
     );
