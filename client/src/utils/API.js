@@ -15,7 +15,7 @@ export default {
   },
 
   spotify: (mood) => {
-    return axios.get('/api/music', mood);
+    return axios.get('/api/music', {params: {mood: mood}});
   },
 
   scrapeNews: (result) => {
