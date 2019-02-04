@@ -13,6 +13,7 @@ import { Container, Row, Col } from '../../components/Grid';
 import Thumbnail from '../../components/Thumbnail';
 import './style.css'
 import PodCast from '../../components/PodCast';
+import Chat from '../../components/Chat';
 class Productive extends Component {
     state = {
 
@@ -141,6 +142,12 @@ class Productive extends Component {
                         PodCast
                         <Container>
                             <PodCast />
+                        </Container>
+                    </Card>
+                    <Card>
+                        Chat
+                        <Container>
+                            <Chat />
                         </Container>
                     </Card>
                     

@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import AuthService from './components/AuthService';
 import withAuth from './components/withAuth';
-import News from './components/News';
+// import News from './components/News';
 
 const Auth = new AuthService();
 
