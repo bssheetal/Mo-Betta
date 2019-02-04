@@ -1,0 +1,99 @@
+.container
+{
+    width: 100%;
+    float:left;
+    margin-left:-2%;
+    font-size: 20px;
+}
+
+.jumbotron{
+    background: linear-gradient(-45deg,#fff59d,#a5d6a7,#ffee58,#66bb6a);
+    background-color: #fff59d;
+    width:200%;
+    height:40vh;
+    margin-left:-20px;
+}
+
+.card {
+    min-width: 30rem;
+    max-width: 130rem; 
+  }
+
+  .Newscard
+  {
+    min-width: 30rem;
+    max-width: 30rem; 
+
+  }
+
+  .input-group-btn
+  {
+      z-index:2;
+      margin-left: -1px;
+      display: flex;
+    align-items: center;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+  .input-group .form-control {
+    position: relative;
+    z-index: 2;
+    flex: 1 1 auto;
+    width: 50%;
+    margin-bottom: 0;
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-image: none;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+}
+
+input {
+    overflow: visible;
+    cursor:text;
+    text-rendering: auto;
+    color: initial;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+    margin: 0em;
+    font: 400 13.3333px Arial;
+    width:70%;
+}
+
+group-btn>.btn {
+    position: relative;
+}
+
+.btn-secondary {
+    color: #fff;
+    background-color: #868e96;
+    border-color: #868e96;
+    margin-left:-2px;
+    padding: .375rem .75rem;
+    line-height: 1.5;
+    height: 50px
+}
+
+button {
+    text-rendering: auto;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-indent: 0px;
+    text-shadow: none;
+    font: 400 13.3333px Arial;
+}

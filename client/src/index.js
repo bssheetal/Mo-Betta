@@ -12,7 +12,7 @@ import Login from './pages/Login';
 import Profile from './pages/Profile';
 import Signup from './pages/Signup';
 import Camera from './pages/Camera/Camera';
-import Productive from './pages/Productive';
+import Productive from './pages/Productive/Productive';
 import Bored from './pages/Bored';
 import Hungry from './pages/Hungry';
 import Outdoorsy from './pages/Outdoorsy';
