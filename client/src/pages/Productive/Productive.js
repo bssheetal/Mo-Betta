@@ -137,15 +137,12 @@ class Productive extends Component {
                         </Container>
                     </Card>
 
-                    <div>
-                        <Button onClick={this.handleOnClickButton}>get music list</Button>
-                    </div>
-                    <Link to="/">Go home</Link>
+                    
                 </div>
 
-                <Jumbotron>
+                <Card>
                     <Button onClick={this.handleOnClickButton}>get music list</Button>
-                </Jumbotron>
+                </Card>
 
 
                 {/* <Jumbotron>

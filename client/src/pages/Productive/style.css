@@ -9,9 +9,9 @@
 .jumbotron{
     background: linear-gradient(-45deg,#fff59d,#a5d6a7,#ffee58,#66bb6a);
     background-color: #fff59d;
-    width:200%;
-    height:40vh;
-    margin-left:-20px;
+    /* width:200%;
+    height:40vh; */
+    /* margin-left:-20px; */
 }
 
 .card {
@@ -75,9 +75,9 @@ input {
     width:70%;
 }
 
-group-btn>.btn {
+/* group-btn>.btn {
     position: relative;
-}
+} */
 
 .btn-secondary {
     color: #fff;
@@ -89,14 +89,14 @@ group-btn>.btn {
     height: 50px
 }
 
-button {
+/* button {
     text-rendering: auto;
     letter-spacing: normal;
     word-spacing: normal;
     text-indent: 0px;
     text-shadow: none;
     font: 400 13.3333px Arial;
-}
+} */
 
 .title {
     color: black;
