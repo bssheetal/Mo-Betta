@@ -4,7 +4,6 @@ import './App.css';
 import AuthService from './components/AuthService';
 import withAuth from './components/withAuth';
 import News from './components/News';
-import PodCast from './components/PodCast';
 
 const Auth = new AuthService();
 
@@ -76,7 +75,6 @@ class App extends Component {
 
           <div>
             <News />
-            <PodCast />
           </div>
 
         </p>
