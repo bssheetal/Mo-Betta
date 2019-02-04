@@ -5,17 +5,46 @@ import { Link } from 'react-router-dom';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 import Card from '../../components/Card';
-import List from '../../components/List';
-import Video from '../../components/Video';
+import List from '../../components/List'
 import Jumbotron from '../../components/Jumbotron';
-import './style.css';
-
+import { NewsList, NewsListItem } from '../../components/NewsList';
+import News from '../../components/News';
+import { Container, Row, Col } from '../../components/Grid';
+import Thumbnail from '../../components/Thumbnail';
+import './style.css'
 class Productive extends Component {
     state = {
+
         stockinfo: [],
-        StockSearch: "" /*always give this parameter as name of the input field otherwise you cant type in input field */
+        StockSearch: '',/*always give this parameter as name of the input field otherwise you cant type in input field */
+        chart: [],
+        chartDates: [],
+        chartCloses: [],
+        showAllChart: false,
+        username: "",
+        email: "",
+        parentComponent: "",
+        news: []
+
     };
 
+    componentDidMount() {
+        this.setState({
+            StockSearch: 'NLFX'
+        });
+        this.handleFormSubmit.bind(this);
+
+        API.scrapeNews(this.props.allResult).then(res => {
+            this.setState({
+                news: res.data
+                // parentComponent: ??????
+            })
+            console.log("=========data======")
+            console.log(res.data);
+            // console.log("========state========")
+            // console.log(this.state.news);
+        });
+    }
 
     handleOnClickButton = e => {
         e.preventDefault();
@@ -48,38 +77,38 @@ class Productive extends Component {
 
     //whth
     render() {
-        const styles = {
-            jumbotron: {
-                backgroundColor: '#039be5',
-                background: '#039be5',
-            }
-        };
         return (
             <div className="container-fluid">
-                <Jumbotron
-                    style={styles.jumbotron}
-                >
-                    <span className="title">Productive</span>
-                </Jumbotron>
-
                 <Jumbotron>
-                    <Input
-                        type="text"
-                        name="StockSearch"
-                        value={this.state.stockSearch}
-                        onChange={this.handleInputChange}
-                        placeholder="Search for a Stock"
-                    />
-                    <Button
-                        onClick={this.handleFormSubmit}
-                        type="success"
-                        className="input-lg">
-                        Search
-                </Button>
-                    <Button onClick={this.handleOnClickButton}>get music list</Button>
 
+                </Jumbotron>
+                <div>
                     <Card>
-                        {this.state.stockinfo.symbol}
+                        <div className="row">
+                            <div className="col input-group">
+                                <input
+                                    value={this.state.stockSearch}
+                                    name="StockSearch"
+                                    type="text"
+                                    className="form-control"
+                                    placeholder="Symbol e.g. NFLX"
+                                    aria-label="Symbol"
+                                    onChange={this.handleInputChange}
+                                />
+                                <span className="input-group-btn">
+                                    <button
+                                        className="btn btn-secondary"
+                                        type="button"
+                                        onClick={this.handleFormSubmit}
+                                    >
+                                        Load Quote
+                               </button>
+                                </span>   
+                            </div>
+                        </div>
+                    </Card>
+                    <Card>
+                    {this.state.stockinfo.symbol} -{this.state.stockinfo.companyName}
                         <List
                             latestSource={this.state.stockinfo.latestSource}
                             latestPrice={this.state.stockinfo.latestPrice}
@@ -88,16 +117,37 @@ class Productive extends Component {
                             primaryExchange={this.state.stockinfo.primaryExchange}
                         />
                     </Card>
-                </Jumbotron>
+                    <Card>
+                        Business News
+                    <Container>
+                            <Col size="xs-6">
 
-                <Jumbotron>
+                                <NewsList>
+                                    {this.state.news.slice(0, 5).map(item => {
+                                        return (
+                                            <NewsListItem
+                                                title={item.title}
+                                                href={item.link}
+                                                thumbnail={item.image}
+                                            />
+                                        );
+                                    })}
+                                </NewsList>
+                            </Col>
+                        </Container>
+                    </Card>
+
+                    
+                </div>
+
+                <Card>
                     <Button onClick={this.handleOnClickButton}>get music list</Button>
-                </Jumbotron>
+                </Card>
 
 
-                <Jumbotron>
+                {/* <Jumbotron>
                     <Video />
-                </Jumbotron>
+                </Jumbotron> */}
 
                 <Link to="/">Go home</Link>
             </div>

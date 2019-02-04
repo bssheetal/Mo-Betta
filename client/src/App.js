@@ -4,7 +4,6 @@ import './App.css';
 import AuthService from './components/AuthService';
 import withAuth from './components/withAuth';
 import News from './components/News';
-import PodCast from './components/PodCast';
 
 const Auth = new AuthService();
 
@@ -73,11 +72,6 @@ class App extends Component {
           </div>
           <button type="button" className="btn btn-primary rounded-0 m-2" onClick={this.goToEditProfile}>Go to Profile</button>
           <button type="button" className="btn btn-danger rounded-0 m-2" onClick={this.handleLogout}>Logout</button>
-
-          <div>
-            <News />
-            <PodCast />
-          </div>
 
         </p>
       </div>
