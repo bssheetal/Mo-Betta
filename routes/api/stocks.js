@@ -14,4 +14,15 @@ router.get('/searchstock/:stockname', (req, res) => {
     .catch(err => res.json(err.message));
 });
 
+router.get('/searchstock/:stockname/charts',(req,res)=>{
+    var stockname=req.params.stockname; 
+    var range="6m"; 
+    var stocksurl=`https://api.iextrading.com/1.0/stock/${stockname}/chart/${range}`;
+    axios.get(stocksurl)
+    .then(response => {
+        res.send(response.data);
+    })
+    .catch(err => res.json(err.message));
+})
+
 module.exports = router;
