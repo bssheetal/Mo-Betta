@@ -1,0 +1,86 @@
+.navbar {
+    background-color: #f4f4f4;
+}
+
+.nav-link {
+    color: rgba(0,0,0,.5);
+}
+.navbar .container-fluid .navbar-brand {
+    font-family: 'Parisienne', cursive;
+    font-size: 30pt;
+    font-weight: 900;
+}
+.mood-icon {
+    font-size: 3rem;
+}
+
+.ihungry {
+    color: #ffd600;
+}
+
+.ihungry:hover {
+    /* animation: shake 0.5s;  */
+    transform: scale(1.2);
+    cursor: alias;
+    color: #ffd600;
+}
+
+.betta,
+.ilaugh {
+    color: #63a35c;
+}
+
+.ilaugh:hover {
+    /* animation: shake 0.5s;  */
+    transform: scale(1.2);
+    cursor: alias;
+    color: #63a35c;
+}
+
+.swings,
+.ismile {
+    color: #1e87f0;
+}
+
+.ineutral:hover {
+    /* animation: shake 0.5s;  */
+    transform: scale(1.2);
+    cursor: alias;
+    color: #1e87f0;
+}
+
+.aka,
+.ineutral {
+    color: #FAA050;
+}
+
+.ineutral:hover {
+    /* animation: shake 0.5s;  */
+    transform: scale(1.2);
+    cursor: alias;
+    color: #FAA050;
+}
+
+.mood,
+.isad {
+    color: #795DA7;
+}
+
+.isad:hover {
+    /* animation: shake 0.5s;  */
+    transform: scale(1.2);
+    cursor: alias;
+    color: #795DA7;
+}
+
+.mo,
+.iangry {
+    color: #f0506e;
+}
+
+.iangry:hover {
+    /* animation: shake 0.5s;  */
+    transform: scale(1.2);
+    cursor: alias;
+    color: #f0506e;
+}

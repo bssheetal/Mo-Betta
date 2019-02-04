@@ -3,11 +3,11 @@ const axios = require("axios");
 var keys = require("../../keys.js");
 var stockskey = keys.stocks.id;
 
-router.get("/searchstock", (req, res) => {
+router.get('/searchstock/:stockname', (req, res) => {
 
-    var stockname="AAPL";
-    var stocksurl=`https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${stockname}&apikey=${stockskey}`;
-    axios.get(stocksurl, { params: { q: req.query } })
+    var stockname=req.params.stockname;
+    var stocksurl=`https://api.iextrading.com/1.0/stock/${stockname}/quote`;
+    axios.get(stocksurl)
     .then(response => {
         res.send(response.data);
     })
