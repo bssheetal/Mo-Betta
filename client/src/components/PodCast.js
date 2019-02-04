@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import withAuth from './withAuth';
 import API from '../utils/API';
-import PodcastPlayer from 'react-rss-podcast-player';
+// import PodcastPlayer from 'react-rss-podcast-player';
 
 class PodCast extends Component {
     state = {
@@ -44,8 +44,8 @@ class PodCast extends Component {
             <div className="Pods">
                 <h3>PodCast Dump</h3>
                 {/* Please note: the search and library functions are just provided for demo purposes and not included in this source code. */}
-                <PodcastPlayer url={targetUrl}
-                    feedMaxHeight="100px"
+                {/* <PodcastPlayer url={targetUrl}
+                    feedMaxHeight="100px" */}
                 />
             </div>
         );
