@@ -4,6 +4,7 @@
   "private": true,
   "proxy": "http://localhost:3001/",
   "dependencies": {
+    "@pusher/chatkit": "^0.7.18",
     "axios": "^0.18.0",
     "cheerio": "^1.0.0-rc.2",
     "jwt-decode": "^2.2.0",
