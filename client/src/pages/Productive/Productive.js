@@ -323,12 +323,12 @@ class Productive extends Component {
                                 <PodCast />
                             </Container>
                         </Card>
-                        {/* <Card>
+                        <Card>
                             Chat
                                 <Container>
                                     <Chat />
                                 </Container>
-                            </Card> */}
+                            </Card>
 
                         <Card id="card-music" title="Music" style={styles.cardMusic}>
                             <Button onClick={this.handleOnClickButton}>get music list</Button>
