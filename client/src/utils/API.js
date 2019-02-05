@@ -15,11 +15,11 @@ export default {
   },
 
   spotify: (mood) => {
-    return axios.get('/api/music', mood);
+    return axios.get('/api/music', {params: {mood: mood}});
   },
 
-  scrapeNews: (result) => {
-    return axios.get('/news');
+  scrapeNews: (parent) => {
+    return axios.get('/news', {params: {q: parent}});
   },
 
   stocks:(stockname)=>{
