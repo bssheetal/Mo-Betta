@@ -172,7 +172,7 @@ class Productive extends Component {
                 </Card>
                 <Card>
                     <div className="row">
-                        <div className="col-sm-6">
+                        <div className="col-sm-8">
                             {this.state.stockinfo.symbol} -{this.state.stockinfo.companyName}
                             <List
                                 latestSource={this.state.stockinfo.latestSource}
@@ -181,6 +181,7 @@ class Productive extends Component {
                                 week52Low={this.state.stockinfo.week52Low}
                                 primaryExchange={this.state.stockinfo.primaryExchange}
                             />
+                            <Button>Add to Portfolio</Button>
                         </div>
                         <div className="col-sm-4">
                             {this.state.linechartelements && (
