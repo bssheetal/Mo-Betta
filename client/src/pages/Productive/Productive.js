@@ -35,10 +35,17 @@ class Productive extends Component {
         parentComponent: "productive",
         news: [],
         stockDisplay: "block",
-        newsDisplay: "none",
-        podcastDisplay: "none",
-        musicDisplay: "none",
-        videoDisplay: "none"
+        newsDisplay: "block",
+        podcastDisplay: "block",
+        musicDisplay: "block",
+        videoDisplay: "block",
+        chatDisplay: "block",
+        displayStockCard: true,
+        displayNewsCard: false,
+        displayPodcastCard: false,
+        displayChatCard: false,
+        displayMusicCard: false,
+        displayVideoCard: false
     };
 
     componentDidMount() {
@@ -148,23 +155,36 @@ class Productive extends Component {
         e.preventDefault();
 
         this.setState({
-            stockDisplay: "block",
-            newsDisplay: "none",
-            podcastDisplay: "none",
-            musicDisplay: "none",
-            videoDisplay: "none"
+            // stockDisplay: "block",
+            // newsDisplay: "none",
+            // podcastDisplay: "none",
+            // musicDisplay: "none",
+            // videoDisplay: "none"
+            displayStockCard: true,
+            displayNewsCard: false,
+            displayPodcastCard: false,
+            displayChatCard: false,
+            displayMusicCard: false,
+            displayVideoCard: false
         });
     };
 
     handleOnClickNews = e => {
         e.preventDefault();
 
+        console.log("News card clicked");
         this.setState({
-            stockDisplay: "none",
-            newsDisplay: "block",
-            podcastDisplay: "none",
-            musicDisplay: "none",
-            videoDisplay: "none"
+            // stockDisplay: "none",
+            // newsDisplay: "block",
+            // podcastDisplay: "none",
+            // musicDisplay: "none",
+            // videoDisplay: "none"
+            displayStockCard: false,
+            displayNewsCard: true,
+            displayPodcastCard: false,
+            displayChatCard: false,
+            displayMusicCard: false,
+            displayVideoCard: false
         });
     };
 
@@ -172,11 +192,35 @@ class Productive extends Component {
         e.preventDefault();
 
         this.setState({
-            stockDisplay: "none",
-            newsDisplay: "none",
-            podcastDisplay: "block",
-            musicDisplay: "none",
-            videoDisplay: "none"
+            // stockDisplay: "none",
+            // newsDisplay: "none",
+            // podcastDisplay: "block",
+            // musicDisplay: "none",
+            // videoDisplay: "none"
+            displayStockCard: false,
+            displayNewsCard: false,
+            displayPodcastCard: true,
+            displayChatCard: false,
+            displayMusicCard: false,
+            displayVideoCard: false
+        });
+    };
+
+    handleOnClickChat = e => {
+        e.preventDefault();
+
+        this.setState({
+            // stockDisplay: "none",
+            // newsDisplay: "none",
+            // podcastDisplay: "block",
+            // musicDisplay: "none",
+            // videoDisplay: "none"
+            displayStockCard: false,
+            displayNewsCard: false,
+            displayPodcastCard: false,
+            displayChatCard: true,
+            displayMusicCard: false,
+            displayVideoCard: false
         });
     };
 
@@ -184,11 +228,17 @@ class Productive extends Component {
         e.preventDefault();
 
         this.setState({
-            stockDisplay: "none",
-            newsDisplay: "none",
-            podcastDisplay: "none",
-            musicDisplay: "block",
-            videoDisplay: "none"
+            // stockDisplay: "none",
+            // newsDisplay: "none",
+            // podcastDisplay: "none",
+            // musicDisplay: "block",
+            // videoDisplay: "none"
+            displayStockCard: false,
+            displayNewsCard: false,
+            displayPodcastCard: false,
+            displayChatCard: false,
+            displayMusicCard: true,
+            displayVideoCard: false
         });
     };
 
@@ -196,14 +246,151 @@ class Productive extends Component {
         e.preventDefault();
 
         this.setState({
-            stockDisplay: "none",
-            newsDisplay: "none",
-            podcastDisplay: "none",
-            musicDisplay: "none",
-            videoDisplay: "block"
+            // stockDisplay: "none",
+            // newsDisplay: "none",
+            // podcastDisplay: "none",
+            // musicDisplay: "none",
+            // videoDisplay: "block"
+            displayStockCard: false,
+            displayNewsCard: false,
+            displayPodcastCard: false,
+            displayChatCard: false,
+            displayMusicCard: false,
+            displayVideoCard: true
         });
     };
 
+    renderCardStock = (isLoaded, styles) => {
+        return (
+            <Card id="card-stock" title="Stocks" style={styles} onClick={this.handleOnClickStock}>
+                <div className="row" id="btn-load">
+                    <div className="col-sm-6">
+                        <div className="row">
+                            <div className="col-md-12 input-group">
+                                <input
+                                    value={this.state.stockSearch}
+                                    name="StockSearch"
+                                    type="text"
+                                    className="form-control"
+                                    placeholder="Symbol e.g. BA"
+                                    aria-label="Symbol"
+                                    onChange={this.handleInputChange}
+                                />
+                                <span className="input-group-btn">
+                                    <button
+                                        className="btn btn-secondary"
+                                        type="button"
+                                        onClick={this.handleLoadQuote}
+                                    >
+                                        Load Quote
+                    </button>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div className="row">
+                            <div className="col-md-12">
+                                {this.state.stockinfo.symbol} -{this.state.stockinfo.companyName}
+                                <List
+                                    latestSource={this.state.stockinfo.latestSource}
+                                    latestPrice={this.state.stockinfo.latestPrice}
+                                    week52High={this.state.stockinfo.week52High}
+                                    week52Low={this.state.stockinfo.week52Low}
+                                    primaryExchange={this.state.stockinfo.primaryExchange}
+                                />
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div className="col-sm-6">
+                        {this.state.linechartelements && (
+                            <div className="charts">
+
+                                <h2 className="text-center">
+                                    {this.state.stockinfo.companyName + ' (Past 6 months)'}
+                                </h2>
+                                {
+                                    isLoaded ?
+                                        <ChartLineGraph
+                                            title={this.state.StockSearch}
+                                            chartLabels={this.state.chartDates}
+                                            chartData={this.state.chartCloses}
+                                            lineChartElements={this.state.linechartelements}
+                                        />
+                                        : null
+                                }
+                            </div>
+                        )}
+                    </div>
+
+                </div>
+            </Card>
+        );
+    };
+
+    renderCardNews = (styles) => {
+        return (
+            <Card id="card-news" title="Business News" style={styles} onClick={this.handleOnClickNews}>
+                <Container>
+                    <Col size="xs-6">
+
+                        <NewsList>
+                            {this.state.news.slice(0, 5).map(item => {
+                                return (
+                                    <NewsListItem
+                                        key={item.title}
+                                        title={item.title}
+                                        href={item.link}
+                                        thumbnail={item.image}
+                                    />
+                                );
+                            })}
+                        </NewsList>
+                    </Col>
+                </Container>
+            </Card>
+        );
+    };
+
+    renderCardPodcast = (styles) => {
+        return (
+            <Card id="card-podcast" title="PodCast" style={styles} onClick={this.handleOnClickPodcast}>
+                <Container>
+                    <PodCast />
+                </Container>
+            </Card>
+        );
+    };
+
+    renderCardChat = (styles) => {
+        return (
+            <Card id="card-chat" title="Chat" style={styles} onClick={this.handleOnClickChat}>
+                <Container>
+                    <Chat />
+                </Container>
+            </Card>
+        );
+    };
+
+    renderCardMusic = (styles) => {
+        return (
+            <Card id="card-music" title="Music" style={styles} onClick={this.handleOnClickMusic}>
+                <Button onClick={this.handleOnClickButton}>get music list</Button>
+            </Card>
+        );
+    };
+
+    renderCardVideo = (styles) => {
+        return (
+            <Card id="card-video" title="Video" style={styles} onClick={this.handleOnClickVideo}>
+                <Video
+                    searchTerm="CNBC Television"
+                    numberOfResults="5"
+                />
+            </Card>
+        );
+    };
 
     //whth
     render() {
@@ -223,6 +410,9 @@ class Productive extends Component {
             },
             cardVideo: {
                 display: this.state.videoDisplay
+            },
+            cardChat: {
+                display: this.state.chatDisplay
             }
         };
 
@@ -232,119 +422,40 @@ class Productive extends Component {
                 </Jumbotron> */}
 
                 <div className="row">
-                    <div className="col-sm-11">
-                        <Card id="card-stock" title="Stocks" style={styles.cardStock}>
-                            <div className="row" id="btn-load">
-                                <div className="col-sm-6">
-                                    <div className="row">
-                                        <div className="col-md-12 input-group">
-                                            <input
-                                                value={this.state.stockSearch}
-                                                name="StockSearch"
-                                                type="text"
-                                                className="form-control"
-                                                placeholder="Symbol e.g. BA"
-                                                aria-label="Symbol"
-                                                onChange={this.handleInputChange}
-                                            />
-                                            <span className="input-group-btn">
-                                                <button
-                                                    className="btn btn-secondary"
-                                                    type="button"
-                                                    onClick={this.handleLoadQuote}
-                                                >
-                                                    Load Quote
-                                        </button>
-                                            </span>
-                                        </div>
-                                    </div>
+                    {/* LEFT section */}
+                    <div className="col-sm-3">
+                        <div className="container text-center left-section">
+                            {this.renderCardMusic(styles.cardMusic)}
 
-                                    <div className="row">
-                                        <div className="col-md-12">
-                                            {this.state.stockinfo.symbol} -{this.state.stockinfo.companyName}
-                                            <List
-                                                latestSource={this.state.stockinfo.latestSource}
-                                                latestPrice={this.state.stockinfo.latestPrice}
-                                                week52High={this.state.stockinfo.week52High}
-                                                week52Low={this.state.stockinfo.week52Low}
-                                                primaryExchange={this.state.stockinfo.primaryExchange}
-                                            />
-                                        </div>
+                            {this.renderCardNews(styles.cardNews)}
 
-                                    </div>
-                                </div>
+                            {this.renderCardPodcast(styles.cardPodcast)}
+                        </div>
 
-                                <div className="col-sm-6">
-                                    {this.state.linechartelements && (
-                                        <div className="charts">
-
-                                            <h2 className="text-center">
-                                                {this.state.stockinfo.companyName + ' (Past 6 months)'}
-                                            </h2>
-                                            {
-                                                isLoaded ?
-                                                    <ChartLineGraph
-                                                        title={this.state.StockSearch}
-                                                        chartLabels={this.state.chartDates}
-                                                        chartData={this.state.chartCloses}
-                                                        lineChartElements={this.state.linechartelements}
-                                                    />
-                                                    : null
-                                            }
-                                        </div>
-                                    )}
-                                </div>
-
-                            </div>
-                        </Card>
-
-                        <Card id="card-news" title="Business News" style={styles.cardNews}>
-                            <Container>
-                                <Col size="xs-6">
-
-                                    <NewsList>
-                                        {this.state.news.slice(0, 5).map(item => {
-                                            return (
-                                                <NewsListItem
-                                                    key={item.title}
-                                                    title={item.title}
-                                                    href={item.link}
-                                                    thumbnail={item.image}
-                                                />
-                                            );
-                                        })}
-                                    </NewsList>
-                                </Col>
-                            </Container>
-                        </Card>
-
-                        <Card id="card-podcast" title="PodCast" style={styles.cardPodcast}>
-                            <Container>
-                                <PodCast />
-                            </Container>
-                        </Card>
-                        <Card>
-                            Chat
-                                <Container>
-                                    <Chat />
-                                </Container>
-                            </Card>
-
-                        <Card id="card-music" title="Music" style={styles.cardMusic}>
-                            <Button onClick={this.handleOnClickButton}>get music list</Button>
-                        </Card>
-
-                        <Card id="card-video" title="Video" style={styles.cardVideo}>
-                            <Video
-                                searchTerm="CNBC Television"
-                                numberOfResults="5"
-                            />
-                        </Card>
                     </div>
 
-                    <div className="col-sm-1">
-                        <div className="container text-center">
-                            <div className="productive-icons icon-stock">
+                    {/* CENTER section */}
+                    <div className="col-sm-6">
+                        <div className="container text-center left-section middle-section">
+                            {this.state.displayStockCard ? this.renderCardStock(isLoaded, styles.cardStock) : null}
+                            {this.state.displayNewsCard ? this.renderCardNews(styles.cardNews) : null}
+                            {this.state.displayPodcastCard ? this.renderCardPodcast(styles.cardPodcast) : null}
+                            {this.state.displayChatCard ? this.renderCardChat(styles.cardChat) : null}
+                            {this.state.displayMusicCard ? this.renderCardMusic(styles.cardMusic) : null}
+                            {this.state.displayVideoCard ? this.renderCardVideo(styles.cardVideo) : null}
+                        </div>
+                    </div>
+
+                    {/* RIGHT section */}
+                    <div className="col-sm-3">
+                        <div className="container text-center right-section">
+                            {this.renderCardStock(isLoaded, styles.cardStock)}
+
+                            {this.renderCardVideo(styles.cardVideo)}
+
+                            {this.renderCardChat(styles.cardChat)}
+
+                            {/* <div className="productive-icons icon-stock">
                                 <Rotate><i className="fas fa-chart-line" onClick={this.handleOnClickStock}></i></Rotate>
                             </div>
 
@@ -362,7 +473,7 @@ class Productive extends Component {
 
                             <div className="productive-icons icon-video">
                                 <Rotate><i className="fas fa-video" onClick={this.handleOnClickVideo}></i></Rotate>
-                            </div>
+                            </div> */}
 
                             <Link to="/">Go home</Link>
                         </div>
