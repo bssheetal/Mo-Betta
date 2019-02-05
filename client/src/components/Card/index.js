@@ -2,13 +2,15 @@ import React from "react";
 
 function Card(props) {
   return (
-    <div className="card">
+    <div className="card mt-4 ml-4" style={props.style}>
       <div className="card-header">
-        <h2 className="title">{props.children}</h2>
+        <span className="title">{props.title}</span>
       </div>
-      {/* <div className="card-body"></div>
-      <h2 className="card-title p-2">{props}</h2> */}
-      
+      <div className="card-body">
+        {props.children}
+      </div>
+      {/* <h2 className="card-title p-2">{props}</h2> */}
+
     </div>
   );
 }

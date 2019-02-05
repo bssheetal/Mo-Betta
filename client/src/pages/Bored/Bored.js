@@ -4,6 +4,8 @@ import API from '../../utils/API';
 import { Link } from 'react-router-dom';
 import Jumbotron from '../../components/Jumbotron';
 import './style.css';
+import Modal from '../../components/Modal'
+import Video from '../../components/Video'
 
 class Bored extends Component {
     handleOnClickButton = e => {
@@ -26,13 +28,24 @@ class Bored extends Component {
 
         return (
             <div>
-                <Jumbotron
+                {/* <Jumbotron
                     style={styles.jumbotron}
                 >
                     <h1>Bored</h1>
-                </Jumbotron>
+                </Jumbotron> */}
+
+                <Modal>
+                    <Video
+                        searchTerm="One and Only Adele"
+                        numberOfResults="1"
+                    >
+                        
+                    </Video>
+                </Modal>
 
                 <button onClick={this.handleOnClickButton}>get music list</button>
+
+
                 <Link to="/">Go home</Link>
             </div>
         );

@@ -14,7 +14,6 @@ class Camera extends Component {
         speechText: "",
         choice: "camera",
         emotion: ""
-        // btnCapture: 
     };
 
     componentDidMount() {
@@ -69,7 +68,6 @@ class Camera extends Component {
                 player.srcObject = stream;
             });
     };
-
 
     handleOnClickCapture = e => {
         if (e) e.preventDefault();
@@ -144,6 +142,7 @@ class Camera extends Component {
             })
             .catch(err => console.log(err));
     }
+    
     render() {
 
         return (

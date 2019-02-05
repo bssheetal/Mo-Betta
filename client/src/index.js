@@ -42,7 +42,7 @@ ReactDOM.render(
             <Route exact path="/outdoorsy" component={Outdoorsy} />
             <Route exact path="/uplift" component={Uplift} />
             <Route exact path="/relax" component={Relax} />
-            <Route exact path="/news" component={News} />
+            {/* <Route exact path="/news" component={News} /> */}
         </div>
     </Router>
     , document.getElementById('root')

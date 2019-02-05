@@ -10,9 +10,9 @@
     width:300px;
 }
 
-#player {
+/* #player {
     border-radius: 50%;
-}
+} */
 
 #canvas {
     visibility: hidden;

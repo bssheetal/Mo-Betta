@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import AuthService from '../AuthService';
 // import { removeDotSegments } from "uri-js";
 import Bounce from 'react-reveal/Bounce';
+import Swing from 'react-reveal/Swing';
+import Zoom from 'react-reveal/Zoom';
 import "./style.css"
 
 class Navbar extends Component {
@@ -43,20 +45,20 @@ class Navbar extends Component {
             <nav className="navbar navbar-expand-lg sticky-top">
                 <div className="container-fluid">
                     <div className="d-md-flex">
-                        <Bounce top><span className="navbar-brand mo">Mo</span></Bounce>
-                        <Bounce bottom><span className="navbar-brand betta">Betta</span></Bounce>
+                        <Bounce><span className="navbar-brand mo">Mo</span></Bounce>
+                        <Bounce><span className="navbar-brand betta">Betta</span></Bounce>
                         <span className="navbar-brand aka">a.k.a.</span>
-                        <Bounce left><span className="navbar-brand mood">Mood</span></Bounce>
-                        <Bounce right><span className="navbar-brand swings">Swings</span></Bounce>
+                        <Swing left><span className="navbar-brand mood">Mood</span></Swing>
+                        <Swing right><span className="navbar-brand swings">Swings</span></Swing>
                     </div>
 
                     <div className="d-md-flex">
-                        <Link className="mood-icon iangry ml-5" to="/relax"><i className="fas fa-angry"></i></Link>
-                        <Link className="mood-icon isad ml-5" to="/uplift"><i className="fas fa-frown"></i></Link>
-                        <Link className="mood-icon ineutral ml-5" to="/bored"><i className="fas fa-meh"></i></Link>
-                        <Link className="mood-icon ismile ml-5" to="/productive"><i className="fas fa-smile-beam"></i></Link>
-                        <Link className="mood-icon ilaugh ml-5" to="/outdoorsy"><i className="fas fa-laugh-beam"></i></Link>
-                        <Link className="mood-icon ihungry ml-5" to="/hungry"><i className="fas fa-grin-tongue"></i></Link>
+                    <Zoom><Link className="mood-icon iangry ml-5" to="/relax"><i className="fas fa-angry"></i></Link></Zoom>
+                    <Zoom><Link className="mood-icon isad ml-5" to="/uplift"><i className="fas fa-frown"></i></Link></Zoom>
+                    <Zoom><Link className="mood-icon ineutral ml-5" to="/bored"><i className="fas fa-meh"></i></Link></Zoom>
+                    <Zoom><Link className="mood-icon ismile ml-5" to="/productive"><i className="fas fa-smile-beam"></i></Link></Zoom>
+                    <Zoom><Link className="mood-icon ilaugh ml-5" to="/outdoorsy"><i className="fas fa-laugh-beam"></i></Link></Zoom>
+                    <Zoom><Link className="mood-icon ihungry ml-5" to="/hungry"><i className="fas fa-grin-tongue"></i></Link></Zoom>
                     </div>
 
                     <div className="d-md-flex">
