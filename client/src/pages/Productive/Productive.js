@@ -29,14 +29,14 @@ class Productive extends Component {
         username: "",
         email: "",
         news: [],
-        linechartelements:{},
-        isLoading:false,
+        linechartelements: {},
+        isLoading: false,
         parentComponent: "productive",
         news: []
 
     };
 
-    componentDidMount() {          
+    componentDidMount() {
         // this.setState({
         //     StockSearch: 'BA'
         // });
@@ -89,7 +89,7 @@ class Productive extends Component {
             .catch(err => console.log(err));
     }
 
-    chartdisplay = ()=> {
+    chartdisplay = () => {
         // event.preventDefault();
         this.state.chart.map(chartItem => {
             // this.state.chartDates.push(JSON.stringify(chartItem.label));
@@ -118,25 +118,23 @@ class Productive extends Component {
 
     };
 
-    handlesearchclick=()=>
-    {
-        
-        API.stocks(this.state.StockSearch)
-        .then(res => {
-            console.log(res.data);
-            this.setState({ stockinfo: res.data });
-            console.log(this.state.stockinfo.latestPrice);
-        })
-        .catch(err => console.log(err));
+    handlesearchclick = () => {
 
-       this.loadchartforstock();
+        API.stocks(this.state.StockSearch)
+            .then(res => {
+                console.log(res.data);
+                this.setState({ stockinfo: res.data });
+                console.log(this.state.stockinfo.latestPrice);
+            })
+            .catch(err => console.log(err));
+
+        this.loadchartforstock();
     };
 
-    handleLoadQuote=()=>
-    {
-     console.log(this.state.StockSearch);
-     this.handlesearchclick(); 
-     this.chartdisplay();
+    handleLoadQuote = () => {
+        console.log(this.state.StockSearch);
+        this.handlesearchclick();
+        this.chartdisplay();
     }
 
     //whth
@@ -144,112 +142,141 @@ class Productive extends Component {
         const { isLoaded } = this.state;
         return (
             <div className="container-fluid">
-                <Jumbotron>
+                {/* <Jumbotron>
+                </Jumbotron> */}
 
-                </Jumbotron>
-                <Card> 
-                    <div className="row">
-                        <div className="col-md-8 input-group">
-                            <input
-                                value={this.state.stockSearch}
-                                name="StockSearch"
-                                type="text"
-                                className="form-control"
-                                placeholder="Symbol e.g. BA"
-                                aria-label="Symbol"
-                                onChange={this.handleInputChange}
-                            />
-                            <span className="input-group-btn">
-                                <button
-                                    className="btn btn-secondary"
-                                    type="button"
-                                    onClick={this.handleLoadQuote}
-                                >
-                                    Load Quote
+                <div className="row">
+                    <div className="col-sm-11">
+                        <Card>
+                            <div className="row">
+                                <div className="col-md-8 input-group">
+                                    <input
+                                        value={this.state.stockSearch}
+                                        name="StockSearch"
+                                        type="text"
+                                        className="form-control"
+                                        placeholder="Symbol e.g. BA"
+                                        aria-label="Symbol"
+                                        onChange={this.handleInputChange}
+                                    />
+                                    <span className="input-group-btn">
+                                        <button
+                                            className="btn btn-secondary"
+                                            type="button"
+                                            onClick={this.handleLoadQuote}
+                                        >
+                                            Load Quote
                                </button>
-                            </span>
-                        </div>
-                    </div>
-                </Card>
-                <Card title="Stocks">
-                    <div className="row">
-                        <div className="col-sm-6">
-                            {this.state.stockinfo.symbol} -{this.state.stockinfo.companyName}
-                            <List
-                                latestSource={this.state.stockinfo.latestSource}
-                                latestPrice={this.state.stockinfo.latestPrice}
-                                week52High={this.state.stockinfo.week52High}
-                                week52Low={this.state.stockinfo.week52Low}
-                                primaryExchange={this.state.stockinfo.primaryExchange}
-                            />
-                        </div>
-                        <div className="col-sm-4">
-                            {this.state.linechartelements && (
-                                <div className="charts">
-
-                                    <h2 className="text-center">
-                                        {this.state.stockinfo.companyName + ' (Past 6 months)'}
-                                    </h2>
-                                    {
-                                        isLoaded ?
-                                            <ChartLineGraph
-                                                title={this.state.StockSearch}
-                                                chartLabels={this.state.chartDates}
-                                                chartData={this.state.chartCloses}
-                                                lineChartElements={this.state.linechartelements}
-                                            />
-                                            : null
-                                    }
+                                    </span>
                                 </div>
-                            )}
-                        </div>
+                            </div>
+                        </Card>
+                        <Card title="Stocks">
+                            <div className="row">
+                                <div className="col-sm-6">
+                                    {this.state.stockinfo.symbol} -{this.state.stockinfo.companyName}
+                                    <List
+                                        latestSource={this.state.stockinfo.latestSource}
+                                        latestPrice={this.state.stockinfo.latestPrice}
+                                        week52High={this.state.stockinfo.week52High}
+                                        week52Low={this.state.stockinfo.week52Low}
+                                        primaryExchange={this.state.stockinfo.primaryExchange}
+                                    />
+                                </div>
+                                <div className="col-sm-4">
+                                    {this.state.linechartelements && (
+                                        <div className="charts">
 
+                                            <h2 className="text-center">
+                                                {this.state.stockinfo.companyName + ' (Past 6 months)'}
+                                            </h2>
+                                            {
+                                                isLoaded ?
+                                                    <ChartLineGraph
+                                                        title={this.state.StockSearch}
+                                                        chartLabels={this.state.chartDates}
+                                                        chartData={this.state.chartCloses}
+                                                        lineChartElements={this.state.linechartelements}
+                                                    />
+                                                    : null
+                                            }
+                                        </div>
+                                    )}
+                                </div>
+
+                            </div>
+                        </Card>
+
+                        <Card title="Business News">
+                            <Container>
+                                <Col size="xs-6">
+
+                                    <NewsList>
+                                        {this.state.news.slice(0, 5).map(item => {
+                                            return (
+                                                <NewsListItem
+                                                    title={item.title}
+                                                    href={item.link}
+                                                    thumbnail={item.image}
+                                                />
+                                            );
+                                        })}
+                                    </NewsList>
+                                </Col>
+                            </Container>
+                        </Card>
+                        <Card title="PodCast">
+                            <Container>
+                                <PodCast />
+                            </Container>
+                        </Card>
+                        {/* <Card>
+                            Chat
+                                <Container>
+                                    <Chat />
+                                </Container>
+                            </Card> */}
+
+                        <Card title="Music">
+                            <Button onClick={this.handleOnClickButton}>get music list</Button>
+                        </Card>
+
+
+                        <Card title="Video">
+                            <Video
+                                searchTerm="CNBC Television"
+                                numberOfResults="5"
+                            />
+                        </Card>
+
+                        <Link to="/">Go home</Link>
                     </div>
-                </Card>
 
-                <Card title="Business News">
-                    <Container>
-                        <Col size="xs-6">
+                    <div className="col-sm-1">
+                        <div className="container text-center">
+                            <div className="productive-icons icon-stock">
+                                <i class="fas fa-chart-line" onClick=""></i>
+                            </div>
 
-                            <NewsList>
-                                {this.state.news.slice(0, 5).map(item => {
-                                    return (
-                                        <NewsListItem
-                                            title={item.title}
-                                            href={item.link}
-                                            thumbnail={item.image}
-                                        />
-                                    );
-                                })}
-                            </NewsList>
-                        </Col>
-                    </Container>
-                </Card>
-                <Card title="PodCast">
-                        <Container>
-                        <PodCast />
-                    </Container>
-                </Card>
-                {/* <Card>
-                    Chat
-                        <Container>
-                        <Chat />
-                    </Container>
-                </Card> */}
+                            <div className="productive-icons icon-newspaper">
+                                <i class="fas fa-newspaper"></i>
+                            </div>
 
-                <Card title="Music">
-                    <Button onClick={this.handleOnClickButton}>get music list</Button>
-                </Card>
+                            <div className="productive-icons icon-podcast">
+                                <i class="fas fa-podcast"></i>
+                            </div>
 
+                            <div className="productive-icons icon-music">
+                                <i class="fas fa-music"></i>
+                            </div>
 
-                <Card title="Video">
-                    <Video 
-                        searchTerm="CNBC Television"
-                        numberOfResults="5"
-                    />
-                </Card>
+                            <div className="productive-icons icon-video">
+                                <i class="fas fa-video"></i>
+                            </div>
+                        </div>
+                    </div>
 
-                <Link to="/">Go home</Link>
+                </div>
             </div>
         );
     }
