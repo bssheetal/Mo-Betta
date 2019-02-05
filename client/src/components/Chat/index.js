@@ -30,7 +30,7 @@ class Chat extends React.Component {
         // Chatkit setting in config.js
         const chatManager = new Chatkit.ChatManager({
             instanceLocator,
-            userId: 'perborgen',
+            userId: 'Taylor',
             tokenProvider: new Chatkit.TokenProvider({
                 url: tokenUrl
             })
@@ -96,11 +96,15 @@ class Chat extends React.Component {
         })
     }
 
+
     createRoom(name) {
+        // Calling createRoom hooked to current user during onSubmit
         this.currentUser.createRoom({
             name
         })
+        // Calling subscribeToRoom on promise...passing it room.id
             .then(room => this.subscribeToRoom(room.id))
+            // Promis errer handler
             .catch(err => console.log('error with createRoom: ', err))
     }
 
@@ -128,6 +132,7 @@ class Chat extends React.Component {
                     sendMessage={this.sendMessage}
                 />
                 <NewRoomForm
+                // For onSubmit handler on the form
                     createRoom={this.createRoom}
                 />
             </div>
