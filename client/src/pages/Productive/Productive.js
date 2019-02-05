@@ -427,27 +427,33 @@ class Productive extends Component {
         const activeStyles = {
             cardStock: {
                 display: this.state.stockDisplay,
-                height: "auto"
+                height: "auto",
+                overflow: "hidden"
             },
             cardNews: {
                 display: this.state.newsDisplay,
-                height: "auto"
+                height: "auto",
+                overflow: "hidden"
             },
             cardPodcast: {
                 display: this.state.podcastDisplay,
-                height: "auto"
+                height: "auto",
+                overflow: "hidden"
             },
             cardMusic: {
                 display: this.state.musicDisplay,
-                height: "auto"
+                height: "auto",
+                overflow: "hidden"
             },
             cardVideo: {
                 display: this.state.videoDisplay,
-                height: "auto"
+                height: "auto",
+                overflow: "hidden"
             },
             cardChat: {
                 display: this.state.chatDisplay,
-                height: "auto"
+                height: "auto",
+                overflow: "hidden"
             }
         };
 
