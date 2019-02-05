@@ -4,6 +4,7 @@
   "private": true,
   "proxy": "http://localhost:3001/",
   "dependencies": {
+    "@pusher/chatkit": "^0.7.18",
     "axios": "^0.18.0",
     "cheerio": "^1.0.0-rc.2",
     "jwt-decode": "^2.2.0",
@@ -13,6 +14,7 @@
     "react-modal": "^3.8.1",
     "react-reveal": "^1.2.2",
     "react-router-dom": "^4.3.1",
+    "react-rss-podcast-player": "^1.0.0",
     "react-scripts": "^2.1.3"
   },
   "scripts": {

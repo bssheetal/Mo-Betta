@@ -8,10 +8,12 @@ import Card from '../../components/Card';
 import List from '../../components/List'
 import Jumbotron from '../../components/Jumbotron';
 import { NewsList, NewsListItem } from '../../components/NewsList';
-import News from '../../components/News';
+// import News from '../../components/News';
 import { Container, Row, Col } from '../../components/Grid';
 import Thumbnail from '../../components/Thumbnail';
 import './style.css'
+import PodCast from '../../components/PodCast';
+import Chat from '../../components/Chat';
 class Productive extends Component {
     state = {
 
@@ -136,7 +138,18 @@ class Productive extends Component {
                             </Col>
                         </Container>
                     </Card>
-
+                    <Card>
+                        PodCast
+                        <Container>
+                            <PodCast />
+                        </Container>
+                    </Card>
+                    <Card>
+                        Chat
+                        <Container>
+                            <Chat />
+                        </Container>
+                    </Card>
                     
                 </div>
 
