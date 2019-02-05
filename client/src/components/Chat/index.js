@@ -6,12 +6,17 @@ import RoomList from './RoomList'
 import NewRoomForm from './NewRoomForm'
 import { tokenUrl, instanceLocator } from './config'
 import './style.css'
+import withAuth from '../withAuth'
+import API from '../../utils/API'
+// Assignments/Mo-Betta/client/src/utils/API.js
 
 class Chat extends React.Component {
 
     constructor() {
         super()
         this.state = {
+            username: "",
+            email: "",
             // active room state
             roomId: null,
             // messages array data coming from Chatkit
@@ -27,6 +32,15 @@ class Chat extends React.Component {
     }
 
     componentDidMount() {
+        // May have async issue with Chatkit below
+        API.getUser(this.props.user.id).then(res => {
+            this.setState({
+                username: res.data.username,
+                email: res.data.email
+            })
+        });
+
+
         // Chatkit setting in config.js
         const chatManager = new Chatkit.ChatManager({
             instanceLocator,
@@ -130,12 +144,14 @@ class Chat extends React.Component {
                 />
                 {/* Sending messages data as props to <MessageList */}
                 <MessageList
+                // Setting roomId & messges state
                     roomId={this.state.roomId}
                     messages={this.state.messages}
                 />
                 {/* Reverse data flow: sending data up to the parent Chat component via sendMessage method  */}
                 {/* Giving the SendMessageForm component access to the method */}
                 <SendMessageForm
+                // disabled prop send to Chat of roomID or blank...currently in a room or not.  And if in a room, the messages contained therein...set to !(opposite so as to send null if in room...ie. not disabled cause in a room)
                     disabled={!this.state.roomId}
                     sendMessage={this.sendMessage}
                 />
@@ -148,4 +164,4 @@ class Chat extends React.Component {
     }
 }
 
-export default Chat
+export default withAuth(Chat)
