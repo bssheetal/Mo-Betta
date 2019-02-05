@@ -3,75 +3,216 @@ import logo from './logo.svg';
 import './App.css';
 import AuthService from './components/AuthService';
 import withAuth from './components/withAuth';
-// import News from './components/News';
+import API from './utils/API';
+import TextToSpeech from "./utils/TextToSpeech";
+import SpeechRecognition from "./utils/SpeechRecognition"
+import KeyHandler, { KEYUP, KEYDOWN } from 'react-key-handler';
+import { Carousel } from 'react-responsive-carousel';
 
 const Auth = new AuthService();
 
 class App extends Component {
-
-
-  handleLogout = () => {
-    Auth.logout();
-    this.props.history.replace('/signup');
+  state = {
+    username: "",
+    email: "",
+    speechText: "",
+    choice: "camera",
+    emotion: ""
   };
+  // handleLogout = () => {
+  //   Auth.logout();
+  //   this.props.history.replace('/signup');
+  // };
 
-  goToEditProfile = () => {
-    this.props.history.replace('/profile');
-  };
+  // goToEditProfile = () => {
+  //   this.props.history.replace('/profile');
+  // };
 
   goToCamera = () => {
     this.props.history.replace('/camera');
   };
 
-  goToProductive = () => {
-    this.props.history.replace('/productive');
+
+  componentDidMount() {
+    API.getUser(this.props.user.id).then(res => {
+      this.setState({
+        username: res.data.username,
+        email: res.data.email
+      })
+    });
+
+    this.videoDisplay();
+
+    setTimeout(() => {
+      TextToSpeech.speak(`Hi ${this.state.username}, do you want to take a picture? If yes, please say YES and look at the camera. If no, please say load an image or choose my emotion.`);
+    }, 100);
+
   };
 
-  goToBored = () => {
-    this.props.history.replace('/bored');
+  speak = () => {
+    SpeechRecognition.start();
   };
 
-  goToHungry = () => {
-    this.props.history.replace('/hungry');
+  getSpeechText = () => {
+    var speechText = SpeechRecognition.getResult();
+    this.setState({
+      speechText: speechText
+    });
+
+    SpeechRecognition.stop();
+    setTimeout(() => {
+      console.log(this.state.speechText);
+
+      if (this.state.speechText) this.handleOnClickCapture("");
+      // switch (this.state.speechText) {
+      //     case "yes":
+      //         this.handleOnClickCapture("");
+      //         break;
+      //     default:
+      // };
+    }, 100);
   };
 
-  goToOutdoorsy = () => {
-    this.props.history.replace('/outdoorsy');
+  videoDisplay = () => {
+    const player = document.getElementById('player');
+    const constraints = {
+      video: true
+    };
+
+    // Attach the video stream to the video element and autoplay.
+    navigator.mediaDevices.getUserMedia(constraints)
+      .then((stream) => {
+        player.srcObject = stream;
+      });
   };
 
-  goToUplift = () => {
-    this.props.history.replace('/uplift');
-  };
+  handleOnClickCapture = e => {
+    console.log("capture clicked");
+    // e.preventDefault();
+
+    console.log('video capture');
+    const player = document.getElementById('player');
+    const canvas = document.getElementById('canvas');
+    const context = canvas.getContext('2d');
+
+    // Draw the video frame to the canvas.
+    context.drawImage(player, 0, 0, canvas.width, canvas.height);
+    // console.log(canvas.toDataURL());
+
+    const data = { imageData: canvas.toDataURL() }
+    API.facialRecognition(data)
+      .then(res => {
+        console.log(res.data);
+        this.setState({
+          emotion: res.data
+        });
+
+        switch (res.data) {
+          case "happiness":
+            this.props.history.replace('/productive');
+            break;
+          case "neutral":
+            this.props.history.replace('/bored');
+            break;
+          case "sadness":
+            this.props.history.replace('/uplift');
+            break;
+          case "anger":
+            this.props.history.replace('/relax');
+            break;
+          case "fear":
+            break;
+          default:
+            this.props.history.replace('/hungry');
+        };
+      })
+      .catch(err => console.log(err));
+  }
+
+  previewFile = e => {
+    var preview = document.querySelector('img');
+    var file = document.querySelector('input[type=file]').files[0];
+    var reader = new FileReader();
+
+    reader.addEventListener("load", function () {
+      preview.src = reader.result;
+    }, false);
+
+    if (file) {
+      reader.readAsDataURL(file);
+    }
+
+  }
+
+  findemotion = e => {
+    var data = { imageData: document.getElementById('previewimage').getAttribute("src") }
+    console.log(data);
+    API.facialRecognition(data)
+      .then(res => {
+        console.log(res.data);
+      })
+      .catch(err => console.log(err));
+  }
 
   render() {
     console.log(process.env.REACT_APP_SECRET_CODE);
+    const styles = {
+      canvas: {
+        display: "none"
+      },
+      fileInput: {
+        display: "none"
+      },
+      previewImage: {
+        display: "none"
+      }
+    };
+
     return (
       <div className="App">
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome {this.props.user.email}</h2>
+          <h2>Welcome {this.state.username}</h2>
         </div>
         <p className="App-intro">
           <div>
-            <button type="button" className="btn btn-success rounded-0 m-2" onClick={this.goToProductive} >Go to Productive</button>
-          </div>
-          <div>
             <button type="button" className="btn btn-warning rounded-0 m-2" onClick={this.goToCamera} >Go to Camera</button>
           </div>
-          <div>
-            <button type="button" className="btn btn-success rounded-0 m-2" onClick={this.goToBored} >Go to Bored</button>
+
+          {/* <button type="button" className="btn btn-primary rounded-0 m-2" onClick={this.goToEditProfile}>Go to Profile</button>
+          <button type="button" className="btn btn-danger rounded-0 m-2" onClick={this.handleLogout}>Logout</button> */}
+
+          <div className="container Camera">
+            <Carousel useKeyboardArrows showIndicators={false} width="560px">
+              <div>
+                <video id="player" controls autoPlay width="560" height="315"></video>
+                <canvas id="canvas" width="560" height="315" style={styles.canvas}></canvas>
+                <button id="capture" onClick={this.handleOnClickCapture} ref={capture => this.capture = capture} >Capture</button>
+              </div>
+
+              <div>
+                {/* here ref is added becoz functionality by default of input parameter comes with sometext which cannot be overridden so had to make display none and add a reference that on buttonclick the event in inputgets triggered*/}
+                <input type="file" id="fileInput" onChange={this.previewFile} ref={fileInput => this.fileInput = fileInput} style={styles.fileInput} />
+                <img src="" id="previewimage" onLoad={this.findemotion} alt="" style={styles.previewImage} />
+                <button onClick={() => this.fileInput.click()}>Upload Image</button>
+              </div>
+            </Carousel>
+
+            <React.Fragment>
+              <KeyHandler
+                keyEventName={KEYDOWN}
+                keyValue="s"
+                onKeyHandle={this.speak}
+              />
+              <KeyHandler
+                keyEventName={KEYUP}
+                keyValue="s"
+                onKeyHandle={this.getSpeechText}
+              />
+              <p>{this.state.speechText}</p>
+              <p>{this.state.emotion}</p>
+            </React.Fragment>
           </div>
-          <div>
-            <button type="button" className="btn btn-warning rounded-0 m-2" onClick={this.goToHungry} >Go to Hungry</button>
-          </div>
-          <div>
-            <button type="button" className="btn btn-success rounded-0 m-2" onClick={this.goToOutdoorsy} >Go to Outdoorsy</button>
-          </div>
-          <div>
-            <button type="button" className="btn btn-warning rounded-0 m-2" onClick={this.goToUplift} >Go to Uplift</button>
-          </div>
-          <button type="button" className="btn btn-primary rounded-0 m-2" onClick={this.goToEditProfile}>Go to Profile</button>
-          <button type="button" className="btn btn-danger rounded-0 m-2" onClick={this.handleLogout}>Logout</button>
 
         </p>
       </div>

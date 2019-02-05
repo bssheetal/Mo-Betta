@@ -1,10 +1,10 @@
-.container
+/* .container
 {
     width: 100%;
     float:left;
     margin-left:-2%;
     font-size: 20px;
-}
+} */
 
 .jumbotron{
     background: linear-gradient(-45deg,#fff59d,#a5d6a7,#ffee58,#66bb6a);
@@ -19,12 +19,12 @@
     max-width: 130rem; 
   }
 
-  .Newscard
+  /* .Newscard
   {
     min-width: 30rem;
     max-width: 30rem; 
 
-  }
+  } */
 
   .input-group-btn
   {
@@ -99,14 +99,48 @@ input {
 } */
 
 .title {
-    color: black;
-    font-size: 28pt;
+    color: #222;
+    font-size: 24px;
     font-weight: bolder;
 }
 
+<<<<<<< HEAD
 /* .fa-plus{
     color: royalblue;
     font-size: 1.5rem;
     margin-left: 5%;
     margin-bottom:1%
 } */
+=======
+.productive-icons {
+    font-size: 4rem;
+    max-width: 100%;
+    height: auto;
+}
+
+.productive-icons:hover {
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+.icon-stock {
+    color: #63a35c;
+}
+
+.icon-newspaper {
+    color: #1e87f0;
+}
+
+.icon-podcast {
+    color: #FAA050;
+}
+
+.icon-music {
+    color: #f0506e;
+}
+
+.icon-video {
+    color: #795DA7;
+}
+
+>>>>>>> b675d6f22666b47eb7fbc1823b4a4f491789a412
