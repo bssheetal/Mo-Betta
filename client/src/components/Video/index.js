@@ -25,7 +25,7 @@ class Video extends Component {
             <div className="container carousel-video text-center">
                     <Carousel useKeyboardArrows emulateTouch showThumbs={false}>
                         {this.state.result.map((item, index) => (
-                            <div>
+                            <div key={index}>
                                 <iframe
                                     key={"video" + index}
                                     title={"video" + index}
