@@ -1,0 +1,7 @@
+.card {
+    overflow: hidden;
+}
+
+.card:hover {
+    overflow-y: scroll;
+}
