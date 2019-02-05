@@ -22,3 +22,24 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+
+#fileInput
+{
+    height:0px;
+    display:none
+}
+
+#previewimage
+{
+    height:300px;
+    width:300px;
+}
+
+/* #player {
+    border-radius: 50%;
+} */
+
+#canvas {
+    visibility: hidden;
+}

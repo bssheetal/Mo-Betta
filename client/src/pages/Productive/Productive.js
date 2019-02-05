@@ -15,6 +15,7 @@ import Thumbnail from '../../components/Thumbnail';
 import './style.css'
 import PodCast from '../../components/PodCast';
 import ChartLineGraph from '../../components/ChartLineGraph';
+import Rotate from 'react-reveal/Rotate';
 import Chat from '../../components/Chat';
 
 class Productive extends Component {
@@ -344,23 +345,23 @@ class Productive extends Component {
                     <div className="col-sm-1">
                         <div className="container text-center">
                             <div className="productive-icons icon-stock">
-                                <i className="fas fa-chart-line" onClick={this.handleOnClickStock}></i>
+                                <Rotate><i className="fas fa-chart-line" onClick={this.handleOnClickStock}></i></Rotate>
                             </div>
 
                             <div className="productive-icons icon-newspaper">
-                                <i className="fas fa-newspaper" onClick={this.handleOnClickNews}></i>
+                                <Rotate><i className="fas fa-newspaper" onClick={this.handleOnClickNews}></i></Rotate>
                             </div>
 
                             <div className="productive-icons icon-podcast">
-                                <i className="fas fa-podcast" onClick={this.handleOnClickPodcast}></i>
+                                <Rotate><i className="fas fa-podcast" onClick={this.handleOnClickPodcast}></i></Rotate>
                             </div>
 
                             <div className="productive-icons icon-music">
-                                <i className="fas fa-music" onClick={this.handleOnClickMusic}></i>
+                                <Rotate><i className="fas fa-music" onClick={this.handleOnClickMusic}></i></Rotate>
                             </div>
 
                             <div className="productive-icons icon-video">
-                                <i className="fas fa-video" onClick={this.handleOnClickVideo}></i>
+                                <Rotate><i className="fas fa-video" onClick={this.handleOnClickVideo}></i></Rotate>
                             </div>
 
                             <Link to="/">Go home</Link>

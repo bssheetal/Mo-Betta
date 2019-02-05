@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import ReactModal from 'react-modal';
 
+ReactModal.setAppElement('#root');
+
 class Modal extends React.Component {
     constructor () {
       super();
