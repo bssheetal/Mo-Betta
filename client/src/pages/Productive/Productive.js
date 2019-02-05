@@ -35,13 +35,13 @@ class Productive extends Component {
 
     };
 
-    componentDidMount() {
-        this.handleFormSubmit("AAPL");
-        this.setState({
-            StockSearch: 'NLFX'
-        });
-        this.handleFormSubmit.bind(this);
-
+    componentDidMount() {          
+        // this.setState({
+        //     StockSearch: 'BA'
+        // });
+        this.handleFormSubmit("BA");
+        this.loaddefaultchartforstock("BA");
+        this.chartdisplay();
         API.scrapeNews(this.props.allResult).then(res => {
             this.setState({
                 news: res.data
@@ -70,6 +70,15 @@ class Productive extends Component {
         });
     };
 
+    loaddefaultchartforstock = (query) => {
+
+        API.stockscharts(query).then(res => {
+            this.setState({ chart: res.data });
+
+        })
+            .catch(err => console.log(err));
+    }
+
     loadchartforstock = () => {
 
         API.stockscharts(this.state.StockSearch).then(res => {
@@ -84,8 +93,7 @@ class Productive extends Component {
         this.state.chart.map(chartItem => {
             // this.state.chartDates.push(JSON.stringify(chartItem.label));
             // this.state.chartCloses.push(chartItem.close)
-            this.state.linechartelements[JSON.stringify(chartItem.label)] = chartItem.close
-
+            this.state.linechartelements[JSON.stringify(chartItem.date)] = chartItem.close
         });
         this.setState({
             isLoaded: true
@@ -146,7 +154,7 @@ class Productive extends Component {
                                 name="StockSearch"
                                 type="text"
                                 className="form-control"
-                                placeholder="Symbol e.g. NFLX"
+                                placeholder="Symbol e.g. BA"
                                 aria-label="Symbol"
                                 onChange={this.handleInputChange}
                             />
