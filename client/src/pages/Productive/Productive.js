@@ -13,6 +13,7 @@ import { Container, Row, Col } from '../../components/Grid';
 import Thumbnail from '../../components/Thumbnail';
 import './style.css'
 import PodCast from '../../components/PodCast';
+import ChartLineGraph from '../../components/ChartLineGraph';
 import Chat from '../../components/Chat';
 
 class Productive extends Component {
@@ -26,17 +27,21 @@ class Productive extends Component {
         showAllChart: false,
         username: "",
         email: "",
+        news: [],
+        linechartelements:{},
+        isLoading:false,
         parentComponent: "productive",
         news: []
 
     };
 
-    componentDidMount() {
-        this.setState({
-            StockSearch: 'NLFX'
-        });
-        this.handleFormSubmit.bind(this);
-
+    componentDidMount() {          
+        // this.setState({
+        //     StockSearch: 'BA'
+        // });
+        this.handleFormSubmit("BA");
+        this.loaddefaultchartforstock("BA");
+        this.chartdisplay();
         API.scrapeNews(this.props.allResult).then(res => {
             this.setState({
                 news: res.data
@@ -65,94 +70,175 @@ class Productive extends Component {
         });
     };
 
-    handleFormSubmit = event => {
+    loaddefaultchartforstock = (query) => {
+
+        API.stockscharts(query).then(res => {
+            this.setState({ chart: res.data });
+
+        })
+            .catch(err => console.log(err));
+    }
+
+    loadchartforstock = () => {
+
+        API.stockscharts(this.state.StockSearch).then(res => {
+            this.setState({ chart: res.data });
+
+        })
+            .catch(err => console.log(err));
+    }
+
+    chartdisplay = ()=> {
+        // event.preventDefault();
+        this.state.chart.map(chartItem => {
+            // this.state.chartDates.push(JSON.stringify(chartItem.label));
+            // this.state.chartCloses.push(chartItem.close)
+            this.state.linechartelements[JSON.stringify(chartItem.date)] = chartItem.close
+        });
+        this.setState({
+            isLoaded: true
+        });
+        // console.log(this.state.chartDates);
+        // console.log(this.state.chartCloses);
+        console.log(this.state.linechartelements);
+    }
+
+    handleFormSubmit = (query) => {
         // When the form is submitted, prevent its default behavior, get recipes update the recipes state
-        event.preventDefault();
+        // event.preventDefault();
         console.log(this.state.StockSearch);
-        API.stocks(this.state.StockSearch)
+        API.stocks(query)
             .then(res => {
                 console.log(res.data);
                 this.setState({ stockinfo: res.data });
                 console.log(this.state.stockinfo.latestPrice);
             })
             .catch(err => console.log(err));
+
     };
+
+    handlesearchclick=()=>
+    {
+        
+        API.stocks(this.state.StockSearch)
+        .then(res => {
+            console.log(res.data);
+            this.setState({ stockinfo: res.data });
+            console.log(this.state.stockinfo.latestPrice);
+        })
+        .catch(err => console.log(err));
+
+       this.loadchartforstock();
+    };
+
+    handleLoadQuote=()=>
+    {
+     console.log(this.state.StockSearch);
+     this.handlesearchclick(); 
+     this.chartdisplay();
+    }
 
     //whth
     render() {
+        const { isLoaded } = this.state;
         return (
             <div className="container-fluid">
                 <Jumbotron>
 
                 </Jumbotron>
-                <div>
-                    <Card>
-                        <div className="row">
-                            <div className="col input-group">
-                                <input
-                                    value={this.state.stockSearch}
-                                    name="StockSearch"
-                                    type="text"
-                                    className="form-control"
-                                    placeholder="Symbol e.g. NFLX"
-                                    aria-label="Symbol"
-                                    onChange={this.handleInputChange}
-                                />
-                                <span className="input-group-btn">
-                                    <button
-                                        className="btn btn-secondary"
-                                        type="button"
-                                        onClick={this.handleFormSubmit}
-                                    >
-                                        Load Quote
+                <Card>
+                    <div className="row">
+                        <div className="col-md-8 input-group">
+                            <input
+                                value={this.state.stockSearch}
+                                name="StockSearch"
+                                type="text"
+                                className="form-control"
+                                placeholder="Symbol e.g. BA"
+                                aria-label="Symbol"
+                                onChange={this.handleInputChange}
+                            />
+                            <span className="input-group-btn">
+                                <button
+                                    className="btn btn-secondary"
+                                    type="button"
+                                    onClick={this.handleLoadQuote}
+                                >
+                                    Load Quote
                                </button>
-                                </span>   
-                            </div>
+                            </span>
                         </div>
-                    </Card>
-                    <Card>
-                    {this.state.stockinfo.symbol} -{this.state.stockinfo.companyName}
-                        <List
-                            latestSource={this.state.stockinfo.latestSource}
-                            latestPrice={this.state.stockinfo.latestPrice}
-                            week52High={this.state.stockinfo.week52High}
-                            week52Low={this.state.stockinfo.week52Low}
-                            primaryExchange={this.state.stockinfo.primaryExchange}
-                        />
-                    </Card>
-                    <Card>
-                        Business News
-                    <Container>
-                            <Col size="xs-6">
+                    </div>
+                </Card>
+                <Card>
+                    <div className="row">
+                        <div className="col-sm-6">
+                            {this.state.stockinfo.symbol} -{this.state.stockinfo.companyName}
+                            <List
+                                latestSource={this.state.stockinfo.latestSource}
+                                latestPrice={this.state.stockinfo.latestPrice}
+                                week52High={this.state.stockinfo.week52High}
+                                week52Low={this.state.stockinfo.week52Low}
+                                primaryExchange={this.state.stockinfo.primaryExchange}
+                            />
+                        </div>
+                        <div className="col-sm-4">
+                            {this.state.linechartelements && (
+                                <div className="charts">
 
-                                <NewsList>
-                                    {this.state.news.slice(0, 5).map(item => {
-                                        return (
-                                            <NewsListItem
-                                                title={item.title}
-                                                href={item.link}
-                                                thumbnail={item.image}
+                                    <h2 className="text-center">
+                                        {this.state.stockinfo.companyName + ' (Past 6 months)'}
+                                    </h2>
+                                    {
+                                        isLoaded ?
+                                            <ChartLineGraph
+                                                title={this.state.StockSearch}
+                                                chartLabels={this.state.chartDates}
+                                                chartData={this.state.chartCloses}
+                                                lineChartElements={this.state.linechartelements}
                                             />
-                                        );
-                                    })}
-                                </NewsList>
-                            </Col>
-                        </Container>
-                    </Card>
-                    <Card>
-                        PodCast
+                                            : null
+                                    }
+                                </div>
+                            )}
+                        </div>
+
+                    </div>
+                </Card>
+
+                <Card>
+                    Business News
+                    <Container>
+                        <Col size="xs-6">
+
+                            <NewsList>
+                                {this.state.news.slice(0, 5).map(item => {
+                                    return (
+                                        <NewsListItem
+                                            title={item.title}
+                                            href={item.link}
+                                            thumbnail={item.image}
+                                        />
+                                    );
+                                })}
+                            </NewsList>
+                        </Col>
+                    </Container>
+                </Card>
+                <Card>
+                    PodCast
                         <Container>
-                            <PodCast />
-                        </Container>
-                    </Card>
-                    <Card>
-                        Chat
+                        <PodCast />
+                    </Container>
+                </Card>
+                <Card>
+                    Chat
                         <Container>
-                            <Chat />
-                        </Container>
-                    </Card>
-                    
-                </div>
+                        <Chat />
+                    </Container>
+                </Card>
+
+
 
                 <Card>
                     <Button onClick={this.handleOnClickButton}>get music list</Button>
