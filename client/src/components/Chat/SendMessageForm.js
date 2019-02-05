@@ -21,8 +21,9 @@ class SendMessageForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault()
-        // 
+        // Storing message in state using sendMessage method from Chat (data is flowing from child to parent.   ?)
         this.props.sendMessage(this.state.message)
+        // Clearing the message field after submit
         this.setState({
             message: ''
         })
