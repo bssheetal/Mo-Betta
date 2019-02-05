@@ -34,10 +34,13 @@ class App extends Component {
 
 
   componentDidMount() {
+    console.log(Auth.getProfile());
+    
     API.getUser(this.props.user.id).then(res => {
+      console.log(res.data);
       this.setState({
         username: res.data.username,
-        email: res.data.email
+        email: res.data.email     
       })
     });
 

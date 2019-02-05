@@ -47,18 +47,18 @@ class Navbar extends Component {
                     <div className="d-md-flex">
                         <Bounce><span className="navbar-brand mo">Mo</span></Bounce>
                         <Bounce><span className="navbar-brand betta">Betta</span></Bounce>
-                        <span className="navbar-brand aka">a.k.a.</span>
+                        {/* <span className="navbar-brand aka">a.k.a.</span>
                         <Swing left><span className="navbar-brand mood">Mood</span></Swing>
-                        <Swing right><span className="navbar-brand swings">Swings</span></Swing>
+                        <Swing right><span className="navbar-brand swings">Swings</span></Swing> */}
                     </div>
 
                     <div className="d-md-flex">
-                    <Zoom><Link className="mood-icon iangry ml-5" to="/relax"><i className="fas fa-angry"></i></Link></Zoom>
-                    <Zoom><Link className="mood-icon isad ml-5" to="/uplift"><i className="fas fa-frown"></i></Link></Zoom>
-                    <Zoom><Link className="mood-icon ineutral ml-5" to="/bored"><i className="fas fa-meh"></i></Link></Zoom>
-                    <Zoom><Link className="mood-icon ismile ml-5" to="/productive"><i className="fas fa-smile-beam"></i></Link></Zoom>
-                    <Zoom><Link className="mood-icon ilaugh ml-5" to="/outdoorsy"><i className="fas fa-laugh-beam"></i></Link></Zoom>
-                    <Zoom><Link className="mood-icon ihungry ml-5" to="/hungry"><i className="fas fa-grin-tongue"></i></Link></Zoom>
+                    <Link className="mood-icon iangry ml-5" to="/relax"><i className="fas fa-angry"></i></Link>
+                    <Link className="mood-icon isad ml-5" to="/uplift"><i className="fas fa-frown"></i></Link>
+                    <Link className="mood-icon ineutral ml-5" to="/bored"><i className="fas fa-meh"></i></Link>
+                    <Link className="mood-icon ismile ml-5" to="/productive"><i className="fas fa-smile-beam"></i></Link>
+                    <Link className="mood-icon ilaugh ml-5" to="/outdoorsy"><i className="fas fa-laugh-beam"></i></Link>
+                    <Link className="mood-icon ihungry ml-5" to="/hungry"><i className="fas fa-grin-tongue"></i></Link>
                     </div>
 
                     <div className="d-md-flex">
