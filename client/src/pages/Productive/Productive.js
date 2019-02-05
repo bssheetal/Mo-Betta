@@ -7,6 +7,7 @@ import Button from '../../components/Button';
 import Card from '../../components/Card';
 import List from '../../components/List'
 import Jumbotron from '../../components/Jumbotron';
+import Video from '../../components/Video';
 import { NewsList, NewsListItem } from '../../components/NewsList';
 // import News from '../../components/News';
 import { Container, Row, Col } from '../../components/Grid';
@@ -146,7 +147,7 @@ class Productive extends Component {
                 <Jumbotron>
 
                 </Jumbotron>
-                <Card>
+                <Card> 
                     <div className="row">
                         <div className="col-md-8 input-group">
                             <input
@@ -170,7 +171,7 @@ class Productive extends Component {
                         </div>
                     </div>
                 </Card>
-                <Card>
+                <Card title="Stocks">
                     <div className="row">
                         <div className="col-sm-6">
                             {this.state.stockinfo.symbol} -{this.state.stockinfo.companyName}
@@ -206,8 +207,7 @@ class Productive extends Component {
                     </div>
                 </Card>
 
-                <Card>
-                    Business News
+                <Card title="Business News">
                     <Container>
                         <Col size="xs-6">
 
@@ -225,29 +225,29 @@ class Productive extends Component {
                         </Col>
                     </Container>
                 </Card>
-                <Card>
-                    PodCast
+                <Card title="PodCast">
                         <Container>
                         <PodCast />
                     </Container>
                 </Card>
-                <Card>
+                {/* <Card>
                     Chat
                         <Container>
                         <Chat />
                     </Container>
-                </Card>
+                </Card> */}
 
-
-
-                <Card>
+                <Card title="Music">
                     <Button onClick={this.handleOnClickButton}>get music list</Button>
                 </Card>
 
 
-                {/* <Jumbotron>
-                    <Video />
-                </Jumbotron> */}
+                <Card title="Video">
+                    <Video 
+                        searchTerm="CNBC Television"
+                        numberOfResults="5"
+                    />
+                </Card>
 
                 <Link to="/">Go home</Link>
             </div>
