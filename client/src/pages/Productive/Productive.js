@@ -8,11 +8,16 @@ import Card from '../../components/Card';
 import List from '../../components/List'
 import Jumbotron from '../../components/Jumbotron';
 import { NewsList, NewsListItem } from '../../components/NewsList';
-import News from '../../components/News';
+// import News from '../../components/News';
 import { Container, Row, Col } from '../../components/Grid';
 import Thumbnail from '../../components/Thumbnail';
 import './style.css'
+<<<<<<< HEAD
 import ChartLineGraph from '../../components/ChartLineGraph';
+=======
+import PodCast from '../../components/PodCast';
+import Chat from '../../components/Chat';
+>>>>>>> 016df9c7dcf9197eb724b610f2b1498320566dd0
 class Productive extends Component {
     state = {
 
@@ -206,7 +211,24 @@ class Productive extends Component {
                             </Col>
                         </Container>
                     </Card>
+<<<<<<< HEAD
                 
+=======
+                    <Card>
+                        PodCast
+                        <Container>
+                            <PodCast />
+                        </Container>
+                    </Card>
+                    <Card>
+                        Chat
+                        <Container>
+                            <Chat />
+                        </Container>
+                    </Card>
+                    
+                </div>
+>>>>>>> 016df9c7dcf9197eb724b610f2b1498320566dd0
 
                 <Card>
                     <Button onClick={this.handleOnClickButton}>get music list</Button>
