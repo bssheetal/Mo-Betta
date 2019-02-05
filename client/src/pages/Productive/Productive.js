@@ -14,6 +14,7 @@ import Thumbnail from '../../components/Thumbnail';
 import './style.css'
 import PodCast from '../../components/PodCast';
 import Chat from '../../components/Chat';
+
 class Productive extends Component {
     state = {
 
@@ -25,7 +26,7 @@ class Productive extends Component {
         showAllChart: false,
         username: "",
         email: "",
-        parentComponent: "",
+        parentComponent: "productive",
         news: []
 
     };
