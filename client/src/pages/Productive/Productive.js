@@ -50,7 +50,7 @@ class Productive extends Component {
 
     handleOnClickButton = e => {
         e.preventDefault();
-        API.spotify("productive")
+        API.spotify("work")
             .then(res => {
                 console.log(res.data);
             })
