@@ -6,12 +6,17 @@ import RoomList from './RoomList'
 import NewRoomForm from './NewRoomForm'
 import { tokenUrl, instanceLocator } from './config'
 import './style.css'
+import withAuth from '../withAuth'
+import API from '../../utils/API'
+// Assignments/Mo-Betta/client/src/utils/API.js
 
 class Chat extends React.Component {
 
     constructor() {
         super()
         this.state = {
+            username: "",
+            email: "",
             // active room state
             roomId: null,
             // messages array data coming from Chatkit
@@ -27,6 +32,15 @@ class Chat extends React.Component {
     }
 
     componentDidMount() {
+        // May have async issue with Chatkit below
+        API.getUser(this.props.user.id).then(res => {
+            this.setState({
+                username: res.data.username,
+                email: res.data.email
+            })
+        });
+
+
         // Chatkit setting in config.js
         const chatManager = new Chatkit.ChatManager({
             instanceLocator,
@@ -142,4 +156,4 @@ class Chat extends React.Component {
     }
 }
 
-export default Chat
+export default withAuth(Chat)
