@@ -86,7 +86,7 @@ input {
     margin-left:-2px;
     padding: .375rem .75rem;
     line-height: 1.5;
-    height: 50px
+    height: 50px;
 }
 
 /* button {
@@ -104,14 +104,7 @@ input {
     font-weight: bolder;
 }
 
-<<<<<<< HEAD
-/* .fa-plus{
-    color: royalblue;
-    font-size: 1.5rem;
-    margin-left: 5%;
-    margin-bottom:1%
-} */
-=======
+
 .productive-icons {
     font-size: 4rem;
     max-width: 100%;
@@ -143,4 +136,4 @@ input {
     color: #795DA7;
 }
 
->>>>>>> b675d6f22666b47eb7fbc1823b4a4f491789a412
+

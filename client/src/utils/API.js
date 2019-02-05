@@ -34,5 +34,7 @@ export default {
     console.log(search);
     return axios.get('/api/video', {params: {q: search, maxResults: numOfResults}})
   }
+
+
 };
 
