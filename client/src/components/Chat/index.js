@@ -122,12 +122,14 @@ class Chat extends React.Component {
                 />
                 {/* Sending messages data as props to <MessageList */}
                 <MessageList
+                // Setting roomId & messges state
                     roomId={this.state.roomId}
                     messages={this.state.messages}
                 />
                 {/* Reverse data flow: sending data up to the parent Chat component via sendMessage method  */}
                 {/* Giving the SendMessageForm component access to the method */}
                 <SendMessageForm
+                // disabled prop send to Chat of roomID or blank...currently in a room or not.  And if in a room, the messages contained therein...set to !(opposite so as to send null if in room...ie. not disabled cause in a room)
                     disabled={!this.state.roomId}
                     sendMessage={this.sendMessage}
                 />

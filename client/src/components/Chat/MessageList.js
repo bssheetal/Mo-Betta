@@ -20,6 +20,7 @@ class MessageList extends React.Component {
     }
 
     render() {
+        // If the roomId is blank...not currently in a room, render below return
         if (!this.props.roomId) {
             return (
                 <div className="message-list">
@@ -29,6 +30,7 @@ class MessageList extends React.Component {
                 </div>
             )
         }
+        // Otherwise, if above if clears render below return
         return (
             <div className="message-list">
                 {this.props.messages.map((message, index) => {
