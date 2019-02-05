@@ -99,11 +99,51 @@ app.use(function (err, req, res, next) {
 
 
 app.get("/news", isAuthenticated, (req, res) => {
+  // console.log(req.query.q);
+  // console.log(req.headers.referer);
+  let ref = "";
+  // let splitRef;
+  console.log("=========ref===========");
+  refPage = req.headers.referer;
+  console.log(ref);
+
+  let usaTodayUrl = 'http://www.usatoday.com'
+  let foodUrl = 'travel/usa-today-eats/'
+  let sportUrl = '/sports/'
+  let lifeUrl = '/life'
+  let entertainUrl = '/life/entrtainthis/'
+  let marketsUrl = '/money/markets/'
+
+
+  let theUrl = usaTodayUrl + marketsUrl
+
+  switch (refPage) {
+    case ('http://localhost:3000/bored'):
+      theUrl = usaTodayUrl + entertainUrl
+      break;
+      case ('http://localhost:3000/hungry'):
+      theUrl = usaTodayUrl + foodUrl
+      break;
+      case ('http://localhost:3000/outdoorsy'):
+      theUrl = usaTodayUrl + lifeUrl
+      break;
+      case ('http://localhost:3000/productive'):
+      theUrl = usaTodayUrl + marketsUrl
+      break;
+      case ('http://localhost:3000/relax'):
+      theUrl = usaTodayUrl + lifeUrl
+      break;
+      case ('http://localhost:3000/uplift'):
+      theUrl = usaTodayUrl + lifeUrl
+      break;
+  }
+
+
 
   // console.log("Scrape");
   var allResult = [];
   var resObject = {};
-  axios.get("http://www.usatoday.com/money/markets/").then(function (response) {
+  axios.get(theUrl).then(function (response) {
     var result = {};
     var $ = cheerio.load(response.data);
     $('a[itemprop="url"]').each(function (i, element) {
@@ -117,7 +157,7 @@ app.get("/news", isAuthenticated, (req, res) => {
         .attr("src");
       // console.log("==========RESULT==============")
       // console.log(result);
-      resObject = {link: result.link, title: result.title, image: result.image};
+      resObject = { link: result.link, title: result.title, image: result.image };
       allResult.push(resObject);
       // allResult = allResult + result;
 

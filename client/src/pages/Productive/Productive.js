@@ -13,8 +13,9 @@ import { Container, Row, Col } from '../../components/Grid';
 import Thumbnail from '../../components/Thumbnail';
 import './style.css'
 import PodCast from '../../components/PodCast';
-// import Chat from '../../components/Chat';
 import ChartLineGraph from '../../components/ChartLineGraph';
+import Chat from '../../components/Chat';
+
 class Productive extends Component {
     state = {
 
@@ -26,10 +27,12 @@ class Productive extends Component {
         showAllChart: false,
         username: "",
         email: "",
-        parentComponent: "",
         news: [],
         linechartelements:{},
-        isLoading:false
+        isLoading:false,
+        parentComponent: "productive",
+        news: []
+
     };
 
     componentDidMount() {
@@ -223,7 +226,7 @@ class Productive extends Component {
                 <Card>
                     Chat
                         <Container>
-                        {/* <Chat /> */}
+                        <Chat />
                     </Container>
                 </Card>
 
