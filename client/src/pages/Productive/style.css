@@ -19,12 +19,12 @@
     max-width: 130rem; 
   }
 
-  .Newscard
+  /* .Newscard
   {
     min-width: 30rem;
     max-width: 30rem; 
 
-  }
+  } */
 
   .input-group-btn
   {
@@ -99,8 +99,8 @@ input {
 } */
 
 .title {
-    color: black;
-    font-size: 28pt;
+    color: #222;
+    font-size: 24px;
     font-weight: bolder;
 }
 
@@ -134,3 +134,4 @@ input {
 .icon-video {
     color: #795DA7;
 }
+

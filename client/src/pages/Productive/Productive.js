@@ -32,14 +32,19 @@ class Productive extends Component {
         linechartelements: {},
         isLoading: false,
         parentComponent: "productive",
-        news: []
-
+        news: [],
+        stockDisplay: "block",
+        newsDisplay: "none",
+        podcastDisplay: "none",
+        musicDisplay: "none",
+        videoDisplay: "none"
     };
 
     componentDidMount() {
         // this.setState({
         //     StockSearch: 'BA'
         // });
+
         this.handleFormSubmit("BA");
         this.loaddefaultchartforstock("BA");
         this.chartdisplay();
@@ -137,9 +142,89 @@ class Productive extends Component {
         this.chartdisplay();
     }
 
+    // Handle the OnClick event for icon-buttons
+    handleOnClickStock = e => {
+        e.preventDefault();
+
+        this.setState({
+            stockDisplay: "block",
+            newsDisplay: "none",
+            podcastDisplay: "none",
+            musicDisplay: "none",
+            videoDisplay: "none"
+        });
+    };
+
+    handleOnClickNews = e => {
+        e.preventDefault();
+
+        this.setState({
+            stockDisplay: "none",
+            newsDisplay: "block",
+            podcastDisplay: "none",
+            musicDisplay: "none",
+            videoDisplay: "none"
+        });
+    };
+
+    handleOnClickPodcast = e => {
+        e.preventDefault();
+
+        this.setState({
+            stockDisplay: "none",
+            newsDisplay: "none",
+            podcastDisplay: "block",
+            musicDisplay: "none",
+            videoDisplay: "none"
+        });
+    };
+
+    handleOnClickMusic = e => {
+        e.preventDefault();
+
+        this.setState({
+            stockDisplay: "none",
+            newsDisplay: "none",
+            podcastDisplay: "none",
+            musicDisplay: "block",
+            videoDisplay: "none"
+        });
+    };
+
+    handleOnClickVideo = e => {
+        e.preventDefault();
+
+        this.setState({
+            stockDisplay: "none",
+            newsDisplay: "none",
+            podcastDisplay: "none",
+            musicDisplay: "none",
+            videoDisplay: "block"
+        });
+    };
+
+
     //whth
     render() {
         const { isLoaded } = this.state;
+        const styles = {
+            cardStock: {
+                display: this.state.stockDisplay
+            },
+            cardNews: {
+                display: this.state.newsDisplay
+            },
+            cardPodcast: {
+                display: this.state.podcastDisplay
+            },
+            cardMusic: {
+                display: this.state.musicDisplay
+            },
+            cardVideo: {
+                display: this.state.videoDisplay
+            }
+        };
+
         return (
             <div className="container-fluid">
                 {/* <Jumbotron>
@@ -147,43 +232,48 @@ class Productive extends Component {
 
                 <div className="row">
                     <div className="col-sm-11">
-                        <Card>
-                            <div className="row">
-                                <div className="col-md-8 input-group">
-                                    <input
-                                        value={this.state.stockSearch}
-                                        name="StockSearch"
-                                        type="text"
-                                        className="form-control"
-                                        placeholder="Symbol e.g. BA"
-                                        aria-label="Symbol"
-                                        onChange={this.handleInputChange}
-                                    />
-                                    <span className="input-group-btn">
-                                        <button
-                                            className="btn btn-secondary"
-                                            type="button"
-                                            onClick={this.handleLoadQuote}
-                                        >
-                                            Load Quote
-                               </button>
-                                    </span>
-                                </div>
-                            </div>
-                        </Card>
-                        <Card title="Stocks">
-                            <div className="row">
+                        <Card id="card-stock" title="Stocks" style={styles.cardStock}>
+                            <div className="row" id="btn-load">
                                 <div className="col-sm-6">
-                                    {this.state.stockinfo.symbol} -{this.state.stockinfo.companyName}
-                                    <List
-                                        latestSource={this.state.stockinfo.latestSource}
-                                        latestPrice={this.state.stockinfo.latestPrice}
-                                        week52High={this.state.stockinfo.week52High}
-                                        week52Low={this.state.stockinfo.week52Low}
-                                        primaryExchange={this.state.stockinfo.primaryExchange}
-                                    />
+                                    <div className="row">
+                                        <div className="col-md-12 input-group">
+                                            <input
+                                                value={this.state.stockSearch}
+                                                name="StockSearch"
+                                                type="text"
+                                                className="form-control"
+                                                placeholder="Symbol e.g. BA"
+                                                aria-label="Symbol"
+                                                onChange={this.handleInputChange}
+                                            />
+                                            <span className="input-group-btn">
+                                                <button
+                                                    className="btn btn-secondary"
+                                                    type="button"
+                                                    onClick={this.handleLoadQuote}
+                                                >
+                                                    Load Quote
+                                        </button>
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div className="row">
+                                        <div className="col-md-12">
+                                            {this.state.stockinfo.symbol} -{this.state.stockinfo.companyName}
+                                            <List
+                                                latestSource={this.state.stockinfo.latestSource}
+                                                latestPrice={this.state.stockinfo.latestPrice}
+                                                week52High={this.state.stockinfo.week52High}
+                                                week52Low={this.state.stockinfo.week52Low}
+                                                primaryExchange={this.state.stockinfo.primaryExchange}
+                                            />
+                                        </div>
+
+                                    </div>
                                 </div>
-                                <div className="col-sm-4">
+
+                                <div className="col-sm-6">
                                     {this.state.linechartelements && (
                                         <div className="charts">
 
@@ -207,7 +297,7 @@ class Productive extends Component {
                             </div>
                         </Card>
 
-                        <Card title="Business News">
+                        <Card id="card-news" title="Business News" style={styles.cardNews}>
                             <Container>
                                 <Col size="xs-6">
 
@@ -215,6 +305,7 @@ class Productive extends Component {
                                         {this.state.news.slice(0, 5).map(item => {
                                             return (
                                                 <NewsListItem
+                                                    key={item.title}
                                                     title={item.title}
                                                     href={item.link}
                                                     thumbnail={item.image}
@@ -225,7 +316,8 @@ class Productive extends Component {
                                 </Col>
                             </Container>
                         </Card>
-                        <Card title="PodCast">
+
+                        <Card id="card-podcast" title="PodCast" style={styles.cardPodcast}>
                             <Container>
                                 <PodCast />
                             </Container>
@@ -237,42 +329,41 @@ class Productive extends Component {
                                 </Container>
                             </Card> */}
 
-                        <Card title="Music">
+                        <Card id="card-music" title="Music" style={styles.cardMusic}>
                             <Button onClick={this.handleOnClickButton}>get music list</Button>
                         </Card>
 
-
-                        <Card title="Video">
+                        <Card id="card-video" title="Video" style={styles.cardVideo}>
                             <Video
                                 searchTerm="CNBC Television"
                                 numberOfResults="5"
                             />
                         </Card>
-
-                        <Link to="/">Go home</Link>
                     </div>
 
                     <div className="col-sm-1">
                         <div className="container text-center">
                             <div className="productive-icons icon-stock">
-                                <i class="fas fa-chart-line" onClick=""></i>
+                                <i className="fas fa-chart-line" onClick={this.handleOnClickStock}></i>
                             </div>
 
                             <div className="productive-icons icon-newspaper">
-                                <i class="fas fa-newspaper"></i>
+                                <i className="fas fa-newspaper" onClick={this.handleOnClickNews}></i>
                             </div>
 
                             <div className="productive-icons icon-podcast">
-                                <i class="fas fa-podcast"></i>
+                                <i className="fas fa-podcast" onClick={this.handleOnClickPodcast}></i>
                             </div>
 
                             <div className="productive-icons icon-music">
-                                <i class="fas fa-music"></i>
+                                <i className="fas fa-music" onClick={this.handleOnClickMusic}></i>
                             </div>
 
                             <div className="productive-icons icon-video">
-                                <i class="fas fa-video"></i>
+                                <i className="fas fa-video" onClick={this.handleOnClickVideo}></i>
                             </div>
+
+                            <Link to="/">Go home</Link>
                         </div>
                     </div>
 
