@@ -331,25 +331,27 @@ class Productive extends Component {
 
     renderCardNews = (styles) => {
         return (
-            <Card id="card-news" title="Business News" style={styles} onClick={this.handleOnClickNews}>
-                <Container>
-                    <Col size="xs-6">
+            <div id="card-news">
+                <Card title="Business News" style={styles} onClick={this.handleOnClickNews}>
+                    <Container>
+                        <Col size="xs-6">
 
-                        <NewsList>
-                            {this.state.news.slice(0, 5).map(item => {
-                                return (
-                                    <NewsListItem
-                                        key={item.title}
-                                        title={item.title}
-                                        href={item.link}
-                                        thumbnail={item.image}
-                                    />
-                                );
-                            })}
-                        </NewsList>
-                    </Col>
-                </Container>
-            </Card>
+                            <NewsList>
+                                {this.state.news.slice(0, 5).map(item => {
+                                    return (
+                                        <NewsListItem
+                                            key={item.title}
+                                            title={item.title}
+                                            href={item.link}
+                                            thumbnail={item.image}
+                                        />
+                                    );
+                                })}
+                            </NewsList>
+                        </Col>
+                    </Container>
+                </Card>
+            </div>
         );
     };
 
@@ -395,24 +397,57 @@ class Productive extends Component {
     //whth
     render() {
         const { isLoaded } = this.state;
-        const styles = {
+        const inactiveStyles = {
             cardStock: {
-                display: this.state.stockDisplay
+                display: this.state.stockDisplay,
+                height: "150px"
             },
             cardNews: {
-                display: this.state.newsDisplay
+                display: this.state.newsDisplay,
+                height: "150px"
             },
             cardPodcast: {
-                display: this.state.podcastDisplay
+                display: this.state.podcastDisplay,
+                height: "150px"
             },
             cardMusic: {
-                display: this.state.musicDisplay
+                display: this.state.musicDisplay,
+                height: "150px"
             },
             cardVideo: {
-                display: this.state.videoDisplay
+                display: this.state.videoDisplay,
+                height: "150px"
             },
             cardChat: {
-                display: this.state.chatDisplay
+                display: this.state.chatDisplay,
+                height: "150px"
+            }
+        };
+
+        const activeStyles = {
+            cardStock: {
+                display: this.state.stockDisplay,
+                height: "auto"
+            },
+            cardNews: {
+                display: this.state.newsDisplay,
+                height: "auto"
+            },
+            cardPodcast: {
+                display: this.state.podcastDisplay,
+                height: "auto"
+            },
+            cardMusic: {
+                display: this.state.musicDisplay,
+                height: "auto"
+            },
+            cardVideo: {
+                display: this.state.videoDisplay,
+                height: "auto"
+            },
+            cardChat: {
+                display: this.state.chatDisplay,
+                height: "auto"
             }
         };
 
@@ -425,35 +460,35 @@ class Productive extends Component {
                     {/* LEFT section */}
                     <div className="col-sm-3">
                         <div className="container text-center left-section">
-                            {this.renderCardMusic(styles.cardMusic)}
+                            {this.renderCardMusic(inactiveStyles.cardMusic)}
 
-                            {this.renderCardNews(styles.cardNews)}
+                            {this.renderCardNews(inactiveStyles.cardNews)}
 
-                            {this.renderCardPodcast(styles.cardPodcast)}
+                            {this.renderCardPodcast(inactiveStyles.cardPodcast)}
                         </div>
 
                     </div>
 
                     {/* CENTER section */}
                     <div className="col-sm-6">
-                        <div className="container text-center left-section middle-section">
-                            {this.state.displayStockCard ? this.renderCardStock(isLoaded, styles.cardStock) : null}
-                            {this.state.displayNewsCard ? this.renderCardNews(styles.cardNews) : null}
-                            {this.state.displayPodcastCard ? this.renderCardPodcast(styles.cardPodcast) : null}
-                            {this.state.displayChatCard ? this.renderCardChat(styles.cardChat) : null}
-                            {this.state.displayMusicCard ? this.renderCardMusic(styles.cardMusic) : null}
-                            {this.state.displayVideoCard ? this.renderCardVideo(styles.cardVideo) : null}
+                        <div className="container text-center middle-section">
+                            {this.state.displayStockCard ? this.renderCardStock(isLoaded, activeStyles.cardStock) : null}
+                            {this.state.displayNewsCard ? this.renderCardNews(activeStyles.cardNews) : null}
+                            {this.state.displayPodcastCard ? this.renderCardPodcast(activeStyles.cardPodcast) : null}
+                            {this.state.displayChatCard ? this.renderCardChat(activeStyles.cardChat) : null}
+                            {this.state.displayMusicCard ? this.renderCardMusic(activeStyles.cardMusic) : null}
+                            {this.state.displayVideoCard ? this.renderCardVideo(activeStyles.cardVideo) : null}
                         </div>
                     </div>
 
                     {/* RIGHT section */}
                     <div className="col-sm-3">
                         <div className="container text-center right-section">
-                            {this.renderCardStock(isLoaded, styles.cardStock)}
+                            {this.renderCardStock(isLoaded, inactiveStyles.cardStock)}
 
-                            {this.renderCardVideo(styles.cardVideo)}
+                            {this.renderCardVideo(inactiveStyles.cardVideo)}
 
-                            {this.renderCardChat(styles.cardChat)}
+                            {this.renderCardChat(inactiveStyles.cardChat)}
 
                             {/* <div className="productive-icons icon-stock">
                                 <Rotate><i className="fas fa-chart-line" onClick={this.handleOnClickStock}></i></Rotate>
