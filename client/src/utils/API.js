@@ -26,6 +26,10 @@ export default {
       return axios.get('/api/mobetta/searchstock/'+stockname);
   },
   
+  stockscharts:(stockname)=>{
+    return axios.get(`/api/mobetta/searchstock/${stockname}/charts`);
+  },
+  
   video: (search, numOfResults)=> {
     console.log(search);
     return axios.get('/api/video', {params: {q: search, maxResults: numOfResults}})

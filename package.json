@@ -22,6 +22,7 @@
     "axios": "^0.18.0",
     "bcrypt-nodejs": "^0.0.3",
     "body-parser": "^1.18.3",
+    "chart.js": "^2.7.3",
     "cheerio": "^1.0.0-rc.2",
     "dotenv": "^6.2.0",
     "express": "^4.16.4",
@@ -32,7 +33,8 @@
     "mongoose": "^5.4.6",
     "morgan": "^1.9.1",
     "node-spotify-api": "^1.0.7",
-    "react-reveal": "^1.2.2",
-    "react-file-base64": "^1.0.3"
+    "react-chartkick": "^0.3.0",
+    "react-file-base64": "^1.0.3",
+    "react-reveal": "^1.2.2"
   }
 }
