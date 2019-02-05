@@ -40,6 +40,10 @@ class Chat extends React.Component {
             .then(currentUser => {
                 // Hooking component to current user object
                 this.currentUser = currentUser
+
+//*************************************************************************** */
+                // Logging current useres in room[3] of array for auth-active user connection.  Need all users in current room or all rooms?  Create component in Chat to display...or put below active room in room list.  And/or avatars via ui-avatars.com. Also someone is currently typing via a room subscription hook in Chatkit via Pusher.com (Chatkit)
+                console.log(this.currentUser.rooms[3].userId)
                 // Getting joined/joinable rooms
                 this.getRooms()
             })
@@ -73,7 +77,11 @@ class Chat extends React.Component {
                     this.setState({
                         messages: [...this.state.messages, message]
                     })
-                }
+                },
+                // Usertyping hook...new component for UI
+                // onUserStartedTyping: user => {
+                    /** render out the users */
+                // }
             }
         })
         // Handling returned promise of rooms and setting to state the room user is currently in
