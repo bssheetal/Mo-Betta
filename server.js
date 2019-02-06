@@ -36,7 +36,7 @@ mongoose.set('useCreateIndex', true);
 
 // Init the express-jwt middleware
 const isAuthenticated = exjwt({
-  secret: 'all sorts of code up in here'
+  secret: process.env.SERVER_SECRET
 });
 
 // Add routes, both API and view
