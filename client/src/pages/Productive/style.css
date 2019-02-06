@@ -80,7 +80,7 @@ input {
 
 .btn-secondary {
     color: #fff;
-    background-color: #868e96;
+    background-color: #4b86b4;
     border-color: #868e96;
     margin-left:-2px;
     padding: .375rem .75rem;
@@ -137,5 +137,52 @@ input {
 
 .icon-chat {
     color: #ffd600;
+}
+
+.companydetails{
+    margin-top: 2.5em;
+    text-align: left;
+    margin-left: -7rem;
+}
+
+
+.stocklist
+{
+    text-align: left;
+    font-weight: bold;
+}
+
+/* .week52high
+{
+    margin-left: -7rem;
+}
+
+.week52low
+{
+    margin-left: -8rem;
+}
+
+.exchange
+{
+    margin-left: -3rem;
+} */
+
+.card-header
+{
+    background-color: #4b86b4; 
+    color: #fff;
+    font-weight: bold
+
+}
+
+#card-stock
+{
+    color: #fff;
+}
+
+.title
+{
+    color: #fff;
+    font-weight: bolder;
 }
 

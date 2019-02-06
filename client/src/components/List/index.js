@@ -3,11 +3,11 @@ import React from "react";
 function List(props) {
 
     return (
-            <ul className="list-group list-group-flush">
-                <li className="list-group-item"><strong>latestSource:{props.latestSource}</strong> <span className="text-primary">latestPrice:{props.latestPrice}</span></li>
-                <li className="list-group-item"><strong>Week 52 High</strong> <span className="text-success">{props.week52High}</span></li>
-                <li className="list-group-item"><strong>Week 52 Low</strong> <span className="text-danger">{props.week52Low}</span></li>
-                <li className="list-group-item"><strong>Exchange</strong> {props.primaryExchange}</li>
+            <ul className="list-group list-group-flush stocklist">
+                <li className="list-group-item"><strong>LatestSource:{props.latestSource}</strong>&nbsp;&nbsp; <span className="text-primary">LatestPrice:{props.latestPrice}</span></li>
+                <li className="list-group-item week52high"><strong>Week 52 High:</strong>&nbsp;&nbsp;<span className="text-success">{props.week52High}</span></li>
+                <li className="list-group-item week52low"><strong>Week 52 Low:</strong>&nbsp;&nbsp;<span className="text-danger">{props.week52Low}</span></li>
+                <li className="list-group-item exchange"><strong>Exchange:</strong> {props.primaryExchange}</li>
             </ul>
         
     );
