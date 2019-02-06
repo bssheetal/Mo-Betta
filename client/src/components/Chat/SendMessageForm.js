@@ -36,6 +36,7 @@ class SendMessageForm extends React.Component {
                 onSubmit={this.handleSubmit}
                 className="send-message-form">
                 <input
+                // Disabling text input when not in a room
                     disabled={this.props.disabled}
                     // Listening for changes to the input field and fire handleChange
                     onChange={this.handleChange}
