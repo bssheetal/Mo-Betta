@@ -1,9 +1,12 @@
 .navbar {
-    background-color: #f4f4f4;
+    background: #f6f1d3;
+   background: linear-gradient(to right, #f6f1d3,#648880, #f6f1d3, #293f50);
 }
 
 .nav-link {
     color: rgba(0,0,0,.5);
+    font-weight: bold;
+    font-weight: 900;
 }
 .navbar .container-fluid .navbar-brand {
     font-family: 'Parisienne', cursive;
@@ -21,7 +24,7 @@
 .ihungry:hover {
     /* animation: shake 0.5s;  */
     transform: scale(1.2);
-    cursor: alias;
+    cursor: pointer;
     color: #ffd600;
 }
 
@@ -33,7 +36,7 @@
 .ilaugh:hover {
     /* animation: shake 0.5s;  */
     transform: scale(1.2);
-    cursor: alias;
+    cursor: pointer;
     color: #63a35c;
 }
 
@@ -45,7 +48,7 @@
 .ismile:hover {
     /* animation: shake 0.5s;  */
     transform: scale(1.2);
-    cursor: alias;
+    cursor: pointer;
     color: #1e87f0;
 }
 
@@ -57,7 +60,7 @@
 .ineutral:hover {
     /* animation: shake 0.5s;  */
     transform: scale(1.2);
-    cursor: alias;
+    cursor: pointer;
     color: #FAA050;
 }
 
@@ -69,7 +72,7 @@
 .isad:hover {
     /* animation: shake 0.5s;  */
     transform: scale(1.2);
-    cursor: alias;
+    cursor: pointer;
     color: #795DA7;
 }
 
@@ -81,6 +84,6 @@
 .iangry:hover {
     /* animation: shake 0.5s;  */
     transform: scale(1.2);
-    cursor: alias;
+    cursor: pointer;
     color: #f0506e;
 }

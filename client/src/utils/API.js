@@ -33,6 +33,16 @@ export default {
   video: (search, numOfResults)=> {
     console.log(search);
     return axios.get('/api/video', {params: {q: search, maxResults: numOfResults}})
+  },
+
+  getsavedStocks:()=>
+  {
+    return axios.get("/api/userinfo/stockinfo");
+  },
+
+  savestocks:(stocksdata)=>{
+    return axios.post('/api/userinfo/stockinfo',stocksdata);
   }
+
 };
 
