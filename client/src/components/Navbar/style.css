@@ -21,7 +21,7 @@
 .ihungry:hover {
     /* animation: shake 0.5s;  */
     transform: scale(1.2);
-    cursor: alias;
+    cursor: pointer;
     color: #ffd600;
 }
 
@@ -33,7 +33,7 @@
 .ilaugh:hover {
     /* animation: shake 0.5s;  */
     transform: scale(1.2);
-    cursor: alias;
+    cursor: pointer;
     color: #63a35c;
 }
 
@@ -45,7 +45,7 @@
 .ismile:hover {
     /* animation: shake 0.5s;  */
     transform: scale(1.2);
-    cursor: alias;
+    cursor: pointer;
     color: #1e87f0;
 }
 
@@ -57,7 +57,7 @@
 .ineutral:hover {
     /* animation: shake 0.5s;  */
     transform: scale(1.2);
-    cursor: alias;
+    cursor: pointer;
     color: #FAA050;
 }
 
@@ -69,7 +69,7 @@
 .isad:hover {
     /* animation: shake 0.5s;  */
     transform: scale(1.2);
-    cursor: alias;
+    cursor: pointer;
     color: #795DA7;
 }
 
@@ -81,6 +81,6 @@
 .iangry:hover {
     /* animation: shake 0.5s;  */
     transform: scale(1.2);
-    cursor: alias;
+    cursor: pointer;
     color: #f0506e;
 }

@@ -106,7 +106,7 @@ input {
 
 
 .productive-icons {
-    font-size: 4rem;
+    font-size: 3rem;
     max-width: 100%;
     height: auto;
 }
@@ -136,7 +136,14 @@ input {
     color: #795DA7;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 
 =======
 >>>>>>> 9addacd50474f323bb0bc03a177b7102982a6166
+=======
+
+.icon-chat {
+    color: #ffd600;
+}
+>>>>>>> 8c4a73fb3bcc5b46ced417ccd48e16c4dfaa2e7e
