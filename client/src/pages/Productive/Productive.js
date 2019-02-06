@@ -16,7 +16,8 @@ import './style.css'
 import PodCast from '../../components/PodCast/PodCast';
 import ChartLineGraph from '../../components/ChartLineGraph';
 import Rotate from 'react-reveal/Rotate';
-// import Chat from '../../components/Chat';
+import Chat from '../../components/Chat';
+import Music from '../../components/Music';
 
 class Productive extends Component {
     state = {
@@ -90,7 +91,7 @@ class Productive extends Component {
 
     handleOnClickButton = e => {
         e.preventDefault();
-        API.spotify("productive")
+        API.spotify("work")
             .then(res => {
                 console.log(res.data);
             })
@@ -468,7 +469,9 @@ class Productive extends Component {
     renderCardMusic = (styles) => {
         return (
             <Card id="card-music" title="Music" style={styles} onClick={this.handleOnClickCardMusic}>
-                <Button onClick={this.handleOnClickButton}>get music list</Button>
+                <Container>
+                    <Music />
+                </Container>   
             </Card>
         );
     };
@@ -525,35 +528,34 @@ class Productive extends Component {
     renderSmallScreen = (isLoaded, smallScreenStyles) => {
         return (
             <div className="row">
-                {/* LEFT section */}               
+                {/* LEFT section */}
                 <div className="col-sm-1">
-                <div className="sidebar">
-                    <div className="container text-center small-right-section activity-icons">
-                        <br></br>
-                        <div className="productive-icons icon-stock">
-                            <Rotate><i className="fas fa-chart-line" onClick={this.handleOnClickIconStock}></i></Rotate>
-                        </div>
+                    <div className="sidebar">
+                        <div className="container text-center small-right-section activity-icons">
+                            <br></br>
+                            <div className="productive-icons icon-stock">
+                                <Rotate><i className="fas fa-chart-line" onClick={this.handleOnClickIconStock}></i></Rotate>
+                            </div>
 
-                        <div className="productive-icons icon-newspaper">
-                            <Rotate><i className="fas fa-newspaper" onClick={this.handleOnClickIconNews}></i></Rotate>
-                        </div>
+                            <div className="productive-icons icon-newspaper">
+                                <Rotate><i className="fas fa-newspaper" onClick={this.handleOnClickIconNews}></i></Rotate>
+                            </div>
 
-                        <div className="productive-icons icon-podcast">
-                            <Rotate><i className="fas fa-podcast" onClick={this.handleOnClickIconPodcast}></i></Rotate>
-                        </div>
+                            <div className="productive-icons icon-podcast">
+                                <Rotate><i className="fas fa-podcast" onClick={this.handleOnClickIconPodcast}></i></Rotate>
+                            </div>
 
-                        <div className="productive-icons icon-music">
-                            <Rotate><i className="fas fa-music" onClick={this.handleOnClickIconMusic}></i></Rotate>
-                        </div>
+                            <div className="productive-icons icon-music">
+                                <Rotate><i className="fas fa-music" onClick={this.handleOnClickIconMusic}></i></Rotate>
+                            </div>
 
-                        <div className="productive-icons icon-video">
-                            <Rotate><i className="fas fa-video" onClick={this.handleOnClickIconVideo}></i></Rotate>
-                        </div>
+                            <div className="productive-icons icon-video">
+                                <Rotate><i className="fas fa-video" onClick={this.handleOnClickIconVideo}></i></Rotate>
+                            </div>
 
                         {/* <div className="productive-icons icon-chat">
                             <Rotate><i className="fas fa-comments" onClick={this.handleOnClickIconChat}></i></Rotate>
                         </div> */}
-                    </div>
                     </div>
                 </div>
 

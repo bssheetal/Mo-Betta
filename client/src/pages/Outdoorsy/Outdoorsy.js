@@ -26,7 +26,7 @@ class Outdoorsy extends Component {
     handleOnClickButton = e => {
         e.preventDefault();
 
-        API.spotify("outdoorsy")
+        API.spotify("outside")
             .then(res => {
                 console.log(res.data);
             })

@@ -11,6 +11,7 @@ import imgFood3 from "../../images/food3.jpg"
 import imgFood4 from "../../images/food4.jpg"
 import imgFood5 from "../../images/food5.jpg"
 import Card from '../../components/Card'
+import Music from '../../components/Music';
 
 class Hungry extends Component {
     handleOnClickButton = e => {
@@ -50,13 +51,13 @@ class Hungry extends Component {
                     <img className="food-image mr-5 mt-5" src={imgFood4} alt="food4"></img>
                     <img className="food-image mt-5" src={imgFood5} alt="food5"></img>
                 </Jumbotron>
-                
-                    <span>Hungry</span>
-                    <button onClick={this.handleOnClickButton}>get music list</button>
-                    <Link to="/">Go home</Link>
-                 
-                </div>
-           
+
+                <span>Hungry</span>
+                <button onClick={this.handleOnClickButton}>get music list</button>
+                <Link to="/">Go home</Link>
+
+            </div>
+
         );
     }
 }
