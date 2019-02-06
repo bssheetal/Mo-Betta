@@ -45,8 +45,8 @@ class Navbar extends Component {
             <nav className="navbar navbar-expand-lg sticky-top">
                 <div className="container-fluid">
                     <div className="d-md-flex">
-                        <Bounce><span className="navbar-brand mo">Mo</span></Bounce>
-                        <Bounce><span className="navbar-brand betta">Betta</span></Bounce>
+                        <Swing left><span className="navbar-brand mo">Mo</span></Swing>
+                        <Swing right><span className="navbar-brand betta">Betta</span></Swing>
                         {/* <span className="navbar-brand aka">a.k.a.</span>
                         <Swing left><span className="navbar-brand mood">Mood</span></Swing>
                         <Swing right><span className="navbar-brand swings">Swings</span></Swing> */}

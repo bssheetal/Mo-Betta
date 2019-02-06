@@ -20,11 +20,12 @@ import Uplift from './pages/Uplift/Uplift';
 import Relax from "./pages/Relax/Relax";
 import Navbar from './components/Navbar';
 import News from './components/News';
+import Footer from './components/Footer';
 
 // Here is if we have an id_token in localStorage
-if(localStorage.getItem("id_token")) {
-  // then we will attach it to the headers of each request from react application via axios
-  axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('id_token')}`;
+if (localStorage.getItem("id_token")) {
+    // then we will attach it to the headers of each request from react application via axios
+    axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('id_token')}`;
 }
 
 ReactDOM.render(
@@ -43,6 +44,7 @@ ReactDOM.render(
             <Route exact path="/uplift" component={Uplift} />
             <Route exact path="/relax" component={Relax} />
             {/* <Route exact path="/news" component={News} /> */}
+            <Footer />
         </div>
     </Router>
     , document.getElementById('root')
