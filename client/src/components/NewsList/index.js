@@ -17,9 +17,9 @@ export function NewsList({ children }) {
             </Col>
             <Col size="xs-8 sm-9">             
               <a rel="noreferrer noopener" target="_blank" href={props.href}>
-              <h3>{props.title}</h3>
+              <h4>{props.title}</h4>
               </a>
-              <p>Source:USA Today</p>
+              <p classname="source">Source:USA Today</p>
             </Col>
           </Row>
         </Container>
