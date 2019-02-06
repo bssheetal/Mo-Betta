@@ -3,6 +3,6 @@ exports.stocks={
 }
 
 exports.facerecognition={
-    id:process.env.facerecognition.id,
-    secret:process.env.facerecognition.secret
+    id:process.env.facerecognition_id,
+    secret:process.env.facerecognition_secret
 }
