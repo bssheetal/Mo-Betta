@@ -8,10 +8,21 @@ class Profile extends Component {
 
   state = {
     username: "",
-    email: ""
+    email: "",
+    smallScreen: true
   };
 
   componentDidMount() {
+    if (localStorage.getItem("mobetta_layout") === "small") {
+      this.setState({
+        smallScreen: true
+      });
+    } else {
+      this.setState({
+        smallScreen: false
+      });
+    };
+
     API.getUser(this.props.user.id).then(res => {
       this.setState({
         username: res.data.username,
@@ -20,10 +31,37 @@ class Profile extends Component {
     });
   }
 
+
+  handleOnClickSmallScreeen = e => {
+    e.preventDefault();
+
+    localStorage.setItem("mobetta_layout", "small");
+    this.setState({
+      smallScreen: true
+    });
+  };
+
+  handleOnClickLargeScreeen = e => {
+    e.preventDefault();
+
+    localStorage.setItem("mobetta_layout", "large");
+    this.setState({
+      smallScreen: false
+    });
+  };
+
   render() {
     const styles = {
       userCard: {
         width: "400px"
+      },
+      smallScreen: {
+        backgroundColor: "#4b86b4",
+        color: "#fff"
+      },
+      largeScreen: {
+        backgroundColor: "#f4f4f4",
+        color: "#222"
       }
     };
 
@@ -49,9 +87,19 @@ class Profile extends Component {
               title="Settings"
               style={styles.userCard}
             >
-              <span>Layout:</span>
-              <span>Small Screen</span>
-    
+              <span>Layout: </span>
+              <span>
+                {this.state.smallScreen ?
+                  <button className="small-screen ml-3" style={styles.smallScreen} onClick={this.handleOnClickSmallScreeen}>small screen</button>
+                  :
+                  <button className="small-screen ml-3" style={styles.largeScreen} onClick={this.handleOnClickSmallScreeen}>small screen</button>
+                }
+                {this.state.smallScreen ?
+                  <button className="large-scrren ml-3" style={styles.largeScreen} onClick={this.handleOnClickLargeScreeen}>large screen</button>
+                  :
+                  <button className="large-scrren ml-3" style={styles.smallScreen} onClick={this.handleOnClickLargeScreeen}>large screen</button>
+                }
+              </span>
             </Card>
           </div>
         </div>

@@ -34,7 +34,7 @@ class Productive extends Component {
         isLoading: false,
         parentComponent: "productive",
         news: [],
-        smallScreen: true,
+        smallScreen: false,
         stockDisplay: "block",
         newsDisplay: "block",
         podcastDisplay: "block",
@@ -53,17 +53,6 @@ class Productive extends Component {
         // this.setState({
         //     StockSearch: 'BA'
         // });
-        if (this.state.smallScreen) {
-            this.setState({
-                stockDisplay: "block",
-                newsDisplay: "none",
-                podcastDisplay: "none",
-                musicDisplay: "none",
-                videoDisplay: "none",
-                chatDisplay: "none"
-            });
-        };
-
 
         this.handleFormSubmit("BA");
         this.loaddefaultchartforstock("BA");
@@ -78,6 +67,22 @@ class Productive extends Component {
             // console.log("========state========")
             // console.log(this.state.news);
         });
+
+        if (localStorage.getItem("mobetta_layout") === "small") {
+            this.setState({
+                smallScreen: true,
+                stockDisplay: "block",
+                newsDisplay: "none",
+                podcastDisplay: "none",
+                musicDisplay: "none",
+                videoDisplay: "none",
+                chatDisplay: "none"
+            });
+        } else {
+            this.setState({
+                smallScreen: false
+            });
+        };
     }
 
     handleOnClickButton = e => {
@@ -167,11 +172,6 @@ class Productive extends Component {
         e.preventDefault();
 
         this.setState({
-            // stockDisplay: "block",
-            // newsDisplay: "none",
-            // podcastDisplay: "none",
-            // musicDisplay: "none",
-            // videoDisplay: "none"
             displayStockCard: true,
             displayNewsCard: false,
             displayPodcastCard: false,
@@ -199,11 +199,6 @@ class Productive extends Component {
 
         console.log("News card clicked");
         this.setState({
-            // stockDisplay: "none",
-            // newsDisplay: "block",
-            // podcastDisplay: "none",
-            // musicDisplay: "none",
-            // videoDisplay: "none"
             displayStockCard: false,
             displayNewsCard: true,
             displayPodcastCard: false,
@@ -231,11 +226,6 @@ class Productive extends Component {
         e.preventDefault();
 
         this.setState({
-            // stockDisplay: "none",
-            // newsDisplay: "none",
-            // podcastDisplay: "block",
-            // musicDisplay: "none",
-            // videoDisplay: "none"
             displayStockCard: false,
             displayNewsCard: false,
             displayPodcastCard: true,
@@ -262,11 +252,6 @@ class Productive extends Component {
         e.preventDefault();
 
         this.setState({
-            // stockDisplay: "none",
-            // newsDisplay: "none",
-            // podcastDisplay: "block",
-            // musicDisplay: "none",
-            // videoDisplay: "none"
             displayStockCard: false,
             displayNewsCard: false,
             displayPodcastCard: false,
@@ -293,11 +278,6 @@ class Productive extends Component {
         e.preventDefault();
 
         this.setState({
-            // stockDisplay: "none",
-            // newsDisplay: "none",
-            // podcastDisplay: "none",
-            // musicDisplay: "block",
-            // videoDisplay: "none"
             displayStockCard: false,
             displayNewsCard: false,
             displayPodcastCard: false,
@@ -361,38 +341,38 @@ class Productive extends Component {
 
     renderCardStock = (isLoaded, styles) => {
         return (
-            <Card id="card-stock" classname="stocksheader" title="Stocks"  style={styles} onClick={this.handleOnClickCardStock}>
-                
-                    <div className="row" id="btn-load">
-                        <div className="col-sm-6">
-                            <div className="row">                          
-                                <div className="col-md-8 input-group">
-                                    <input
-                                        value={this.state.stockSearch}
-                                        name="StockSearch"
-                                        type="text"
-                                        className="form-control"
-                                        placeholder="Symbol e.g. BA"
-                                        aria-label="Symbol"
-                                        onChange={this.handleInputChange}
-                                    />
-                                    <span className="input-group-btn">
-                                        <button
-                                            className="btn btn-secondary"
-                                            type="button"
-                                            onClick={this.handleLoadQuote}
-                                        >
-                                            Load Quote
+            <Card id="card-stock" classname="stocksheader" title="Stocks" style={styles} onClick={this.handleOnClickCardStock}>
+
+                <div className="row" id="btn-load">
+                    <div className="col-sm-6">
+                        <div className="row">
+                            <div className="col-md-8 input-group">
+                                <input
+                                    value={this.state.stockSearch}
+                                    name="StockSearch"
+                                    type="text"
+                                    className="form-control"
+                                    placeholder="Symbol e.g. BA"
+                                    aria-label="Symbol"
+                                    onChange={this.handleInputChange}
+                                />
+                                <span className="input-group-btn">
+                                    <button
+                                        className="btn btn-secondary"
+                                        type="button"
+                                        onClick={this.handleLoadQuote}
+                                    >
+                                        Load Quote
                                         </button>
-                                    </span>
-                                </div>                                                     
+                                </span>
+                            </div>
                         </div>
-                        
-                     
+
+
                         <div className="row" >
                             <div className="col-md-12" id="companydetails">
-                            <br></br>
-                               <h5 classname="companynameandsymbol">{this.state.stockinfo.symbol} -{this.state.stockinfo.companyName}</h5>
+                                <br></br>
+                                <h5 classname="companynameandsymbol">{this.state.stockinfo.symbol} -{this.state.stockinfo.companyName}</h5>
                                 <List id="stockdetails"
                                     key={this.state.stockinfo.id}
                                     latestSource={this.state.stockinfo.latestSource}
@@ -411,14 +391,14 @@ class Productive extends Component {
 
                         </div>
                     </div>
-                   
+
 
                     <div className="col-sm-6">
                         {this.state.linechartelements && (
                             <div className="charts">
                                 <br></br>
-                                
-                                
+
+
                                 <h4 className="text-center">
                                     {this.state.stockinfo.companyName + ' (Past 6 months)'}
                                 </h4>
@@ -550,10 +530,10 @@ class Productive extends Component {
         return (
             <div className="row">
                 {/* LEFT section */}
-                
+
                 <div className="col-sm-1">
                     <div className="container text-center small-right-section activity-icons">
-                    <br></br>
+                        <br></br>
                         <div className="productive-icons icon-stock">
                             <Rotate><i className="fas fa-chart-line" onClick={this.handleOnClickIconStock}></i></Rotate>
                         </div>
