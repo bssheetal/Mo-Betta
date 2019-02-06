@@ -16,7 +16,8 @@
 } */
 
 /* Secondary color pallete  */
-:root {
+.chat {
+    /* :root { */
     --main-color: #fd9ab6;
     --secondary-color: #fff4e6;
     --main-text-color: #11d7d8;
@@ -34,12 +35,12 @@ html, body {
     color: red; 
 }
 
-#root {
+#chat {
     height: 100%;
 }
 
 /* Setting the app div into a grid */
-.app {
+.chat {
     /* The Grid */
     display: grid;
     height: 100%;

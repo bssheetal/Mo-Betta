@@ -8,15 +8,14 @@ import { tokenUrl, instanceLocator } from './config'
 import './style.css'
 import withAuth from '../withAuth'
 import API from '../../utils/API'
-// Assignments/Mo-Betta/client/src/utils/API.js
 
 class Chat extends React.Component {
 
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
-            username: "",
-            email: "",
+            username: this.props.user.username,
+            // email: "",
             // active room state
             roomId: null,
             // messages array data coming from Chatkit
@@ -29,42 +28,82 @@ class Chat extends React.Component {
         this.subscribeToRoom = this.subscribeToRoom.bind(this)
         this.getRooms = this.getRooms.bind(this)
         this.createRoom = this.createRoom.bind(this)
+        // this.loadChat = this.loadChat.bind(this)
     }
 
     componentDidMount() {
-        // May have async issue with Chatkit below
-        API.getUser(this.props.user.id).then(res => {
-            this.setState({
-                username: res.data.username,
-                email: res.data.email
-            })
-        });
-        console.log(this.state)
-        console.log(this.state.username)
-        // May have async issue with Auth below
-        // Chatkit setting in config.js
-        const chatManager = new Chatkit.ChatManager({
-            instanceLocator,
-            userId: "Taylor",
-            tokenProvider: new Chatkit.TokenProvider({
-                url: tokenUrl
-            })
-        })
-        // Connecting to ChatKit and listening for/retrieving new messages 
-        chatManager.connect()
-            .then(currentUser => {
-                // Hooking component to current user object
-                this.currentUser = currentUser
+        // // May have async issue with Chatkit below
+        // API.getUser(this.props.user.id).then(res => {
+        //     this.setState({
+        //         username: res.data.username,
+        //         email: res.data.email
+        //     })
+        // });
+        // this.loadChat()
 
-                //*************************************************************************** */
-                // Logging current useres in room[3] of array for auth-active user connection.  Need all users in current room or all rooms?  Create component in Chat to display...or put below active room in room list.  And/or avatars via ui-avatars.com. Also someone is currently typing via a room subscription hook in Chatkit via Pusher.com (Chatkit)
-                console.log(this.currentUser.rooms[3].userId)
-                // Getting joined/joinable rooms
-                this.getRooms()
-            })
-            // .catch for promise failure case
-            .catch(err => console.log('error on connecting: ', err))
+
+
+
+      // state not set yet
+      console.log("==========username============")
+    //   console.log(this.props.user.username)
+      console.log(this.state.username)
+
+      // May have async issue with Auth below
+      // Chatkit setting in config.js
+      const chatManager = new Chatkit.ChatManager({
+          instanceLocator,
+          userId: this.state.username,
+          tokenProvider: new Chatkit.TokenProvider({
+              url: tokenUrl
+          })
+      })
+      // Connecting to ChatKit and listening for/retrieving new messages 
+      chatManager.connect()
+          .then(currentUser => {
+              // Hooking component to current user object
+              this.currentUser = currentUser
+
+              //*************************************************************************** */
+              // Logging current useres in room[3] of array for auth-active user connection.  Need all users in current room or all rooms?  Create component in Chat to display...or put below active room in room list.  And/or avatars via ui-avatars.com. Also someone is currently typing via a room subscription hook in Chatkit via Pusher.com (Chatkit)
+            //   console.log(this.currentUser.rooms[3].userId)
+              // Getting joined/joinable rooms
+              this.getRooms()
+          })
+          // .catch for promise failure case
+          .catch(err => console.log('error on connecting: ', err))
+
     }
+
+    // loadChat() {
+
+    //     // state not set yet
+    //     console.log('===========state=========: ' + this.state)
+    //     // May have async issue with Auth below
+    //     // Chatkit setting in config.js
+    //     const chatManager = new Chatkit.ChatManager({
+    //         instanceLocator,
+    //         userId: "Taylor",
+    //         tokenProvider: new Chatkit.TokenProvider({
+    //             url: tokenUrl
+    //         })
+    //     })
+    //     // Connecting to ChatKit and listening for/retrieving new messages 
+    //     chatManager.connect()
+    //         .then(currentUser => {
+    //             // Hooking component to current user object
+    //             this.currentUser = currentUser
+
+    //             //*************************************************************************** */
+    //             // Logging current useres in room[3] of array for auth-active user connection.  Need all users in current room or all rooms?  Create component in Chat to display...or put below active room in room list.  And/or avatars via ui-avatars.com. Also someone is currently typing via a room subscription hook in Chatkit via Pusher.com (Chatkit)
+    //             console.log(this.currentUser.rooms[3].userId)
+    //             // Getting joined/joinable rooms
+    //             this.getRooms()
+    //         })
+    //         // .catch for promise failure case
+    //         .catch(err => console.log('error on connecting: ', err))
+    // }
+
 
     // Method to get joined and joinable rooms data from Chatkit return a promise
     getRooms() {
@@ -135,7 +174,7 @@ class Chat extends React.Component {
     // Which re-renders MessageList rendering messages to UI
     render() {
         return (
-            <div className="app">
+            <div className="chat chat-fluid">
                 <RoomList
                     // Sending room data to <RoomList component...passing subsribe to room method
                     subscribeToRoom={this.subscribeToRoom}

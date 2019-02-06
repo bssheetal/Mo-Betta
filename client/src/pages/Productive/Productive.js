@@ -16,7 +16,7 @@ import './style.css'
 import PodCast from '../../components/PodCast/PodCast';
 import ChartLineGraph from '../../components/ChartLineGraph';
 import Rotate from 'react-reveal/Rotate';
-import Chat from '../../components/Chat';
+// import Chat from '../../components/Chat';
 
 class Productive extends Component {
     state = {
@@ -459,7 +459,7 @@ class Productive extends Component {
         return (
             <Card id="card-chat" title="Chat" style={styles} onClick={this.handleOnClickCardChat}>
                 <Container>
-                    <Chat />
+                    {/* <Chat /> */}
                 </Container>
             </Card>
         );
@@ -503,7 +503,7 @@ class Productive extends Component {
                         {this.state.displayStockCard ? this.renderCardStock(isLoaded, activeStyles.cardStock) : null}
                         {this.state.displayNewsCard ? this.renderCardNews(activeStyles.cardNews) : null}
                         {this.state.displayPodcastCard ? this.renderCardPodcast(activeStyles.cardPodcast) : null}
-                        {this.state.displayChatCard ? this.renderCardChat(activeStyles.cardChat) : null}
+                        {/* {this.state.displayChatCard ? this.renderCardChat(activeStyles.cardChat) : null} */}
                         {this.state.displayMusicCard ? this.renderCardMusic(activeStyles.cardMusic) : null}
                         {this.state.displayVideoCard ? this.renderCardVideo(activeStyles.cardVideo) : null}
                     </div>
@@ -514,7 +514,7 @@ class Productive extends Component {
                     <div className="container text-center large-right-section">
                         {this.renderCardStock(isLoaded, inactiveStyles.cardStock)}
                         {this.renderCardVideo(inactiveStyles.cardVideo)}
-                        {this.renderCardChat(inactiveStyles.cardChat)}
+                        {/* {this.renderCardChat(inactiveStyles.cardChat)} */}
                     </div>
                 </div>
 
@@ -550,9 +550,9 @@ class Productive extends Component {
                             <Rotate><i className="fas fa-video" onClick={this.handleOnClickIconVideo}></i></Rotate>
                         </div>
 
-                        <div className="productive-icons icon-chat">
+                        {/* <div className="productive-icons icon-chat">
                             <Rotate><i className="fas fa-comments" onClick={this.handleOnClickIconChat}></i></Rotate>
-                        </div>
+                        </div> */}
                     </div>
                     </div>
                 </div>
@@ -563,7 +563,7 @@ class Productive extends Component {
                         {this.renderCardStock(isLoaded, smallScreenStyles.cardStock)}
                         {this.renderCardNews(smallScreenStyles.cardNews)}
                         {this.renderCardPodcast(smallScreenStyles.cardPodcast)}
-                        {this.renderCardChat(smallScreenStyles.cardChat)}
+                        {/* {this.renderCardChat(smallScreenStyles.cardChat)} */}
                         {this.renderCardMusic(smallScreenStyles.cardMusic)}
                         {this.renderCardVideo(smallScreenStyles.cardVideo)}
                     </div>
@@ -596,11 +596,12 @@ class Productive extends Component {
             cardVideo: {
                 display: this.state.videoDisplay,
                 height: "150px"
-            },
-            cardChat: {
-                display: this.state.chatDisplay,
-                height: "150px"
             }
+            // ,
+            // cardChat: {
+            //     display: this.state.chatDisplay,
+            //     height: "150px"
+            // }
         };
 
         const activeStyles = {
@@ -628,12 +629,13 @@ class Productive extends Component {
                 display: this.state.videoDisplay,
                 height: "auto",
                 overflow: "hidden"
-            },
-            cardChat: {
-                display: this.state.chatDisplay,
-                height: "auto",
-                overflow: "hidden"
             }
+            // ,
+            // cardChat: {
+            //     display: this.state.chatDisplay,
+            //     height: "auto",
+            //     overflow: "hidden"
+            // }
         };
 
         const smallScreenStyles = {
@@ -656,11 +658,12 @@ class Productive extends Component {
             cardVideo: {
                 display: this.state.videoDisplay,
                 overflow: "hidden"
-            },
-            cardChat: {
-                display: this.state.chatDisplay,
-                overflow: "hidden"
             }
+            ,
+            // cardChat: {
+            //     display: this.state.chatDisplay,
+            //     overflow: "hidden"
+            // }
         };
 
 
