@@ -44,7 +44,7 @@ ReactDOM.render(
             <Route exact path="/uplift" component={Uplift} />
             <Route exact path="/relax" component={Relax} />
             {/* <Route exact path="/news" component={News} /> */}
-            <Footer />
+            {/* <Footer /> */}
         </div>
     </Router>
     , document.getElementById('root')
