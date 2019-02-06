@@ -1,10 +1,30 @@
-:root {
+/* css Grid layout */
+
+
+
+/* affecting the root tag in html */
+    /* css variables setting colors */
+    /* syntax:  --"valueName": "value" */
+    /* This way, if you change the values below, it will change all components styled to that value */
+    /* Conditional rendering based on page? */
+/* :root {
     --main-color: #5ea3d0;
     --secondary-color: white;
     --main-text-color: #3e5869;
     --secondary-text-color: #b0c7d6;
     --send-message-form: #F5F5F5;
+} */
+
+/* Secondary color pallete  */
+.chat {
+    /* :root { */
+    --main-color: #fd9ab6;
+    --secondary-color: #fff4e6;
+    --main-text-color: #11d7d8;
+    --secondary-text-color: pink;
+    --send-message-form: white;
 }
+
 
 html, body {
     height: 100%;
@@ -15,36 +35,47 @@ html, body {
     color: red; 
 }
 
-#root {
+#chat {
     height: 100%;
 }
 
-.app {
+/* Setting the app div into a grid */
+.chat {
+    /* The Grid */
     display: grid;
     height: 100%;
+    /* Colm and row definition  repeat (6-times, 1 fraction-unit (equally wide): 6 equally spaced columns dynamic in nature depending on contents being renderred */
     grid-template-columns: repeat(6, 1fr);
+    /* 5 equally spaced rows followed by a 60px row (so the input row stays a constant 60px with all others are dynamic */
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr 60px;
+    /* Setting the grid template each letter representing a cell creating row/column */
+    /* Where the lettes representing the cells are defined below */
     grid-template-areas: 
-        "r m m m m m"
-        "r m m m m m"
-        "r m m m m m"
-        "r m m m m m"
-        "r m m m m m"
-        "n s s s s s";
+        "m m m m m r"
+        "m m m m m r"
+        "m m m m m r"
+        "m m m m m r"
+        "m m m m m r"
+        "s s s s s n";
 }
 
+/* Via className */
+/* NewRoomForm being rendered in the grid area marked (n) */
 .new-room-form {
     grid-area: n;
 }
 
+/* RoomList being rendered in the grid area marked (r) */
 .rooms-list {
     grid-area: r;
 }
 
+/* MessageList being rendered in the grid area marked (m) */
 .message-list {
     grid-area: m;
 }
 
+/* SendMessageForm being rendered in the grid area marked (s) */
 .send-message-form {
     grid-area: s;
 }
@@ -53,6 +84,7 @@ html, body {
 .rooms-list {
     box-sizing: border-box;
     padding: 10px;
+    /* Using css variables set above */
     background-color: var(--main-color);
     overflow: scroll;
     height: 100%;
