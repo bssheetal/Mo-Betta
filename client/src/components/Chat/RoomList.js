@@ -1,16 +1,21 @@
 import React from 'react'
 
 class RoomList extends React.Component {
-    render () {
+    render() {
+        // orderedRooms arry to keep room names in alph order to keep the ux/ui stable (room names jumping around)...spread operator used to create a new array so as not to modify props.  sorting by id
         const orderedRooms = [...this.props.rooms].sort((a, b) => a.id > b.id)
         return (
             <div className="rooms-list">
                 <ul>
-                <h3>Your rooms:</h3>
+                    <h3>Your rooms:</h3>
+                    {/* Mapping through rooms data coming from Chat component via Chatkit */}
                     {orderedRooms.map(room => {
+                        // active class for highlighting on UI or empty string
                         const active = room.id === this.props.roomId ? 'active' : '';
                         return (
+                            // active class for highlighting on UI
                             <li key={room.id} className={"room " + active}>
+                                {/* oncClike for joining room  ()=> for only on click not on render */}
                                 <a
                                     onClick={() => this.props.subscribeToRoom(room.id)}
                                     href="#">

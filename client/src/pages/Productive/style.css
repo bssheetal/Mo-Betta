@@ -15,7 +15,7 @@
 }
 
 .card {
-    min-width: 30rem;
+    /* min-width: 30rem; */
     max-width: 130rem; 
   }
 
@@ -100,7 +100,7 @@ input {
 
 .title {
     color: #222;
-    font-size: 24px;
+    font-size: 18px;
     font-weight: bolder;
 }
 
@@ -135,5 +135,8 @@ input {
 .icon-video {
     color: #795DA7;
 }
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 9addacd50474f323bb0bc03a177b7102982a6166
