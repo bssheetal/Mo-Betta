@@ -351,57 +351,77 @@ class Productive extends Component {
         });
     };
 
+    // handleAddToPortfolio=id=>{
+    //  const stock=this.state.stockinfo.find(stock=>stock.id===id);
+    //  API.savestocks({
+    //     symbol:this.state.stockinfo.symbol,
+    //     companyname:this.state.stockinfo.companyName
+    //  })
+    // };
 
     renderCardStock = (isLoaded, styles) => {
         return (
-            <Card id="card-stock" title="Stocks" style={styles} onClick={this.handleOnClickCardStock}>
-                <div className="row" id="btn-load">
-                    <div className="col-sm-6">
-                        <div className="row">
-                            <div className="col-md-12 input-group">
-                                <input
-                                    value={this.state.stockSearch}
-                                    name="StockSearch"
-                                    type="text"
-                                    className="form-control"
-                                    placeholder="Symbol e.g. BA"
-                                    aria-label="Symbol"
-                                    onChange={this.handleInputChange}
-                                />
-                                <span className="input-group-btn">
-                                    <button
-                                        className="btn btn-secondary"
-                                        type="button"
-                                        onClick={this.handleLoadQuote}
-                                    >
-                                        Load Quote
-                    </button>
-                                </span>
-                            </div>
+            <Card id="card-stock" classname="stocksheader" title="Stocks"  style={styles} onClick={this.handleOnClickCardStock}>
+                
+                    <div className="row" id="btn-load">
+                        <div className="col-sm-6">
+                            <div className="row">                          
+                                <div className="col-md-8 input-group">
+                                    <input
+                                        value={this.state.stockSearch}
+                                        name="StockSearch"
+                                        type="text"
+                                        className="form-control"
+                                        placeholder="Symbol e.g. BA"
+                                        aria-label="Symbol"
+                                        onChange={this.handleInputChange}
+                                    />
+                                    <span className="input-group-btn">
+                                        <button
+                                            className="btn btn-secondary"
+                                            type="button"
+                                            onClick={this.handleLoadQuote}
+                                        >
+                                            Load Quote
+                                        </button>
+                                    </span>
+                                </div>                                                     
                         </div>
-
-                        <div className="row">
-                            <div className="col-md-12">
-                                {this.state.stockinfo.symbol} -{this.state.stockinfo.companyName}
-                                <List
+                        
+                     
+                        <div className="row" >
+                            <div className="col-md-12" id="companydetails">
+                            <br></br>
+                               <h5 classname="companynameandsymbol">{this.state.stockinfo.symbol} -{this.state.stockinfo.companyName}</h5>
+                                <List id="stockdetails"
+                                    key={this.state.stockinfo.id}
                                     latestSource={this.state.stockinfo.latestSource}
                                     latestPrice={this.state.stockinfo.latestPrice}
                                     week52High={this.state.stockinfo.week52High}
                                     week52Low={this.state.stockinfo.week52Low}
                                     primaryExchange={this.state.stockinfo.primaryExchange}
                                 />
+                                {/* <button
+                                className="btn btn-secondary"
+                                type="button"
+                                onClick={this.handleAddToPortfolio}
+                                >
+                                Add to Portfolio</button> */}
                             </div>
 
                         </div>
                     </div>
+                   
 
                     <div className="col-sm-6">
                         {this.state.linechartelements && (
                             <div className="charts">
-
-                                <h2 className="text-center">
+                                <br></br>
+                                
+                                
+                                <h4 className="text-center">
                                     {this.state.stockinfo.companyName + ' (Past 6 months)'}
-                                </h2>
+                                </h4>
                                 {
                                     isLoaded ?
                                         <ChartLineGraph
@@ -530,8 +550,10 @@ class Productive extends Component {
         return (
             <div className="row">
                 {/* LEFT section */}
+                
                 <div className="col-sm-1">
-                    <div className="container text-center small-right-section">
+                    <div className="container text-center small-right-section activity-icons">
+                    <br></br>
                         <div className="productive-icons icon-stock">
                             <Rotate><i className="fas fa-chart-line" onClick={this.handleOnClickIconStock}></i></Rotate>
                         </div>
