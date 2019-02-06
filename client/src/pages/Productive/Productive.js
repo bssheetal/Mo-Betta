@@ -13,7 +13,7 @@ import { NewsList, NewsListItem } from '../../components/NewsList';
 import { Container, Row, Col } from '../../components/Grid';
 import Thumbnail from '../../components/Thumbnail';
 import './style.css'
-import PodCast from '../../components/PodCast';
+import PodCast from '../../components/PodCast/PodCast';
 import ChartLineGraph from '../../components/ChartLineGraph';
 import Rotate from 'react-reveal/Rotate';
 import Chat from '../../components/Chat';
@@ -549,9 +549,9 @@ class Productive extends Component {
     renderSmallScreen = (isLoaded, smallScreenStyles) => {
         return (
             <div className="row">
-                {/* LEFT section */}
-                
+                {/* LEFT section */}               
                 <div className="col-sm-1">
+                <div className="sidebar">
                     <div className="container text-center small-right-section activity-icons">
                     <br></br>
                         <div className="productive-icons icon-stock">
@@ -579,6 +579,7 @@ class Productive extends Component {
                         </div>
 
                         <Link to="/">Go home</Link>
+                    </div>
                     </div>
                 </div>
 

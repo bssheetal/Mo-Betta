@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import withAuth from './withAuth';
-import API from '../utils/API';
+import withAuth from '../withAuth';
+import API from '../../utils/API';
 import PodcastPlayer from 'react-rss-podcast-player';
 
 class PodCast extends Component {
