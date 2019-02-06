@@ -1,12 +1,13 @@
+require("dotenv").config();
 var keys = require("../../keys.js");
-var facerecognitionKey = "Bks_XP_htVac2PChn4oWlL9v_7ukGWjP";
-var facerecognitionsecret = "-JQADoPa44FewvVy9VXKq_j5G9jsDICg";
+// var facerecognitionKey = "Bks_XP_htVac2PChn4oWlL9v_7ukGWjP";
+// var facerecognitionsecret = "-JQADoPa44FewvVy9VXKq_j5G9jsDICg";
 const router = require("express").Router();
 const axios = require("axios");
 var fs = require("fs");
 var facepp = require('face-plusplus-node');
-// var facerecognitionKey=keys.facerecognition.id;
-// var facerecognitionsecret=keys.facerecognition.secret;
+var facerecognitionKey=keys.facerecognition.id;
+var facerecognitionsecret=keys.facerecognition.secret;
 
 router.post("/faceanalyze", (req, response) => {
     console.log("Inside emotiondetection");
