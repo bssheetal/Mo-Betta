@@ -23,7 +23,6 @@
   {
     min-width: 30rem;
     max-width: 30rem; 
-
   } */
 
   .input-group-btn
@@ -86,7 +85,7 @@ input {
     margin-left:-2px;
     padding: .375rem .75rem;
     line-height: 1.5;
-    height: 50px;
+    height: 50px
 }
 
 /* button {
@@ -135,15 +134,8 @@ input {
 .icon-video {
     color: #795DA7;
 }
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 9addacd50474f323bb0bc03a177b7102982a6166
-=======
 
 .icon-chat {
     color: #ffd600;
 }
->>>>>>> 8c4a73fb3bcc5b46ced417ccd48e16c4dfaa2e7e
+
