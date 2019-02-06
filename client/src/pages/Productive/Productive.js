@@ -17,6 +17,7 @@ import PodCast from '../../components/PodCast';
 import ChartLineGraph from '../../components/ChartLineGraph';
 import Rotate from 'react-reveal/Rotate';
 import Chat from '../../components/Chat';
+import Music from '../../components/Music';
 
 class Productive extends Component {
     state = {
@@ -332,6 +333,9 @@ class Productive extends Component {
 
                         <Card id="card-music" title="Music" style={styles.cardMusic}>
                             <Button onClick={this.handleOnClickButton}>get music list</Button>
+                            {/* <Container>
+                                <Music />
+                            </Container> */}
                         </Card>
 
                         <Card id="card-video" title="Video" style={styles.cardVideo}>
