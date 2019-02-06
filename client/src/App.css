@@ -8,10 +8,10 @@
 }
 
 .App-header {
-  background-color: #222;
+  /* background-color: #f4f4f4; */
   height: 150px;
   padding: 20px;
-  color: white;
+  color: #222;
 }
 
 .App-intro {
@@ -42,4 +42,9 @@
 
 #canvas {
     visibility: hidden;
+}
+
+.Camera {
+  font-family: 'Parisienne', cursive;
+  color: #757575;
 }

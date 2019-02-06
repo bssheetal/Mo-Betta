@@ -1,7 +1,7 @@
-// import React, { Component } from 'react';
-import React from "react";
+import React, { Component } from 'react';
+// import React from "react";
 // import { Container, Row, Col } from "../Grid";
-import API from '../utils/API';
+import API from '../../utils/API';
 
 class Music extends Component {
     state = {
@@ -20,6 +20,7 @@ class Music extends Component {
     render() {
         return (
             <div className="Songs">
+            <p>My Music Component</p>
             </div>
         );
     }

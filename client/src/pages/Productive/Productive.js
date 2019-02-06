@@ -13,7 +13,7 @@ import { NewsList, NewsListItem } from '../../components/NewsList';
 import { Container, Row, Col } from '../../components/Grid';
 import Thumbnail from '../../components/Thumbnail';
 import './style.css'
-import PodCast from '../../components/PodCast';
+import PodCast from '../../components/PodCast/PodCast';
 import ChartLineGraph from '../../components/ChartLineGraph';
 import Rotate from 'react-reveal/Rotate';
 import Chat from '../../components/Chat';
@@ -35,17 +35,43 @@ class Productive extends Component {
         isLoading: false,
         parentComponent: "productive",
         news: [],
+        smallScreen: true,
         stockDisplay: "block",
-        newsDisplay: "none",
-        podcastDisplay: "none",
-        musicDisplay: "none",
-        videoDisplay: "none"
+        newsDisplay: "block",
+        podcastDisplay: "block",
+        musicDisplay: "block",
+        videoDisplay: "block",
+        chatDisplay: "block",
+        displayStockCard: true,
+        displayNewsCard: false,
+        displayPodcastCard: false,
+        displayChatCard: false,
+        displayMusicCard: false,
+        displayVideoCard: false
     };
 
     componentDidMount() {
         // this.setState({
         //     StockSearch: 'BA'
         // });
+
+        setTimeout(() => {
+            if (localStorage.getItem("mobetta_layout") === "large") {
+                this.setState({
+                    smallScreen: false
+                });
+            } else {
+                this.setState({
+                    smallScreen: true,
+                    stockDisplay: "block",
+                    newsDisplay: "none",
+                    podcastDisplay: "none",
+                    musicDisplay: "none",
+                    videoDisplay: "none",
+                    chatDisplay: "none"
+                });
+            };
+        }, 100);
 
         this.handleFormSubmit("BA");
         this.loaddefaultchartforstock("BA");
@@ -60,6 +86,7 @@ class Productive extends Component {
             // console.log("========state========")
             // console.log(this.state.news);
         });
+
     }
 
     handleOnClickButton = e => {
@@ -145,7 +172,20 @@ class Productive extends Component {
     }
 
     // Handle the OnClick event for icon-buttons
-    handleOnClickStock = e => {
+    handleOnClickCardStock = e => {
+        e.preventDefault();
+
+        this.setState({
+            displayStockCard: true,
+            displayNewsCard: false,
+            displayPodcastCard: false,
+            displayChatCard: false,
+            displayMusicCard: false,
+            displayVideoCard: false
+        });
+    };
+
+    handleOnClickIconStock = e => {
         e.preventDefault();
 
         this.setState({
@@ -153,23 +193,53 @@ class Productive extends Component {
             newsDisplay: "none",
             podcastDisplay: "none",
             musicDisplay: "none",
-            videoDisplay: "none"
+            videoDisplay: "none",
+            chatDisplay: "none"
         });
     };
 
-    handleOnClickNews = e => {
+    handleOnClickCardNews = e => {
         e.preventDefault();
 
+        console.log("News card clicked");
+        this.setState({
+            displayStockCard: false,
+            displayNewsCard: true,
+            displayPodcastCard: false,
+            displayChatCard: false,
+            displayMusicCard: false,
+            displayVideoCard: false
+        });
+    };
+
+    handleOnClickIconNews = e => {
+        e.preventDefault();
+
+        console.log("News card clicked");
         this.setState({
             stockDisplay: "none",
             newsDisplay: "block",
             podcastDisplay: "none",
             musicDisplay: "none",
-            videoDisplay: "none"
+            videoDisplay: "none",
+            chatDisplay: "none"
         });
     };
 
-    handleOnClickPodcast = e => {
+    handleOnClickCardPodcast = e => {
+        e.preventDefault();
+
+        this.setState({
+            displayStockCard: false,
+            displayNewsCard: false,
+            displayPodcastCard: true,
+            displayChatCard: false,
+            displayMusicCard: false,
+            displayVideoCard: false
+        });
+    };
+
+    handleOnClickIconPodcast = e => {
         e.preventDefault();
 
         this.setState({
@@ -177,23 +247,25 @@ class Productive extends Component {
             newsDisplay: "none",
             podcastDisplay: "block",
             musicDisplay: "none",
-            videoDisplay: "none"
+            videoDisplay: "none",
+            chatDisplay: "none"
         });
     };
 
-    handleOnClickMusic = e => {
+    handleOnClickCardChat = e => {
         e.preventDefault();
 
         this.setState({
-            stockDisplay: "none",
-            newsDisplay: "none",
-            podcastDisplay: "none",
-            musicDisplay: "block",
-            videoDisplay: "none"
+            displayStockCard: false,
+            displayNewsCard: false,
+            displayPodcastCard: false,
+            displayChatCard: true,
+            displayMusicCard: false,
+            displayVideoCard: false
         });
     };
 
-    handleOnClickVideo = e => {
+    handleOnClickIconChat = e => {
         e.preventDefault();
 
         this.setState({
@@ -201,178 +273,412 @@ class Productive extends Component {
             newsDisplay: "none",
             podcastDisplay: "none",
             musicDisplay: "none",
-            videoDisplay: "block"
+            videoDisplay: "none",
+            chatDisplay: "block"
         });
     };
 
+    handleOnClickCardMusic = e => {
+        e.preventDefault();
+
+        this.setState({
+            displayStockCard: false,
+            displayNewsCard: false,
+            displayPodcastCard: false,
+            displayChatCard: false,
+            displayMusicCard: true,
+            displayVideoCard: false
+        });
+    };
+
+    handleOnClickIconMusic = e => {
+        e.preventDefault();
+
+        this.setState({
+            stockDisplay: "none",
+            newsDisplay: "none",
+            podcastDisplay: "none",
+            musicDisplay: "block",
+            videoDisplay: "none",
+            chatDisplay: "none"
+        });
+    };
+
+    handleOnClickCardVideo = e => {
+        e.preventDefault();
+
+        this.setState({
+            displayStockCard: false,
+            displayNewsCard: false,
+            displayPodcastCard: false,
+            displayChatCard: false,
+            displayMusicCard: false,
+            displayVideoCard: true
+        });
+    };
+
+    handleOnClickIconVideo = e => {
+        e.preventDefault();
+
+        this.setState({
+            stockDisplay: "none",
+            newsDisplay: "none",
+            podcastDisplay: "none",
+            musicDisplay: "none",
+            videoDisplay: "block",
+            chatDisplay: "none"
+        });
+    };
+
+    // handleAddToPortfolio=id=>{
+    //  const stock=this.state.stockinfo.find(stock=>stock.id===id);
+    //  API.savestocks({
+    //     symbol:this.state.stockinfo.symbol,
+    //     companyname:this.state.stockinfo.companyName
+    //  })
+    // };
+
+    renderCardStock = (isLoaded, styles) => {
+        return (
+            <Card id="card-stock" classname="stocksheader" title="Stocks" style={styles} onClick={this.handleOnClickCardStock}>
+
+                <div className="row" id="btn-load">
+                    <div className="col-sm-6">
+                        <div className="row">
+                            <div className="col-md-8 input-group">
+                                <input
+                                    value={this.state.stockSearch}
+                                    name="StockSearch"
+                                    type="text"
+                                    className="form-control"
+                                    placeholder="Symbol e.g. BA"
+                                    aria-label="Symbol"
+                                    onChange={this.handleInputChange}
+                                />
+                                <span className="input-group-btn">
+                                    <button
+                                        className="btn btn-secondary"
+                                        type="button"
+                                        onClick={this.handleLoadQuote}
+                                    >
+                                        Load Quote
+                                        </button>
+                                </span>
+                            </div>
+                        </div>
+
+
+                        <div className="row" >
+                            <div className="col-md-12" id="companydetails">
+                                <br></br>
+                                <h5 classname="companynameandsymbol">{this.state.stockinfo.symbol} -{this.state.stockinfo.companyName}</h5>
+                                <List id="stockdetails"
+                                    key={this.state.stockinfo.id}
+                                    latestSource={this.state.stockinfo.latestSource}
+                                    latestPrice={this.state.stockinfo.latestPrice}
+                                    week52High={this.state.stockinfo.week52High}
+                                    week52Low={this.state.stockinfo.week52Low}
+                                    primaryExchange={this.state.stockinfo.primaryExchange}
+                                />
+                                {/* <button
+                                className="btn btn-secondary"
+                                type="button"
+                                onClick={this.handleAddToPortfolio}
+                                >
+                                Add to Portfolio</button> */}
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                    <div className="col-sm-6">
+                        {this.state.linechartelements && (
+                            <div className="charts">
+                                <br></br>
+
+
+                                <h4 className="text-center">
+                                    {this.state.stockinfo.companyName + ' (Past 6 months)'}
+                                </h4>
+                                {
+                                    isLoaded ?
+                                        <ChartLineGraph
+                                            title={this.state.StockSearch}
+                                            chartLabels={this.state.chartDates}
+                                            chartData={this.state.chartCloses}
+                                            lineChartElements={this.state.linechartelements}
+                                        />
+                                        : null
+                                }
+                            </div>
+                        )}
+                    </div>
+
+                </div>
+            </Card>
+        );
+    };
+
+    renderCardNews = (styles) => {
+        return (
+            <div id="card-news">
+                <Card title="Business News" style={styles} onClick={this.handleOnClickCardNews}>
+                    <Container>
+                        <Col size="xs-6">
+
+                            <NewsList>
+                                {this.state.news.slice(0, 5).map(item => {
+                                    return (
+                                        <NewsListItem
+                                            key={item.title}
+                                            title={item.title}
+                                            href={item.link}
+                                            thumbnail={item.image}
+                                        />
+                                    );
+                                })}
+                            </NewsList>
+                        </Col>
+                    </Container>
+                </Card>
+            </div>
+        );
+    };
+
+    renderCardPodcast = (styles) => {
+        return (
+            <Card id="card-podcast" title="PodCast" style={styles} onClick={this.handleOnClickCardPodcast}>
+                <Container>
+                    <PodCast />
+                </Container>
+            </Card>
+        );
+    };
+
+    renderCardChat = (styles) => {
+        return (
+            <Card id="card-chat" title="Chat" style={styles} onClick={this.handleOnClickCardChat}>
+                <Container>
+                    <Chat />
+                </Container>
+            </Card>
+        );
+    };
+
+    renderCardMusic = (styles) => {
+        return (
+            <Card id="card-music" title="Music" style={styles} onClick={this.handleOnClickCardMusic}>
+            <Music>
+                
+            </Music>
+                <Button onClick={this.handleOnClickButton}>get music list</Button>
+            </Card>
+        );
+    };
+
+    renderCardVideo = (styles) => {
+        return (
+            <Card id="card-video" title="Video" style={styles} onClick={this.handleOnClickCardVideo}>
+                <Video
+                    searchTerm="CNBC Television"
+                    numberOfResults="5"
+                />
+            </Card>
+        );
+    };
+
+    renderLargeScreen = (isLoaded, activeStyles, inactiveStyles) => {
+        return (
+            <div className="row">
+                {/* LEFT section */}
+                <div className="col-sm-3">
+                    <div className="container text-center large-left-section">
+                        {this.renderCardMusic(inactiveStyles.cardMusic)}
+                        {this.renderCardNews(inactiveStyles.cardNews)}
+                        {this.renderCardPodcast(inactiveStyles.cardPodcast)}
+                    </div>
+
+                </div>
+
+                {/* CENTER section */}
+                <div className="col-sm-6">
+                    <div className="container text-center large-middle-section">
+                        {this.state.displayStockCard ? this.renderCardStock(isLoaded, activeStyles.cardStock) : null}
+                        {this.state.displayNewsCard ? this.renderCardNews(activeStyles.cardNews) : null}
+                        {this.state.displayPodcastCard ? this.renderCardPodcast(activeStyles.cardPodcast) : null}
+                        {this.state.displayChatCard ? this.renderCardChat(activeStyles.cardChat) : null}
+                        {this.state.displayMusicCard ? this.renderCardMusic(activeStyles.cardMusic) : null}
+                        {this.state.displayVideoCard ? this.renderCardVideo(activeStyles.cardVideo) : null}
+                    </div>
+                </div>
+
+                {/* RIGHT section */}
+                <div className="col-sm-3">
+                    <div className="container text-center large-right-section">
+                        {this.renderCardStock(isLoaded, inactiveStyles.cardStock)}
+                        {this.renderCardVideo(inactiveStyles.cardVideo)}
+                        {this.renderCardChat(inactiveStyles.cardChat)}
+                    </div>
+                </div>
+
+            </div>
+        );
+    };
+
+    renderSmallScreen = (isLoaded, smallScreenStyles) => {
+        return (
+            <div className="row">
+                {/* LEFT section */}               
+                <div className="col-sm-1">
+                <div className="sidebar">
+                    <div className="container text-center small-right-section activity-icons">
+                        <br></br>
+                        <div className="productive-icons icon-stock">
+                            <Rotate><i className="fas fa-chart-line" onClick={this.handleOnClickIconStock}></i></Rotate>
+                        </div>
+
+                        <div className="productive-icons icon-newspaper">
+                            <Rotate><i className="fas fa-newspaper" onClick={this.handleOnClickIconNews}></i></Rotate>
+                        </div>
+
+                        <div className="productive-icons icon-podcast">
+                            <Rotate><i className="fas fa-podcast" onClick={this.handleOnClickIconPodcast}></i></Rotate>
+                        </div>
+
+                        <div className="productive-icons icon-music">
+                            <Rotate><i className="fas fa-music" onClick={this.handleOnClickIconMusic}></i></Rotate>
+                        </div>
+
+                        <div className="productive-icons icon-video">
+                            <Rotate><i className="fas fa-video" onClick={this.handleOnClickIconVideo}></i></Rotate>
+                        </div>
+
+                        <div className="productive-icons icon-chat">
+                            <Rotate><i className="fas fa-comments" onClick={this.handleOnClickIconChat}></i></Rotate>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+
+                {/* RIGHT section */}
+                <div className="col-sm-11">
+                    <div className="container text-center small-left-section">
+                        {this.renderCardStock(isLoaded, smallScreenStyles.cardStock)}
+                        {this.renderCardNews(smallScreenStyles.cardNews)}
+                        {this.renderCardPodcast(smallScreenStyles.cardPodcast)}
+                        {this.renderCardChat(smallScreenStyles.cardChat)}
+                        {this.renderCardMusic(smallScreenStyles.cardMusic)}
+                        {this.renderCardVideo(smallScreenStyles.cardVideo)}
+                    </div>
+                </div>
+
+            </div>
+        );
+    };
 
     //whth
     render() {
         const { isLoaded } = this.state;
-        const styles = {
+        const inactiveStyles = {
             cardStock: {
-                display: this.state.stockDisplay
+                display: this.state.stockDisplay,
+                height: "150px"
             },
             cardNews: {
-                display: this.state.newsDisplay
+                display: this.state.newsDisplay,
+                height: "150px"
             },
             cardPodcast: {
-                display: this.state.podcastDisplay
+                display: this.state.podcastDisplay,
+                height: "150px"
             },
             cardMusic: {
-                display: this.state.musicDisplay
+                display: this.state.musicDisplay,
+                height: "150px"
             },
             cardVideo: {
-                display: this.state.videoDisplay
+                display: this.state.videoDisplay,
+                height: "150px"
+            },
+            cardChat: {
+                display: this.state.chatDisplay,
+                height: "150px"
             }
         };
+
+        const activeStyles = {
+            cardStock: {
+                display: this.state.stockDisplay,
+                height: "auto",
+                overflow: "hidden"
+            },
+            cardNews: {
+                display: this.state.newsDisplay,
+                height: "auto",
+                overflow: "hidden"
+            },
+            cardPodcast: {
+                display: this.state.podcastDisplay,
+                height: "auto",
+                overflow: "hidden"
+            },
+            cardMusic: {
+                display: this.state.musicDisplay,
+                height: "auto",
+                overflow: "hidden"
+            },
+            cardVideo: {
+                display: this.state.videoDisplay,
+                height: "auto",
+                overflow: "hidden"
+            },
+            cardChat: {
+                display: this.state.chatDisplay,
+                height: "auto",
+                overflow: "hidden"
+            }
+        };
+
+        const smallScreenStyles = {
+            cardStock: {
+                display: this.state.stockDisplay,
+                overflow: "hidden"
+            },
+            cardNews: {
+                display: this.state.newsDisplay,
+                overflow: "hidden"
+            },
+            cardPodcast: {
+                display: this.state.podcastDisplay,
+                overflow: "hidden"
+            },
+            cardMusic: {
+                display: this.state.musicDisplay,
+                overflow: "hidden"
+            },
+            cardVideo: {
+                display: this.state.videoDisplay,
+                overflow: "hidden"
+            },
+            cardChat: {
+                display: this.state.chatDisplay,
+                overflow: "hidden"
+            }
+        };
+
 
         return (
             <div className="container-fluid">
                 {/* <Jumbotron>
                 </Jumbotron> */}
 
-                <div className="row">
-                    <div className="col-sm-11">
-                        <Card id="card-stock" title="Stocks" style={styles.cardStock}>
-                            <div className="row" id="btn-load">
-                                <div className="col-sm-6">
-                                    <div className="row">
-                                        <div className="col-md-12 input-group">
-                                            <input
-                                                value={this.state.stockSearch}
-                                                name="StockSearch"
-                                                type="text"
-                                                className="form-control"
-                                                placeholder="Symbol e.g. BA"
-                                                aria-label="Symbol"
-                                                onChange={this.handleInputChange}
-                                            />
-                                            <span className="input-group-btn">
-                                                <button
-                                                    className="btn btn-secondary"
-                                                    type="button"
-                                                    onClick={this.handleLoadQuote}
-                                                >
-                                                    Load Quote
-                                        </button>
-                                            </span>
-                                        </div>
-                                    </div>
+                {this.state.smallScreen ?
+                    this.renderSmallScreen(isLoaded, smallScreenStyles)
+                    :
+                    this.renderLargeScreen(isLoaded, activeStyles, inactiveStyles)
+                }
 
-                                    <div className="row">
-                                        <div className="col-md-12">
-                                            {this.state.stockinfo.symbol} -{this.state.stockinfo.companyName}
-                                            <List
-                                                latestSource={this.state.stockinfo.latestSource}
-                                                latestPrice={this.state.stockinfo.latestPrice}
-                                                week52High={this.state.stockinfo.week52High}
-                                                week52Low={this.state.stockinfo.week52Low}
-                                                primaryExchange={this.state.stockinfo.primaryExchange}
-                                            />
-                                        </div>
-
-                                    </div>
-                                </div>
-
-                                <div className="col-sm-6">
-                                    {this.state.linechartelements && (
-                                        <div className="charts">
-
-                                            <h2 className="text-center">
-                                                {this.state.stockinfo.companyName + ' (Past 6 months)'}
-                                            </h2>
-                                            {
-                                                isLoaded ?
-                                                    <ChartLineGraph
-                                                        title={this.state.StockSearch}
-                                                        chartLabels={this.state.chartDates}
-                                                        chartData={this.state.chartCloses}
-                                                        lineChartElements={this.state.linechartelements}
-                                                    />
-                                                    : null
-                                            }
-                                        </div>
-                                    )}
-                                </div>
-
-                            </div>
-                        </Card>
-
-                        <Card id="card-news" title="Business News" style={styles.cardNews}>
-                            <Container>
-                                <Col size="xs-6">
-
-                                    <NewsList>
-                                        {this.state.news.slice(0, 5).map(item => {
-                                            return (
-                                                <NewsListItem
-                                                    key={item.title}
-                                                    title={item.title}
-                                                    href={item.link}
-                                                    thumbnail={item.image}
-                                                />
-                                            );
-                                        })}
-                                    </NewsList>
-                                </Col>
-                            </Container>
-                        </Card>
-
-                        <Card id="card-podcast" title="PodCast" style={styles.cardPodcast}>
-                            <Container>
-                                <PodCast />
-                            </Container>
-                        </Card>
-                        {/* <Card>
-                            Chat
-                                <Container>
-                                    <Chat />
-                                </Container>
-                            </Card> */}
-
-                        <Card id="card-music" title="Music" style={styles.cardMusic}>
-                            <Button onClick={this.handleOnClickButton}>get music list</Button>
-                            {/* <Container>
-                                <Music />
-                            </Container> */}
-                        </Card>
-
-                        <Card id="card-video" title="Video" style={styles.cardVideo}>
-                            <Video
-                                searchTerm="CNBC Television"
-                                numberOfResults="5"
-                            />
-                        </Card>
-                    </div>
-
-                    <div className="col-sm-1">
-                        <div className="container text-center">
-                            <div className="productive-icons icon-stock">
-                                <Rotate><i className="fas fa-chart-line" onClick={this.handleOnClickStock}></i></Rotate>
-                            </div>
-
-                            <div className="productive-icons icon-newspaper">
-                                <Rotate><i className="fas fa-newspaper" onClick={this.handleOnClickNews}></i></Rotate>
-                            </div>
-
-                            <div className="productive-icons icon-podcast">
-                                <Rotate><i className="fas fa-podcast" onClick={this.handleOnClickPodcast}></i></Rotate>
-                            </div>
-
-                            <div className="productive-icons icon-music">
-                                <Rotate><i className="fas fa-music" onClick={this.handleOnClickMusic}></i></Rotate>
-                            </div>
-
-                            <div className="productive-icons icon-video">
-                                <Rotate><i className="fas fa-video" onClick={this.handleOnClickVideo}></i></Rotate>
-                            </div>
-
-                            <Link to="/">Go home</Link>
-                        </div>
-                    </div>
-
-                </div>
             </div>
         );
     }

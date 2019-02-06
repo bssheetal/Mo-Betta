@@ -1,8 +1,9 @@
 import React from "react";
+import './style.css';
 
 function Card(props) {
   return (
-    <div className="card mt-4 ml-4" style={props.style}>
+    <div className="card mt-2" style={props.style} onClick={props.onClick}>
       <div className="card-header">
         <span className="title">{props.title}</span>
       </div>

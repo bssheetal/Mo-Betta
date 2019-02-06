@@ -15,7 +15,7 @@
 }
 
 .card {
-    min-width: 30rem;
+    /* min-width: 30rem; */
     max-width: 130rem; 
   }
 
@@ -23,7 +23,6 @@
   {
     min-width: 30rem;
     max-width: 30rem; 
-
   } */
 
   .input-group-btn
@@ -81,12 +80,13 @@ input {
 
 .btn-secondary {
     color: #fff;
-    background-color: #868e96;
+    background-color:#868e96;
     border-color: #868e96;
     margin-left:-2px;
     padding: .375rem .75rem;
     line-height: 1.5;
-    height: 50px
+    height: 50px;
+    font-weight: bolder;
 }
 
 /* button {
@@ -100,12 +100,13 @@ input {
 
 .title {
     color: #222;
-    font-size: 24px;
+    font-size: 18px;
     font-weight: bolder;
 }
 
+
 .productive-icons {
-    font-size: 4rem;
+    font-size: 3rem;
     max-width: 100%;
     height: auto;
 }
@@ -135,3 +136,71 @@ input {
     color: #795DA7;
 }
 
+.icon-chat {
+    color: #ffd600;
+}
+
+.companydetails{
+    margin-top: 2.5em;
+    text-align: left;
+    margin-left: -7rem;
+}
+
+
+.stocklist
+{
+    text-align: left;
+    font-weight: bold;
+}
+
+/* .week52high
+{
+    margin-left: -7rem;
+}
+
+.week52low
+{
+    margin-left: -8rem;
+}
+
+.exchange
+{
+    margin-left: -3rem;
+} */
+
+.card-header
+{
+    background: grey;
+     background: linear-gradient(to right, #f6f1d3, #648880 85%, #293f50);
+    color: #fff;
+    font-weight: bold
+
+}
+
+#card-stock
+{
+    color: #fff;
+}
+
+.title
+{
+    color: #fff;
+    font-weight: bolder;
+}
+
+.sidebar {
+    height: 100%;
+    width: 160px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    padding-top: 120px;
+  }
+
+  @media screen and (max-height: 450px) {
+    .sidebar {padding-top: 15px;}
+    .sidebar a {font-size: 18px;}
+  }
