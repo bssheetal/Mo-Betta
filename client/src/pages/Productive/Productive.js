@@ -34,6 +34,7 @@ class Productive extends Component {
         isLoading: false,
         parentComponent: "productive",
         news: [],
+        smallScreen: true,
         stockDisplay: "block",
         newsDisplay: "block",
         podcastDisplay: "block",
@@ -52,6 +53,17 @@ class Productive extends Component {
         // this.setState({
         //     StockSearch: 'BA'
         // });
+        if (this.state.smallScreen) {
+            this.setState({
+                stockDisplay: "block",
+                newsDisplay: "none",
+                podcastDisplay: "none",
+                musicDisplay: "none",
+                videoDisplay: "none",
+                chatDisplay: "none"
+            });
+        };
+
 
         this.handleFormSubmit("BA");
         this.loaddefaultchartforstock("BA");
@@ -151,7 +163,7 @@ class Productive extends Component {
     }
 
     // Handle the OnClick event for icon-buttons
-    handleOnClickStock = e => {
+    handleOnClickCardStock = e => {
         e.preventDefault();
 
         this.setState({
@@ -169,7 +181,20 @@ class Productive extends Component {
         });
     };
 
-    handleOnClickNews = e => {
+    handleOnClickIconStock = e => {
+        e.preventDefault();
+
+        this.setState({
+            stockDisplay: "block",
+            newsDisplay: "none",
+            podcastDisplay: "none",
+            musicDisplay: "none",
+            videoDisplay: "none",
+            chatDisplay: "none"
+        });
+    };
+
+    handleOnClickCardNews = e => {
         e.preventDefault();
 
         console.log("News card clicked");
@@ -188,7 +213,21 @@ class Productive extends Component {
         });
     };
 
-    handleOnClickPodcast = e => {
+    handleOnClickIconNews = e => {
+        e.preventDefault();
+
+        console.log("News card clicked");
+        this.setState({
+            stockDisplay: "none",
+            newsDisplay: "block",
+            podcastDisplay: "none",
+            musicDisplay: "none",
+            videoDisplay: "none",
+            chatDisplay: "none"
+        });
+    };
+
+    handleOnClickCardPodcast = e => {
         e.preventDefault();
 
         this.setState({
@@ -206,7 +245,20 @@ class Productive extends Component {
         });
     };
 
-    handleOnClickChat = e => {
+    handleOnClickIconPodcast = e => {
+        e.preventDefault();
+
+        this.setState({
+            stockDisplay: "none",
+            newsDisplay: "none",
+            podcastDisplay: "block",
+            musicDisplay: "none",
+            videoDisplay: "none",
+            chatDisplay: "none"
+        });
+    };
+
+    handleOnClickCardChat = e => {
         e.preventDefault();
 
         this.setState({
@@ -224,7 +276,20 @@ class Productive extends Component {
         });
     };
 
-    handleOnClickMusic = e => {
+    handleOnClickIconChat = e => {
+        e.preventDefault();
+
+        this.setState({
+            stockDisplay: "none",
+            newsDisplay: "none",
+            podcastDisplay: "none",
+            musicDisplay: "none",
+            videoDisplay: "none",
+            chatDisplay: "block"
+        });
+    };
+
+    handleOnClickCardMusic = e => {
         e.preventDefault();
 
         this.setState({
@@ -242,7 +307,20 @@ class Productive extends Component {
         });
     };
 
-    handleOnClickVideo = e => {
+    handleOnClickIconMusic = e => {
+        e.preventDefault();
+
+        this.setState({
+            stockDisplay: "none",
+            newsDisplay: "none",
+            podcastDisplay: "none",
+            musicDisplay: "block",
+            videoDisplay: "none",
+            chatDisplay: "none"
+        });
+    };
+
+    handleOnClickCardVideo = e => {
         e.preventDefault();
 
         this.setState({
@@ -260,9 +338,23 @@ class Productive extends Component {
         });
     };
 
+    handleOnClickIconVideo = e => {
+        e.preventDefault();
+
+        this.setState({
+            stockDisplay: "none",
+            newsDisplay: "none",
+            podcastDisplay: "none",
+            musicDisplay: "none",
+            videoDisplay: "block",
+            chatDisplay: "none"
+        });
+    };
+
+
     renderCardStock = (isLoaded, styles) => {
         return (
-            <Card id="card-stock" title="Stocks" style={styles} onClick={this.handleOnClickStock}>
+            <Card id="card-stock" title="Stocks" style={styles} onClick={this.handleOnClickCardStock}>
                 <div className="row" id="btn-load">
                     <div className="col-sm-6">
                         <div className="row">
@@ -332,7 +424,7 @@ class Productive extends Component {
     renderCardNews = (styles) => {
         return (
             <div id="card-news">
-                <Card title="Business News" style={styles} onClick={this.handleOnClickNews}>
+                <Card title="Business News" style={styles} onClick={this.handleOnClickCardNews}>
                     <Container>
                         <Col size="xs-6">
 
@@ -357,7 +449,7 @@ class Productive extends Component {
 
     renderCardPodcast = (styles) => {
         return (
-            <Card id="card-podcast" title="PodCast" style={styles} onClick={this.handleOnClickPodcast}>
+            <Card id="card-podcast" title="PodCast" style={styles} onClick={this.handleOnClickCardPodcast}>
                 <Container>
                     <PodCast />
                 </Container>
@@ -367,7 +459,7 @@ class Productive extends Component {
 
     renderCardChat = (styles) => {
         return (
-            <Card id="card-chat" title="Chat" style={styles} onClick={this.handleOnClickChat}>
+            <Card id="card-chat" title="Chat" style={styles} onClick={this.handleOnClickCardChat}>
                 <Container>
                     <Chat />
                 </Container>
@@ -377,7 +469,7 @@ class Productive extends Component {
 
     renderCardMusic = (styles) => {
         return (
-            <Card id="card-music" title="Music" style={styles} onClick={this.handleOnClickMusic}>
+            <Card id="card-music" title="Music" style={styles} onClick={this.handleOnClickCardMusic}>
                 <Button onClick={this.handleOnClickButton}>get music list</Button>
             </Card>
         );
@@ -385,12 +477,102 @@ class Productive extends Component {
 
     renderCardVideo = (styles) => {
         return (
-            <Card id="card-video" title="Video" style={styles} onClick={this.handleOnClickVideo}>
+            <Card id="card-video" title="Video" style={styles} onClick={this.handleOnClickCardVideo}>
                 <Video
                     searchTerm="CNBC Television"
                     numberOfResults="5"
                 />
             </Card>
+        );
+    };
+
+    renderLargeScreen = (isLoaded, activeStyles, inactiveStyles) => {
+        return (
+            <div className="row">
+                {/* LEFT section */}
+                <div className="col-sm-3">
+                    <div className="container text-center large-left-section">
+                        {this.renderCardMusic(inactiveStyles.cardMusic)}
+                        {this.renderCardNews(inactiveStyles.cardNews)}
+                        {this.renderCardPodcast(inactiveStyles.cardPodcast)}
+                    </div>
+
+                </div>
+
+                {/* CENTER section */}
+                <div className="col-sm-6">
+                    <div className="container text-center large-middle-section">
+                        {this.state.displayStockCard ? this.renderCardStock(isLoaded, activeStyles.cardStock) : null}
+                        {this.state.displayNewsCard ? this.renderCardNews(activeStyles.cardNews) : null}
+                        {this.state.displayPodcastCard ? this.renderCardPodcast(activeStyles.cardPodcast) : null}
+                        {this.state.displayChatCard ? this.renderCardChat(activeStyles.cardChat) : null}
+                        {this.state.displayMusicCard ? this.renderCardMusic(activeStyles.cardMusic) : null}
+                        {this.state.displayVideoCard ? this.renderCardVideo(activeStyles.cardVideo) : null}
+                    </div>
+                </div>
+
+                {/* RIGHT section */}
+                <div className="col-sm-3">
+                    <div className="container text-center large-right-section">
+                        {this.renderCardStock(isLoaded, inactiveStyles.cardStock)}
+                        {this.renderCardVideo(inactiveStyles.cardVideo)}
+                        {this.renderCardChat(inactiveStyles.cardChat)}
+
+                        <Link to="/">Go home</Link>
+                    </div>
+                </div>
+
+            </div>
+        );
+    };
+
+    renderSmallScreen = (isLoaded, smallScreenStyles) => {
+        return (
+            <div className="row">
+                {/* LEFT section */}
+                <div className="col-sm-1">
+                    <div className="container text-center small-right-section">
+                        <div className="productive-icons icon-stock">
+                            <Rotate><i className="fas fa-chart-line" onClick={this.handleOnClickIconStock}></i></Rotate>
+                        </div>
+
+                        <div className="productive-icons icon-newspaper">
+                            <Rotate><i className="fas fa-newspaper" onClick={this.handleOnClickIconNews}></i></Rotate>
+                        </div>
+
+                        <div className="productive-icons icon-podcast">
+                            <Rotate><i className="fas fa-podcast" onClick={this.handleOnClickIconPodcast}></i></Rotate>
+                        </div>
+
+                        <div className="productive-icons icon-music">
+                            <Rotate><i className="fas fa-music" onClick={this.handleOnClickIconMusic}></i></Rotate>
+                        </div>
+
+                        <div className="productive-icons icon-video">
+                            <Rotate><i className="fas fa-video" onClick={this.handleOnClickIconVideo}></i></Rotate>
+                        </div>
+
+                        <div className="productive-icons icon-chat">
+                            <Rotate><i className="fas fa-comments" onClick={this.handleOnClickIconChat}></i></Rotate>
+                        </div>
+
+                        <Link to="/">Go home</Link>
+                    </div>
+                </div>
+
+                {/* RIGHT section */}
+                <div className="col-sm-11">
+                    <div className="container text-center small-left-section">
+                        {this.renderCardStock(isLoaded, smallScreenStyles.cardStock)}
+                        {this.renderCardNews(smallScreenStyles.cardNews)}
+                        {this.renderCardPodcast(smallScreenStyles.cardPodcast)}
+                        {this.renderCardChat(smallScreenStyles.cardChat)}
+                        {this.renderCardMusic(smallScreenStyles.cardMusic)}
+                        {this.renderCardVideo(smallScreenStyles.cardVideo)}
+                    </div>
+                </div>
+
+            </div>
         );
     };
 
@@ -457,70 +639,45 @@ class Productive extends Component {
             }
         };
 
+        const smallScreenStyles = {
+            cardStock: {
+                display: this.state.stockDisplay,
+                overflow: "hidden"
+            },
+            cardNews: {
+                display: this.state.newsDisplay,
+                overflow: "hidden"
+            },
+            cardPodcast: {
+                display: this.state.podcastDisplay,
+                overflow: "hidden"
+            },
+            cardMusic: {
+                display: this.state.musicDisplay,
+                overflow: "hidden"
+            },
+            cardVideo: {
+                display: this.state.videoDisplay,
+                overflow: "hidden"
+            },
+            cardChat: {
+                display: this.state.chatDisplay,
+                overflow: "hidden"
+            }
+        };
+
+
         return (
             <div className="container-fluid">
                 {/* <Jumbotron>
                 </Jumbotron> */}
 
-                <div className="row">
-                    {/* LEFT section */}
-                    <div className="col-sm-3">
-                        <div className="container text-center left-section">
-                            {this.renderCardMusic(inactiveStyles.cardMusic)}
+                {this.state.smallScreen ?
+                    this.renderSmallScreen(isLoaded, smallScreenStyles)
+                    :
+                    this.renderLargeScreen(isLoaded, activeStyles, inactiveStyles)
+                }
 
-                            {this.renderCardNews(inactiveStyles.cardNews)}
-
-                            {this.renderCardPodcast(inactiveStyles.cardPodcast)}
-                        </div>
-
-                    </div>
-
-                    {/* CENTER section */}
-                    <div className="col-sm-6">
-                        <div className="container text-center middle-section">
-                            {this.state.displayStockCard ? this.renderCardStock(isLoaded, activeStyles.cardStock) : null}
-                            {this.state.displayNewsCard ? this.renderCardNews(activeStyles.cardNews) : null}
-                            {this.state.displayPodcastCard ? this.renderCardPodcast(activeStyles.cardPodcast) : null}
-                            {this.state.displayChatCard ? this.renderCardChat(activeStyles.cardChat) : null}
-                            {this.state.displayMusicCard ? this.renderCardMusic(activeStyles.cardMusic) : null}
-                            {this.state.displayVideoCard ? this.renderCardVideo(activeStyles.cardVideo) : null}
-                        </div>
-                    </div>
-
-                    {/* RIGHT section */}
-                    <div className="col-sm-3">
-                        <div className="container text-center right-section">
-                            {this.renderCardStock(isLoaded, inactiveStyles.cardStock)}
-
-                            {this.renderCardVideo(inactiveStyles.cardVideo)}
-
-                            {this.renderCardChat(inactiveStyles.cardChat)}
-
-                            {/* <div className="productive-icons icon-stock">
-                                <Rotate><i className="fas fa-chart-line" onClick={this.handleOnClickStock}></i></Rotate>
-                            </div>
-
-                            <div className="productive-icons icon-newspaper">
-                                <Rotate><i className="fas fa-newspaper" onClick={this.handleOnClickNews}></i></Rotate>
-                            </div>
-
-                            <div className="productive-icons icon-podcast">
-                                <Rotate><i className="fas fa-podcast" onClick={this.handleOnClickPodcast}></i></Rotate>
-                            </div>
-
-                            <div className="productive-icons icon-music">
-                                <Rotate><i className="fas fa-music" onClick={this.handleOnClickMusic}></i></Rotate>
-                            </div>
-
-                            <div className="productive-icons icon-video">
-                                <Rotate><i className="fas fa-video" onClick={this.handleOnClickVideo}></i></Rotate>
-                            </div> */}
-
-                            <Link to="/">Go home</Link>
-                        </div>
-                    </div>
-
-                </div>
             </div>
         );
     }
