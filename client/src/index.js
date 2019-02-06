@@ -8,9 +8,9 @@ import { Route, BrowserRouter as Router } from 'react-router-dom';
 import axios from "axios";
 
 // Our Components
-import Login from './pages/Login';
+import Login from './pages/Login/Login';
 import Profile from './pages/Profile';
-import Signup from './pages/Signup';
+import Signup from './pages/Signup/Signup';
 import Camera from './pages/Camera/Camera';
 import Productive from './pages/Productive/Productive';
 import Bored from './pages/Bored/Bored';

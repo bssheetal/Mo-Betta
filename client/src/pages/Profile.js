@@ -13,15 +13,20 @@ class Profile extends Component {
   };
 
   componentDidMount() {
-    if (localStorage.getItem("mobetta_layout") === "small") {
-      this.setState({
-        smallScreen: true
-      });
+    if (localStorage.getItem("mobetta_layout")) {
+      if (localStorage.getItem("mobetta_layout") === "small") {
+        this.setState({
+          smallScreen: true
+        });
+      } else {
+        this.setState({
+          smallScreen: false
+        });
+      };
     } else {
-      this.setState({
-        smallScreen: false
-      });
-    };
+      localStorage.setItem("mobetta_layout", "small");
+    }
+
 
     API.getUser(this.props.user.id).then(res => {
       this.setState({

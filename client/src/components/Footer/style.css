@@ -1,5 +1,6 @@
 .footer {
-    background-color: #f4f4f4;
+    /* background-color: #f4f4f4; */
+    background: linear-gradient(to right, #f6f1d3,#648880, #f6f1d3, #293f50);
     position: fixed;
     left: 0;
     bottom: 0;

@@ -54,6 +54,24 @@ class Productive extends Component {
         //     StockSearch: 'BA'
         // });
 
+        setTimeout(() => {
+            if (localStorage.getItem("mobetta_layout") === "large") {
+                this.setState({
+                    smallScreen: false
+                });
+            } else {
+                this.setState({
+                    smallScreen: true,
+                    stockDisplay: "block",
+                    newsDisplay: "none",
+                    podcastDisplay: "none",
+                    musicDisplay: "none",
+                    videoDisplay: "none",
+                    chatDisplay: "none"
+                });
+            };
+        }, 100);
+
         this.handleFormSubmit("BA");
         this.loaddefaultchartforstock("BA");
         this.chartdisplay();
@@ -67,24 +85,6 @@ class Productive extends Component {
             // console.log("========state========")
             // console.log(this.state.news);
         });
-
-        setTimeout(() => {
-            if (localStorage.getItem("mobetta_layout") === "small") {
-                this.setState({
-                    smallScreen: true,
-                    stockDisplay: "block",
-                    newsDisplay: "none",
-                    podcastDisplay: "none",
-                    musicDisplay: "none",
-                    videoDisplay: "none",
-                    chatDisplay: "none"
-                });
-            } else {
-                this.setState({
-                    smallScreen: false
-                });
-            };
-        }, 100);
 
     }
 
@@ -307,11 +307,6 @@ class Productive extends Component {
         e.preventDefault();
 
         this.setState({
-            // stockDisplay: "none",
-            // newsDisplay: "none",
-            // podcastDisplay: "none",
-            // musicDisplay: "none",
-            // videoDisplay: "block"
             displayStockCard: false,
             displayNewsCard: false,
             displayPodcastCard: false,
@@ -520,8 +515,6 @@ class Productive extends Component {
                         {this.renderCardStock(isLoaded, inactiveStyles.cardStock)}
                         {this.renderCardVideo(inactiveStyles.cardVideo)}
                         {this.renderCardChat(inactiveStyles.cardChat)}
-
-                        <Link to="/">Go home</Link>
                     </div>
                 </div>
 
@@ -560,8 +553,6 @@ class Productive extends Component {
                         <div className="productive-icons icon-chat">
                             <Rotate><i className="fas fa-comments" onClick={this.handleOnClickIconChat}></i></Rotate>
                         </div>
-
-                        <Link to="/">Go home</Link>
                     </div>
                     </div>
                 </div>

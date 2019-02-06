@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import AuthService from '../../components/AuthService';
-import API from '../../utils/API';
+import { Link } from 'react-router-dom';
 import './style.css';
 
-class Signup extends Component {
+class Login extends Component {
   constructor() {
     super();
     this.Auth = new AuthService();
@@ -18,13 +17,18 @@ class Signup extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    API.signUpUser(this.state.username, this.state.email, this.state.password)
+
+    this.Auth.login(this.state.email, this.state.password)
       .then(res => {
-        // once the user has signed up
-        // send them to the login page
-        this.props.history.replace('/login');
+        // once user is logged in
+        // take them to their profile page
+        // this.props.history.replace(`/profile`);
+        localStorage.setItem("mobetta_layout", "small");
+        this.props.history.replace(`/`);
       })
-      .catch(err => alert(err));
+      .catch(err => {
+        alert(err.response.data.message)
+      });
   };
 
   handleChange = event => {
@@ -34,21 +38,11 @@ class Signup extends Component {
     });
   };
 
-  // cardSingup = () => {
+  // cardSingin = () => {
   //   return (
   //     <div className="container">
-
-  //       <h1>Signup</h1>
+  //       <h1>Login</h1>
   //       <form onSubmit={this.handleFormSubmit}>
-  //         <div className="form-group">
-  //           <label htmlFor="username">Username:</label>
-  //           <input className="form-control"
-  //             placeholder="Username goes here..."
-  //             name="username"
-  //             type="text"
-  //             id="username"
-  //             onChange={this.handleChange} />
-  //         </div>
   //         <div className="form-group">
   //           <label htmlFor="email">Email address:</label>
   //           <input className="form-control"
@@ -69,42 +63,34 @@ class Signup extends Component {
   //         </div>
   //         <button type="submit" className="btn btn-primary">Submit</button>
   //       </form>
-  //       <p><Link to="/login">Go to Login</Link></p>
+  //       <p><Link to="/signup">Go to Signup</Link></p>
   //     </div>
   //   );
-  // }
+  // };
+
 
   render() {
     return (
-          <div className="container signup-container">
-          <div className="row">
-            <div className="col-lg-10 col-xl-9 mx-auto">
-              <div className="card card-signin flex-row my-5">
-                <div className="card-img-left d-none d-md-flex">
+        <div class="container signin-container">
+          <div class="row">
+            <div class="col-lg-10 col-xl-9 mx-auto">
+              <div class="card card-signin flex-row my-5">
+                <div class="card-img-left d-none d-md-flex">
                 </div>
-                <div className="card-body">
-                  <h1 className="card-title text-center"><b>Mo Betta</b></h1>
-
-                  <div className="row">
-                    <div className="col-md-12">
-                      <h4>Sign Up Page</h4>
+                <div class="card-body">
+                  <h1 class="card-title text-center"><b>Mo Betta</b></h1>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <h4>Login Page</h4>
                     </div>
                   </div>
-                  <div className="row">
-                    <div className="col-md-12">
+                  <div class="row">
+                    <div class="col-md-12">
                       <form onSubmit={this.handleFormSubmit}>
-                        <div className="form-group">
-                          <label htmlFor="city">Username</label>
-                          <input className="form-control"
-                            type="text"
-                            name="username"
-                            id="username"
-                            placeholder="User name"
-                            onChange={this.handleChange} />
-                        </div>
-                        <div className="form-group">
-                          <label htmlFor="email">Email address</label>
-                          <input className="form-control"
+                        <div class="form-group">
+                          <label for="email">Email address</label>
+                          <input
+                            class="form-control"
                             type="email"
                             name="email"
                             id="email"
@@ -112,9 +98,10 @@ class Signup extends Component {
                             placeholder="Enter email"
                             onChange={this.handleChange} />
                         </div>
-                        <div className="form-group">
-                          <label htmlFor="password">Password</label>
-                          <input className="form-control"
+                        <div class="form-group">
+                          <label for="password">Password</label>
+                          <input
+                            class="form-control"
                             type="password"
                             name="password"
                             id="pwd"
@@ -122,7 +109,7 @@ class Signup extends Component {
                             onChange={this.handleChange} />
                         </div>
 
-                        <button type="submit" className="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
                       </form>
                     </div>
                   </div>
@@ -131,8 +118,8 @@ class Signup extends Component {
             </div>
           </div>
         </div>
-
     );
   }
 }
-export default Signup;
+
+export default Login;
