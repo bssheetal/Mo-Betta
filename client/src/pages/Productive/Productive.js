@@ -16,12 +16,8 @@ import './style.css'
 import PodCast from '../../components/PodCast/PodCast';
 import ChartLineGraph from '../../components/ChartLineGraph';
 import Rotate from 'react-reveal/Rotate';
-<<<<<<< HEAD
 import Chat from '../../components/Chat';
 import Music from '../../components/Music';
-=======
-// import Chat from '../../components/Chat';
->>>>>>> a3f521ee4fbc39f732da57e9dc081747cef8aad1
 
 class Productive extends Component {
     state = {
