@@ -178,9 +178,9 @@ class App extends Component {
           <h2>Welcome {this.state.username}</h2>
         </div>
         <p className="App-intro">
-          <div>
+          {/* <div>
             <button type="button" className="btn btn-warning rounded-0 m-2" onClick={this.goToCamera} >Go to Camera</button>
-          </div>
+          </div> */}
 
           {/* <button type="button" className="btn btn-primary rounded-0 m-2" onClick={this.goToEditProfile}>Go to Profile</button>
           <button type="button" className="btn btn-danger rounded-0 m-2" onClick={this.handleLogout}>Logout</button> */}
