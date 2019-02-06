@@ -56,7 +56,7 @@ class Profile extends Component {
         width: "400px"
       },
       smallScreen: {
-        backgroundColor: "#4b86b4",
+        backgroundColor: "#293f50",
         color: "#fff"
       },
       largeScreen: {

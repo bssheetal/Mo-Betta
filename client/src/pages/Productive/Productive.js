@@ -34,7 +34,7 @@ class Productive extends Component {
         isLoading: false,
         parentComponent: "productive",
         news: [],
-        smallScreen: false,
+        smallScreen: true,
         stockDisplay: "block",
         newsDisplay: "block",
         podcastDisplay: "block",
@@ -68,21 +68,24 @@ class Productive extends Component {
             // console.log(this.state.news);
         });
 
-        if (localStorage.getItem("mobetta_layout") === "small") {
-            this.setState({
-                smallScreen: true,
-                stockDisplay: "block",
-                newsDisplay: "none",
-                podcastDisplay: "none",
-                musicDisplay: "none",
-                videoDisplay: "none",
-                chatDisplay: "none"
-            });
-        } else {
-            this.setState({
-                smallScreen: false
-            });
-        };
+        setTimeout(() => {
+            if (localStorage.getItem("mobetta_layout") === "small") {
+                this.setState({
+                    smallScreen: true,
+                    stockDisplay: "block",
+                    newsDisplay: "none",
+                    podcastDisplay: "none",
+                    musicDisplay: "none",
+                    videoDisplay: "none",
+                    chatDisplay: "none"
+                });
+            } else {
+                this.setState({
+                    smallScreen: false
+                });
+            };
+        }, 100);
+
     }
 
     handleOnClickButton = e => {
