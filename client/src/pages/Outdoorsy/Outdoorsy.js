@@ -6,14 +6,14 @@ import Jumbotron from '../../components/Jumbotron';
 import './style.css';
 import Video from '../../components/Video'
 import Card from '../../components/Card';
-// import { NewsList, NewsListItem } from '../../components/NewsList';
+import { NewsList, NewsListItem } from '../../components/NewsList';
 import { Container, Row, Col } from '../../components/Grid';
 import './style.css'
-// import PodCast from '../../components/PodCast/PodCast';
+import PodCast from '../../components/PodCast/PodCast';
 import Rotate from 'react-reveal/Rotate';
 import Chat from '../../components/Chat';
 import Music from '../../components/Music';
-import PodCast from '../../components/PodCast/PodCast';
+
 
 class Outdoorsy extends Component {
     state = {
@@ -201,7 +201,7 @@ class Outdoorsy extends Component {
     renderCardNews = (styles) => {
         return (
             <div id="card-news">
-                {/* <Card title="Business News" style={styles} onClick={this.handleOnClickCardNews}>
+                <Card title="Business News" style={styles} onClick={this.handleOnClickCardNews}>
                     <Container>
                         <Col size="xs-6">
 
@@ -219,7 +219,7 @@ class Outdoorsy extends Component {
                             </NewsList>
                         </Col>
                     </Container>
-                </Card> */}
+                </Card>
             </div>
         );
     };
@@ -276,8 +276,8 @@ class Outdoorsy extends Component {
                 <div className="col-sm-3">
                     <div className="container text-center large-left-section">
                         {this.renderCardMusic(inactiveStyles.cardMusic)}
-                        {/* {this.renderCardNews(inactiveStyles.cardNews)} */}
-                        {/* {this.renderCardPodcast(inactiveStyles.cardPodcast)} */}
+                        {this.renderCardNews(inactiveStyles.cardNews)}
+                        {this.renderCardPodcast(inactiveStyles.cardPodcast)}
                     </div>
 
                 </div>
@@ -285,8 +285,8 @@ class Outdoorsy extends Component {
                 {/* CENTER section */}
                 <div className="col-sm-6">
                     <div className="container text-center large-middle-section">
-                        {/* {this.state.displayNewsCard ? this.renderCardNews(activeStyles.cardNews) : null} */}
-                        {/* {this.state.displayPodcastCard ? this.renderCardPodcast(activeStyles.cardPodcast) : null} */}
+                        {this.state.displayNewsCard ? this.renderCardNews(activeStyles.cardNews) : null}
+                        {this.state.displayPodcastCard ? this.renderCardPodcast(activeStyles.cardPodcast) : null}
                         {this.state.displayChatCard ? this.renderCardChat(activeStyles.cardChat) : null}
                         {this.state.displayMusicCard ? this.renderCardMusic(activeStyles.cardMusic) : null}
                         {this.state.displayVideoCard ? this.renderCardVideo(activeStyles.cardVideo) : null}
@@ -313,13 +313,13 @@ class Outdoorsy extends Component {
                     <div className="sidebar">
                         <div className="container text-center small-right-section activity-icons">
                             <br></br>
-                            {/* <div className="productive-icons icon-newspaper">
+                            <div className="productive-icons icon-newspaper">
                                 <Rotate><i className="fas fa-newspaper" onClick={this.handleOnClickIconNews}></i></Rotate>
-                            </div> */}
+                            </div>
 
-                            {/* <div className="productive-icons icon-podcast">
+                            <div className="productive-icons icon-podcast">
                                 <Rotate><i className="fas fa-podcast" onClick={this.handleOnClickIconPodcast}></i></Rotate>
-                            </div> */}
+                            </div>
 
                             <div className="productive-icons icon-music">
                                 <Rotate><i className="fas fa-music" onClick={this.handleOnClickIconMusic}></i></Rotate>
