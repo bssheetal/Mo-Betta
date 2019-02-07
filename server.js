@@ -98,6 +98,7 @@ app.use(function (err, req, res, next) {
 });
 
 
+// app.get("/news", isAuthenticated, (req, res) => {
 app.get("/news", (req, res) => {
   // console.log(req.query.q);
   // console.log(req.headers.referer);
@@ -121,19 +122,19 @@ app.get("/news", (req, res) => {
     case ('http://localhost:3000/bored'):
       theUrl = usaTodayUrl + entertainUrl
       break;
-      case ('http://localhost:3000/hungry'):
+    case ('http://localhost:3000/hungry'):
       theUrl = usaTodayUrl + foodUrl
       break;
-      case ('http://localhost:3000/outdoorsy'):
+    case ('http://localhost:3000/outdoorsy'):
       theUrl = usaTodayUrl + lifeUrl
       break;
-      case ('http://localhost:3000/productive'):
+    case ('http://localhost:3000/productive'):
       theUrl = usaTodayUrl + marketsUrl
       break;
-      case ('http://localhost:3000/relax'):
+    case ('http://localhost:3000/relax'):
       theUrl = usaTodayUrl + lifeUrl
       break;
-      case ('http://localhost:3000/uplift'):
+    case ('http://localhost:3000/uplift'):
       theUrl = usaTodayUrl + lifeUrl
       break;
   }

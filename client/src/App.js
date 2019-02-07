@@ -47,8 +47,8 @@ class App extends Component {
     this.videoDisplay();
 
     setTimeout(() => {
-      TextToSpeech.speak(`Hi ${this.state.username}, do you want to take a picture? If yes, please say YES and look at the camera. If no, please say load an image or choose my emotion.`);
-    }, 100);
+      TextToSpeech.speak(`Hi ${this.state.username}, do you want to take a picture? If yes, please look at the camera. If no, please click on upload image or choose an emotion.`);
+    }, 2000);
 
   };
 
