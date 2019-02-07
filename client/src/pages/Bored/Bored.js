@@ -7,6 +7,17 @@ import './style.css';
 import Modal from '../../components/Modal'
 import Video from '../../components/Video'
 
+const customStyles = {
+    content : {
+      top                   : '50%',
+      left                  : '50%',
+      right                 : 'auto',
+      bottom                : 'auto',
+      marginRight           : '-50%',
+      transform             : 'translate(-50%, -50%)'
+    }
+  };
+
 class Bored extends Component {
     handleOnClickButton = e => {
         e.preventDefault();
@@ -17,6 +28,12 @@ class Bored extends Component {
             })
             .catch(err => console.log(err));
     };
+
+    handleCloseModal() {
+        this.setState({ showModal: false });
+        console.log("YES!!!");
+    }
+
 
     render() {
         const styles = {
@@ -34,7 +51,12 @@ class Bored extends Component {
                     <h1>Bored</h1>
                 </Jumbotron> */}
 
-                <Modal>
+                <Modal
+                    style={customStyles}
+                    contentLabel="Camera"
+                    handleCloseModal={this.handleCloseModal}
+
+                >
                     <Video
                         searchTerm="One and Only Adele"
                         numberOfResults="1"
