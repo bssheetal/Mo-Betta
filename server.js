@@ -49,7 +49,7 @@ app.post('/api/login', (req, res) => {
   }).then(user => {
     user.verifyPassword(req.body.password, (err, isMatch) => {
       if (isMatch && !err) {
-        let token = jwt.sign({ id: user._id, email: user.email, username: user.username }, 'all sorts of code up in here', { expiresIn: 129600 }); // Sigining the token
+        let token = jwt.sign({ id: user._id, email: user.email, username: user.username }, process.env.SERVER_SECRET, { expiresIn: 129600 }); // Sigining the token
         res.json({ success: true, message: "Token Issued!", token: token, user: user });
       } else {
         res.status(401).json({ success: false, message: "Authentication failed. Wrong password." });
