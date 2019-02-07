@@ -204,7 +204,7 @@ class App extends Component {
         <div className="App-header">
           {/* <h2>Welcome {this.state.username}</h2> */}
         </div>
-        <p className="App-intro">
+        <div className="App-intro">
           {/* <div>
             <button type="button" className="btn btn-warning rounded-0 m-2" onClick={this.goToCamera} >Go to Camera</button>
           </div> */}
@@ -249,7 +249,7 @@ class App extends Component {
             </React.Fragment>
           </div>
 
-        </p>
+        </div>
 
       </div >
     );
