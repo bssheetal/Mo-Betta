@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import API from '../../utils/API';
 import Button from '../../components/Button';
 import Card from '../Card';
+import Video from '../Video';
 
 class Music extends Component {
     state = {
@@ -11,32 +12,33 @@ class Music extends Component {
         songs: []
     }
 
-
-    handleOnClickButton = () => {
+    componentDidMount() {
         API.spotify(this.props.mood).then(res => {
             this.setState({
                 songs: res.data
             });
         })
             .catch(err => console.log(err));
-    }
+    };
 
     render() {
         return (
             <div className="Songs">
-                {/* <h1>My Music Component</h1> */}
-                <Button onClick={this.handleOnClickButton}>get music list</Button>
                 {this.state.songs.map(item => (
                     <div>
-                        <Card>
-                            
-                            <p>Song Name: {item.songName}</p>
-
+                        <Card
+                            title={item.songName}
+                            style={this.props.style}
+                        >
                             <p>Artist: {item.artists}</p>
-
                             <p>Album: {item.album}</p>
-                        </Card>
 
+                            <Video
+                                searchTerm={item.songName}
+                                numberOfResults="1"
+                            >
+                            </Video>
+                        </Card>
                     </div>
                 ))}
             </div>

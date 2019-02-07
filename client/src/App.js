@@ -47,8 +47,8 @@ class App extends Component {
     this.videoDisplay();
 
     setTimeout(() => {
-      TextToSpeech.speak(`Hi ${this.state.username}, do you want to take a picture? If yes, please say YES and look at the camera. If no, please say load an image or choose my emotion.`);
-    }, 100);
+      TextToSpeech.speak(`Hi ${this.state.username}, do you want to take a picture? If yes, please look at the camera. If no, please click on upload image or choose an emotion.`);
+    }, 2000);
 
   };
 
@@ -204,7 +204,7 @@ class App extends Component {
         <div className="App-header">
           {/* <h2>Welcome {this.state.username}</h2> */}
         </div>
-        <p className="App-intro">
+        <div className="App-intro">
           {/* <div>
             <button type="button" className="btn btn-warning rounded-0 m-2" onClick={this.goToCamera} >Go to Camera</button>
           </div> */}
@@ -249,7 +249,7 @@ class App extends Component {
             </React.Fragment>
           </div>
 
-        </p>
+        </div>
 
       </div >
     );
