@@ -469,7 +469,13 @@ class Productive extends Component {
     renderCardMusic = (styles) => {
         return (
             <div>
-                  <Music style={styles}></Music>
+                {this.state.smallScreen ?
+                    <Music style={styles}></Music>
+                :
+                <Card id="card-music" title="Music" style={styles} onClick={this.handleOnClickCardMusic}>
+                    <Music style={styles}></Music>
+                </Card>
+                }
             </div>
         );
     };
