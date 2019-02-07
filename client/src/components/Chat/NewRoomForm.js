@@ -22,6 +22,7 @@ class NewRoomForm extends React.Component {
         e.preventDefault()
         // Passing the roomName via props and createRoom method in Chat
         this.props.createRoom(this.state.roomName)
+        // Clearing roomName field after submit
         this.setState({roomName: ''})
     }
     
@@ -31,7 +32,7 @@ class NewRoomForm extends React.Component {
             {/* onSubmit handler which calls createRoom and sets state */}
                 <form onSubmit={this.handleSubmit}>
                     <input
-                    // Setting value to roomName in state to have a controlled form
+                    // Setting value to roomName in state to have a controlled form...circles back to the state set above from the submit and sets the value from the state...to guarentee agreement
                         value={this.state.roomName}
                         onChange={this.handleChange}
                         type="text" 

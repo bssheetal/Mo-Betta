@@ -9,7 +9,7 @@ class Uplift extends Component {
     handleOnClickButton = e => {
         e.preventDefault();
 
-        API.spotify("uplift")
+        API.spotify("mozart")
             .then(res => {
                 console.log(res.data);
             })
