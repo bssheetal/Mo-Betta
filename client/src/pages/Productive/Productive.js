@@ -17,7 +17,6 @@ import PodCast from '../../components/PodCast/PodCast';
 import ChartLineGraph from '../../components/ChartLineGraph';
 import Rotate from 'react-reveal/Rotate';
 import Chat from '../../components/Chat';
-import Music from '../../components/Music';
 
 class Productive extends Component {
     state = {
@@ -91,7 +90,7 @@ class Productive extends Component {
 
     handleOnClickButton = e => {
         e.preventDefault();
-        API.spotify("work")
+        API.spotify("productive")
             .then(res => {
                 console.log(res.data);
             })
@@ -460,7 +459,7 @@ class Productive extends Component {
         return (
             <Card id="card-chat" title="Chat" style={styles} onClick={this.handleOnClickCardChat}>
                 <Container>
-                    {/* <Chat /> */}
+                    <Chat />
                 </Container>
             </Card>
         );
@@ -469,9 +468,7 @@ class Productive extends Component {
     renderCardMusic = (styles) => {
         return (
             <Card id="card-music" title="Music" style={styles} onClick={this.handleOnClickCardMusic}>
-                <Container>
-                    <Music />
-                </Container>   
+                <Button onClick={this.handleOnClickButton}>get music list</Button>
             </Card>
         );
     };
@@ -506,7 +503,7 @@ class Productive extends Component {
                         {this.state.displayStockCard ? this.renderCardStock(isLoaded, activeStyles.cardStock) : null}
                         {this.state.displayNewsCard ? this.renderCardNews(activeStyles.cardNews) : null}
                         {this.state.displayPodcastCard ? this.renderCardPodcast(activeStyles.cardPodcast) : null}
-                        {/* {this.state.displayChatCard ? this.renderCardChat(activeStyles.cardChat) : null} */}
+                        {this.state.displayChatCard ? this.renderCardChat(activeStyles.cardChat) : null}
                         {this.state.displayMusicCard ? this.renderCardMusic(activeStyles.cardMusic) : null}
                         {this.state.displayVideoCard ? this.renderCardVideo(activeStyles.cardVideo) : null}
                     </div>
@@ -517,7 +514,7 @@ class Productive extends Component {
                     <div className="container text-center large-right-section">
                         {this.renderCardStock(isLoaded, inactiveStyles.cardStock)}
                         {this.renderCardVideo(inactiveStyles.cardVideo)}
-                        {/* {this.renderCardChat(inactiveStyles.cardChat)} */}
+                        {this.renderCardChat(inactiveStyles.cardChat)}
                     </div>
                 </div>
 
@@ -528,35 +525,35 @@ class Productive extends Component {
     renderSmallScreen = (isLoaded, smallScreenStyles) => {
         return (
             <div className="row">
-                {/* LEFT section */}
+                {/* LEFT section */}               
                 <div className="col-sm-1">
-                    <div className="sidebar">
-                        <div className="container text-center small-right-section activity-icons">
-                            <br></br>
-                            <div className="productive-icons icon-stock">
-                                <Rotate><i className="fas fa-chart-line" onClick={this.handleOnClickIconStock}></i></Rotate>
-                            </div>
-
-                            <div className="productive-icons icon-newspaper">
-                                <Rotate><i className="fas fa-newspaper" onClick={this.handleOnClickIconNews}></i></Rotate>
-                            </div>
-
-                            <div className="productive-icons icon-podcast">
-                                <Rotate><i className="fas fa-podcast" onClick={this.handleOnClickIconPodcast}></i></Rotate>
-                            </div>
-
-                            <div className="productive-icons icon-music">
-                                <Rotate><i className="fas fa-music" onClick={this.handleOnClickIconMusic}></i></Rotate>
-                            </div>
-
-                            <div className="productive-icons icon-video">
-                                <Rotate><i className="fas fa-video" onClick={this.handleOnClickIconVideo}></i></Rotate>
-                            </div>
-
-                        {/* <div className="productive-icons icon-chat">
-                            <Rotate><i className="fas fa-comments" onClick={this.handleOnClickIconChat}></i></Rotate>
-                        </div> */}
+                <div className="sidebar">
+                    <div className="container text-center small-right-section activity-icons">
+                        <br></br>
+                        <div className="productive-icons icon-stock">
+                            <Rotate><i className="fas fa-chart-line" onClick={this.handleOnClickIconStock}></i></Rotate>
                         </div>
+
+                        <div className="productive-icons icon-newspaper">
+                            <Rotate><i className="fas fa-newspaper" onClick={this.handleOnClickIconNews}></i></Rotate>
+                        </div>
+
+                        <div className="productive-icons icon-podcast">
+                            <Rotate><i className="fas fa-podcast" onClick={this.handleOnClickIconPodcast}></i></Rotate>
+                        </div>
+
+                        <div className="productive-icons icon-music">
+                            <Rotate><i className="fas fa-music" onClick={this.handleOnClickIconMusic}></i></Rotate>
+                        </div>
+
+                        <div className="productive-icons icon-video">
+                            <Rotate><i className="fas fa-video" onClick={this.handleOnClickIconVideo}></i></Rotate>
+                        </div>
+
+                        <div className="productive-icons icon-chat">
+                            <Rotate><i className="fas fa-comments" onClick={this.handleOnClickIconChat}></i></Rotate>
+                        </div>
+                    </div>
                     </div>
                 </div>
 
@@ -566,7 +563,7 @@ class Productive extends Component {
                         {this.renderCardStock(isLoaded, smallScreenStyles.cardStock)}
                         {this.renderCardNews(smallScreenStyles.cardNews)}
                         {this.renderCardPodcast(smallScreenStyles.cardPodcast)}
-                        {/* {this.renderCardChat(smallScreenStyles.cardChat)} */}
+                        {this.renderCardChat(smallScreenStyles.cardChat)}
                         {this.renderCardMusic(smallScreenStyles.cardMusic)}
                         {this.renderCardVideo(smallScreenStyles.cardVideo)}
                     </div>
@@ -575,7 +572,7 @@ class Productive extends Component {
             </div>
         );
     };
-    
+
     //whth
     render() {
         const { isLoaded } = this.state;
@@ -599,12 +596,11 @@ class Productive extends Component {
             cardVideo: {
                 display: this.state.videoDisplay,
                 height: "150px"
+            },
+            cardChat: {
+                display: this.state.chatDisplay,
+                height: "150px"
             }
-            // ,
-            // cardChat: {
-            //     display: this.state.chatDisplay,
-            //     height: "150px"
-            // }
         };
 
         const activeStyles = {
@@ -632,13 +628,12 @@ class Productive extends Component {
                 display: this.state.videoDisplay,
                 height: "auto",
                 overflow: "hidden"
+            },
+            cardChat: {
+                display: this.state.chatDisplay,
+                height: "auto",
+                overflow: "hidden"
             }
-            // ,
-            // cardChat: {
-            //     display: this.state.chatDisplay,
-            //     height: "auto",
-            //     overflow: "hidden"
-            // }
         };
 
         const smallScreenStyles = {
@@ -661,12 +656,11 @@ class Productive extends Component {
             cardVideo: {
                 display: this.state.videoDisplay,
                 overflow: "hidden"
+            },
+            cardChat: {
+                display: this.state.chatDisplay,
+                overflow: "hidden"
             }
-            ,
-            // cardChat: {
-            //     display: this.state.chatDisplay,
-            //     overflow: "hidden"
-            // }
         };
 
 
