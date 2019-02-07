@@ -7,7 +7,8 @@
 
 .food-image {
     border-radius: 50%;
-    max-width: 100%;
+    width: 10%;
+    max-width: 50%;
     height: auto;
 }
 

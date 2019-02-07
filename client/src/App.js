@@ -47,7 +47,7 @@ class App extends Component {
     this.videoDisplay();
 
     setTimeout(() => {
-      TextToSpeech.speak(`Hi ${this.state.username}, do you want to take a picture? If yes, please look at the camera. If no, please click on upload image or choose an emotion.`);
+      TextToSpeech.speak(`Hi ${this.state.username}, do you want to take a picture? If yes, please look at the camera, press the button "s" and say "yes please". If no, please click on upload image or choose an emotion.`);
     }, 2000);
 
   };
@@ -124,7 +124,7 @@ class App extends Component {
             this.props.history.replace('/relax');
             break;
           case "fear":
-            break;
+            
           default:
             this.props.history.replace('/hungry');
         };
@@ -212,6 +212,7 @@ class App extends Component {
           {/* <button type="button" className="btn btn-primary rounded-0 m-2" onClick={this.goToEditProfile}>Go to Profile</button>
           <button type="button" className="btn btn-danger rounded-0 m-2" onClick={this.handleLogout}>Logout</button> */}
 
+          
           <div className="container Camera">
             <div className="card card-signin flex-row my-5">
               <div className="card-img-left d-none d-md-flex">
@@ -232,6 +233,7 @@ class App extends Component {
                 </div>
               </div>
             </div>
+            <span>Hi {this.state.username}, do you want to take a picture? If yes, please look at the camera, press the button "s" and say "yes please". If no, please click on Upload Image or choose an emotion.</span>
 
             <React.Fragment>
               <KeyHandler

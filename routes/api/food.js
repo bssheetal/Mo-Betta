@@ -6,10 +6,7 @@ const apiId = "35f188d5";
 
 // Route /api/food
 router.get("/", (req, res) => {
-
-
-    var searchText = "dumpling";
-    // var searchText = req.query.q;
+   var searchText = req.query.q;
     console.log(req.query);
 
     if (searchText) {
@@ -34,14 +31,15 @@ router.get("/", (req, res) => {
 
         axios.get(queryURL)
             .then(response => {
-                console.log(response.data);
+                // console.log(response.data);
+
                 var recipes = [];
-                for (var i = 0; i < response.hits.length; i++) {
-                    var recipeObj = { imageURL: response.hits[i].recipe.image, title: response.hits[i].recipe.label };
+                for (var i = 0; i < response.data.hits.length; i++) {
+                    
+                    var recipeObj = { imageURL: response.data.hits[i].recipe.image, title: response.data.hits[i].recipe.label };
                     recipes.push(recipeObj);
                 };
 
-                console.log(recipes);
                 res.json(recipes);
             })
             .catch(err => res.json(err));
