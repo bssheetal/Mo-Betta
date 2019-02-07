@@ -17,9 +17,9 @@ class Navbar extends Component {
         if (this.Auth.loggedIn()) {
             return (
                 <ul className="navbar-nav">
-                    <li className="nav-item">
+                    {/* <li className="nav-item">
                         <Link className="nav-link" to="/">Home</Link>
-                    </li>
+                    </li> */}
                     <li className="nav-item">
                         <Link className="nav-link" to="/profile">Profile</Link>
                     </li>
@@ -56,12 +56,12 @@ class Navbar extends Component {
                     </div>
 
                     <div className="d-md-flex">
-                        <Link className="mood-icon iangry ml-5" to="/relax"><i className="fas fa-angry"></i></Link>
-                        <Link className="mood-icon isad ml-5" to="/uplift"><i className="fas fa-frown"></i></Link>
-                        <Link className="mood-icon ineutral ml-5" to="/bored"><i className="fas fa-meh"></i></Link>
-                        <Link className="mood-icon ismile ml-5" to="/productive"><i className="fas fa-smile-beam"></i></Link>
-                        <Link className="mood-icon ilaugh ml-5" to="/outdoorsy"><i className="fas fa-laugh-beam"></i></Link>
-                        <Link className="mood-icon ihungry ml-5" to="/hungry"><i className="fas fa-grin-tongue"></i></Link>
+                        <Link className="mood-icon iangry ml-5" to="/relax"><i className="fas fa-angry" title="Relax"></i></Link>
+                        <Link className="mood-icon isad ml-5" to="/uplift"><i className="fas fa-frown"  title="Uplift"></i></Link>
+                        <Link className="mood-icon ineutral ml-5" to="/bored"><i className="fas fa-meh"  title="Bored"></i></Link>
+                        <Link className="mood-icon ismile ml-5" to="/productive"><i className="fas fa-smile-beam"  title="Productive"></i></Link>
+                        <Link className="mood-icon ilaugh ml-5" to="/outdoorsy"><i className="fas fa-laugh-beam"  title="Outdoorsy"></i></Link>
+                        <Link className="mood-icon ihungry ml-5" to="/hungry"><i className="fas fa-grin-tongue"  title="Hungry"></i></Link>
                     </div>
 
                     <div className="d-md-flex">

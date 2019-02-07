@@ -32,6 +32,8 @@ class Video extends Component {
             .catch(err => console.log(err));
     };
 
+    comp
+
     render() {
         return (
             <div className="container carousel-video text-center">
