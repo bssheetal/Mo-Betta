@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 import withAuth from '../../components/withAuth';
 import API from '../../utils/API';
-import { Link } from 'react-router-dom';
-import Input from '../../components/Input';
-import Button from '../../components/Button';
+// import { Link } from 'react-router-dom';
+// import Input from '../../components/Input';
+// import Button from '../../components/Button';
 import Card from '../../components/Card';
 import List from '../../components/List'
-import Jumbotron from '../../components/Jumbotron';
+// import Jumbotron from '../../components/Jumbotron';
 import Video from '../../components/Video';
 import { NewsList, NewsListItem } from '../../components/NewsList';
 // import News from '../../components/News';
 import { Container, Row, Col } from '../../components/Grid';
-import Thumbnail from '../../components/Thumbnail';
+// import Thumbnail from '../../components/Thumbnail';
 import './style.css'
 import PodCast from '../../components/PodCast/PodCast';
 import ChartLineGraph from '../../components/ChartLineGraph';
@@ -80,7 +80,6 @@ class Productive extends Component {
         API.scrapeNews(this.props.allResult).then(res => {
             this.setState({
                 news: res.data
-                // parentComponent: ??????
             })
             console.log("=========data======")
             console.log(res.data);

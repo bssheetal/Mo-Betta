@@ -7,7 +7,6 @@ import NewRoomForm from './NewRoomForm'
 import { tokenUrl, instanceLocator } from './config'
 import './style.css'
 import withAuth from '../withAuth'
-import API from '../../utils/API'
 
 class Chat extends React.Component {
 
@@ -32,19 +31,7 @@ class Chat extends React.Component {
     }
 
     componentDidMount() {
-        // // May have async issue with Chatkit below
-        // API.getUser(this.props.user.id).then(res => {
-        //     this.setState({
-        //         username: res.data.username,
-        //         email: res.data.email
-        //     })
-        // });
-        // this.loadChat()
 
-
-
-
-      // state not set yet
       console.log("==========username============")
     //   console.log(this.props.user.username)
       console.log(this.state.username)
