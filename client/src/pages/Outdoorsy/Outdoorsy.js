@@ -13,6 +13,7 @@ import './style.css'
 import Rotate from 'react-reveal/Rotate';
 import Chat from '../../components/Chat';
 import Music from '../../components/Music';
+import PodCast from '../../components/PodCast/PodCast';
 
 class Outdoorsy extends Component {
     state = {
@@ -21,7 +22,7 @@ class Outdoorsy extends Component {
         news: [],
         linechartelements: {},
         isLoading: false,
-        parentComponent: "productive",
+        parentComponent: "outdoorsy",
         news: [],
         smallScreen: true,
         newsDisplay: "block",
@@ -60,6 +61,15 @@ class Outdoorsy extends Component {
                 username: res.data.username,
                 email: res.data.email
             })
+        });
+        API.scrapeNews(this.props.allResult).then(res => {
+            this.setState({
+                news: res.data
+            })
+            console.log("=========data======")
+            console.log(res.data);
+            // console.log("========state========")
+            // console.log(this.state.news);
         });
     }
 
@@ -217,9 +227,9 @@ class Outdoorsy extends Component {
     renderCardPodcast = (styles) => {
         return (
             <Card id="card-podcast" title="PodCast" style={styles} onClick={this.handleOnClickCardPodcast}>
-                {/* <Container>
-                    <PodCast />
-                </Container> */}
+                <Container>
+                    <PodCast referrer={this.state.parentComponent}/>
+                </Container>
             </Card>
         );
     };

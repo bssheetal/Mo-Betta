@@ -60,6 +60,17 @@ class Relax extends Component {
                 email: res.data.email
             })
         });
+        
+        API.scrapeNews(this.props.allResult).then(res => {
+            this.setState({
+                news: res.data
+            })
+            console.log("=========data======")
+            console.log(res.data);
+            // console.log("========state========")
+            // console.log(this.state.news);
+        });
+
     }
 
     // Handle the OnClick event for icon-buttons

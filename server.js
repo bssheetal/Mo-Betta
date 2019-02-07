@@ -109,32 +109,33 @@ app.get("/news", isAuthenticated, (req, res) => {
 
   let usaTodayUrl = 'http://www.usatoday.com'
   let foodUrl = 'travel/usa-today-eats/'
-  let sportUrl = '/sports/'
-  let lifeUrl = '/life'
+  let travelUrl = '/travel/'
+  let boredUrl = '/life/books/'
   let entertainUrl = '/life/entrtainthis/'
   let marketsUrl = '/money/markets/'
+  let upliftUrl = '/opinion/cartoons/'
 
 
   let theUrl = usaTodayUrl + marketsUrl
 
   switch (refPage) {
     case ('http://localhost:3000/bored'):
-      theUrl = usaTodayUrl + entertainUrl
+      theUrl = usaTodayUrl + upliftUrl
       break;
     case ('http://localhost:3000/hungry'):
       theUrl = usaTodayUrl + foodUrl
       break;
     case ('http://localhost:3000/outdoorsy'):
-      theUrl = usaTodayUrl + lifeUrl
+      theUrl = usaTodayUrl + travelUrl
       break;
     case ('http://localhost:3000/productive'):
       theUrl = usaTodayUrl + marketsUrl
       break;
     case ('http://localhost:3000/relax'):
-      theUrl = usaTodayUrl + lifeUrl
+      theUrl = usaTodayUrl + boredUrl
       break;
     case ('http://localhost:3000/uplift'):
-      theUrl = usaTodayUrl + lifeUrl
+      theUrl = usaTodayUrl + upliftUrl
       break;
   }
 

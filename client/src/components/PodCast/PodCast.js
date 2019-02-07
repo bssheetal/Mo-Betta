@@ -6,10 +6,14 @@ import PodcastPlayer from 'react-rss-podcast-player';
 class PodCast extends Component {
     state = {
         username: "",
-        email: ""
+        email: "",
+        referer: this.props.referer
     }
 
     componentDidMount() {
+        console.log("==========referer============")
+          console.log(this.props)
+        //   console.log(this.state.referer)
         API.getUser(this.props.user.id).then(res => {
             this.setState({
                 username: res.data.username,
