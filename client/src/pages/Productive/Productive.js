@@ -76,6 +76,7 @@ class Productive extends Component {
         this.handleFormSubmit("BA");
         this.loaddefaultchartforstock("BA");
         this.chartdisplay();
+
         API.scrapeNews(this.props.allResult).then(res => {
             this.setState({
                 news: res.data
@@ -87,16 +88,23 @@ class Productive extends Component {
             // console.log(this.state.news);
         });
 
+        // May have async issue with Chatkit below
+        API.getUser(this.props.user.id).then(res => {
+            this.setState({
+                username: res.data.username,
+                email: res.data.email
+            })
+        });
     }
 
-    handleOnClickButton = e => {
-        e.preventDefault();
-        API.spotify("productive")
-            .then(res => {
-                console.log(res.data);
-            })
-            .catch(err => console.log(err));
-    };
+    // handleOnClickButton = e => {
+    //     e.preventDefault();
+    //     API.spotify("productive")
+    //         .then(res => {
+    //             console.log(res.data);
+    //         })
+    //         .catch(err => console.log(err));
+    // };
 
     handleInputChange = event => {
         const { name, value } = event.target;
@@ -371,7 +379,7 @@ class Productive extends Component {
                         <div className="row" >
                             <div className="col-md-12" id="companydetails">
                                 <br></br>
-                                <h5 classname="companynameandsymbol">{this.state.stockinfo.symbol} -{this.state.stockinfo.companyName}</h5>
+                                <h5 className="companynameandsymbol">{this.state.stockinfo.symbol} -{this.state.stockinfo.companyName}</h5>
                                 <List id="stockdetails"
                                     key={this.state.stockinfo.id}
                                     latestSource={this.state.stockinfo.latestSource}
@@ -460,7 +468,7 @@ class Productive extends Component {
         return (
             <Card id="card-chat" title="Chat" style={styles} onClick={this.handleOnClickCardChat}>
                 <Container>
-                    <Chat />
+                    <Chat userid={this.state.username} />
                 </Container>
             </Card>
         );
@@ -470,11 +478,11 @@ class Productive extends Component {
         return (
             <div>
                 {this.state.smallScreen ?
-                    <Music style={styles}></Music>
-                :
-                <Card id="card-music" title="Music" style={styles} onClick={this.handleOnClickCardMusic}>
-                    <Music style={styles}></Music>
-                </Card>
+                    <Music mood="happy" style={styles}></Music>
+                    :
+                    <Card id="card-music" title="Music" style={styles} onClick={this.handleOnClickCardMusic}>
+                        <Music mood="happy" style={styles}></Music>
+                    </Card>
                 }
             </div>
         );

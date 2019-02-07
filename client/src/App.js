@@ -47,7 +47,7 @@ class App extends Component {
     this.videoDisplay();
 
     setTimeout(() => {
-      TextToSpeech.speak(`Hi ${this.state.username}, do you want to take a picture? If yes, please look at the camera. If no, please click on upload image or choose an emotion.`);
+      TextToSpeech.speak(`Hi ${this.state.username}, do you want to take a picture? If yes, please look at the camera, press the button "s" and say "yes please". If no, please click on upload image or choose an emotion.`);
     }, 2000);
 
   };
@@ -124,7 +124,7 @@ class App extends Component {
             this.props.history.replace('/relax');
             break;
           case "fear":
-            break;
+            
           default:
             this.props.history.replace('/hungry');
         };

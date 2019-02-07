@@ -13,6 +13,8 @@ class Music extends Component {
     }
 
     componentDidMount() {
+        console.log("!!!MUSIC!!!");
+        console.log(this.props.mood);
         API.spotify(this.props.mood).then(res => {
             this.setState({
                 songs: res.data
@@ -24,9 +26,9 @@ class Music extends Component {
     render() {
         return (
             <div className="Songs">
-                {this.state.songs.map(item => (
-                    <div>
+                {this.state.songs.map((item, index) => (
                         <Card
+                            key={index}
                             title={item.songName}
                             style={this.props.style}
                         >
@@ -39,7 +41,6 @@ class Music extends Component {
                             >
                             </Video>
                         </Card>
-                    </div>
                 ))}
             </div>
         );
