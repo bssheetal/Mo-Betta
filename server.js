@@ -98,7 +98,7 @@ app.use(function (err, req, res, next) {
 });
 
 
-app.get("/news", isAuthenticated, (req, res) => {
+app.get("/news", (req, res) => {
   // console.log(req.query.q);
   // console.log(req.headers.referer);
   let ref = "";
