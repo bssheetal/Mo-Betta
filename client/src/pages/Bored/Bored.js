@@ -22,7 +22,7 @@ class Bored extends Component {
     handleOnClickButton = e => {
         e.preventDefault();
 
-        API.spotify("bored")
+        API.spotify("party")
             .then(res => {
                 console.log(res.data);
             })
