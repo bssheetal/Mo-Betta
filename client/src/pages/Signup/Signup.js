@@ -94,7 +94,7 @@ class Signup extends Component {
                     <div className="col-md-12">
                       <form onSubmit={this.handleFormSubmit}>
                         <div className="form-group">
-                          <label htmlFor="city">Username</label>
+                          <label htmlFor="username">Username</label>
                           <input className="form-control"
                             type="text"
                             name="username"
