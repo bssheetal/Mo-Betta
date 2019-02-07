@@ -150,9 +150,37 @@ class App extends Component {
   findemotion = e => {
     var data = { imageData: document.getElementById('previewimage').getAttribute("src") }
     console.log(data);
+    // API.facialRecognition(data)
+    //   .then(res => {
+    //     console.log(res.data);
+    //   })
+    //   .catch(err => console.log(err));
+
     API.facialRecognition(data)
       .then(res => {
         console.log(res.data);
+        this.setState({
+          emotion: res.data
+        });
+
+        switch (res.data) {
+          case "happiness":
+            this.props.history.replace('/productive');
+            break;
+          case "neutral":
+            this.props.history.replace('/bored');
+            break;
+          case "sadness":
+            this.props.history.replace('/uplift');
+            break;
+          case "anger":
+            this.props.history.replace('/relax');
+            break;
+          case "fear":
+            break;
+          default:
+            this.props.history.replace('/hungry');
+        };
       })
       .catch(err => console.log(err));
   }
