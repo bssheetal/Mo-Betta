@@ -556,6 +556,7 @@ class Productive extends Component {
                         {/* <div className="productive-icons icon-chat">
                             <Rotate><i className="fas fa-comments" onClick={this.handleOnClickIconChat}></i></Rotate>
                         </div> */}
+                        </div>
                     </div>
                 </div>
 
@@ -574,7 +575,7 @@ class Productive extends Component {
             </div>
         );
     };
-
+    
     //whth
     render() {
         const { isLoaded } = this.state;
