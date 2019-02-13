@@ -62,7 +62,7 @@ app.post('/api/login', (req, res) => {
 app.post('/api/signup', (req, res) => {
   db.User.create(req.body)
     .then(data => res.json(data))
-    .catch(err => res.status(400).json(err));
+    .catch(err => res.status(400).json({ success: false, message: "User signup request failed.", error: err}));
 });
 
 // Any route with isAuthenticated is protected and you need a valid token
@@ -74,7 +74,7 @@ app.get('/api/user/:id', isAuthenticated, (req, res) => {
     } else {
       res.status(404).send({ success: false, message: 'No user found' });
     }
-  }).catch(err => res.status(400).send(err));
+  }).catch(err => res.status(400).send({ success: false, message: "User not found...", error: err}));
 });
 
 // Serve up static assets (usually on heroku)
