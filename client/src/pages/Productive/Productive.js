@@ -6,7 +6,7 @@ import API from '../../utils/API';
 // import Button from '../../components/Button';
 import Card from '../../components/Card';
 import List from '../../components/List'
-// import Jumbotron from '../../components/Jumbotron';
+import Emotionsnavbar from '../../components/Emotionsnavbar';
 import Video from '../../components/Video';
 import { NewsList, NewsListItem } from '../../components/NewsList';
 // import News from '../../components/News';
@@ -680,8 +680,8 @@ class Productive extends Component {
 
         return (
             <div className="container-fluid">
-                {/* <Jumbotron>
-                </Jumbotron> */}
+                <Emotionsnavbar>
+                </Emotionsnavbar>
 
                 {this.state.smallScreen ?
                     this.renderSmallScreen(isLoaded, smallScreenStyles)

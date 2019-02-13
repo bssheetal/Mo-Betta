@@ -36,5 +36,13 @@
     "react-chartkick": "^0.3.0",
     "react-file-base64": "^1.0.3",
     "react-reveal": "^1.2.2"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bssheetal/Mo-Betta.git"
+  },
+  "bugs": {
+    "url": "https://github.com/bssheetal/Mo-Betta/issues"
+  },
+  "homepage": "https://github.com/bssheetal/Mo-Betta#readme"
 }

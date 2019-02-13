@@ -45,8 +45,8 @@ class Navbar extends Component {
 
     render() {
         return (
-            <nav className="navbar navbar-expand-lg sticky-top">
-                <div className="container-fluid">
+            <nav className="navbar navbar-expand-lg sticky-top gennavbar">
+                <div className="container-fluid maincontainer">
                     <div className="d-md-flex">
                         <Swing left><span className="navbar-brand mo">Mo</span></Swing>
                         <Swing right><span className="navbar-brand betta">Betta</span></Swing>
@@ -55,14 +55,14 @@ class Navbar extends Component {
                         <Swing right><span className="navbar-brand swings">Swings</span></Swing> */}
                     </div>
 
-                    <div className="d-md-flex">
+                    {/* <div className="d-md-flex">
                         <Link className="mood-icon iangry ml-5" to="/relax"><i className="fas fa-angry" title="Relax"></i></Link>
                         <Link className="mood-icon isad ml-5" to="/uplift"><i className="fas fa-frown"  title="Uplift"></i></Link>
                         <Link className="mood-icon ineutral ml-5" to="/bored"><i className="fas fa-meh"  title="Bored"></i></Link>
                         <Link className="mood-icon ismile ml-5" to="/productive"><i className="fas fa-smile-beam"  title="Productive"></i></Link>
                         <Link className="mood-icon ilaugh ml-5" to="/outdoorsy"><i className="fas fa-laugh-beam"  title="Outdoorsy"></i></Link>
                         <Link className="mood-icon ihungry ml-5" to="/hungry"><i className="fas fa-grin-tongue"  title="Hungry"></i></Link>
-                    </div>
+                    </div> */}
 
                     <div className="d-md-flex">
                         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
