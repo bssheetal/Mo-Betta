@@ -8,6 +8,10 @@ class Signup extends Component {
   constructor() {
     super();
     this.Auth = new AuthService();
+    
+    this.state = {
+      errmsg: ""
+    };
   }
 
   componentWillMount() {
@@ -24,7 +28,13 @@ class Signup extends Component {
         // send them to the login page
         this.props.history.replace('/login');
       })
-      .catch(err => alert(err));
+      .catch(err => {
+        // alert(err);
+        console.log(err);
+      this.setState({
+        errmsg: err.response.data.message
+      });
+    });
   };
 
   handleChange = event => {
@@ -123,6 +133,7 @@ class Signup extends Component {
                         </div>
 
                         <button type="submit" className="btn btn-primary">Submit</button>
+                        <span id="errmsg" className="text-danger ml-4">{this.state.errmsg}</span>
                       </form>
                     </div>
                   </div>

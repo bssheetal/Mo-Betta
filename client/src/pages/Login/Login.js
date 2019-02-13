@@ -7,6 +7,10 @@ class Login extends Component {
   constructor() {
     super();
     this.Auth = new AuthService();
+
+    this.state = {
+      errmsg: ""
+    };
   }
 
   componentWillMount() {
@@ -27,7 +31,10 @@ class Login extends Component {
         this.props.history.replace(`/`);
       })
       .catch(err => {
-        alert(err.response.data.message)
+        // alert(err.response.data.message)
+        this.setState({
+          errmsg: err.response.data.message
+        });
       });
   };
 
@@ -71,53 +78,54 @@ class Login extends Component {
 
   render() {
     return (
-        <div className="container signin-container">
-          <div className="row">
-            <div className="col-lg-10 col-xl-9 mx-auto">
-              <div className="card card-signin flex-row my-5">
-                <div className="card-img-left d-none d-md-flex">
-                </div>
-                <div className="card-body">
-                  <h1 className="card-title text-center"><b>Mo Betta</b></h1>
-                  <div className="row">
-                    <div className="col-md-12">
-                      <h4>Login Page</h4>
-                    </div>
+      <div className="container signin-container">
+        <div className="row">
+          <div className="col-lg-10 col-xl-9 mx-auto">
+            <div className="card card-signin flex-row my-5">
+              <div className="card-img-left d-none d-md-flex">
+              </div>
+              <div className="card-body">
+                <h1 className="card-title text-center"><b>Mo Betta</b></h1>
+                <div className="row">
+                  <div className="col-md-12">
+                    <h4>Login Page</h4>
                   </div>
-                  <div className="row">
-                    <div className="col-md-12">
-                      <form onSubmit={this.handleFormSubmit}>
-                        <div className="form-group">
-                          <label htmlFor="email">Email address</label>
-                          <input
-                            className="form-control"
-                            type="email"
-                            name="email"
-                            id="email"
-                            aria-describedby="emailHelp"
-                            placeholder="Enter email"
-                            onChange={this.handleChange} />
-                        </div>
-                        <div className="form-group">
-                          <label htmlFor="password">Password</label>
-                          <input
-                            className="form-control"
-                            type="password"
-                            name="password"
-                            id="pwd"
-                            placeholder="Password"
-                            onChange={this.handleChange} />
-                        </div>
+                </div>
+                <div className="row">
+                  <div className="col-md-12">
+                    <form onSubmit={this.handleFormSubmit}>
+                      <div className="form-group">
+                        <label htmlFor="email">Email address</label>
+                        <input
+                          className="form-control"
+                          type="email"
+                          name="email"
+                          id="email"
+                          aria-describedby="emailHelp"
+                          placeholder="Enter email"
+                          onChange={this.handleChange} />
+                      </div>
+                      <div className="form-group">
+                        <label htmlFor="password">Password</label>
+                        <input
+                          className="form-control"
+                          type="password"
+                          name="password"
+                          id="pwd"
+                          placeholder="Password"
+                          onChange={this.handleChange} />
+                      </div>
 
-                        <button type="submit" className="btn btn-primary">Submit</button>
-                      </form>
-                    </div>
+                      <button type="submit" className="btn btn-primary">Submit</button>
+                      <span id="errmsg" className="text-danger ml-4">{this.state.errmsg}</span>
+                    </form>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
+      </div>
     );
   }
 }
