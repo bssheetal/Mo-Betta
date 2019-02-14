@@ -350,8 +350,8 @@ class Productive extends Component {
             <Card id="card-stock" classname="stocksheader" title="Stocks" style={styles} onClick={this.handleOnClickCardStock}>
 
                 <div className="row" id="btn-load">
-                    <div className="col-sm-6">
-                        <div className="row">
+                    <div className="col-sm-6">                 
+                        <div className="row stocksrow">
                             <div className="col-md-8 input-group">
                                 <input
                                     value={this.state.stockSearch}
@@ -373,7 +373,7 @@ class Productive extends Component {
                                 </span>
                             </div>
                         </div>
-
+                      
 
                         <div className="row" >
                             <div className="col-md-12" id="companydetails">
