@@ -204,3 +204,299 @@ input {
     .sidebar {padding-top: 15px;}
     .sidebar a {font-size: 18px;}
   }
+
+  @media screen and (max-width:1278px)
+  {
+    body {
+     background-color: black;
+    }
+    .stocksrow
+    {
+        margin-left: 180px;
+    }
+
+    
+
+    input
+    {
+        width:10%;
+    }
+  
+    .companydetails{
+        margin-top: 2.5em;
+        text-align: left;
+        margin-left: -17rem;
+    }
+
+    .col-md-12 {
+        -ms-flex: 0 0 100%;
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    #card-stock
+    {
+        margin-left: -17rem;
+    }
+
+    .input-group .form-control {
+        position: relative;
+        z-index: 2;
+        flex: 1 1 auto;
+        width: 50%;
+        margin-bottom: 0;
+        margin-left: -6rem;
+    }
+    
+    .col-sm-11
+    {
+        margin-left: 7.6rem;
+        width: 95%;
+    }
+}
+
+@media screen and (max-width:1280px)
+  {
+    body {
+     background-color: black;
+    }
+    .stocksrow
+    {
+        margin-left: 180px;
+    }
+
+    
+
+    input
+    {
+        width:10%;
+    }
+  
+    .companydetails{
+        margin-top: 2.5em;
+        text-align: left;
+        margin-left: -17rem;
+    }
+
+    .col-md-12 {
+        -ms-flex: 0 0 100%;
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    #card-stock
+    {
+        margin-left: -17rem;
+    }
+
+    .input-group .form-control {
+        position: relative;
+        z-index: 2;
+        flex: 1 1 auto;
+        width: 50%;
+        margin-bottom: 0;
+        margin-left: -6rem;
+    }
+    
+    .col-sm-11
+    {
+        margin-left: 7.6rem;
+        width: 95%;
+    }
+}
+@media screen and (max-width:1024px)
+  {
+    body {
+     background-color: black;
+    }
+    .stocksrow
+    {
+        margin-left: 180px;
+    }
+
+    
+
+    input
+    {
+        width:10%;
+    }
+  
+    .companydetails{
+        margin-top: 2.5em;
+        text-align: left;
+        margin-left: -17rem;
+    }
+
+    .col-md-12 {
+        -ms-flex: 0 0 100%;
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    #card-stock
+    {
+        margin-left: -17rem;
+    }
+
+    .input-group .form-control {
+        position: relative;
+        z-index: 2;
+        flex: 1 1 auto;
+        width: 50%;
+        margin-bottom: 0;
+        margin-left: -10rem;
+    }
+    
+    .col-sm-11
+    {
+        margin-left: 7.6rem;
+        width: 95%;
+    }
+}
+
+@media screen and (max-width: 768px)
+{
+    .col-md-12 {
+        -ms-flex: 0 0 100%;
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+   
+    
+    .stocksrow
+    {
+        margin-left: 180px;
+    }
+
+    .col-sm-11
+    {
+        flex: 0 0 100%;
+        max-width: 86%;
+    }
+
+    .input-group .form-control {
+        position: relative;
+        z-index: 2;
+        flex: 1 1 auto;
+        width: 50%;
+        margin-bottom: 0;
+        margin-left: -14rem;
+    }
+    
+    .col-sm-11
+    {
+        margin-left: 7.6rem;
+        width: 95%;
+    }
+}
+
+@media screen and (max-width: 1110px)
+{
+    .col-md-12 {
+        -ms-flex: 0 0 100%;
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    #card-stock
+    {
+        margin-left: -17rem;
+    }
+
+   .col-sm-11
+    {
+        margin-left: 8rem;
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 992px)
+{
+    .col-md-12 {
+        -ms-flex: 0 0 100%;
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    #card-stock
+    {
+        margin-left: -17rem;
+    }
+
+   .col-sm-11
+    {
+        margin-left: 8rem;
+        width: 100%;
+    }
+
+    
+}
+
+@media screen and (max-width: 978px)
+{
+    .col-md-12 {
+        -ms-flex: 0 0 100%;
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+   
+   .col-sm-11
+    {
+        margin-left: 7.6rem;
+        width: 51%;
+    }
+    
+
+    .col-md-8
+    {
+        margin-left: 1.6rem;
+        width: 100%;
+    }
+
+    .stocksrow
+    {
+        margin-left: 180px;
+    }
+
+    .stocksearchnbtncontainer
+    {
+        margin-left: 1.6rem;
+        width: 50%;
+    }
+}
+
+@media screen and (max-width: 375px)
+{
+    .sidebar {
+        padding-top: 100px;
+        width:70px;
+    }
+    .sidebar a {font-size: 18px;}
+
+    .col-md-12 {
+        -ms-flex: 0 0 100%;
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+
+    .col-sm-11
+    {
+        flex: 0 0 100%;
+        max-width: 96%;
+        margin-left:2.6rem;
+    }
+
+    .input-group .form-control {
+        position: relative;
+        z-index: 2;
+        flex: 1 1 auto;
+        width: 50%;
+        margin-bottom: 0;
+        margin-left: -14rem;
+    }
+    
+    
+}
