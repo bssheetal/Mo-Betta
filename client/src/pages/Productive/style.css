@@ -207,9 +207,7 @@ input {
 
   @media screen and (max-width:1278px)
   {
-    body {
-     background-color: black;
-    }
+    
     .stocksrow
     {
         margin-left: 180px;
@@ -257,9 +255,7 @@ input {
 
 @media screen and (max-width:1280px)
   {
-    body {
-     background-color: black;
-    }
+    
     .stocksrow
     {
         margin-left: 180px;
@@ -306,9 +302,7 @@ input {
 }
 @media screen and (max-width:1024px)
   {
-    body {
-     background-color: black;
-    }
+    
     .stocksrow
     {
         margin-left: 180px;
