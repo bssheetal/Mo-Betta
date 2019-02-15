@@ -1,17 +1,12 @@
 import React, { Component } from 'react';
 import withAuth from '../../components/withAuth';
 import API from '../../utils/API';
-// import { Link } from 'react-router-dom';
-// import Input from '../../components/Input';
-// import Button from '../../components/Button';
 import Card from '../../components/Card';
 import List from '../../components/List'
 import Emotionsnavbar from '../../components/Emotionsnavbar';
 import Video from '../../components/Video';
 import { NewsList, NewsListItem } from '../../components/NewsList';
-// import News from '../../components/News';
 import { Container, Row, Col } from '../../components/Grid';
-// import Thumbnail from '../../components/Thumbnail';
 import './style.css'
 import PodCast from '../../components/PodCast/PodCast';
 import ChartLineGraph from '../../components/ChartLineGraph';
@@ -537,10 +532,54 @@ class Productive extends Component {
     };
 
     renderSmallScreen = (isLoaded, smallScreenStyles) => {
+        var MenuStyles = {
+            bmBurgerButton: {
+              position: 'fixed',
+              width: '36px',
+              height: '30px',
+              left: '95%',
+              top: '12%'
+            },
+            bmBurgerBars: {
+              background: '#373a47'
+            },
+            bmBurgerBarsHover: {
+              background: '#a90000'
+            },
+            bmCrossButton: {
+              height: '24px',
+              width: '24px'
+            },
+            bmCross: {
+              background: '#bdc3c7'
+            },
+            bmMenuWrap: {
+              position: 'fixed',
+              height: '100%'
+            },
+            bmMenu: {
+              background: '#373a47',
+              padding: '2.5em 1.5em 0',
+              fontSize: '1.15em'
+            },
+            bmMorphShape: {
+              fill: '#373a47'
+            },
+            bmItemList: {
+              color: '#b8b7ad',
+              padding: '0.8em'
+            },
+            bmItem: {
+              display: 'inline-block'
+            },
+            bmOverlay: {
+              background: 'rgba(0, 0, 0, 0.3)'
+            }
+          }
+
         return (
             <div>
-                <Emotionsnavbar>
-                </Emotionsnavbar>
+                <Emotionsnavbar />
 
                 <div className="row">
                     {/* LEFT section */}

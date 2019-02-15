@@ -13,6 +13,7 @@ import imgFood5 from "../../images/food5.jpg";
 import Card from '../../components/Card';
 import Music from '../../components/Music';
 import Video from '../../components/Video';
+import Emotionsnavbar from '../../components/Emotionsnavbar';
 
 class Hungry extends Component {
     state = {
@@ -105,6 +106,8 @@ class Hungry extends Component {
                     <img className="food-image mr-5 mt-5" src={imgFood4} alt="food4" onClick={this.handleOnClickImageButtonFour}></img>
                     <img className="food-image mt-5" src={imgFood5} alt="food5" onClick={this.handleOnClickImageButtonFive}></img>
                 </Jumbotron>
+
+                <Emotionsnavbar />
 
                 <section className="container" id="recipes">
                     {this.state.recipes.map((recipe, index) => (

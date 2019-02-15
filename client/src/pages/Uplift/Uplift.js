@@ -13,6 +13,7 @@ import PodCast from '../../components/PodCast/PodCast';
 import Rotate from 'react-reveal/Rotate';
 import Chat from '../../components/Chat';
 import Music from '../../components/Music';
+import Emotionsnavbar from '../../components/Emotionsnavbar';
 
 class Uplift extends Component {
     state = {
@@ -248,10 +249,10 @@ class Uplift extends Component {
             <div>
                 {this.state.smallScreen ?
                     <Music mood="the sound of music" style={styles}></Music>
-                :
-                <Card id="card-music" title="Music" style={styles} onClick={this.handleOnClickCardMusic}>
-                    <Music mood="the sound of music" style={styles}></Music>
-                </Card>
+                    :
+                    <Card id="card-music" title="Music" style={styles} onClick={this.handleOnClickCardMusic}>
+                        <Music mood="the sound of music" style={styles}></Music>
+                    </Card>
                 }
             </div>
         );
@@ -306,46 +307,50 @@ class Uplift extends Component {
 
     renderSmallScreen = (isLoaded, smallScreenStyles) => {
         return (
-            <div className="row">
-                {/* LEFT section */}
-                <div className="col-sm-1">
-                    <div className="sidebar">
-                        <div className="container text-center small-right-section activity-icons">
-                            <br></br>
-                            <div className="productive-icons icon-newspaper">
-                                <Rotate><i className="fas fa-newspaper" onClick={this.handleOnClickIconNews}></i></Rotate>
-                            </div>
+            <div>
+                <Emotionsnavbar />
 
-                            <div className="productive-icons icon-podcast">
-                                <Rotate><i className="fas fa-podcast" onClick={this.handleOnClickIconPodcast}></i></Rotate>
-                            </div>
+                <div className="row">
+                    {/* LEFT section */}
+                    <div className="col-sm-1">
+                        <div className="sidebar">
+                            <div className="container text-center small-right-section activity-icons">
+                                <br></br>
+                                <div className="productive-icons icon-newspaper">
+                                    <Rotate><i className="fas fa-newspaper" onClick={this.handleOnClickIconNews}></i></Rotate>
+                                </div>
 
-                            <div className="productive-icons icon-music">
-                                <Rotate><i className="fas fa-music" onClick={this.handleOnClickIconMusic}></i></Rotate>
-                            </div>
+                                <div className="productive-icons icon-podcast">
+                                    <Rotate><i className="fas fa-podcast" onClick={this.handleOnClickIconPodcast}></i></Rotate>
+                                </div>
 
-                            <div className="productive-icons icon-video">
-                                <Rotate><i className="fas fa-video" onClick={this.handleOnClickIconVideo}></i></Rotate>
-                            </div>
+                                <div className="productive-icons icon-music">
+                                    <Rotate><i className="fas fa-music" onClick={this.handleOnClickIconMusic}></i></Rotate>
+                                </div>
 
-                            <div className="productive-icons icon-chat">
-                                <Rotate><i className="fas fa-comments" onClick={this.handleOnClickIconChat}></i></Rotate>
+                                <div className="productive-icons icon-video">
+                                    <Rotate><i className="fas fa-video" onClick={this.handleOnClickIconVideo}></i></Rotate>
+                                </div>
+
+                                <div className="productive-icons icon-chat">
+                                    <Rotate><i className="fas fa-comments" onClick={this.handleOnClickIconChat}></i></Rotate>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                {/* RIGHT section */}
-                <div className="col-sm-11">
-                    <div className="container text-center small-left-section">
-                        {this.renderCardNews(smallScreenStyles.cardNews)}
-                        {this.renderCardPodcast(smallScreenStyles.cardPodcast)}
-                        {this.renderCardChat(smallScreenStyles.cardChat)}
-                        {this.renderCardMusic(smallScreenStyles.cardMusic)}
-                        {this.renderCardVideo(smallScreenStyles.cardVideo)}
+                    {/* RIGHT section */}
+                    <div className="col-sm-11">
+                        <div className="container text-center small-left-section">
+                            {this.renderCardNews(smallScreenStyles.cardNews)}
+                            {this.renderCardPodcast(smallScreenStyles.cardPodcast)}
+                            {this.renderCardChat(smallScreenStyles.cardChat)}
+                            {this.renderCardMusic(smallScreenStyles.cardMusic)}
+                            {this.renderCardVideo(smallScreenStyles.cardVideo)}
+                        </div>
                     </div>
-                </div>
 
+                </div>
             </div>
         );
     };
