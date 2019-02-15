@@ -1,17 +1,12 @@
 import React, { Component } from 'react';
 import withAuth from '../../components/withAuth';
 import API from '../../utils/API';
-// import { Link } from 'react-router-dom';
-// import Input from '../../components/Input';
-// import Button from '../../components/Button';
 import Card from '../../components/Card';
 import List from '../../components/List'
 import Emotionsnavbar from '../../components/Emotionsnavbar';
 import Video from '../../components/Video';
 import { NewsList, NewsListItem } from '../../components/NewsList';
-// import News from '../../components/News';
 import { Container, Row, Col } from '../../components/Grid';
-// import Thumbnail from '../../components/Thumbnail';
 import './style.css'
 import PodCast from '../../components/PodCast/PodCast';
 import ChartLineGraph from '../../components/ChartLineGraph';
@@ -350,7 +345,7 @@ class Productive extends Component {
             <Card id="card-stock" classname="stocksheader" title="Stocks" style={styles} onClick={this.handleOnClickCardStock}>
 
                 <div className="row" id="btn-load">
-                    <div className="col-sm-6">                 
+                    <div className="col-sm-6">
                         <div className="row stocksrow">
                             <div className="col-md-8 input-group">
                                 <input
@@ -373,7 +368,7 @@ class Productive extends Component {
                                 </span>
                             </div>
                         </div>
-                      
+
 
                         <div className="row" >
                             <div className="col-md-12" id="companydetails">
@@ -537,52 +532,100 @@ class Productive extends Component {
     };
 
     renderSmallScreen = (isLoaded, smallScreenStyles) => {
+        var MenuStyles = {
+            bmBurgerButton: {
+              position: 'fixed',
+              width: '36px',
+              height: '30px',
+              left: '95%',
+              top: '12%'
+            },
+            bmBurgerBars: {
+              background: '#373a47'
+            },
+            bmBurgerBarsHover: {
+              background: '#a90000'
+            },
+            bmCrossButton: {
+              height: '24px',
+              width: '24px'
+            },
+            bmCross: {
+              background: '#bdc3c7'
+            },
+            bmMenuWrap: {
+              position: 'fixed',
+              height: '100%'
+            },
+            bmMenu: {
+              background: '#373a47',
+              padding: '2.5em 1.5em 0',
+              fontSize: '1.15em'
+            },
+            bmMorphShape: {
+              fill: '#373a47'
+            },
+            bmItemList: {
+              color: '#b8b7ad',
+              padding: '0.8em'
+            },
+            bmItem: {
+              display: 'inline-block'
+            },
+            bmOverlay: {
+              background: 'rgba(0, 0, 0, 0.3)'
+            }
+          }
+
         return (
-            <div className="row">
-                {/* LEFT section */}
-                <div className="col-sm-1">
-                    <div className="sidebar">
-                        <div className="container text-center small-right-section activity-icons">
-                            <br></br>
-                            <div className="productive-icons icon-stock">
-                                <Rotate><i className="fas fa-chart-line" onClick={this.handleOnClickIconStock}></i></Rotate>
-                            </div>
+            <div>
+                <Emotionsnavbar />
 
-                            <div className="productive-icons icon-newspaper">
-                                <Rotate><i className="fas fa-newspaper" onClick={this.handleOnClickIconNews}></i></Rotate>
-                            </div>
+                <div className="row">
+                    {/* LEFT section */}
+                    <div className="col-sm-1">
+                        <div className="sidebar">
+                            <div className="container text-center small-right-section activity-icons">
+                                <br></br>
+                                <div className="productive-icons icon-stock">
+                                    <Rotate><i className="fas fa-chart-line" onClick={this.handleOnClickIconStock}></i></Rotate>
+                                </div>
 
-                            <div className="productive-icons icon-podcast">
-                                <Rotate><i className="fas fa-podcast" onClick={this.handleOnClickIconPodcast}></i></Rotate>
-                            </div>
+                                <div className="productive-icons icon-newspaper">
+                                    <Rotate><i className="fas fa-newspaper" onClick={this.handleOnClickIconNews}></i></Rotate>
+                                </div>
 
-                            <div className="productive-icons icon-music">
-                                <Rotate><i className="fas fa-music" onClick={this.handleOnClickIconMusic}></i></Rotate>
-                            </div>
+                                <div className="productive-icons icon-podcast">
+                                    <Rotate><i className="fas fa-podcast" onClick={this.handleOnClickIconPodcast}></i></Rotate>
+                                </div>
 
-                            <div className="productive-icons icon-video">
-                                <Rotate><i className="fas fa-video" onClick={this.handleOnClickIconVideo}></i></Rotate>
-                            </div>
+                                <div className="productive-icons icon-music">
+                                    <Rotate><i className="fas fa-music" onClick={this.handleOnClickIconMusic}></i></Rotate>
+                                </div>
 
-                            <div className="productive-icons icon-chat">
-                                <Rotate><i className="fas fa-comments" onClick={this.handleOnClickIconChat}></i></Rotate>
+                                <div className="productive-icons icon-video">
+                                    <Rotate><i className="fas fa-video" onClick={this.handleOnClickIconVideo}></i></Rotate>
+                                </div>
+
+                                <div className="productive-icons icon-chat">
+                                    <Rotate><i className="fas fa-comments" onClick={this.handleOnClickIconChat}></i></Rotate>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                {/* RIGHT section */}
-                <div className="col-sm-11">
-                    <div className="container text-center small-left-section">
-                        {this.renderCardStock(isLoaded, smallScreenStyles.cardStock)}
-                        {this.renderCardNews(smallScreenStyles.cardNews)}
-                        {this.renderCardPodcast(smallScreenStyles.cardPodcast)}
-                        {this.renderCardChat(smallScreenStyles.cardChat)}
-                        {this.renderCardMusic(smallScreenStyles.cardMusic)}
-                        {this.renderCardVideo(smallScreenStyles.cardVideo)}
+                    {/* RIGHT section */}
+                    <div className="col-sm-11">
+                        <div className="container text-center small-left-section">
+                            {this.renderCardStock(isLoaded, smallScreenStyles.cardStock)}
+                            {this.renderCardNews(smallScreenStyles.cardNews)}
+                            {this.renderCardPodcast(smallScreenStyles.cardPodcast)}
+                            {this.renderCardChat(smallScreenStyles.cardChat)}
+                            {this.renderCardMusic(smallScreenStyles.cardMusic)}
+                            {this.renderCardVideo(smallScreenStyles.cardVideo)}
+                        </div>
                     </div>
                 </div>
-
             </div>
         );
     };
@@ -680,8 +723,6 @@ class Productive extends Component {
 
         return (
             <div className="container-fluid">
-                <Emotionsnavbar>
-                </Emotionsnavbar>
 
                 {this.state.smallScreen ?
                     this.renderSmallScreen(isLoaded, smallScreenStyles)
