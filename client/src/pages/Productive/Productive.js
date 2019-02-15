@@ -350,7 +350,7 @@ class Productive extends Component {
             <Card id="card-stock" classname="stocksheader" title="Stocks" style={styles} onClick={this.handleOnClickCardStock}>
 
                 <div className="row" id="btn-load">
-                    <div className="col-sm-6">                 
+                    <div className="col-sm-6">
                         <div className="row stocksrow">
                             <div className="col-md-8 input-group">
                                 <input
@@ -373,7 +373,7 @@ class Productive extends Component {
                                 </span>
                             </div>
                         </div>
-                      
+
 
                         <div className="row" >
                             <div className="col-md-12" id="companydetails">
@@ -538,51 +538,55 @@ class Productive extends Component {
 
     renderSmallScreen = (isLoaded, smallScreenStyles) => {
         return (
-            <div className="row">
-                {/* LEFT section */}
-                <div className="col-sm-1">
-                    <div className="sidebar">
-                        <div className="container text-center small-right-section activity-icons">
-                            <br></br>
-                            <div className="productive-icons icon-stock">
-                                <Rotate><i className="fas fa-chart-line" onClick={this.handleOnClickIconStock}></i></Rotate>
-                            </div>
+            <div>
+                <Emotionsnavbar>
+                </Emotionsnavbar>
 
-                            <div className="productive-icons icon-newspaper">
-                                <Rotate><i className="fas fa-newspaper" onClick={this.handleOnClickIconNews}></i></Rotate>
-                            </div>
+                <div className="row">
+                    {/* LEFT section */}
+                    <div className="col-sm-1">
+                        <div className="sidebar">
+                            <div className="container text-center small-right-section activity-icons">
+                                <br></br>
+                                <div className="productive-icons icon-stock">
+                                    <Rotate><i className="fas fa-chart-line" onClick={this.handleOnClickIconStock}></i></Rotate>
+                                </div>
 
-                            <div className="productive-icons icon-podcast">
-                                <Rotate><i className="fas fa-podcast" onClick={this.handleOnClickIconPodcast}></i></Rotate>
-                            </div>
+                                <div className="productive-icons icon-newspaper">
+                                    <Rotate><i className="fas fa-newspaper" onClick={this.handleOnClickIconNews}></i></Rotate>
+                                </div>
 
-                            <div className="productive-icons icon-music">
-                                <Rotate><i className="fas fa-music" onClick={this.handleOnClickIconMusic}></i></Rotate>
-                            </div>
+                                <div className="productive-icons icon-podcast">
+                                    <Rotate><i className="fas fa-podcast" onClick={this.handleOnClickIconPodcast}></i></Rotate>
+                                </div>
 
-                            <div className="productive-icons icon-video">
-                                <Rotate><i className="fas fa-video" onClick={this.handleOnClickIconVideo}></i></Rotate>
-                            </div>
+                                <div className="productive-icons icon-music">
+                                    <Rotate><i className="fas fa-music" onClick={this.handleOnClickIconMusic}></i></Rotate>
+                                </div>
 
-                            <div className="productive-icons icon-chat">
-                                <Rotate><i className="fas fa-comments" onClick={this.handleOnClickIconChat}></i></Rotate>
+                                <div className="productive-icons icon-video">
+                                    <Rotate><i className="fas fa-video" onClick={this.handleOnClickIconVideo}></i></Rotate>
+                                </div>
+
+                                <div className="productive-icons icon-chat">
+                                    <Rotate><i className="fas fa-comments" onClick={this.handleOnClickIconChat}></i></Rotate>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                {/* RIGHT section */}
-                <div className="col-sm-11">
-                    <div className="container text-center small-left-section">
-                        {this.renderCardStock(isLoaded, smallScreenStyles.cardStock)}
-                        {this.renderCardNews(smallScreenStyles.cardNews)}
-                        {this.renderCardPodcast(smallScreenStyles.cardPodcast)}
-                        {this.renderCardChat(smallScreenStyles.cardChat)}
-                        {this.renderCardMusic(smallScreenStyles.cardMusic)}
-                        {this.renderCardVideo(smallScreenStyles.cardVideo)}
+                    {/* RIGHT section */}
+                    <div className="col-sm-11">
+                        <div className="container text-center small-left-section">
+                            {this.renderCardStock(isLoaded, smallScreenStyles.cardStock)}
+                            {this.renderCardNews(smallScreenStyles.cardNews)}
+                            {this.renderCardPodcast(smallScreenStyles.cardPodcast)}
+                            {this.renderCardChat(smallScreenStyles.cardChat)}
+                            {this.renderCardMusic(smallScreenStyles.cardMusic)}
+                            {this.renderCardVideo(smallScreenStyles.cardVideo)}
+                        </div>
                     </div>
                 </div>
-
             </div>
         );
     };
@@ -680,8 +684,6 @@ class Productive extends Component {
 
         return (
             <div className="container-fluid">
-                <Emotionsnavbar>
-                </Emotionsnavbar>
 
                 {this.state.smallScreen ?
                     this.renderSmallScreen(isLoaded, smallScreenStyles)
