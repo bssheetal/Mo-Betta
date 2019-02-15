@@ -96,6 +96,8 @@ class Hungry extends Component {
 
         return (
             <div className="container-fluid hungry">
+                <Emotionsnavbar />
+            
                 <Jumbotron
                     style={styles.jumbotron}
                 >
@@ -106,8 +108,6 @@ class Hungry extends Component {
                     <img className="food-image mr-5 mt-5" src={imgFood4} alt="food4" onClick={this.handleOnClickImageButtonFour}></img>
                     <img className="food-image mt-5" src={imgFood5} alt="food5" onClick={this.handleOnClickImageButtonFive}></img>
                 </Jumbotron>
-
-                <Emotionsnavbar />
 
                 <section className="container" id="recipes">
                     {this.state.recipes.map((recipe, index) => (
