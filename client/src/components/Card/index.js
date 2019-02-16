@@ -4,7 +4,7 @@ import './style.css';
 function Card(props) {
   return (
     <div className="card mt-2" style={props.style} onClick={props.onClick}>
-      <div className="card-header">
+      <div className="card-header" style={props.cardheaderstyle}>
         <span className="title">{props.title}</span>
       </div>
       <div className="card-body">

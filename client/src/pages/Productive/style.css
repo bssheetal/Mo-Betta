@@ -170,15 +170,16 @@ input {
 
 .card-header
 {
-    background: grey;
-     background: linear-gradient(to right, #f6f1d3, #648880 85%, #293f50);
+    /* background: #63a35c; */
+     /* background: linear-gradient(to right, #f6f1d3, #648880 85%, #293f50); */
     color: #fff;
-    font-weight: bold
+    /* font-weight: bold; */
 
 }
 
 #card-stock
 {
+    background: #63a35c;
     color: #fff;
 }
 
@@ -195,7 +196,8 @@ input {
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: #111;
+    /* background-color: #111; */
+    background-color: #fafafa;
     overflow-x: hidden;
     padding-top: 120px;
   }

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import './style.css';
 
+
 class Footer extends Component {
     render() {
         return (
@@ -9,6 +10,7 @@ class Footer extends Component {
                     <span className="footer-text"> © 2019 Mo Betta Inc. All rights reserved. </span>
                 </div>
             </footer>
+           
         );
     }
 }

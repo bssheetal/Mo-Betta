@@ -340,9 +340,15 @@ class Productive extends Component {
     //  })
     // };
 
-    renderCardStock = (isLoaded, styles) => {
+    renderCardStock = (isLoaded, cardStyles) => {
+        const cardheaderstyle = {
+            cardheader: {
+                backgroundColor: '#63a35c'
+            }
+        };
+
         return (
-            <Card id="card-stock" classname="stocksheader" title="Stocks" style={styles} onClick={this.handleOnClickCardStock}>
+            <Card id="card-stock" classname="stocksheader" title="Stocks" style={cardStyles} cardheaderstyle={cardheaderstyle.cardheader} onClick={this.handleOnClickCardStock}>
 
                 <div className="row" id="btn-load">
                     <div className="col-sm-6">
@@ -422,10 +428,16 @@ class Productive extends Component {
         );
     };
 
-    renderCardNews = (styles) => {
+    renderCardNews = (cardStyles) => {
+        const cardheaderstyle = {
+            cardheader: {
+                backgroundColor: '#1e87f0'
+            }
+        };
+
         return (
             <div id="card-news">
-                <Card title="Business News" style={styles} onClick={this.handleOnClickCardNews}>
+                <Card title="Business News" style={cardStyles} cardheaderstyle={cardheaderstyle.cardheader} onClick={this.handleOnClickCardNews}>
                     <Container>
                         <Col size="xs-6">
 
@@ -448,9 +460,15 @@ class Productive extends Component {
         );
     };
 
-    renderCardPodcast = (styles) => {
+    renderCardPodcast = (cardStyles) => {
+        const cardheaderstyle = {
+            cardheader: {
+                backgroundColor: '#FAA050'
+            }
+        };
+
         return (
-            <Card id="card-podcast" title="PodCast" style={styles} onClick={this.handleOnClickCardPodcast}>
+            <Card id="card-podcast" title="PodCast" style={cardStyles} cardheaderstyle={cardheaderstyle.cardheader} onClick={this.handleOnClickCardPodcast}>
                 <Container>
                     <PodCast />
                 </Container>
@@ -458,9 +476,15 @@ class Productive extends Component {
         );
     };
 
-    renderCardChat = (styles) => {
+    renderCardChat = (cardStyles) => {
+        const cardheaderstyle = {
+            cardheader: {
+                backgroundColor: '#f48fb1'
+            }
+        };
+
         return (
-            <Card id="card-chat" title="Chat" style={styles} onClick={this.handleOnClickCardChat}>
+            <Card id="card-chat" title="Chat" style={cardStyles} cardheaderstyle={cardheaderstyle.cardheader} onClick={this.handleOnClickCardChat}>
                 <Container>
                     <Chat userid={this.state.username} />
                 </Container>
@@ -468,23 +492,35 @@ class Productive extends Component {
         );
     };
 
-    renderCardMusic = (styles) => {
+    renderCardMusic = (cardStyles) => {
+        const cardheaderstyle = {
+            cardheader: {
+                backgroundColor: '#f0506e'
+            }
+        };
+
         return (
             <div>
                 {this.state.smallScreen ?
-                    <Music mood="happy" style={styles}></Music>
+                    <Music mood="happy" style={cardStyles} cardheaderstyle={cardheaderstyle.cardheader}></Music>
                     :
-                    <Card id="card-music" title="Music" style={styles} onClick={this.handleOnClickCardMusic}>
-                        <Music mood="happy" style={styles}></Music>
+                    <Card id="card-music" title="Music" style={cardStyles} cardheaderstyle={cardheaderstyle.cardheader} onClick={this.handleOnClickCardMusic}>
+                        <Music mood="happy" style={cardStyles}></Music>
                     </Card>
                 }
             </div>
         );
     };
 
-    renderCardVideo = (styles) => {
+    renderCardVideo = (cardStyles) => {
+        const cardheaderstyle = {
+            cardheader: {
+                backgroundColor: '#795DA7'
+            }
+        };
+
         return (
-            <Card id="card-video" title="Video" style={styles} onClick={this.handleOnClickCardVideo}>
+            <Card id="card-video" title="Video" style={cardStyles} cardheaderstyle={cardheaderstyle.cardheader} onClick={this.handleOnClickCardVideo}>
                 <Video
                     searchTerm="CNBC Television"
                     numberOfResults="5"
@@ -493,6 +529,7 @@ class Productive extends Component {
         );
     };
 
+    // Render the large screen layout
     renderLargeScreen = (isLoaded, activeStyles, inactiveStyles) => {
         return (
             <div className="row">
@@ -531,51 +568,52 @@ class Productive extends Component {
         );
     };
 
+    // Rendder the small screen layout (default layout)
     renderSmallScreen = (isLoaded, smallScreenStyles) => {
         var MenuStyles = {
             bmBurgerButton: {
-              position: 'fixed',
-              width: '36px',
-              height: '30px',
-              left: '95%',
-              top: '12%'
+                position: 'fixed',
+                width: '36px',
+                height: '30px',
+                left: '95%',
+                top: '12%'
             },
             bmBurgerBars: {
-              background: '#373a47'
+                background: '#373a47'
             },
             bmBurgerBarsHover: {
-              background: '#a90000'
+                background: '#a90000'
             },
             bmCrossButton: {
-              height: '24px',
-              width: '24px'
+                height: '24px',
+                width: '24px'
             },
             bmCross: {
-              background: '#bdc3c7'
+                background: '#bdc3c7'
             },
             bmMenuWrap: {
-              position: 'fixed',
-              height: '100%'
+                position: 'fixed',
+                height: '100%'
             },
             bmMenu: {
-              background: '#373a47',
-              padding: '2.5em 1.5em 0',
-              fontSize: '1.15em'
+                background: '#373a47',
+                padding: '2.5em 1.5em 0',
+                fontSize: '1.15em'
             },
             bmMorphShape: {
-              fill: '#373a47'
+                fill: '#373a47'
             },
             bmItemList: {
-              color: '#b8b7ad',
-              padding: '0.8em'
+                color: '#b8b7ad',
+                padding: '0.8em'
             },
             bmItem: {
-              display: 'inline-block'
+                display: 'inline-block'
             },
             bmOverlay: {
-              background: 'rgba(0, 0, 0, 0.3)'
+                background: 'rgba(0, 0, 0, 0.3)'
             }
-          }
+        }
 
         return (
             <div>
@@ -617,7 +655,7 @@ class Productive extends Component {
                     {/* RIGHT section */}
                     <div className="col-sm-11">
                         <div className="container text-center small-left-section">
-                            {this.renderCardStock(isLoaded, smallScreenStyles.cardStock)}
+                            {this.renderCardStock(isLoaded, smallScreenStyles.cardStock, smallScreenStyles.cardStockHeader)}
                             {this.renderCardNews(smallScreenStyles.cardNews)}
                             {this.renderCardPodcast(smallScreenStyles.cardPodcast)}
                             {this.renderCardChat(smallScreenStyles.cardChat)}
@@ -696,7 +734,10 @@ class Productive extends Component {
         const smallScreenStyles = {
             cardStock: {
                 display: this.state.stockDisplay,
-                overflow: "hidden"
+                overflow: "hidden",
+            },
+            cardStockHeader: {
+                background: '#111;'
             },
             cardNews: {
                 display: this.state.newsDisplay,

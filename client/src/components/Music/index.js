@@ -31,6 +31,7 @@ class Music extends Component {
                             key={index}
                             title={item.songName}
                             style={this.props.style}
+                            cardheaderstyle={this.props.cardheaderstyle}
                         >
                             <p>Artist: {item.artists}</p>
                             <p>Album: {item.album}</p>

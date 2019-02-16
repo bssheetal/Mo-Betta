@@ -7,7 +7,7 @@ import API from './utils/API';
 import TextToSpeech from "./utils/TextToSpeech";
 import SpeechRecognition from "./utils/SpeechRecognition"
 import KeyHandler, { KEYUP, KEYDOWN } from 'react-key-handler';
-import { Carousel } from 'react-responsive-carousel';
+import Emotionsnavbar from './components/Emotionsnavbar';
 
 const Auth = new AuthService();
 
@@ -124,7 +124,7 @@ class App extends Component {
             this.props.history.replace('/relax');
             break;
           case "fear":
-            
+
           default:
             this.props.history.replace('/hungry');
         };
@@ -200,60 +200,73 @@ class App extends Component {
     };
 
     return (
-      <div className="App">
-        <div className="App-header">
-          {/* <h2>Welcome {this.state.username}</h2> */}
-        </div>
-        <div className="App-intro">
-          {/* <div>
+      <div>
+        <Emotionsnavbar />
+
+        <div className="App">
+          <div className="App-header">
+            {/* <h2>Welcome {this.state.username}</h2> */}
+          </div>
+          <div className="App-intro">
+            {/* <div>
             <button type="button" className="btn btn-warning rounded-0 m-2" onClick={this.goToCamera} >Go to Camera</button>
           </div> */}
 
-          {/* <button type="button" className="btn btn-primary rounded-0 m-2" onClick={this.goToEditProfile}>Go to Profile</button>
+            {/* <button type="button" className="btn btn-primary rounded-0 m-2" onClick={this.goToEditProfile}>Go to Profile</button>
           <button type="button" className="btn btn-danger rounded-0 m-2" onClick={this.handleLogout}>Logout</button> */}
 
-          
-          <div className="container Camera">
-            <div className="card card-signin flex-row my-5">
-              <div className="card-img-left d-none d-md-flex">
-                <video id="player" autoPlay width="560" height="315"></video>
-              </div>
 
-              <div className="card-body">
-                <h1 className="card-title text-center"><b>Welcome {this.state.username}</b></h1>
-                <div>
-                  <canvas id="canvas" width="560" height="315" style={styles.canvas}></canvas>
-                  <button id="capture" className="mb-5" onClick={this.handleOnClickCapture} ref={capture => this.capture = capture} >Capture</button>
+            <div className="container Camera">
+              <div className="card card-signin flex-row my-5">
+                <div className="card-img-left d-none d-md-flex">
+                  <video id="player" autoPlay width="560" height="315"></video>
                 </div>
-                <div>
-                  {/* here ref is added becoz functionality by default of input parameter comes with sometext which cannot be overridden so had to make display none and add a reference that on buttonclick the event in inputgets triggered*/}
-                  <input type="file" id="fileInput" onChange={this.previewFile} ref={fileInput => this.fileInput = fileInput} style={styles.fileInput} />
-                  <img src="" id="previewimage" onLoad={this.findemotion} alt="" style={styles.previewImage} />
-                  <button onClick={() => this.fileInput.click()}>Upload Image</button>
+
+                <div className="card-body">
+                  <h1 className="card-title text-center"><b>Welcome {this.state.username}</b></h1>
+                  <div>
+                    <canvas id="canvas" width="560" height="315" style={styles.canvas}></canvas>
+                    <button id="capture" className="mb-5" onClick={this.handleOnClickCapture} ref={capture => this.capture = capture} >Capture</button>
+                  </div>
+                  <div>
+                    {/* here ref is added becoz functionality by default of input parameter comes with sometext which cannot be overridden so had to make display none and add a reference that on buttonclick the event in inputgets triggered*/}
+                    <input type="file" id="fileInput" onChange={this.previewFile} ref={fileInput => this.fileInput = fileInput} style={styles.fileInput} />
+                    <img src="" id="previewimage" onLoad={this.findemotion} alt="" style={styles.previewImage} />
+                    <button onClick={() => this.fileInput.click()}>Upload Image</button>
+                  </div>
                 </div>
               </div>
+              <span>Hi {this.state.username}, do you want to take a picture?</span>
+              <ul>
+                <li>
+                  If yes, please look at the camera, press the button "s" and say "yes please".
+                </li>
+                <li>
+                  If no, please click on Upload Image
+                </li>
+                <li>
+                  or Choose an emotion by clicking the menu button on the top-right of the page.
+                </li>
+              </ul>
+              <React.Fragment>
+                <KeyHandler
+                  keyEventName={KEYDOWN}
+                  keyValue="s"
+                  onKeyHandle={this.speak}
+                />
+                <KeyHandler
+                  keyEventName={KEYUP}
+                  keyValue="s"
+                  onKeyHandle={this.getSpeechText}
+                />
+                <p>{this.state.speechText}</p>
+                <p>{this.state.emotion}</p>
+              </React.Fragment>
             </div>
-            <span>Hi {this.state.username}, do you want to take a picture? If yes, please look at the camera, press the button "s" and say "yes please". If no, please click on Upload Image or choose an emotion.</span>
 
-            <React.Fragment>
-              <KeyHandler
-                keyEventName={KEYDOWN}
-                keyValue="s"
-                onKeyHandle={this.speak}
-              />
-              <KeyHandler
-                keyEventName={KEYUP}
-                keyValue="s"
-                onKeyHandle={this.getSpeechText}
-              />
-              <p>{this.state.speechText}</p>
-              <p>{this.state.emotion}</p>
-            </React.Fragment>
           </div>
-
-        </div>
-
-      </div >
+        </div >
+      </div>
     );
   }
 }
