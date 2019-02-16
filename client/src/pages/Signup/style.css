@@ -2,3 +2,7 @@
     font-family: 'Parisienne', cursive;
     color: #757575;
   }
+
+  #errmsg {
+    font-weight: 900;
+  }
