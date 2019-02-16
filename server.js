@@ -55,14 +55,16 @@ app.post('/api/login', (req, res) => {
         res.status(401).json({ success: false, message: "Authentication failed. Wrong password." });
       }
     });
-  }).catch(err => res.status(404).json({ success: false, message: "User not found", error: err }));
+  }).catch(err => res.status(404).json({ success: false, message: "User not found. Wrong email address.", error: err }));
 });
 
 // SIGNUP ROUTE
 app.post('/api/signup', (req, res) => {
   db.User.create(req.body)
     .then(data => res.json(data))
-    .catch(err => res.status(400).json({ success: false, message: "User signup request failed.", error: err}));
+    // .catch(err => res.status(400).json({ success: false, message: "User signup request failed.", error: err}));
+    .catch(err => res.status(400).json(err));
+
 });
 
 // Any route with isAuthenticated is protected and you need a valid token
