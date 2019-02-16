@@ -1,5 +1,7 @@
 .card {
     overflow: hidden;
+    margin-left:-2rem;
+    width:95%;
 }
 
 /* .card:hover {

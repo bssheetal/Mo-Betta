@@ -118,6 +118,7 @@ input {
 
 .icon-stock {
     color: #63a35c;
+    margin-top: -2rem;
 }
 
 .icon-newspaper {
@@ -190,7 +191,7 @@ input {
 
 .sidebar {
     height: 100%;
-    width: 160px;
+    width: 120px;
     position: fixed;
     z-index: 1;
     top: 0;
@@ -303,13 +304,23 @@ input {
 @media screen and (max-width:1024px)
   {
     
+    .sidebar {
+        height: 100%;
+        width: 100px;
+    }
     .stocksrow
     {
         margin-left: 180px;
     }
 
-    
 
+      .card {
+        overflow: hidden;
+        margin-left:-3rem;
+        width:95%;
+    }
+    
+    
     input
     {
         width:10%;
@@ -348,7 +359,7 @@ input {
     }
 }
 
-@media screen and (max-width: 768px)
+@media screen and (min-width: 768px) and (max-width: 991.98px)
 {
     .col-md-12 {
         -ms-flex: 0 0 100%;
@@ -356,7 +367,11 @@ input {
         max-width: 100%;
     }
 
-   
+    .bm-burger-button
+    {
+        left: 94%;
+        top: 9.5%;
+    }
     
     .stocksrow
     {
@@ -461,7 +476,7 @@ input {
     }
 }
 
-@media screen and (max-width: 375px)
+@media screen and (max-width: 575.98px)
 {
     .sidebar {
         padding-top: 100px;
