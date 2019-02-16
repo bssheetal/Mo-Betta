@@ -5,11 +5,18 @@
 }
 
 .mood-icon {
-    font-size: 3rem;
+    font-size: 2rem;
+    margin-bottom: 1%;
 }
 
+.icon-text
+{
+    margin-top:-5px;
+    margin-bottom: -1.7px;
+}
 .ihungry {
     color: #ffd600;
+    font-size: 2.5rem;
 }
 
 .ihungry:hover {
@@ -22,6 +29,7 @@
 .betta,
 .ilaugh {
     color: #63a35c;
+    font-size: 2.5rem;
 }
 
 .ilaugh:hover {
@@ -34,6 +42,7 @@
 .swings,
 .ismile {
     color: #1e87f0;
+    font-size: 2.5rem;
 }
 
 .ismile:hover {
@@ -41,11 +50,13 @@
     transform: scale(1.2);
     cursor: pointer;
     color: #1e87f0;
+    font-size: 2.5rem;
 }
 
 .aka,
 .ineutral {
     color: #FAA050;
+    font-size: 2.5rem;
 }
 
 .ineutral:hover {
@@ -53,11 +64,13 @@
     transform: scale(1.2);
     cursor: pointer;
     color: #FAA050;
+    font-size: 2.5rem;
 }
 
 .mood,
 .isad {
     color: #795DA7;
+    font-size: 2.5rem;
 }
 
 .isad:hover {
@@ -65,11 +78,13 @@
     transform: scale(1.2);
     cursor: pointer;
     color: #795DA7;
+    font-size: 2.5rem;
 }
 
 .mo,
 .iangry {
     color: #f0506e;
+    font-size: 2.5rem;
 }
 
 .iangry:hover {
@@ -77,4 +92,14 @@
     transform: scale(1.2);
     cursor: pointer;
     color: #f0506e;
+    font-size: 2.5rem;
+}
+
+@media screen and (min-width: 768px) and (max-width: 991.98px)
+{
+    .bm-burger-button
+    {
+        left: 94%;
+        top: 9.5%;
+    }
 }
