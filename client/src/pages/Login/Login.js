@@ -9,7 +9,8 @@ class Login extends Component {
     this.Auth = new AuthService();
 
     this.state = {
-      errmsg: ""
+      emailErrMsg: "",
+      passwordErrMsg: ""
     };
   }
 
@@ -32,9 +33,18 @@ class Login extends Component {
       })
       .catch(err => {
         // alert(err.response.data.message)
-        this.setState({
-          errmsg: err.response.data.message
-        });
+        console.log(err.response.status);
+
+        if (err.response.status === 404) {
+          this.setState({
+            emailErrMsg: err.response.data.message
+          });
+        } else if (err.response.status === 401) {
+          this.setState({
+            passwordErrMsg: err.response.data.message
+          });
+        };
+
       });
   };
 
@@ -45,36 +55,12 @@ class Login extends Component {
     });
   };
 
-  // cardSingin = () => {
-  //   return (
-  //     <div className="container">
-  //       <h1>Login</h1>
-  //       <form onSubmit={this.handleFormSubmit}>
-  //         <div className="form-group">
-  //           <label htmlFor="email">Email address:</label>
-  //           <input className="form-control"
-  //             placeholder="Email goes here..."
-  //             name="email"
-  //             type="email"
-  //             id="email"
-  //             onChange={this.handleChange} />
-  //         </div>
-  //         <div className="form-group">
-  //           <label htmlFor="pwd">Password:</label>
-  //           <input className="form-control"
-  //             placeholder="Password goes here..."
-  //             name="password"
-  //             type="password"
-  //             id="pwd"
-  //             onChange={this.handleChange} />
-  //         </div>
-  //         <button type="submit" className="btn btn-primary">Submit</button>
-  //       </form>
-  //       <p><Link to="/signup">Go to Signup</Link></p>
-  //     </div>
-  //   );
-  // };
-
+  handleOnClickSubmit = event => {
+    this.setState({
+      emailErrMsg: "",
+      passwordErrMsg: ""
+    });
+  };
 
   render() {
     return (
@@ -96,6 +82,7 @@ class Login extends Component {
                     <form onSubmit={this.handleFormSubmit}>
                       <div className="form-group">
                         <label htmlFor="email">Email address</label>
+                        <span id="errmsg" className="text-danger ml-3">{this.state.emailErrMsg}</span>
                         <input
                           className="form-control"
                           type="email"
@@ -107,6 +94,7 @@ class Login extends Component {
                       </div>
                       <div className="form-group">
                         <label htmlFor="password">Password</label>
+                        <span id="errmsg" className="text-danger ml-3">{this.state.passwordErrMsg}</span>
                         <input
                           className="form-control"
                           type="password"
@@ -116,8 +104,7 @@ class Login extends Component {
                           onChange={this.handleChange} />
                       </div>
 
-                      <button type="submit" className="btn btn-primary">Submit</button>
-                      <span id="errmsg" className="text-danger ml-4">{this.state.errmsg}</span>
+                      <button type="submit" className="btn btn-primary" onClick={this.handleOnClickSubmit}>Submit</button>
                     </form>
                   </div>
                 </div>
