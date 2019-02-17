@@ -4,12 +4,6 @@
     /* margin-left: 50%; */
 }
 
-
-.mood-icon {
-    font-size: 2rem;
-    margin-bottom: 1%;
-}
-
 .icon-text
 {
     margin-top:-5px;
@@ -17,9 +11,12 @@
     font-size: 12pt;
 }
 
+.mood-icon {
+    font-size: 1.5rem;
+}
+
 .ihungry {
     color: #ffd600;
-    font-size: 2.5rem;
 }
 
 .ihungry:hover {
@@ -32,7 +29,6 @@
 .betta,
 .ilaugh {
     color: #63a35c;
-    font-size: 2.5rem;
 }
 
 .ilaugh:hover {
@@ -45,7 +41,6 @@
 .swings,
 .ismile {
     color: #1e87f0;
-    font-size: 2.5rem;
 }
 
 .ismile:hover {
@@ -53,13 +48,11 @@
     transform: scale(1.2);
     cursor: pointer;
     color: #1e87f0;
-    font-size: 2.5rem;
 }
 
 .aka,
 .ineutral {
     color: #FAA050;
-    font-size: 2.5rem;
 }
 
 .ineutral:hover {
@@ -67,13 +60,11 @@
     transform: scale(1.2);
     cursor: pointer;
     color: #FAA050;
-    font-size: 2.5rem;
 }
 
 .mood,
 .isad {
     color: #795DA7;
-    font-size: 2.5rem;
 }
 
 .isad:hover {
@@ -81,13 +72,11 @@
     transform: scale(1.2);
     cursor: pointer;
     color: #795DA7;
-    font-size: 2.5rem;
 }
 
 .mo,
 .iangry {
     color: #f0506e;
-    font-size: 2.5rem;
 }
 
 .iangry:hover {
@@ -95,72 +84,4 @@
     transform: scale(1.2);
     cursor: pointer;
     color: #f0506e;
-    font-size: 2.5rem;
-}
-
-/* .bmBurgerButton {
-    position: fixed;
-    width: 36px;
-    height: 30px;
-    left: 97%;
-    top: 13.5%;
-
-}
-.bm-burger-bars {
-    background: #373a47;
-  }
-
-.bm-burger-bars-hover {
-  background: #a90000;
-}
-
-.bmCrossButton {
-    height: 14px;
-    width: 14px;
-    fill: #fff;
-    color:#fff;
-    background:transparent;
-}
-
-.bmCross {
-    background: #bdc3c7;
-    color:#fff;
-}
-.bmMenuWrap {
-    position: fixed;
-    height: 100%;
-}
-
-.bmMenu {
-    background: #fafafa;
-    padding: 0.5em 1.5em 0;
-    fontSize: 1.15em;
-    height:100%;
-
-}
-
-.bmMorphShape{
-    fill: #fff;
-}
-
-.bmItemList {
-    color: #fff;
-    padding: -0.5em;
-    top:0.3%;
-    
-}
-.bmItem {
-    display: block;
-}
-
-.bmOverlay{
-    background: rgba(0, 0, 0, 0.3);
-} */
-@media screen and (min-width: 768px) and (max-width: 991.98px)
-{
-    .bm-burger-button
-    {
-        left: 94%;
-        top: 9.5%;
-    }
 }

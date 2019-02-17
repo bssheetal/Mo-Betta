@@ -67,7 +67,7 @@ class Navbar extends Component {
                     <div className="d-sm-flex">
                         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                             <span className="navbar-toggler-icon">
-                                <button><i class="fas fa-bars" id="navbar-menu-btn"></i></button>
+                                <i className="fas fa-bars" id="navbar-menu-btn"></i>
                             </span>
                         </button>
                         <div className="collapse navbar-collapse" id="navbarNav">

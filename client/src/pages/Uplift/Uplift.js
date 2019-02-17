@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
 import withAuth from '../../components/withAuth';
 import API from '../../utils/API';
-import { Link } from 'react-router-dom';
-import Jumbotron from '../../components/Jumbotron';
 import './style.css';
 import Video from '../../components/Video'
 import Card from '../../components/Card';
 import { NewsList, NewsListItem } from '../../components/NewsList';
 import { Container, Row, Col } from '../../components/Grid';
-import './style.css'
 import PodCast from '../../components/PodCast/PodCast';
 import Rotate from 'react-reveal/Rotate';
 import Chat from '../../components/Chat';
@@ -23,7 +20,6 @@ class Uplift extends Component {
         linechartelements: {},
         isLoading: false,
         parentComponent: "productive",
-        news: [],
         smallScreen: true,
         newsDisplay: "block",
         podcastDisplay: "block",
@@ -34,10 +30,51 @@ class Uplift extends Component {
         displayPodcastCard: false,
         displayChatCard: false,
         displayMusicCard: false,
-        displayVideoCard: false
+        displayVideoCard: false,
+        menuRight: "50px",
+        menuTop: "120px",
+        menuBtnWidth: "36px",
+        menuBtnHeight: "30px",
+        itemIconFontSize: "2.3rem",
+        itemTextFontSize: "12pt",
+        emotionIconFontSize: "3rem",
+        emotionTextFontSize: "12pt",
+        pageTitleFontSize: "28pt"
     };
 
     componentDidMount() {
+        var mq = window.matchMedia("(max-width: 768px)");
+        setTimeout(() => {
+            if (mq.matches) {
+                // window width is at less than 768px
+                this.setState({
+                    menuRight: "25px",
+                    menuTop: "110px",
+                    menuBtnWidth: "18px",
+                    menuBtnHeight: "15px",
+                    itemIconFontSize: "1.5rem",
+                    itemTextFontSize: "9pt",
+                    emotionIconFontSize: "2rem",
+                    emotionTextFontSize: "9pt",
+                    pageTitleFontSize: "18pt"
+                });
+            }
+            else {
+                // window width is greater than 768px
+                this.setState({
+                    menuRight: "50px",
+                    menuTop: "120px",
+                    menuBtnWidth: "36px",
+                    menuBtnHeight: "30px",
+                    itemIconFontSize: "2.3rem",
+                    itemTextFontSize: "12pt",
+                    emotionIconFontSize: "3rem",
+                    emotionTextFontSize: "12pt",
+                    pageTitleFontSize: "28pt"
+                });
+            };
+        }, 2000);
+
         setTimeout(() => {
             if (localStorage.getItem("mobetta_layout") === "large") {
                 this.setState({
@@ -306,9 +343,86 @@ class Uplift extends Component {
     };
 
     renderSmallScreen = (isLoaded, smallScreenStyles) => {
+        var MenuStyles = {
+            bmBurgerButton: {
+                position: 'fixed',
+                width: this.state.menuBtnWidth,
+                height: this.state.menuBtnHeight,
+                right: this.state.menuRight,
+                top: this.state.menuTop,
+
+            },
+            bmBurgerBars: {
+                background: '#373a47'
+            },
+            bmBurgerBarsHover: {
+                background: '#a90000'
+            },
+            bmCrossButton: {
+                height: '18px',
+                width: '18px',
+                fill: '#fff',
+                color: "#fff",
+                background: 'transparent'
+            },
+            bmCross: {
+                background: '#bdc3c7',
+                color: "#fff",
+            },
+            bmMenuWrap: {
+                position: 'fixed',
+                height: '100%'
+            },
+            bmMenu: {
+                // background: '#fafafa',
+                background: 'white',
+                padding: '0.5em 1.5em 0',
+                fontSize: '1.15em',
+                height: '100%'
+
+            },
+            bmMorphShape: {
+                fill: '#fff'
+            },
+            bmItemList: {
+                color: '#fff',
+                padding: '-0.5em',
+                top: '0.3%',
+
+            },
+            bmItem: {
+                display: 'block'
+            },
+            bmOverlay: {
+                // background: 'rgba(0, 0, 0, 0.3)'
+                background: 'rgba(255, 255, 255, 0.3)'
+            }
+        }
+
+        var EmotionMenuStyles = {
+            iconStyle: {
+                fontSize: this.state.emotionIconFontSize
+            },
+            textStyle: {
+                fontSize: this.state.emotionTextFontSize
+            }
+        };
+
+        var pageStyles = {
+            itemIcon: {
+                fontSize: this.state.itemIconFontSize
+            },
+            itemText: {
+                fontSize: this.state.itemTextFontSize
+            },
+            pageTitle: {
+                fontSize: this.state.pageTitleFontSize
+            }
+        };
+
         return (
             <div>
-                <Emotionsnavbar />
+                <Emotionsnavbar MenuStyles={MenuStyles} EmotionIconStyle={EmotionMenuStyles.iconStyle} EmotionIconTextStyle={EmotionMenuStyles.textStyle} />
 
                 <div className="row">
                     {/* LEFT section */}
@@ -316,24 +430,46 @@ class Uplift extends Component {
                         <div className="sidebar">
                             <div className="container text-center small-right-section activity-icons">
                                 <br></br>
-                                <div className="productive-icons icon-newspaper">
-                                    <Rotate><i className="fas fa-newspaper" onClick={this.handleOnClickIconNews}></i></Rotate>
+                                <div className="productive-icons icon-stock" style={pageStyles.itemIcon}>
+                                    <Rotate>
+                                        <i className="fas fa-chart-line" title="stock" onClick={this.handleOnClickIconStock}></i>
+                                        <p id="item-text" style={pageStyles.itemText}>Stocks</p>
+                                    </Rotate>
                                 </div>
 
-                                <div className="productive-icons icon-podcast">
-                                    <Rotate><i className="fas fa-podcast" onClick={this.handleOnClickIconPodcast}></i></Rotate>
+                                <div className="productive-icons icon-newspaper" style={pageStyles.itemIcon}>
+                                    <Rotate>
+                                        <i className="fas fa-newspaper" onClick={this.handleOnClickIconNews}></i>
+                                        <p id="item-text" style={pageStyles.itemText}>News</p>
+                                    </Rotate>
                                 </div>
 
-                                <div className="productive-icons icon-music">
-                                    <Rotate><i className="fas fa-music" onClick={this.handleOnClickIconMusic}></i></Rotate>
+                                <div className="productive-icons icon-podcast" style={pageStyles.itemIcon}>
+                                    <Rotate>
+                                        <i className="fas fa-podcast" onClick={this.handleOnClickIconPodcast}></i>
+                                        <p id="item-text" style={pageStyles.itemText}>Podcast</p>
+                                    </Rotate>
                                 </div>
 
-                                <div className="productive-icons icon-video">
-                                    <Rotate><i className="fas fa-video" onClick={this.handleOnClickIconVideo}></i></Rotate>
+                                <div className="productive-icons icon-music" style={pageStyles.itemIcon}>
+                                    <Rotate>
+                                        <i className="fas fa-music" onClick={this.handleOnClickIconMusic}></i>
+                                        <p id="item-text" style={pageStyles.itemText}>Music</p>
+                                    </Rotate>
                                 </div>
 
-                                <div className="productive-icons icon-chat">
-                                    <Rotate><i className="fas fa-comments" onClick={this.handleOnClickIconChat}></i></Rotate>
+                                <div className="productive-icons icon-video" style={pageStyles.itemIcon}>
+                                    <Rotate>
+                                        <i className="fas fa-video" onClick={this.handleOnClickIconVideo}></i>
+                                        <p id="item-text" style={pageStyles.itemText}>Videos</p>
+                                    </Rotate>
+                                </div>
+
+                                <div className="productive-icons icon-chat" style={pageStyles.itemIcon}>
+                                    <Rotate>
+                                        <i className="fas fa-comments" onClick={this.handleOnClickIconChat}></i>
+                                        <p id="item-text" style={pageStyles.itemText}>Chat</p>
+                                    </Rotate>
                                 </div>
                             </div>
                         </div>
@@ -341,6 +477,10 @@ class Uplift extends Component {
 
                     {/* RIGHT section */}
                     <div className="col-sm-11">
+                        <div className="container-fluid text-center">
+                            <p className="mt-3" id="page-title" style={pageStyles.pageTitle}>it's okay not to be okay - as long as you are not giving up</p>
+                        </div>
+
                         <div className="container text-center small-left-section">
                             {this.renderCardNews(smallScreenStyles.cardNews)}
                             {this.renderCardPodcast(smallScreenStyles.cardPodcast)}

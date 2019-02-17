@@ -198,13 +198,19 @@ input {
     top: 0;
     left: 0;
     /* background-color: #111; */
-    background-color: #fafafa;
+    background-color: white;
     overflow-x: hidden;
     padding-top: 120px;
   }
 
   #item-text {
-      font-size: 12pt;
+    font-size: 12pt;
+  }
+
+  #page-title {
+    color: #757575;
+    font-family: 'Parisienne', cursive;
+    font-size: 28pt;
   }
 
   @media screen and (max-height: 450px) {
