@@ -89,7 +89,7 @@ class Productive extends Component {
                 pageTitleFontSize: "28pt"
             });
         };
-    }, 100);
+    }, 1000);
 
         setTimeout(() => {
             if (localStorage.getItem("mobetta_layout") === "large") {
