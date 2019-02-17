@@ -9,8 +9,8 @@ function Emotionsnavbar() {
             position: 'fixed',
             width: '36px',
             height: '30px',
-            left: '97%',
-            top: '13.5%',
+            left: '95%',
+            top: '12%',
         
         },
         bmBurgerBars: {
@@ -35,7 +35,8 @@ function Emotionsnavbar() {
             height: '100%'
         },
         bmMenu: {
-            background: '#fafafa',
+            // background: '#fafafa',
+            background: 'white',
             padding: '0.5em 1.5em 0',
             fontSize: '1.15em',
             height:'100%'
@@ -54,13 +55,14 @@ function Emotionsnavbar() {
             display: 'block'
         },
         bmOverlay: {
-            background: 'rgba(0, 0, 0, 0.3)'
+            // background: 'rgba(0, 0, 0, 0.3)'
+            background: 'rgba(255, 255, 255, 0.3)'
         }
     }
 
     return (
         <div>
-            <Menu right width={'120px'} styles={MenuStyles}>
+            <Menu right  width={'120px'} styles={MenuStyles}>
                 <p></p>
                 <div className="icon-container text-center">
                     <a className="mood-icon" href="/hungry"><i className="fas fa-grin-tongue ihungry" title="Hungry"></i></a>
