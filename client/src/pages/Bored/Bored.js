@@ -344,7 +344,7 @@ class Bored extends Component {
                     {/* RIGHT section */}
                     <div className="col-sm-11">
                         <div className="container-fluid text-center">
-                            <p className="mt-3" id="page-title">get bored? do someting nice to someone else</p>
+                            <p className="mt-3" id="page-title">get bored? do something nice to someone else</p>
                         </div>
 
                         <div className="container text-center small-left-section">
