@@ -45,9 +45,9 @@ class Navbar extends Component {
 
     render() {
         return (
-            <nav className="navbar navbar-expand-lg sticky-top gennavbar">
+            <nav className="navbar navbar-expand-sm sticky-top gennavbar">
                 <div className="container-fluid maincontainer">
-                    <div className="d-md-flex">
+                    <div className="d-sm-flex">
                         <Swing left><span className="navbar-brand mo">Mo</span></Swing>
                         <Swing right><span className="navbar-brand betta">Betta</span></Swing>
                         {/* <span className="navbar-brand aka">a.k.a.</span>
@@ -64,9 +64,11 @@ class Navbar extends Component {
                         <Link className="mood-icon ihungry ml-5" to="/hungry"><i className="fas fa-grin-tongue"  title="Hungry"></i></Link>
                     </div> */}
 
-                    <div className="d-md-flex">
+                    <div className="d-sm-flex">
                         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                            <span className="navbar-toggler-icon"></span>
+                            <span className="navbar-toggler-icon">
+                                <button><i class="fas fa-bars" id="navbar-menu-btn"></i></button>
+                            </span>
                         </button>
                         <div className="collapse navbar-collapse" id="navbarNav">
                             <ul className="navbar-nav mr-auto">
