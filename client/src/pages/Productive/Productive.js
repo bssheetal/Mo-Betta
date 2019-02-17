@@ -60,6 +60,7 @@ class Productive extends Component {
         // });
 
         var mq = window.matchMedia("(max-width: 720px)");
+        setTimeout(() => {
         if (mq.matches) {
             // window width is at less than 720px
             this.setState({
@@ -87,7 +88,8 @@ class Productive extends Component {
                 emotionTextFontSize: "12pt",
                 pageTitleFontSize: "28pt"
             });
-        }
+        };
+    }, 100);
 
         setTimeout(() => {
             if (localStorage.getItem("mobetta_layout") === "large") {
