@@ -13,6 +13,7 @@ import ChartLineGraph from '../../components/ChartLineGraph';
 import Rotate from 'react-reveal/Rotate';
 import Chat from '../../components/Chat';
 import Music from '../../components/Music';
+import Jumbotron from '../../components/Jumbotron';
 
 class Productive extends Component {
     state = {
@@ -29,7 +30,6 @@ class Productive extends Component {
         linechartelements: {},
         isLoading: false,
         parentComponent: "productive",
-        news: [],
         smallScreen: true,
         stockDisplay: "block",
         newsDisplay: "block",
@@ -615,6 +615,16 @@ class Productive extends Component {
             }
         }
 
+        const jumbotronStyle = {
+            jumbotron: {
+                // backgroundImage: `url(${bgImage})`
+                // background: 'linear-gradient(-45deg,#fff59d,#a5d6a7,#ffee58,#66bb6a)',
+                // backgroundColor: '#fff59d'
+                backgroundColor: '#fafafa',
+                height: '10vh'
+            }
+        };
+
         return (
             <div>
                 <Emotionsnavbar />
@@ -672,6 +682,10 @@ class Productive extends Component {
 
                     {/* RIGHT section */}
                     <div className="col-sm-11">
+                        <div className="container-fluid text-center">
+                            <p className="mt-3" id="page-title">happy is productive</p>
+                        </div>
+
                         <div className="container text-center small-left-section">
                             {this.renderCardStock(isLoaded, smallScreenStyles.cardStock, smallScreenStyles.cardStockHeader)}
                             {this.renderCardNews(smallScreenStyles.cardNews)}

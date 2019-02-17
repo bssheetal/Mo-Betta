@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import withAuth from '../../components/withAuth';
 import API from '../../utils/API';
-import { Link } from 'react-router-dom';
-import Jumbotron from '../../components/Jumbotron';
 import './style.css';
 import Video from '../../components/Video'
 import Card from '../../components/Card';
@@ -23,7 +21,6 @@ class Uplift extends Component {
         linechartelements: {},
         isLoading: false,
         parentComponent: "productive",
-        news: [],
         smallScreen: true,
         newsDisplay: "block",
         podcastDisplay: "block",
@@ -317,23 +314,38 @@ class Uplift extends Component {
                             <div className="container text-center small-right-section activity-icons">
                                 <br></br>
                                 <div className="productive-icons icon-newspaper">
-                                    <Rotate><i className="fas fa-newspaper" onClick={this.handleOnClickIconNews}></i></Rotate>
+                                    <Rotate>
+                                        <i className="fas fa-newspaper" onClick={this.handleOnClickIconNews}>
+                                            <p id="item-text">News</p>
+                                        </i></Rotate>
                                 </div>
 
                                 <div className="productive-icons icon-podcast">
-                                    <Rotate><i className="fas fa-podcast" onClick={this.handleOnClickIconPodcast}></i></Rotate>
+                                    <Rotate>
+                                        <i className="fas fa-podcast" onClick={this.handleOnClickIconPodcast}></i>
+                                        <p id="item-text">Podcast</p>
+                                    </Rotate>
                                 </div>
 
                                 <div className="productive-icons icon-music">
-                                    <Rotate><i className="fas fa-music" onClick={this.handleOnClickIconMusic}></i></Rotate>
+                                    <Rotate>
+                                        <i className="fas fa-music" onClick={this.handleOnClickIconMusic}></i>
+                                        <p id="item-text">Music</p>
+                                    </Rotate>
                                 </div>
 
                                 <div className="productive-icons icon-video">
-                                    <Rotate><i className="fas fa-video" onClick={this.handleOnClickIconVideo}></i></Rotate>
+                                    <Rotate>
+                                        <i className="fas fa-video" onClick={this.handleOnClickIconVideo}></i>
+                                        <p id="item-text">Video</p>
+                                    </Rotate>
                                 </div>
 
                                 <div className="productive-icons icon-chat">
-                                    <Rotate><i className="fas fa-comments" onClick={this.handleOnClickIconChat}></i></Rotate>
+                                    <Rotate>
+                                        <i className="fas fa-comments" onClick={this.handleOnClickIconChat}></i>
+                                        <p id="item-text">Chat</p>
+                                    </Rotate>
                                 </div>
                             </div>
                         </div>
@@ -341,6 +353,10 @@ class Uplift extends Component {
 
                     {/* RIGHT section */}
                     <div className="col-sm-11">
+                        <div className="container-fluid text-center">
+                            <p className="mt-3" id="page-title">it’s okay not to be okay – as long as you are not giving up</p>
+                        </div>
+
                         <div className="container text-center small-left-section">
                             {this.renderCardNews(smallScreenStyles.cardNews)}
                             {this.renderCardPodcast(smallScreenStyles.cardPodcast)}
