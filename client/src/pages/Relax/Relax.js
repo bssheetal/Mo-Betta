@@ -6,7 +6,6 @@ import Video from '../../components/Video'
 import Card from '../../components/Card';
 import { NewsList, NewsListItem } from '../../components/NewsList';
 import { Container, Row, Col } from '../../components/Grid';
-import './style.css'
 import PodCast from '../../components/PodCast/PodCast';
 import Rotate from 'react-reveal/Rotate';
 import Chat from '../../components/Chat';
