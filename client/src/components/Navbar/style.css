@@ -1,12 +1,17 @@
 .navbar {
+    /* background: #fafafa;
+    background: linear-gradient(to right, #fafafa,#111); */
+   /* background: #f6f1d3;
+   background: linear-gradient(to right, #f6f1d3,#648880, #f6f1d3, #293f50); */
    background: transparent;
    background: linear-gradient(to right, #f6f1d3,#648880, #f6f1d3, #293f50);
 }
 
 .nav-link {
-    color: rgba(0,0,0,.5);
-    font-weight: bold;
-    font-weight: 900;
+    /* color: rgba(0,0,0,.5); */
+    color: #fafafa;
+    /* font-weight: bold; */
+    /* font-weight: 900; */
 }
 .navbar .container-fluid .navbar-brand {
     font-family: 'Parisienne', cursive;

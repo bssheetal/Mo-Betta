@@ -7,3 +7,7 @@
 /* .card:hover {
     overflow-y: scroll;
 } */
+
+.card-header {
+    background-color: #648880;
+}

@@ -60,7 +60,8 @@ function Emotionsnavbar() {
 
     return (
         <div>
-            <Menu right noOverlay width={'150px'} styles={MenuStyles}>
+            <Menu right noOverlay width={'120px'} styles={MenuStyles}>
+                <p></p>
                 <div className="icon-container text-center">
                     <a className="mood-icon" href="/hungry"><i className="fas fa-grin-tongue ihungry" title="Hungry"></i></a>
                     <p className="icon-text">Hungry</p>
