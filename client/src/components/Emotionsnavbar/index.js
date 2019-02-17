@@ -20,8 +20,8 @@ function Emotionsnavbar() {
             background: '#a90000'
         },
         bmCrossButton: {
-            height: '14px',
-            width: '14px',
+            height: '18px',
+            width: '18px',
             fill: '#fff',
             color:"#fff",
             background:'transparent'
@@ -60,7 +60,7 @@ function Emotionsnavbar() {
 
     return (
         <div>
-            <Menu right noOverlay width={'120px'} styles={MenuStyles}>
+            <Menu right width={'120px'} styles={MenuStyles}>
                 <p></p>
                 <div className="icon-container text-center">
                     <a className="mood-icon" href="/hungry"><i className="fas fa-grin-tongue ihungry" title="Hungry"></i></a>
