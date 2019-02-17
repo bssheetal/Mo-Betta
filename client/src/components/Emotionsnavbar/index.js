@@ -1,6 +1,6 @@
 import React from "react";
 import "./style.css";
-import { slide as Menu } from 'react-burger-menu';
+import { stack as Menu } from 'react-burger-menu';
 
 function Emotionsnavbar() {
 
