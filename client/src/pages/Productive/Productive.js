@@ -61,35 +61,35 @@ class Productive extends Component {
 
         var mq = window.matchMedia("(max-width: 768px)");
         setTimeout(() => {
-        if (mq.matches) {
-            // window width is at less than 768px
-            this.setState({
-                menuRight: "25px",
-                menuTop: "110px",
-                menuBtnWidth: "18px",
-                menuBtnHeight: "15px",
-                itemIconFontSize: "1.5rem",
-                itemTextFontSize: "9pt",
-                emotionIconFontSize: "2rem",
-                emotionTextFontSize: "9pt",
-                pageTitleFontSize: "18pt"
-            });
-        }
-        else {
-            // window width is greater than 768px
-            this.setState({
-                menuRight: "50px",
-                menuTop: "120px",
-                menuBtnWidth: "36px",
-                menuBtnHeight: "30px",
-                itemIconFontSize: "2.3rem",
-                itemTextFontSize: "12pt",
-                emotionIconFontSize: "3rem",
-                emotionTextFontSize: "12pt",
-                pageTitleFontSize: "28pt"
-            });
-        };
-    }, 1000);
+            if (mq.matches) {
+                // window width is at less than 768px
+                this.setState({
+                    menuRight: "25px",
+                    menuTop: "110px",
+                    menuBtnWidth: "18px",
+                    menuBtnHeight: "15px",
+                    itemIconFontSize: "1.5rem",
+                    itemTextFontSize: "9pt",
+                    emotionIconFontSize: "2rem",
+                    emotionTextFontSize: "9pt",
+                    pageTitleFontSize: "18pt"
+                });
+            }
+            else {
+                // window width is greater than 768px
+                this.setState({
+                    menuRight: "50px",
+                    menuTop: "120px",
+                    menuBtnWidth: "36px",
+                    menuBtnHeight: "30px",
+                    itemIconFontSize: "2.3rem",
+                    itemTextFontSize: "12pt",
+                    emotionIconFontSize: "3rem",
+                    emotionTextFontSize: "12pt",
+                    pageTitleFontSize: "28pt"
+                });
+            };
+        }, 1000);
 
         setTimeout(() => {
             if (localStorage.getItem("mobetta_layout") === "large") {
@@ -690,7 +690,7 @@ class Productive extends Component {
 
         return (
             <div>
-                <Emotionsnavbar MenuStyles={MenuStyles} EmotionIconStyle={EmotionMenuStyles.iconStyle} EmotionIconTextStyle={EmotionMenuStyles.textStyle}/>
+                <Emotionsnavbar MenuStyles={MenuStyles} EmotionIconStyle={EmotionMenuStyles.iconStyle} EmotionIconTextStyle={EmotionMenuStyles.textStyle} />
 
                 <div className="row">
                     {/* LEFT section */}
