@@ -18,6 +18,11 @@
     font-size: 30pt;
     font-weight: 900;
 }
+
+#navbar-menu-btn {
+    color: #fafafa;
+}
+
 .mood-icon {
     font-size: 3rem;
 }
