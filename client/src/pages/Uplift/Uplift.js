@@ -314,9 +314,9 @@ class Uplift extends Component {
                                 <br></br>
                                 <div className="productive-icons icon-newspaper">
                                     <Rotate>
-                                        <i className="fas fa-newspaper" onClick={this.handleOnClickIconNews}>
-                                            <p id="item-text">News</p>
-                                        </i></Rotate>
+                                        <i className="fas fa-newspaper" onClick={this.handleOnClickIconNews}></i>
+                                        <p id="item-text">News</p>
+                                    </Rotate>
                                 </div>
 
                                 <div className="productive-icons icon-podcast">
