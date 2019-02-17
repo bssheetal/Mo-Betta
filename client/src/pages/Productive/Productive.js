@@ -343,7 +343,7 @@ class Productive extends Component {
     renderCardStock = (isLoaded, cardStyles) => {
         const cardheaderstyle = {
             cardheader: {
-                backgroundColor: '#63a35c'
+                // backgroundColor: '#648880'
             }
         };
 
@@ -431,7 +431,7 @@ class Productive extends Component {
     renderCardNews = (cardStyles) => {
         const cardheaderstyle = {
             cardheader: {
-                backgroundColor: '#1e87f0'
+                // backgroundColor: '#648880'
             }
         };
 
@@ -463,7 +463,7 @@ class Productive extends Component {
     renderCardPodcast = (cardStyles) => {
         const cardheaderstyle = {
             cardheader: {
-                backgroundColor: '#FAA050'
+                // backgroundColor: '#648880'
             }
         };
 
@@ -479,7 +479,7 @@ class Productive extends Component {
     renderCardChat = (cardStyles) => {
         const cardheaderstyle = {
             cardheader: {
-                backgroundColor: '#f48fb1'
+                // backgroundColor: '#648880'
             }
         };
 
@@ -495,7 +495,7 @@ class Productive extends Component {
     renderCardMusic = (cardStyles) => {
         const cardheaderstyle = {
             cardheader: {
-                backgroundColor: '#f0506e'
+                // backgroundColor: '#648880'
             }
         };
 
@@ -515,7 +515,7 @@ class Productive extends Component {
     renderCardVideo = (cardStyles) => {
         const cardheaderstyle = {
             cardheader: {
-                backgroundColor: '#795DA7'
+                // backgroundColor: '#648880'
             }
         };
 
@@ -626,27 +626,45 @@ class Productive extends Component {
                             <div className="container text-center small-right-section activity-icons">
                                 <br></br>
                                 <div className="productive-icons icon-stock">
-                                    <Rotate><i className="fas fa-chart-line" onClick={this.handleOnClickIconStock}></i></Rotate>
+                                    <Rotate>
+                                        <i className="fas fa-chart-line" title="stock" onClick={this.handleOnClickIconStock}></i>
+                                        <p id="item-text">Stocks</p>
+                                    </Rotate>
                                 </div>
 
                                 <div className="productive-icons icon-newspaper">
-                                    <Rotate><i className="fas fa-newspaper" onClick={this.handleOnClickIconNews}></i></Rotate>
+                                    <Rotate>
+                                        <i className="fas fa-newspaper" onClick={this.handleOnClickIconNews}></i>
+                                        <p id="item-text">News</p>
+                                    </Rotate>
                                 </div>
 
                                 <div className="productive-icons icon-podcast">
-                                    <Rotate><i className="fas fa-podcast" onClick={this.handleOnClickIconPodcast}></i></Rotate>
+                                    <Rotate>
+                                        <i className="fas fa-podcast" onClick={this.handleOnClickIconPodcast}></i>
+                                        <p id="item-text">Podcast</p>
+                                    </Rotate>
                                 </div>
 
                                 <div className="productive-icons icon-music">
-                                    <Rotate><i className="fas fa-music" onClick={this.handleOnClickIconMusic}></i></Rotate>
+                                    <Rotate>
+                                        <i className="fas fa-music" onClick={this.handleOnClickIconMusic}></i>
+                                        <p id="item-text">Music</p>
+                                    </Rotate>
                                 </div>
 
                                 <div className="productive-icons icon-video">
-                                    <Rotate><i className="fas fa-video" onClick={this.handleOnClickIconVideo}></i></Rotate>
+                                    <Rotate>
+                                        <i className="fas fa-video" onClick={this.handleOnClickIconVideo}></i>
+                                        <p id="item-text">Videos</p>
+                                    </Rotate>
                                 </div>
 
                                 <div className="productive-icons icon-chat">
-                                    <Rotate><i className="fas fa-comments" onClick={this.handleOnClickIconChat}></i></Rotate>
+                                    <Rotate>
+                                        <i className="fas fa-comments" onClick={this.handleOnClickIconChat}></i>
+                                        <p id="item-text">Chat</p>
+                                    </Rotate>
                                 </div>
                             </div>
                         </div>

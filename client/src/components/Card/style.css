@@ -1,11 +1,13 @@
 .card {
     overflow: hidden;
+    margin-left:-2rem;
+    width:95%;
 }
 
 /* .card:hover {
     overflow-y: scroll;
 } */
-/* 
+
 .card-header {
-    background-color: #111;
-} */
+    background-color: #648880;
+}

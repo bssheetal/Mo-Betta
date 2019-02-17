@@ -1,6 +1,6 @@
 import React from "react";
 import "./style.css";
-import { stack as Menu } from 'react-burger-menu';
+import { slide as Menu } from 'react-burger-menu';
 
 function Emotionsnavbar() {
 
@@ -9,8 +9,9 @@ function Emotionsnavbar() {
             position: 'fixed',
             width: '36px',
             height: '30px',
-            left: '95%',
-            top: '12%'
+            left: '97%',
+            top: '13.5%',
+        
         },
         bmBurgerBars: {
             background: '#373a47'
@@ -19,11 +20,15 @@ function Emotionsnavbar() {
             background: '#a90000'
         },
         bmCrossButton: {
-            height: '24px',
-            width: '24px'
+            height: '14px',
+            width: '14px',
+            fill: '#fff',
+            color:"#fff",
+            background:'transparent'
         },
         bmCross: {
-            background: '#bdc3c7'
+            background: '#bdc3c7',
+            color:"#fff",
         },
         bmMenuWrap: {
             position: 'fixed',
@@ -31,15 +36,19 @@ function Emotionsnavbar() {
         },
         bmMenu: {
             background: '#fafafa',
-            padding: '2.5em 1.5em 0',
-            fontSize: '1.15em'
+            padding: '0.5em 1.5em 0',
+            fontSize: '1.15em',
+            height:'100%'
+
         },
         bmMorphShape: {
             fill: '#fff'
         },
         bmItemList: {
             color: '#fff',
-            padding: '0.8em'
+            padding: '-0.5em',
+            top:'0.3%',
+            
         },
         bmItem: {
             display: 'block'
@@ -51,7 +60,7 @@ function Emotionsnavbar() {
 
     return (
         <div>
-            <Menu right noOverlay width={'170px'} styles={MenuStyles}>
+            <Menu right noOverlay width={'120px'} styles={MenuStyles}>
                 <p></p>
                 <div className="icon-container text-center">
                     <a className="mood-icon" href="/hungry"><i className="fas fa-grin-tongue ihungry" title="Hungry"></i></a>
