@@ -59,13 +59,13 @@ class Productive extends Component {
         //     StockSearch: 'BA'
         // });
 
-        var mq = window.matchMedia("(max-width: 720px)");
+        var mq = window.matchMedia("(max-width: 768px)");
         setTimeout(() => {
         if (mq.matches) {
-            // window width is at less than 720px
+            // window width is at less than 768px
             this.setState({
                 menuRight: "25px",
-                menuTop: "120px",
+                menuTop: "110px",
                 menuBtnWidth: "18px",
                 menuBtnHeight: "15px",
                 itemIconFontSize: "1.5rem",
@@ -76,7 +76,7 @@ class Productive extends Component {
             });
         }
         else {
-            // window width is greater than 720px
+            // window width is greater than 768px
             this.setState({
                 menuRight: "50px",
                 menuTop: "120px",
