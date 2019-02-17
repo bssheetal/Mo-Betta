@@ -73,7 +73,7 @@ class Relax extends Component {
                     pageTitleFontSize: "28pt"
                 });
             };
-        }, 1000);
+        }, 2000);
 
         setTimeout(() => {
             if (localStorage.getItem("mobetta_layout") === "large") {

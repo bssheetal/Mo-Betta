@@ -4,62 +4,6 @@ import { stack as Menu } from 'react-burger-menu';
 
 function Emotionsnavbar(props) {
 
-    // var MenuStyles = {
-    //     bmBurgerButton: {
-    //         position: 'fixed',
-    //         width: '36px',
-    //         height: '30px',
-    //         right: '50px',
-    //         top: '100px',
-        
-    //     },
-    //     bmBurgerBars: {
-    //         background: '#373a47'
-    //     },
-    //     bmBurgerBarsHover: {
-    //         background: '#a90000'
-    //     },
-    //     bmCrossButton: {
-    //         height: '18px',
-    //         width: '18px',
-    //         fill: '#fff',
-    //         color:"#fff",
-    //         background:'transparent'
-    //     },
-    //     bmCross: {
-    //         background: '#bdc3c7',
-    //         color:"#fff",
-    //     },
-    //     bmMenuWrap: {
-    //         position: 'fixed',
-    //         height: '100%'
-    //     },
-    //     bmMenu: {
-    //         // background: '#fafafa',
-    //         background: 'white',
-    //         padding: '0.5em 1.5em 0',
-    //         fontSize: '1.15em',
-    //         height:'100%'
-
-    //     },
-    //     bmMorphShape: {
-    //         fill: '#fff'
-    //     },
-    //     bmItemList: {
-    //         color: '#fff',
-    //         padding: '-0.5em',
-    //         top:'0.3%',
-            
-    //     },
-    //     bmItem: {
-    //         display: 'block'
-    //     },
-    //     bmOverlay: {
-    //         // background: 'rgba(0, 0, 0, 0.3)'
-    //         background: 'rgba(255, 255, 255, 0.3)'
-    //     }
-    // }
-
     return (
         <div>
             <Menu right  width={'120px'} styles={props.MenuStyles}>
