@@ -128,7 +128,8 @@ app.get("/news", isAuthenticated, (req, res) => {
       theUrl = usaTodayUrl + foodUrl
       break;
     case ('http://localhost:3000/outdoorsy'):
-      theUrl = usaTodayUrl + travelUrl
+      // theUrl = usaTodayUrl + travelUrl
+      theUrl = usaTodayUrl + boredUrl
       break;
     case ('http://localhost:3000/productive'):
       theUrl = usaTodayUrl + marketsUrl

@@ -59,6 +59,51 @@ class Productive extends Component {
         //     StockSearch: 'BA'
         // });
 
+        this.handleFormSubmit("BA");
+        this.loaddefaultchartforstock("BA");
+        this.chartdisplay();
+
+        // May have async issue with Chatkit below
+        setTimeout(() => {
+            API.getUser(this.props.user.id).then(res => {
+                this.setState({
+                    username: res.data.username,
+                    email: res.data.email
+                })
+            });
+        }, 1500);
+
+        setTimeout(() => {
+            API.scrapeNews(this.props.allResult).then(res => {
+                this.setState({
+                    news: res.data
+                })
+                console.log("=========data======")
+                console.log(res.data);
+                // console.log("========state========")
+                // console.log(this.state.news);
+            });
+        }, 1800);
+
+
+        setTimeout(() => {
+            if (localStorage.getItem("mobetta_layout") === "large") {
+                this.setState({
+                    smallScreen: false
+                });
+            } else {
+                this.setState({
+                    smallScreen: true,
+                    stockDisplay: "block",
+                    newsDisplay: "none",
+                    podcastDisplay: "none",
+                    musicDisplay: "none",
+                    videoDisplay: "none",
+                    chatDisplay: "none"
+                });
+            };
+        }, 2500);
+
         var mq = window.matchMedia("(max-width: 768px)");
         setTimeout(() => {
             if (mq.matches) {
@@ -89,47 +134,7 @@ class Productive extends Component {
                     pageTitleFontSize: "28pt"
                 });
             };
-        }, 2000);
-
-        setTimeout(() => {
-            if (localStorage.getItem("mobetta_layout") === "large") {
-                this.setState({
-                    smallScreen: false
-                });
-            } else {
-                this.setState({
-                    smallScreen: true,
-                    stockDisplay: "block",
-                    newsDisplay: "none",
-                    podcastDisplay: "none",
-                    musicDisplay: "none",
-                    videoDisplay: "none",
-                    chatDisplay: "none"
-                });
-            };
-        }, 100);
-
-        this.handleFormSubmit("BA");
-        this.loaddefaultchartforstock("BA");
-        this.chartdisplay();
-
-        API.scrapeNews(this.props.allResult).then(res => {
-            this.setState({
-                news: res.data
-            })
-            console.log("=========data======")
-            console.log(res.data);
-            // console.log("========state========")
-            // console.log(this.state.news);
-        });
-
-        // May have async issue with Chatkit below
-        API.getUser(this.props.user.id).then(res => {
-            this.setState({
-                username: res.data.username,
-                email: res.data.email
-            })
-        });
+        }, 3000);
     }
 
     // handleOnClickButton = e => {
@@ -229,7 +234,7 @@ class Productive extends Component {
     };
 
     handleOnClickIconStock = e => {
-        e.preventDefault();
+        // e.preventDefault();
 
         this.setState({
             stockDisplay: "block",
@@ -242,8 +247,6 @@ class Productive extends Component {
     };
 
     handleOnClickCardNews = e => {
-        e.preventDefault();
-
         console.log("News card clicked");
         this.setState({
             displayStockCard: false,
@@ -256,8 +259,6 @@ class Productive extends Component {
     };
 
     handleOnClickIconNews = e => {
-        e.preventDefault();
-
         console.log("News card clicked");
         this.setState({
             stockDisplay: "none",
@@ -488,7 +489,7 @@ class Productive extends Component {
                                         <NewsListItem
                                             key={item.title}
                                             title={item.title}
-                                            href={item.link}
+                                            href={'//' + item.link}
                                             thumbnail={item.image}
                                         />
                                     );
@@ -750,12 +751,28 @@ class Productive extends Component {
                         </div>
 
                         <div className="container text-center small-left-section">
-                            {this.renderCardStock(isLoaded, smallScreenStyles.cardStock, smallScreenStyles.cardStockHeader)}
-                            {this.renderCardNews(smallScreenStyles.cardNews)}
-                            {this.renderCardPodcast(smallScreenStyles.cardPodcast)}
-                            {this.renderCardChat(smallScreenStyles.cardChat)}
-                            {this.renderCardMusic(smallScreenStyles.cardMusic)}
-                            {this.renderCardVideo(smallScreenStyles.cardVideo)}
+                            {this.state.stockDisplay === 'block'
+                                ?
+                                this.renderCardStock(isLoaded, smallScreenStyles.cardStock, smallScreenStyles.cardStockHeader)
+                                :
+                                this.state.newsDisplay === 'block'
+                                    ?
+                                    this.renderCardNews(smallScreenStyles.cardNews)
+                                    :
+                                    this.state.podcastDisplay === 'block'
+                                        ?
+                                        this.renderCardPodcast(smallScreenStyles.cardPodcast)
+                                        :
+                                        this.state.chatDisplay === 'block'
+                                            ?
+                                            this.renderCardChat(smallScreenStyles.cardChat)
+                                            :
+                                            this.state.musicDisplay === 'block'
+                                                ?
+                                                this.renderCardMusic(smallScreenStyles.cardMusic)
+                                                :
+                                                this.renderCardVideo(smallScreenStyles.cardVideo)
+                            }
                         </div>
                     </div>
                 </div>

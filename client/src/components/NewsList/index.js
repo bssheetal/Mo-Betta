@@ -16,7 +16,8 @@ export function NewsList({ children }) {
               <Thumbnail src={props.thumbnail} />
             </Col>
             <Col size="xs-8 sm-9">             
-              <a rel="noreferrer noopener" target="_blank" href={props.href}>
+              {/* <a rel="noreferrer noopener" target="_blank" href={props.href}> */}
+              <a target="_blank" href={props.href}>
               <h4>{props.title}</h4>
               </a>
               <p className="source">Source:USA Today</p>

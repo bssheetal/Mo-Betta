@@ -36,11 +36,11 @@ class Music extends Component {
                             <p>Artist: {item.artists}</p>
                             <p>Album: {item.album}</p>
 
-                            {/* <Video
+                            <Video
                                 searchTerm={item.songName}
                                 numberOfResults="1"
                             >
-                            </Video> */}
+                            </Video>
                         </Card>
                 ))}
             </div>

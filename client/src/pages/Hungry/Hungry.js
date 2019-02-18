@@ -52,6 +52,33 @@ class Hungry extends Component {
     };
 
     componentDidMount() {
+        API.scrapeNews(this.props.allResult).then(res => {
+            this.setState({
+                news: res.data
+            })
+            console.log("=========data======")
+            console.log(res.data);
+            // console.log("========state========")
+            // console.log(this.state.news);
+        });
+
+        setTimeout(() => {
+            if (localStorage.getItem("mobetta_layout") === "large") {
+                this.setState({
+                    smallScreen: false
+                });
+            } else {
+                this.setState({
+                    smallScreen: true,
+                    newsDisplay: "none",
+                    podcastDisplay: "none",
+                    musicDisplay: "none",
+                    videoDisplay: "none",
+                    chatDisplay: "none"
+                });
+            };
+        }, 1000);
+
         var mq = window.matchMedia("(max-width: 768px)");
         setTimeout(() => {
             if (mq.matches) {
@@ -83,33 +110,6 @@ class Hungry extends Component {
                 });
             };
         }, 2000);
-
-        setTimeout(() => {
-            if (localStorage.getItem("mobetta_layout") === "large") {
-                this.setState({
-                    smallScreen: false
-                });
-            } else {
-                this.setState({
-                    smallScreen: true,
-                    newsDisplay: "none",
-                    podcastDisplay: "none",
-                    musicDisplay: "none",
-                    videoDisplay: "none",
-                    chatDisplay: "none"
-                });
-            };
-        }, 100);
-
-        API.scrapeNews(this.props.allResult).then(res => {
-            this.setState({
-                news: res.data
-            })
-            console.log("=========data======")
-            console.log(res.data);
-            // console.log("========state========")
-            // console.log(this.state.news);
-        });
     }
 
     handleOnClickButton = e => {
@@ -169,8 +169,6 @@ class Hungry extends Component {
     // Handle the OnClick event for icon-buttons
 
     handleOnClickCardNews = e => {
-        e.preventDefault();
-
         console.log("News card clicked");
         this.setState({
             displayNewsCard: true,
@@ -182,8 +180,6 @@ class Hungry extends Component {
     };
 
     handleOnClickIconNews = e => {
-        e.preventDefault();
-
         console.log("News card clicked");
         this.setState({
             newsDisplay: "block",
@@ -304,7 +300,7 @@ class Hungry extends Component {
                                         <NewsListItem
                                             key={item.title}
                                             title={item.title}
-                                            href={item.link}
+                                            href={'//' + item.link}
                                             thumbnail={item.image}
                                         />
                                     );
@@ -486,19 +482,13 @@ class Hungry extends Component {
                         <div className="sidebar">
                             <div className="container text-center small-right-section activity-icons">
                                 <br></br>
-                                <div className="productive-icons icon-stock" style={pageStyles.itemIcon}>
-                                    <Rotate>
-                                        <i className="fas fa-chart-line" title="stock" onClick={this.handleOnClickIconStock}></i>
-                                        <p id="item-text" style={pageStyles.itemText}>Stocks</p>
-                                    </Rotate>
-                                </div>
 
-                                <div className="productive-icons icon-newspaper" style={pageStyles.itemIcon}>
+                                {/* <div className="productive-icons icon-newspaper" style={pageStyles.itemIcon}>
                                     <Rotate>
                                         <i className="fas fa-newspaper" onClick={this.handleOnClickIconNews}></i>
                                         <p id="item-text" style={pageStyles.itemText}>News</p>
                                     </Rotate>
-                                </div>
+                                </div> */}
 
                                 <div className="productive-icons icon-podcast" style={pageStyles.itemIcon}>
                                     <Rotate>
@@ -567,11 +557,28 @@ class Hungry extends Component {
 
 
                         <div className="container text-center small-left-section">
-                            {this.renderCardNews(smallScreenStyles.cardNews)}
-                            {this.renderCardPodcast(smallScreenStyles.cardPodcast)}
-                            {this.renderCardChat(smallScreenStyles.cardChat)}
-                            {this.renderCardMusic(smallScreenStyles.cardMusic)}
-                            {this.renderCardVideo(smallScreenStyles.cardVideo)}
+                            {this.state.newsDisplay === 'block'
+                                ?
+                                this.renderCardNews(smallScreenStyles.cardNews)
+                                :
+                                this.state.podcastDisplay === 'block'
+                                    ?
+                                    this.renderCardPodcast(smallScreenStyles.cardPodcast)
+                                    :
+                                    this.state.chatDisplay === 'block'
+                                        ?
+                                        this.renderCardChat(smallScreenStyles.cardChat)
+                                        :
+                                        this.state.musicDisplay === 'block'
+                                            ?
+                                            this.renderCardMusic(smallScreenStyles.cardMusic)
+                                            :
+                                            this.state.videoDisplay === 'block'
+                                            ?
+                                            this.renderCardVideo(smallScreenStyles.cardVideo)
+                                            :
+                                            false
+                            }
                         </div>
 
 

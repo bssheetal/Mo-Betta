@@ -17,7 +17,15 @@ class App extends Component {
     email: "",
     speechText: "",
     choice: "camera",
-    emotion: ""
+    menuRight: "50px",
+    menuTop: "120px",
+    menuBtnWidth: "36px",
+    menuBtnHeight: "30px",
+    itemIconFontSize: "2.3rem",
+    itemTextFontSize: "12pt",
+    emotionIconFontSize: "3rem",
+    emotionTextFontSize: "12pt",
+    pageTitleFontSize: "28pt"
   };
   // handleLogout = () => {
   //   Auth.logout();
@@ -46,8 +54,40 @@ class App extends Component {
 
     this.videoDisplay();
 
+    var mq = window.matchMedia("(max-width: 768px)");
     setTimeout(() => {
-      TextToSpeech.speak(`Hi ${this.state.username}, do you want to take a picture? If yes, please look at the camera, press the button "s" and say "yes please". If no, please click on upload image or choose an emotion.`);
+      if (mq.matches) {
+        // window width is at less than 768px
+        this.setState({
+          menuRight: "25px",
+          menuTop: "110px",
+          menuBtnWidth: "18px",
+          menuBtnHeight: "15px",
+          itemIconFontSize: "1.5rem",
+          itemTextFontSize: "9pt",
+          emotionIconFontSize: "2rem",
+          emotionTextFontSize: "9pt",
+          pageTitleFontSize: "18pt"
+        });
+      }
+      else {
+        // window width is greater than 768px
+        this.setState({
+          menuRight: "50px",
+          menuTop: "120px",
+          menuBtnWidth: "36px",
+          menuBtnHeight: "30px",
+          itemIconFontSize: "2.3rem",
+          itemTextFontSize: "12pt",
+          emotionIconFontSize: "3rem",
+          emotionTextFontSize: "12pt",
+          pageTitleFontSize: "28pt"
+        });
+      };
+    }, 1000);
+
+    setTimeout(() => {
+      TextToSpeech.speak(`Hi ${this.state.username}, do you want to take a picture? please following the instructions on the page.`);
     }, 2000);
 
   };
@@ -112,21 +152,26 @@ class App extends Component {
 
         switch (res.data) {
           case "happiness":
+            TextToSpeech.speak(`Hi ${this.state.username}, you look happy. Let's get some work done!`);
             this.props.history.replace('/productive');
             break;
           case "neutral":
+            TextToSpeech.speak(`Hi ${this.state.username}, you look bored. Do you want to do something nice to someone else?`);
             this.props.history.replace('/bored');
             break;
           case "sadness":
+            TextToSpeech.speak(`Hi ${this.state.username}, you look sad. It is okay not to be okay as long as you are not giving up. Let me cheer you up!`);
             this.props.history.replace('/uplift');
             break;
           case "anger":
+            TextToSpeech.speak(`Hi ${this.state.username}, you look angery. Let me help you to calm down and relax`);
             this.props.history.replace('/relax');
             break;
           case "fear":
 
           default:
-            this.props.history.replace('/hungry');
+            TextToSpeech.speak(`Hi ${this.state.username}, do you want to go out and get some inspiration from the nature?`);
+            this.props.history.replace('/Outdoorsy');
         };
       })
       .catch(err => console.log(err));
@@ -199,9 +244,74 @@ class App extends Component {
       }
     };
 
+    var MenuStyles = {
+      bmBurgerButton: {
+        position: 'fixed',
+        width: this.state.menuBtnWidth,
+        height: this.state.menuBtnHeight,
+        right: this.state.menuRight,
+        top: this.state.menuTop,
+
+      },
+      bmBurgerBars: {
+        background: '#373a47'
+      },
+      bmBurgerBarsHover: {
+        background: '#a90000'
+      },
+      bmCrossButton: {
+        height: '18px',
+        width: '18px',
+        fill: '#fff',
+        color: "#fff",
+        background: 'transparent'
+      },
+      bmCross: {
+        background: '#bdc3c7',
+        color: "#fff",
+      },
+      bmMenuWrap: {
+        position: 'fixed',
+        height: '100%'
+      },
+      bmMenu: {
+        // background: '#fafafa',
+        background: 'white',
+        padding: '0.5em 1.5em 0',
+        fontSize: '1.15em',
+        height: '100%'
+
+      },
+      bmMorphShape: {
+        fill: '#fff'
+      },
+      bmItemList: {
+        color: '#fff',
+        padding: '-0.5em',
+        top: '0.3%',
+
+      },
+      bmItem: {
+        display: 'block'
+      },
+      bmOverlay: {
+        // background: 'rgba(0, 0, 0, 0.3)'
+        background: 'rgba(255, 255, 255, 0.3)'
+      }
+    }
+
+    var EmotionMenuStyles = {
+      iconStyle: {
+        fontSize: this.state.emotionIconFontSize
+      },
+      textStyle: {
+        fontSize: this.state.emotionTextFontSize
+      }
+    };
+
     return (
       <div>
-        <Emotionsnavbar />
+        <Emotionsnavbar MenuStyles={MenuStyles} EmotionIconStyle={EmotionMenuStyles.iconStyle} EmotionIconTextStyle={EmotionMenuStyles.textStyle} />
 
         <div className="App">
           <div className="App-header">
@@ -236,16 +346,19 @@ class App extends Component {
                   </div>
                 </div>
               </div>
-              <span>Hi {this.state.username}, do you want to take a picture?</span>
+              <span id="speech-question">Hi {this.state.username}, do you want to take a picture?</span>
               <ul>
-                <li>
+                <li id="speech-yes">
                   If yes, please look at the camera, press the button "s" and say "yes please".
                 </li>
-                <li>
+                <li id="speech-yes">
+                  Then after looking at the camera for 3 seconds, please lift your finger up from the key and the picture will automatically be taken.
+                </li>
+                <li id="speech-no">
                   If no, please click on Upload Image
                 </li>
-                <li>
-                  or Choose an emotion by clicking the menu button on the top-right of the page.
+                <li id="speech-no">
+                  or Choose an emotion by clicking the menu button on the top-right part of the page.
                 </li>
               </ul>
               <React.Fragment>
