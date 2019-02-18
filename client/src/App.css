@@ -48,3 +48,15 @@
   font-family: 'Parisienne', cursive;
   color: #757575;
 }
+
+#speech-question {
+  color: #222;
+}
+
+#speech-yes {
+  color: #63a35c;
+}
+
+#speech-no {
+  color: #FAA050;
+}
