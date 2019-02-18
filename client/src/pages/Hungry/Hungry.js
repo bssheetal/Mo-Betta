@@ -561,11 +561,28 @@ class Hungry extends Component {
 
 
                         <div className="container text-center small-left-section">
-                            {this.renderCardNews(smallScreenStyles.cardNews)}
-                            {this.renderCardPodcast(smallScreenStyles.cardPodcast)}
-                            {this.renderCardChat(smallScreenStyles.cardChat)}
-                            {this.renderCardMusic(smallScreenStyles.cardMusic)}
-                            {this.renderCardVideo(smallScreenStyles.cardVideo)}
+                            {this.state.newsDisplay === 'block'
+                                ?
+                                this.renderCardNews(smallScreenStyles.cardNews)
+                                :
+                                this.state.podcastDisplay === 'block'
+                                    ?
+                                    this.renderCardPodcast(smallScreenStyles.cardPodcast)
+                                    :
+                                    this.state.chatDisplay === 'block'
+                                        ?
+                                        this.renderCardChat(smallScreenStyles.cardChat)
+                                        :
+                                        this.state.musicDisplay === 'block'
+                                            ?
+                                            this.renderCardMusic(smallScreenStyles.cardMusic)
+                                            :
+                                            this.state.videoDisplay === 'block'
+                                            ?
+                                            this.renderCardVideo(smallScreenStyles.cardVideo)
+                                            :
+                                            false
+                            }
                         </div>
 
 

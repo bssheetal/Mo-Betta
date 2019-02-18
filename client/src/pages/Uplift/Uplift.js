@@ -288,7 +288,7 @@ class Uplift extends Component {
                     <Music mood="the sound of music" style={styles}></Music>
                     :
                     <Card id="card-music" title="Music" style={styles} onClick={this.handleOnClickCardMusic}>
-                        <Music mood="the sound of music" style={styles}></Music>
+                        {/* <Music mood="the sound of music" style={styles}></Music> */}
                     </Card>
                 }
             </div>
@@ -476,11 +476,24 @@ class Uplift extends Component {
                         </div>
 
                         <div className="container text-center small-left-section">
-                            {this.renderCardNews(smallScreenStyles.cardNews)}
-                            {this.renderCardPodcast(smallScreenStyles.cardPodcast)}
-                            {this.renderCardChat(smallScreenStyles.cardChat)}
-                            {this.renderCardMusic(smallScreenStyles.cardMusic)}
-                            {this.renderCardVideo(smallScreenStyles.cardVideo)}
+                            {this.state.newsDisplay === 'block'
+                                ?
+                                this.renderCardNews(smallScreenStyles.cardNews)
+                                :
+                                this.state.podcastDisplay === 'block'
+                                    ?
+                                    this.renderCardPodcast(smallScreenStyles.cardPodcast)
+                                    :
+                                    this.state.chatDisplay === 'block'
+                                        ?
+                                        this.renderCardChat(smallScreenStyles.cardChat)
+                                        :
+                                        this.state.musicDisplay === 'block'
+                                            ?
+                                            this.renderCardMusic(smallScreenStyles.cardMusic)
+                                            :
+                                            this.renderCardVideo(smallScreenStyles.cardVideo)
+                            }
                         </div>
                     </div>
 

@@ -750,12 +750,28 @@ class Productive extends Component {
                         </div>
 
                         <div className="container text-center small-left-section">
-                            {this.renderCardStock(isLoaded, smallScreenStyles.cardStock, smallScreenStyles.cardStockHeader)}
-                            {this.renderCardNews(smallScreenStyles.cardNews)}
-                            {this.renderCardPodcast(smallScreenStyles.cardPodcast)}
-                            {this.renderCardChat(smallScreenStyles.cardChat)}
-                            {this.renderCardMusic(smallScreenStyles.cardMusic)}
-                            {this.renderCardVideo(smallScreenStyles.cardVideo)}
+                            {this.state.stockDisplay === 'block'
+                                ?
+                                this.renderCardStock(isLoaded, smallScreenStyles.cardStock, smallScreenStyles.cardStockHeader)
+                                :
+                                this.state.newsDisplay === 'block'
+                                    ?
+                                    this.renderCardNews(smallScreenStyles.cardNews)
+                                    :
+                                    this.state.podcastDisplay === 'block'
+                                        ?
+                                        this.renderCardPodcast(smallScreenStyles.cardPodcast)
+                                        :
+                                        this.state.chatDisplay === 'block'
+                                            ?
+                                            this.renderCardChat(smallScreenStyles.cardChat)
+                                            :
+                                            this.state.musicDisplay === 'block'
+                                                ?
+                                                this.renderCardMusic(smallScreenStyles.cardMusic)
+                                                :
+                                                this.renderCardVideo(smallScreenStyles.cardVideo)
+                            }
                         </div>
                     </div>
                 </div>

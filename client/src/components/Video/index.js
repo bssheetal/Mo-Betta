@@ -37,7 +37,7 @@ class Video extends Component {
     render() {
         return (
             <div className="container carousel-video text-center">
-                {/* <Carousel useKeyboardArrows emulateTouch showThumbs={false}>
+                {/* <Carousel useKeyboardArrows emulateTouch showThumbs={false}> */}
                     {this.state.result.map((item, index) => (
                         <div key={index}>
                             <iframe
@@ -52,7 +52,7 @@ class Video extends Component {
                             ></iframe>
                         </div>
                     ))}
-                </Carousel> */}
+                {/* </Carousel> */}
             </div>
         );
     }
