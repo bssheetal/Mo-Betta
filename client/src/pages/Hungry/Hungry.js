@@ -52,6 +52,33 @@ class Hungry extends Component {
     };
 
     componentDidMount() {
+        API.scrapeNews(this.props.allResult).then(res => {
+            this.setState({
+                news: res.data
+            })
+            console.log("=========data======")
+            console.log(res.data);
+            // console.log("========state========")
+            // console.log(this.state.news);
+        });
+
+        setTimeout(() => {
+            if (localStorage.getItem("mobetta_layout") === "large") {
+                this.setState({
+                    smallScreen: false
+                });
+            } else {
+                this.setState({
+                    smallScreen: true,
+                    newsDisplay: "none",
+                    podcastDisplay: "none",
+                    musicDisplay: "none",
+                    videoDisplay: "none",
+                    chatDisplay: "none"
+                });
+            };
+        }, 1000);
+
         var mq = window.matchMedia("(max-width: 768px)");
         setTimeout(() => {
             if (mq.matches) {
@@ -82,34 +109,7 @@ class Hungry extends Component {
                     pageTitleFontSize: "28pt"
                 });
             };
-        }, 1000);
-
-        setTimeout(() => {
-            if (localStorage.getItem("mobetta_layout") === "large") {
-                this.setState({
-                    smallScreen: false
-                });
-            } else {
-                this.setState({
-                    smallScreen: true,
-                    newsDisplay: "none",
-                    podcastDisplay: "none",
-                    musicDisplay: "none",
-                    videoDisplay: "none",
-                    chatDisplay: "none"
-                });
-            };
-        }, 100);
-
-        API.scrapeNews(this.props.allResult).then(res => {
-            this.setState({
-                news: res.data
-            })
-            console.log("=========data======")
-            console.log(res.data);
-            // console.log("========state========")
-            // console.log(this.state.news);
-        });
+        }, 2000);
     }
 
     handleOnClickButton = e => {
@@ -169,8 +169,6 @@ class Hungry extends Component {
     // Handle the OnClick event for icon-buttons
 
     handleOnClickCardNews = e => {
-        e.preventDefault();
-
         console.log("News card clicked");
         this.setState({
             displayNewsCard: true,
@@ -182,8 +180,6 @@ class Hungry extends Component {
     };
 
     handleOnClickIconNews = e => {
-        e.preventDefault();
-
         console.log("News card clicked");
         this.setState({
             newsDisplay: "block",
@@ -304,7 +300,7 @@ class Hungry extends Component {
                                         <NewsListItem
                                             key={item.title}
                                             title={item.title}
-                                            href={item.link}
+                                            href={'//' + item.link}
                                             thumbnail={item.image}
                                         />
                                     );
@@ -487,12 +483,12 @@ class Hungry extends Component {
                             <div className="container text-center small-right-section activity-icons">
                                 <br></br>
 
-                                <div className="productive-icons icon-newspaper" style={pageStyles.itemIcon}>
+                                {/* <div className="productive-icons icon-newspaper" style={pageStyles.itemIcon}>
                                     <Rotate>
                                         <i className="fas fa-newspaper" onClick={this.handleOnClickIconNews}></i>
                                         <p id="item-text" style={pageStyles.itemText}>News</p>
                                     </Rotate>
-                                </div>
+                                </div> */}
 
                                 <div className="productive-icons icon-podcast" style={pageStyles.itemIcon}>
                                     <Rotate>

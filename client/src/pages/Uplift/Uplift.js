@@ -43,6 +43,43 @@ class Uplift extends Component {
     };
 
     componentDidMount() {
+        // May have async issue with Chatkit below
+        API.getUser(this.props.user.id).then(res => {
+            this.setState({
+                username: res.data.username,
+                email: res.data.email
+            })
+        });
+
+        setTimeout(() => {
+            API.scrapeNews(this.props.allResult).then(res => {
+                this.setState({
+                    news: res.data
+                })
+                console.log("=========data======")
+                console.log(res.data);
+                // console.log("======== news state========")
+                // console.log(this.state.news[0].link);
+            });
+        }, 500);
+
+        setTimeout(() => {
+            if (localStorage.getItem("mobetta_layout") === "large") {
+                this.setState({
+                    smallScreen: false
+                });
+            } else {
+                this.setState({
+                    smallScreen: true,
+                    newsDisplay: "none",
+                    podcastDisplay: "none",
+                    musicDisplay: "block",
+                    videoDisplay: "none",
+                    chatDisplay: "none"
+                });
+            };
+        }, 1000);
+
         var mq = window.matchMedia("(max-width: 768px)");
         setTimeout(() => {
             if (mq.matches) {
@@ -73,48 +110,12 @@ class Uplift extends Component {
                     pageTitleFontSize: "28pt"
                 });
             };
-        }, 1000);
-
-        setTimeout(() => {
-            if (localStorage.getItem("mobetta_layout") === "large") {
-                this.setState({
-                    smallScreen: false
-                });
-            } else {
-                this.setState({
-                    smallScreen: true,
-                    newsDisplay: "none",
-                    podcastDisplay: "none",
-                    musicDisplay: "block",
-                    videoDisplay: "none",
-                    chatDisplay: "none"
-                });
-            };
-        }, 100);
-
-        // May have async issue with Chatkit below
-        API.getUser(this.props.user.id).then(res => {
-            this.setState({
-                username: res.data.username,
-                email: res.data.email
-            })
-        });
-        API.scrapeNews(this.props.allResult).then(res => {
-            this.setState({
-                news: res.data
-            })
-            console.log("=========data======")
-            console.log(res.data);
-            // console.log("========state========")
-            // console.log(this.state.news);
-        });
+        }, 2000);
     }
 
     // Handle the OnClick event for icon-buttons
 
     handleOnClickCardNews = e => {
-        e.preventDefault();
-
         console.log("News card clicked");
         this.setState({
             displayNewsCard: true,
@@ -126,8 +127,6 @@ class Uplift extends Component {
     };
 
     handleOnClickIconNews = e => {
-        e.preventDefault();
-
         console.log("News card clicked");
         this.setState({
             newsDisplay: "block",
@@ -238,17 +237,17 @@ class Uplift extends Component {
     renderCardNews = (styles) => {
         return (
             <div id="card-news">
-                <Card title="Business News" style={styles} onClick={this.handleOnClickCardNews}>
+                <Card title="Cartoons" style={styles} onClick={this.handleOnClickCardNews}>
                     <Container>
                         <Col size="xs-6">
-
+                            
                             <NewsList>
                                 {this.state.news.slice(0, 5).map(item => {
                                     return (
                                         <NewsListItem
                                             key={item.title}
                                             title={item.title}
-                                            href={item.link}
+                                            href={'//' + item.link}
                                             thumbnail={item.image}
                                         />
                                     );
@@ -305,6 +304,7 @@ class Uplift extends Component {
             </Card>
         );
     };
+
 
     renderLargeScreen = (isLoaded, activeStyles, inactiveStyles) => {
         return (

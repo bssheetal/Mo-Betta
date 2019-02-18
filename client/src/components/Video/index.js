@@ -20,19 +20,6 @@ class Video extends Component {
             .catch(err => console.log(err));
     };
 
-    componentWillReceiveProps() {
-        console.log(this.props.searchTerm);
-        API.video(this.props.searchTerm, this.props.numberOfResults)
-            .then(res => {
-                console.log(res.data);
-                this.setState({
-                    result: res.data
-                });
-            })
-            .catch(err => console.log(err));
-    };
-
-    
 
     render() {
         return (
