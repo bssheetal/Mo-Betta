@@ -9,9 +9,8 @@ import axios from "axios";
 
 // Our Components
 import Login from './pages/Login/Login';
-import Profile from './pages/Profile';
+import Profile from './pages/Profile/Profile';
 import Signup from './pages/Signup/Signup';
-import Camera from './pages/Camera/Camera';
 import Productive from './pages/Productive/Productive';
 import Bored from './pages/Bored/Bored';
 import Hungry from './pages/Hungry/Hungry';
@@ -19,7 +18,6 @@ import Outdoorsy from './pages/Outdoorsy/Outdoorsy';
 import Uplift from './pages/Uplift/Uplift';
 import Relax from "./pages/Relax/Relax";
 import Navbar from './components/Navbar';
-import News from './components/News';
 import Footer from './components/Footer';
 
 // Here is if we have an id_token in localStorage
@@ -36,7 +34,6 @@ ReactDOM.render(
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={Signup} />
             <Route exact path="/profile" component={Profile} />
-            <Route exact path="/camera" component={Camera} />
             <Route exact path="/productive" component={Productive} />
             <Route exact path="/bored" component={Bored} />
             <Route exact path="/hungry" component={Hungry} />
