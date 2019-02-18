@@ -30,19 +30,12 @@ class Productive extends Component {
         linechartelements: {},
         isLoading: false,
         parentComponent: "productive",
-        smallScreen: true,
         stockDisplay: "block",
         newsDisplay: "block",
         podcastDisplay: "block",
         musicDisplay: "block",
         videoDisplay: "block",
         chatDisplay: "block",
-        displayStockCard: true,
-        displayNewsCard: false,
-        displayPodcastCard: false,
-        displayChatCard: false,
-        displayMusicCard: false,
-        displayVideoCard: false,
         menuRight: "50px",
         menuTop: "120px",
         menuBtnWidth: "36px",
@@ -86,24 +79,6 @@ class Productive extends Component {
         }, 1800);
 
 
-        setTimeout(() => {
-            if (localStorage.getItem("mobetta_layout") === "large") {
-                this.setState({
-                    smallScreen: false
-                });
-            } else {
-                this.setState({
-                    smallScreen: true,
-                    stockDisplay: "block",
-                    newsDisplay: "none",
-                    podcastDisplay: "none",
-                    musicDisplay: "none",
-                    videoDisplay: "none",
-                    chatDisplay: "none"
-                });
-            };
-        }, 2500);
-
         var mq = window.matchMedia("(max-width: 768px)");
         setTimeout(() => {
             if (mq.matches) {
@@ -134,17 +109,9 @@ class Productive extends Component {
                     pageTitleFontSize: "28pt"
                 });
             };
-        }, 3000);
+        }, 2300);
     }
 
-    // handleOnClickButton = e => {
-    //     e.preventDefault();
-    //     API.spotify("productive")
-    //         .then(res => {
-    //             console.log(res.data);
-    //         })
-    //         .catch(err => console.log(err));
-    // };
 
     handleInputChange = event => {
         const { name, value } = event.target;
@@ -220,19 +187,6 @@ class Productive extends Component {
     }
 
     // Handle the OnClick event for icon-buttons
-    handleOnClickCardStock = e => {
-        e.preventDefault();
-
-        this.setState({
-            displayStockCard: true,
-            displayNewsCard: false,
-            displayPodcastCard: false,
-            displayChatCard: false,
-            displayMusicCard: false,
-            displayVideoCard: false
-        });
-    };
-
     handleOnClickIconStock = e => {
         // e.preventDefault();
 
@@ -246,18 +200,6 @@ class Productive extends Component {
         });
     };
 
-    handleOnClickCardNews = e => {
-        console.log("News card clicked");
-        this.setState({
-            displayStockCard: false,
-            displayNewsCard: true,
-            displayPodcastCard: false,
-            displayChatCard: false,
-            displayMusicCard: false,
-            displayVideoCard: false
-        });
-    };
-
     handleOnClickIconNews = e => {
         console.log("News card clicked");
         this.setState({
@@ -267,19 +209,6 @@ class Productive extends Component {
             musicDisplay: "none",
             videoDisplay: "none",
             chatDisplay: "none"
-        });
-    };
-
-    handleOnClickCardPodcast = e => {
-        e.preventDefault();
-
-        this.setState({
-            displayStockCard: false,
-            displayNewsCard: false,
-            displayPodcastCard: true,
-            displayChatCard: false,
-            displayMusicCard: false,
-            displayVideoCard: false
         });
     };
 
@@ -296,19 +225,6 @@ class Productive extends Component {
         });
     };
 
-    handleOnClickCardChat = e => {
-        e.preventDefault();
-
-        this.setState({
-            displayStockCard: false,
-            displayNewsCard: false,
-            displayPodcastCard: false,
-            displayChatCard: true,
-            displayMusicCard: false,
-            displayVideoCard: false
-        });
-    };
-
     handleOnClickIconChat = e => {
         e.preventDefault();
 
@@ -322,19 +238,6 @@ class Productive extends Component {
         });
     };
 
-    handleOnClickCardMusic = e => {
-        e.preventDefault();
-
-        this.setState({
-            displayStockCard: false,
-            displayNewsCard: false,
-            displayPodcastCard: false,
-            displayChatCard: false,
-            displayMusicCard: true,
-            displayVideoCard: false
-        });
-    };
-
     handleOnClickIconMusic = e => {
         e.preventDefault();
 
@@ -345,19 +248,6 @@ class Productive extends Component {
             musicDisplay: "block",
             videoDisplay: "none",
             chatDisplay: "none"
-        });
-    };
-
-    handleOnClickCardVideo = e => {
-        e.preventDefault();
-
-        this.setState({
-            displayStockCard: false,
-            displayNewsCard: false,
-            displayPodcastCard: false,
-            displayChatCard: false,
-            displayMusicCard: false,
-            displayVideoCard: true
         });
     };
 
@@ -390,7 +280,7 @@ class Productive extends Component {
         };
 
         return (
-            <Card id="card-stock" classname="stocksheader" title="Stocks" style={cardStyles} cardheaderstyle={cardheaderstyle.cardheader} onClick={this.handleOnClickCardStock}>
+            <Card id="card-stock" classname="stocksheader" title="Stocks" style={cardStyles} cardheaderstyle={cardheaderstyle.cardheader}>
 
                 <div className="row" id="btn-load">
                     <div className="col-sm-6">
@@ -479,7 +369,7 @@ class Productive extends Component {
 
         return (
             <div id="card-news">
-                <Card title="Business News" style={cardStyles} cardheaderstyle={cardheaderstyle.cardheader} onClick={this.handleOnClickCardNews}>
+                <Card title="Business News" style={cardStyles} cardheaderstyle={cardheaderstyle.cardheader}>
                     <Container>
                         <Col size="xs-6">
 
@@ -510,7 +400,7 @@ class Productive extends Component {
         };
 
         return (
-            <Card id="card-podcast" title="PodCast" style={cardStyles} cardheaderstyle={cardheaderstyle.cardheader} onClick={this.handleOnClickCardPodcast}>
+            <Card id="card-podcast" title="PodCast" style={cardStyles} cardheaderstyle={cardheaderstyle.cardheader}>
                 <Container>
                     <PodCast />
                 </Container>
@@ -526,7 +416,7 @@ class Productive extends Component {
         };
 
         return (
-            <Card id="card-chat" title="Chat" style={cardStyles} cardheaderstyle={cardheaderstyle.cardheader} onClick={this.handleOnClickCardChat}>
+            <Card id="card-chat" title="Chat" style={cardStyles} cardheaderstyle={cardheaderstyle.cardheader}>
                 <Container>
                     <Chat userid={this.state.username} />
                 </Container>
@@ -546,7 +436,7 @@ class Productive extends Component {
                 {this.state.smallScreen ?
                     <Music mood="happy" style={cardStyles} cardheaderstyle={cardheaderstyle.cardheader}></Music>
                     :
-                    <Card id="card-music" title="Music" style={cardStyles} cardheaderstyle={cardheaderstyle.cardheader} onClick={this.handleOnClickCardMusic}>
+                    <Card id="card-music" title="Music" style={cardStyles} cardheaderstyle={cardheaderstyle.cardheader}>
                         <Music mood="happy" style={cardStyles}></Music>
                     </Card>
                 }
@@ -562,7 +452,7 @@ class Productive extends Component {
         };
 
         return (
-            <Card id="card-video" title="Video" style={cardStyles} cardheaderstyle={cardheaderstyle.cardheader} onClick={this.handleOnClickCardVideo}>
+            <Card id="card-video" title="Video" style={cardStyles} cardheaderstyle={cardheaderstyle.cardheader}>
                 <Video
                     searchTerm="CNBC Television"
                     numberOfResults="5"
@@ -571,44 +461,6 @@ class Productive extends Component {
         );
     };
 
-    // Render the large screen layout
-    renderLargeScreen = (isLoaded, activeStyles, inactiveStyles) => {
-        return (
-            <div className="row">
-                {/* LEFT section */}
-                <div className="col-sm-3">
-                    <div className="container text-center large-left-section">
-                        {this.renderCardMusic(inactiveStyles.cardMusic)}
-                        {this.renderCardNews(inactiveStyles.cardNews)}
-                        {this.renderCardPodcast(inactiveStyles.cardPodcast)}
-                    </div>
-
-                </div>
-
-                {/* CENTER section */}
-                <div className="col-sm-6">
-                    <div className="container text-center large-middle-section">
-                        {this.state.displayStockCard ? this.renderCardStock(isLoaded, activeStyles.cardStock) : null}
-                        {this.state.displayNewsCard ? this.renderCardNews(activeStyles.cardNews) : null}
-                        {this.state.displayPodcastCard ? this.renderCardPodcast(activeStyles.cardPodcast) : null}
-                        {this.state.displayChatCard ? this.renderCardChat(activeStyles.cardChat) : null}
-                        {this.state.displayMusicCard ? this.renderCardMusic(activeStyles.cardMusic) : null}
-                        {this.state.displayVideoCard ? this.renderCardVideo(activeStyles.cardVideo) : null}
-                    </div>
-                </div>
-
-                {/* RIGHT section */}
-                <div className="col-sm-3">
-                    <div className="container text-center large-right-section">
-                        {this.renderCardStock(isLoaded, inactiveStyles.cardStock)}
-                        {this.renderCardVideo(inactiveStyles.cardVideo)}
-                        {this.renderCardChat(inactiveStyles.cardChat)}
-                    </div>
-                </div>
-
-            </div>
-        );
-    };
 
     // Rendder the small screen layout (default layout)
     renderSmallScreen = (isLoaded, smallScreenStyles) => {
@@ -783,65 +635,6 @@ class Productive extends Component {
     //whth
     render() {
         const { isLoaded } = this.state;
-        const inactiveStyles = {
-            cardStock: {
-                display: this.state.stockDisplay,
-                height: "150px"
-            },
-            cardNews: {
-                display: this.state.newsDisplay,
-                height: "150px"
-            },
-            cardPodcast: {
-                display: this.state.podcastDisplay,
-                height: "150px"
-            },
-            cardMusic: {
-                display: this.state.musicDisplay,
-                height: "150px"
-            },
-            cardVideo: {
-                display: this.state.videoDisplay,
-                height: "150px"
-            },
-            cardChat: {
-                display: this.state.chatDisplay,
-                height: "150px"
-            }
-        };
-
-        const activeStyles = {
-            cardStock: {
-                display: this.state.stockDisplay,
-                height: "auto",
-                overflow: "hidden"
-            },
-            cardNews: {
-                display: this.state.newsDisplay,
-                height: "auto",
-                overflow: "hidden"
-            },
-            cardPodcast: {
-                display: this.state.podcastDisplay,
-                height: "auto",
-                overflow: "hidden"
-            },
-            cardMusic: {
-                display: this.state.musicDisplay,
-                height: "auto",
-                overflow: "hidden"
-            },
-            cardVideo: {
-                display: this.state.videoDisplay,
-                height: "auto",
-                overflow: "hidden"
-            },
-            cardChat: {
-                display: this.state.chatDisplay,
-                height: "auto",
-                overflow: "hidden"
-            }
-        };
 
         const smallScreenStyles = {
             cardStock: {
@@ -877,11 +670,7 @@ class Productive extends Component {
         return (
             <div className="container-fluid">
 
-                {this.state.smallScreen ?
-                    this.renderSmallScreen(isLoaded, smallScreenStyles)
-                    :
-                    this.renderLargeScreen(isLoaded, activeStyles, inactiveStyles)
-                }
+                {this.renderSmallScreen(isLoaded, smallScreenStyles)}
 
             </div>
         );
