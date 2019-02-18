@@ -78,6 +78,16 @@ class Productive extends Component {
             });
         }, 1800);
 
+        setTimeout(() => {
+            this.setState({
+                stockDisplay: "block",
+                newsDisplay: "none",
+                podcastDisplay: "none",
+                musicDisplay: "none",
+                videoDisplay: "none",
+                chatDisplay: "none"
+            });
+        }, 2300);
 
         var mq = window.matchMedia("(max-width: 768px)");
         setTimeout(() => {
@@ -102,14 +112,14 @@ class Productive extends Component {
                     menuTop: "120px",
                     menuBtnWidth: "36px",
                     menuBtnHeight: "30px",
-                    itemIconFontSize: "2.3rem",
+                    itemIconFontSize: "3rem",
                     itemTextFontSize: "12pt",
-                    emotionIconFontSize: "3rem",
+                    emotionIconFontSize: "2.5rem",
                     emotionTextFontSize: "12pt",
                     pageTitleFontSize: "28pt"
                 });
             };
-        }, 2300);
+        }, 3000);
     }
 
 
@@ -433,13 +443,7 @@ class Productive extends Component {
 
         return (
             <div>
-                {this.state.smallScreen ?
-                    <Music mood="happy" style={cardStyles} cardheaderstyle={cardheaderstyle.cardheader}></Music>
-                    :
-                    <Card id="card-music" title="Music" style={cardStyles} cardheaderstyle={cardheaderstyle.cardheader}>
-                        <Music mood="happy" style={cardStyles}></Music>
-                    </Card>
-                }
+                <Music mood="happy" style={cardStyles} cardheaderstyle={cardheaderstyle.cardheader}></Music>
             </div>
         );
     };
