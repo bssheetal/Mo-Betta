@@ -430,12 +430,6 @@ class Uplift extends Component {
                         <div className="sidebar">
                             <div className="container text-center small-right-section activity-icons">
                                 <br></br>
-                                <div className="productive-icons icon-stock" style={pageStyles.itemIcon}>
-                                    <Rotate>
-                                        <i className="fas fa-chart-line" title="stock" onClick={this.handleOnClickIconStock}></i>
-                                        <p id="item-text" style={pageStyles.itemText}>Stocks</p>
-                                    </Rotate>
-                                </div>
 
                                 <div className="productive-icons icon-newspaper" style={pageStyles.itemIcon}>
                                     <Rotate>

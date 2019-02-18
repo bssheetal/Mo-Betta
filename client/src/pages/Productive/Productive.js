@@ -229,7 +229,7 @@ class Productive extends Component {
     };
 
     handleOnClickIconStock = e => {
-        e.preventDefault();
+        // e.preventDefault();
 
         this.setState({
             stockDisplay: "block",
