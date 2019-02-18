@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import API from "../../utils/API"
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { Carousel } from 'react-responsive-carousel';
+// import { Carousel } from 'react-responsive-carousel';
 import './style.css'
 
 class Video extends Component {
@@ -32,12 +32,12 @@ class Video extends Component {
             .catch(err => console.log(err));
     };
 
-    comp
+    
 
     render() {
         return (
             <div className="container carousel-video text-center">
-                <Carousel useKeyboardArrows emulateTouch showThumbs={false}>
+                {/* <Carousel useKeyboardArrows emulateTouch showThumbs={false}>
                     {this.state.result.map((item, index) => (
                         <div key={index}>
                             <iframe
@@ -52,7 +52,7 @@ class Video extends Component {
                             ></iframe>
                         </div>
                     ))}
-                </Carousel>
+                </Carousel> */}
             </div>
         );
     }
