@@ -20,7 +20,8 @@
 }
 
 @media screen and (max-width: 450px) {
-    .food-image {
-        /* margin-left: 10px; */
+    #card-recipe-image {
+        width: 80%;
+        height: 80%;
     }
 }

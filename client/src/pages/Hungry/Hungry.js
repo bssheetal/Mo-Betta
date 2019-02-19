@@ -425,8 +425,8 @@ class Hungry extends Component {
                                     title={recipe.title}
                                 >
                                     <div className="row">
-                                        <div className="col-sm-4">
-                                            <img src={recipe.imageURL}></img>
+                                        <div className="col-sm-4 text-center">
+                                            <img id="card-recipe-image" src={recipe.imageURL}></img>
                                         </div>
                                         <div className="col-sm-8 recipe-video">
                                             <Video
