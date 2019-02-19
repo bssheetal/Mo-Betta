@@ -1,5 +1,5 @@
 // window.SpeechRecognition = window.webkitSpeechRecognition || window.SpeechRecognition;
-console.log(window.webkitSpeechRecognition);
+console.log(window.SpeechRecognition);
 window.SpeechRecognition = window.webkitSpeechRecognition;
 
 let finalTranscript = '';
