@@ -20,17 +20,11 @@ class Outdoorsy extends Component {
         linechartelements: {},
         isLoading: false,
         parentComponent: "outdoorsy",
-        smallScreen: true,
         newsDisplay: "block",
         podcastDisplay: "block",
         musicDisplay: "block",
         videoDisplay: "block",
         chatDisplay: "block",
-        displayNewsCard: false,
-        displayPodcastCard: false,
-        displayChatCard: false,
-        displayMusicCard: false,
-        displayVideoCard: false,
         menuRight: "50px",
         menuTop: "120px",
         menuBtnWidth: "36px",
@@ -64,20 +58,13 @@ class Outdoorsy extends Component {
         }, 500);
 
         setTimeout(() => {
-            if (localStorage.getItem("mobetta_layout") === "large") {
-                this.setState({
-                    smallScreen: false
-                });
-            } else {
-                this.setState({
-                    smallScreen: true,
-                    newsDisplay: "none",
-                    podcastDisplay: "none",
-                    musicDisplay: "block",
-                    videoDisplay: "none",
-                    chatDisplay: "none"
-                });
-            };
+            this.setState({
+                newsDisplay: "none",
+                podcastDisplay: "none",
+                musicDisplay: "none",
+                videoDisplay: "block",
+                chatDisplay: "none"
+            });
         }, 1000);
 
         var mq = window.matchMedia("(max-width: 768px)");
@@ -114,18 +101,6 @@ class Outdoorsy extends Component {
     }
 
     // Handle the OnClick event for icon-buttons
-
-    handleOnClickCardNews = e => {
-        console.log("News card clicked");
-        this.setState({
-            displayNewsCard: true,
-            displayPodcastCard: false,
-            displayChatCard: false,
-            displayMusicCard: false,
-            displayVideoCard: false
-        });
-    };
-
     handleOnClickIconNews = e => {
         console.log("News card clicked");
         this.setState({
@@ -134,18 +109,6 @@ class Outdoorsy extends Component {
             musicDisplay: "none",
             videoDisplay: "none",
             chatDisplay: "none"
-        });
-    };
-
-    handleOnClickCardPodcast = e => {
-        e.preventDefault();
-
-        this.setState({
-            displayNewsCard: false,
-            displayPodcastCard: true,
-            displayChatCard: false,
-            displayMusicCard: false,
-            displayVideoCard: false
         });
     };
 
@@ -161,18 +124,6 @@ class Outdoorsy extends Component {
         });
     };
 
-    handleOnClickCardChat = e => {
-        e.preventDefault();
-
-        this.setState({
-            displayNewsCard: false,
-            displayPodcastCard: false,
-            displayChatCard: true,
-            displayMusicCard: false,
-            displayVideoCard: false
-        });
-    };
-
     handleOnClickIconChat = e => {
         e.preventDefault();
 
@@ -185,18 +136,6 @@ class Outdoorsy extends Component {
         });
     };
 
-    handleOnClickCardMusic = e => {
-        e.preventDefault();
-
-        this.setState({
-            displayNewsCard: false,
-            displayPodcastCard: false,
-            displayChatCard: false,
-            displayMusicCard: true,
-            displayVideoCard: false
-        });
-    };
-
     handleOnClickIconMusic = e => {
         e.preventDefault();
 
@@ -206,18 +145,6 @@ class Outdoorsy extends Component {
             musicDisplay: "block",
             videoDisplay: "none",
             chatDisplay: "none"
-        });
-    };
-
-    handleOnClickCardVideo = e => {
-        e.preventDefault();
-
-        this.setState({
-            displayNewsCard: false,
-            displayPodcastCard: false,
-            displayChatCard: false,
-            displayMusicCard: false,
-            displayVideoCard: true
         });
     };
 
@@ -237,7 +164,7 @@ class Outdoorsy extends Component {
     renderCardNews = (styles) => {
         return (
             <div id="card-news">
-                <Card title="Life" style={styles} onClick={this.handleOnClickCardNews}>
+                <Card title="Life" style={styles}>
                     <Container>
                         <Col size="xs-6">
 
@@ -262,7 +189,7 @@ class Outdoorsy extends Component {
 
     renderCardPodcast = (styles) => {
         return (
-            <Card id="card-podcast" title="PodCast" style={styles} onClick={this.handleOnClickCardPodcast}>
+            <Card id="card-podcast" title="PodCast" style={styles}>
                 <Container>
                     <PodCast referrer={this.state.parentComponent} />
                 </Container>
@@ -272,7 +199,7 @@ class Outdoorsy extends Component {
 
     renderCardChat = (styles) => {
         return (
-            <Card id="card-chat" title="Chat" style={styles} onClick={this.handleOnClickCardChat}>
+            <Card id="card-chat" title="Chat" style={styles}>
                 <Container>
                     <Chat userid={this.state.username} />
                 </Container>
@@ -283,20 +210,14 @@ class Outdoorsy extends Component {
     renderCardMusic = (styles) => {
         return (
             <div>
-                {this.state.smallScreen ?
-                    <Music mood="ed sheeran" style={styles}></Music>
-                    :
-                    <Card id="card-music" title="Music" style={styles} onClick={this.handleOnClickCardMusic}>
-                        <Music mood="ed sheeran" style={styles}></Music>
-                    </Card>
-                }
+                <Music mood="ed sheeran" style={styles}></Music>
             </div>
         );
     };
 
     renderCardVideo = (styles) => {
         return (
-            <Card id="card-video" title="Video" style={styles} onClick={this.handleOnClickCardVideo}>
+            <Card id="card-video" title="Video" style={styles}>
                 <Video
                     searchTerm="BBC planet earth"
                     numberOfResults="5"
@@ -305,43 +226,7 @@ class Outdoorsy extends Component {
         );
     };
 
-    renderLargeScreen = (isLoaded, activeStyles, inactiveStyles) => {
-        return (
-            <div className="row">
-                {/* LEFT section */}
-                <div className="col-sm-3">
-                    <div className="container text-center large-left-section">
-                        {this.renderCardMusic(inactiveStyles.cardMusic)}
-                        {this.renderCardNews(inactiveStyles.cardNews)}
-                        {this.renderCardPodcast(inactiveStyles.cardPodcast)}
-                    </div>
-
-                </div>
-
-                {/* CENTER section */}
-                <div className="col-sm-6">
-                    <div className="container text-center large-middle-section">
-                        {this.state.displayNewsCard ? this.renderCardNews(activeStyles.cardNews) : null}
-                        {this.state.displayPodcastCard ? this.renderCardPodcast(activeStyles.cardPodcast) : null}
-                        {this.state.displayChatCard ? this.renderCardChat(activeStyles.cardChat) : null}
-                        {this.state.displayMusicCard ? this.renderCardMusic(activeStyles.cardMusic) : null}
-                        {this.state.displayVideoCard ? this.renderCardVideo(activeStyles.cardVideo) : null}
-                    </div>
-                </div>
-
-                {/* RIGHT section */}
-                <div className="col-sm-3">
-                    <div className="container text-center large-right-section">
-                        {this.renderCardVideo(inactiveStyles.cardVideo)}
-                        {this.renderCardChat(inactiveStyles.cardChat)}
-                    </div>
-                </div>
-
-            </div>
-        );
-    };
-
-    renderSmallScreen = (isLoaded, smallScreenStyles) => {
+    renderSmallScreen = (smallScreenStyles) => {
         var MenuStyles = {
             bmBurgerButton: {
                 position: 'fixed',
@@ -501,9 +386,6 @@ class Outdoorsy extends Component {
         );
     };
 
-
-
-
     handleOnClickButton = e => {
         e.preventDefault();
 
@@ -515,58 +397,6 @@ class Outdoorsy extends Component {
     };
 
     render() {
-        const { isLoaded } = this.state;
-        const inactiveStyles = {
-            cardNews: {
-                display: this.state.newsDisplay,
-                height: "150px"
-            },
-            cardPodcast: {
-                display: this.state.podcastDisplay,
-                height: "150px"
-            },
-            cardMusic: {
-                display: this.state.musicDisplay,
-                height: "150px"
-            },
-            cardVideo: {
-                display: this.state.videoDisplay,
-                height: "150px"
-            },
-            cardChat: {
-                display: this.state.chatDisplay,
-                height: "150px"
-            }
-        };
-
-        const activeStyles = {
-            cardNews: {
-                display: this.state.newsDisplay,
-                height: "auto",
-                overflow: "hidden"
-            },
-            cardPodcast: {
-                display: this.state.podcastDisplay,
-                height: "auto",
-                overflow: "hidden"
-            },
-            cardMusic: {
-                display: this.state.musicDisplay,
-                height: "auto",
-                overflow: "hidden"
-            },
-            cardVideo: {
-                display: this.state.videoDisplay,
-                height: "auto",
-                overflow: "hidden"
-            },
-            cardChat: {
-                display: this.state.chatDisplay,
-                height: "auto",
-                overflow: "hidden"
-            }
-        };
-
         const smallScreenStyles = {
             cardNews: {
                 display: this.state.newsDisplay,
@@ -594,11 +424,7 @@ class Outdoorsy extends Component {
         return (
             <div className="container-fluid">
 
-                {this.state.smallScreen ?
-                    this.renderSmallScreen(isLoaded, smallScreenStyles)
-                    :
-                    this.renderLargeScreen(isLoaded, activeStyles, inactiveStyles)
-                }
+                {this.renderSmallScreen(smallScreenStyles)}
 
             </div>
         );

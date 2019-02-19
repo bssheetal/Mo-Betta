@@ -213,7 +213,7 @@ input {
     font-size: 28pt;
   }
 
-  @media screen and (max-height: 450px) {
+  @media screen and (max-width: 450px) {
     .sidebar {padding-top: 15px;}
     .sidebar a {font-size: 18px;}
   }

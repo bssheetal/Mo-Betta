@@ -11,10 +11,33 @@
     width: 10%;
     max-width: 50%;
     height: auto;
+    margin-right: 80px;
 }
 
 .food-image:hover {
     /* animation: shake 0.5s;  */
     transform: scale(1.1);
     cursor: pointer;
+}
+
+@media screen and (max-width: 450px) {
+    .food-image{
+        margin-right: 20px;
+    }
+    
+    #card-recipe-image {
+        width: 80%;
+        height: 80%;
+    }
+}
+
+@media screen and (min-width: 450px) and (max-width: 800px) {
+    .food-image{
+        margin-right: 40px;
+    }
+    
+    #card-recipe-image {
+        width: 80%;
+        height: 80%;
+    }
 }

@@ -231,7 +231,7 @@ class App extends Component {
   }
 
   render() {
-    console.log(process.env.REACT_APP_SECRET_CODE);
+    // console.log(process.env.REACT_APP_SECRET_CODE);
     const styles = {
       canvas: {
         display: "none"
@@ -327,40 +327,44 @@ class App extends Component {
 
 
             <div className="container Camera">
-              <div className="card card-signin flex-row my-5">
-                <div className="card-img-left d-none d-md-flex">
+              <div className="card card-camera flex-row my-5">
+                <div className="card-camera-img-left d-md-flex">
                   <video id="player" autoPlay width="560" height="315"></video>
                 </div>
 
-                <div className="card-body">
-                  <h1 className="card-title text-center"><b>Welcome {this.state.username}</b></h1>
+                <div className="card-body camera-camera-right-card">
+                  <h1 className="card-camera-title text-center"><b>Welcome {this.state.username}</b></h1>
+                  <br></br>
                   <div>
                     <canvas id="canvas" width="560" height="315" style={styles.canvas}></canvas>
-                    <button id="capture" className="mb-5" onClick={this.handleOnClickCapture} ref={capture => this.capture = capture} >Capture</button>
+                    <button id="capture-button" className="mb-5" onClick={this.handleOnClickCapture} ref={capture => this.capture = capture} >Capture</button>
                   </div>
                   <div>
                     {/* here ref is added becoz functionality by default of input parameter comes with sometext which cannot be overridden so had to make display none and add a reference that on buttonclick the event in inputgets triggered*/}
                     <input type="file" id="fileInput" onChange={this.previewFile} ref={fileInput => this.fileInput = fileInput} style={styles.fileInput} />
                     <img src="" id="previewimage" onLoad={this.findemotion} alt="" style={styles.previewImage} />
-                    <button onClick={() => this.fileInput.click()}>Upload Image</button>
+                    <button id="upload-image-button" onClick={() => this.fileInput.click()}>Upload Image</button>
                   </div>
                 </div>
               </div>
-              <span id="speech-question">Hi {this.state.username}, do you want to take a picture?</span>
-              <ul>
-                <li id="speech-yes">
-                  If yes, please look at the camera, press the button "s" and say "yes please".
+              <div className="camera-instructions">
+                <span id="speech-question">Hi {this.state.username}, do you want to take a picture?</span>
+                <ul>
+                  <li id="speech-yes">
+                    If yes, please look at the camera, press the button "s" and say "yes please".
                 </li>
-                <li id="speech-yes">
-                  Then after looking at the camera for 3 seconds, please lift your finger up from the key and the picture will automatically be taken.
+                  <li id="speech-yes">
+                    Then after looking at the camera for 3 seconds, please lift your finger up from the key and the picture will automatically be taken.
                 </li>
-                <li id="speech-no">
-                  If no, please click on Upload Image
+                  <li id="speech-no">
+                    If no, please click on Upload Image
                 </li>
-                <li id="speech-no">
-                  or Choose an emotion by clicking the menu button on the top-right part of the page.
+                  <li id="speech-no">
+                    or Choose an emotion by clicking the menu button on the top-right part of the page.
                 </li>
-              </ul>
+                </ul>
+              </div>
+
               <React.Fragment>
                 <KeyHandler
                   keyEventName={KEYDOWN}
