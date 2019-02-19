@@ -14,6 +14,14 @@ var bodyParser = require('body-parser');
 var axios = require("axios");
 var cheerio = require("cheerio");
 
+// Chat
+const Chatkit = require('@pusher/chatkit-server')
+// init chatkit
+const chatkit = new Chatkit.default({
+  instanceLocator: "v1:us1:5213cf99-a1cc-4e12-969e-b88b8d7dc708",
+  key: "0be1c701-85ec-480c-9ef7-0514806a7380:8lQMT5wJ98ArOVm+BYWeDk5z6nPNWCC8kpBav18QSQ0=",
+})
+
 // Setting CORS so that any website can
 // Access our API
 app.use((req, res, next) => {
@@ -64,6 +72,34 @@ app.post('/api/signup', (req, res) => {
     .then(data => res.json(data))
     // .catch(err => res.status(400).json({ success: false, message: "User signup request failed.", error: err}));
     .catch(err => res.status(400).json(err));
+
+    // Chatkit sign-up hook
+    console.log(req.body.username);
+
+    chatkit.createUser({ 
+        id: req.body.username, 
+        name: req.body.username 
+         })
+        .then(() => res.sendStatus(201))
+        .catch(error => {
+          if (error.error_type === 'services/chatkit/user_already_exists') {
+            res.sendStatus(200)
+          } 
+//           (node:2223) UnhandledPromiseRejectionWarning: Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
+// [0]     at ServerResponse.setHeader (_http_outgoing.js:482:11)
+// [0]     at ServerResponse.header (/Users/Esaadeh/Bootcamp/BootCamp/Assignments/Mo-Betta/node_modules/express/lib/response.js:767:10)
+// [0]     at ServerResponse.send (/Users/Esaadeh/Bootcamp/BootCamp/Assignments/Mo-Betta/node_modules/express/lib/response.js:170:12)
+// [0]     at ServerResponse.json (/Users/Esaadeh/Bootcamp/BootCamp/Assignments/Mo-Betta/node_modules/express/lib/response.js:267:15)
+// [0]     at chatkit.createUser.then.catch.error (/Users/Esaadeh/Bootcamp/BootCamp/Assignments/Mo-Betta/server.js:88:38)
+// [0]     at process.internalTickCallback (internal/process/next_tick.js:77:7)
+// [0] (node:2223) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+// [0] (node:2223) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+
+
+          // else {
+          //   res.status(error.status).json(error)
+          // }
+        })
 
 });
 
