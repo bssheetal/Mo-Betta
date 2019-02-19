@@ -11,3 +11,11 @@
 .card-header {
     background-color: #648880;
 }
+
+@media screen and (max-width: 450px) {
+    .card {
+        position: relative;
+        /* top: 0; */
+        left: 50px;
+    }
+}

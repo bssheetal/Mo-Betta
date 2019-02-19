@@ -107,11 +107,19 @@
   }
 
 
-@media screen and (max-width: 500px)
+@media screen and (max-width: 450px)
 {
   .signin-container {
-    width: 80%;
+    width: 100%;
+    position: absolute;
+    left: 2%;
   }
-
-
 }
+
+/* @media screen and (max-width: 800px) {
+  .signin-container {
+    width: 90%;
+    position: absolute;
+    left: 8%;
+  }
+} */

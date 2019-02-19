@@ -368,7 +368,7 @@ class Hungry extends Component {
                             <div className="container text-center small-right-section activity-icons">
                                 <br></br>
 
-                                 <div className="productive-icons icon-newspaper" style={pageStyles.itemIcon}>
+                                <div className="productive-icons icon-newspaper" style={pageStyles.itemIcon}>
                                     <Rotate>
                                         <i className="fas fa-newspaper" onClick={this.handleOnClickIconNews}></i>
                                         <p id="item-text" style={pageStyles.itemText}>News</p>
@@ -411,10 +411,10 @@ class Hungry extends Component {
                     <div className="col-sm-11">
                         <div className="container-fluid text-center">
                             <p className="mt-3 goodfood" id="page-title" style={pageStyles.pageTitle}>good food good mood</p>
-                            <img className="food-image mr-5 mt-3 mb-4" src={imgFood1} alt="food1" onClick={this.handleOnClickImageButtonOne}></img>
-                            <img className="food-image mr-5 mt-3 mb-4" src={imgFood2} alt="food2" onClick={this.handleOnClickImageButtonTwo}></img>
-                            <img className="food-image mr-5 mt-3 mb-4" src={imgFood3} alt="food3" onClick={this.handleOnClickImageButtonThree}></img>
-                            <img className="food-image mr-5 mt-3 mb-4" src={imgFood4} alt="food4" onClick={this.handleOnClickImageButtonFour}></img>
+                            <img className="food-image mt-3 mb-4" src={imgFood1} alt="food1" onClick={this.handleOnClickImageButtonOne}></img>
+                            <img className="food-image mt-3 mb-4" src={imgFood2} alt="food2" onClick={this.handleOnClickImageButtonTwo}></img>
+                            <img className="food-image mt-3 mb-4" src={imgFood3} alt="food3" onClick={this.handleOnClickImageButtonThree}></img>
+                            <img className="food-image mt-3 mb-4" src={imgFood4} alt="food4" onClick={this.handleOnClickImageButtonFour}></img>
                             <img className="food-image mt-3 mb-4" src={imgFood5} alt="food5" onClick={this.handleOnClickImageButtonFive}></img>
                         </div>
 
@@ -425,8 +425,8 @@ class Hungry extends Component {
                                     title={recipe.title}
                                 >
                                     <div className="row">
-                                        <div className="col-sm-4">
-                                            <img src={recipe.imageURL}></img>
+                                        <div className="col-sm-4 text-center">
+                                            <img id="card-recipe-image" src={recipe.imageURL}></img>
                                         </div>
                                         <div className="col-sm-8 recipe-video">
                                             <Video
