@@ -1,59 +1,107 @@
-# Create React Express App
+App helps to deal with emotions providing various options based on current state of mind and makes the user go into positive frame of mind.
+MERN(Mongo,Express,React and Node) application  in which User's emotions are captured from their facial expression and they are provided with various interests based on their state of emotion
 
-## About This Boilerplate
+##  Getting Started 🌲
 
-This setup allows for a Node/Express/React/JWT app which can be easily deployed to Heroku.
+Simply open up the deployed link. You can create a new account or, if you're a returning user, you can just log in. 
+User is directed to a page where you can upload image or take picture via Laptop's built in camera using windows based Face Recogntion API.Also voice commands via Windows based Speech Recogniton API can be used to capture image.Once the image is captured  Face++ is used to extract emotional state of mind of user.
 
-The front-end React app will auto-reload as it's updated via webpack dev server, and the backend Express app will auto-reload independently with nodemon.
+Based on the state of mind user is redirected to various pages like Productive,Hungry,Outdoorsy,Bored,Uplift and Relax.
 
-An article on how the server is setup with JWT can be found [here](https://hptechblogs.com/using-json-web-token-for-authentication/). This has been modified to use a mongo database instead of hardcoded array of users.
+All these pages have different interests comprising of 
+####  Productive
+Stocks,News,Podcast,Music,Video,Chat
+####  Hungry
+Various Food Recipes
+####  Outdoorsy
+Some outdoor documentaries/Videos
+#### Bored
+Some Interesting music to cheer you up
+#### Uplift
+Some music to lift up ur mood
+#### Relax
+Some relaxing videos and music
 
-The front end has been setup to use JWT as a way of authenticating users and routes. To understand it's structure better please refer to the following article [here](https://hptechblogs.com/using-json-web-token-react/)
+## Prerequisites 📂
+You will need both node and yarn installed on your computer in order to run this app. You can find out more about yarn at their official site.
 
-Please feel free to modify this code in anyway you see fit for your project. It is a boilerplate setup that tries to make sure you can get something up and running without having to worry about setting up user authentication from scratch.
-I highly suggest you read the articles before jumping in so you can have an better understanding of how everything works in the code. 
+https://yarnpkg.com/lang/en/docs/install/#windows-stable
 
-Server-side article and using JWT: https://hptechblogs.com/using-json-web-token-for-authentication/
+## Installation 📁
+Inside your terminal or command prompt, navigate to the location of the cloned repo. Install the necessary dependencies by running either -
 
-Front End article on using the JWT on a react application: https://hptechblogs.com/using-json-web-token-react/
+npm i
+or
 
-## Starting the app locally
-
-First off make sure you have a local version of MongoDB running on your machine. This project will make a local database for you called `appDB`.
-
-```
-mongod
-```
-
-Start by installing front and backend dependencies. While in the root directory, run the following command:
-
-```
 yarn install
-```
+after the dependencies have been installed, you will need to make sure you have mongoDB configured on your computer as outlined in the next section.
 
-After all installations complete, run the following command in your terminal:
+If you already have mongoDB setup, you can run
 
-```
 yarn start
-```
+to intialize the app. It will launch the application at http://localhost:3000 and you are now ready to search for various based on your emotional state
 
-That's it, your app should be running on <http://localhost:3000>. The Express server should intercept any AJAX requests from the client.
+mongoDB 🌿
+In order for the app to render locally, you will need to have mongoDB installed on your computer. Depending on your operating system, the installation proccess will be different. You can find more info on installing mongoDB through their documentation.
 
-## Deployment (Heroku)
+https://docs.mongodb.com/manual/installation/
 
-### Create a Git Repo
+## Built With 🌱
+HTML5 & CSS3
 
-Once you're ready to deploy, start by making sure your project is a git repository. If so, proceed to the next section, otherwise run the following commands in your terminal:
+Bootstrap - CSS framework
 
-```
-git init
-git add .
-git commit -m "Initial commit"
-```
+Javascript - programming language
 
-### Deploying
+mongoDB - database
 
-1. Go onto your heroku account and link your repository through the UI
-2. Go to resources and find mLab as a Add-on
-3. Provision a Mongo Database
-4. Go back and click "Deploy"
+Express.js - routing framework
+
+React.js - user interface library
+
+Node.js - javascript runtime
+
+#### NPM/Yarn packages
+axios - Promise based HTTP client
+
+cheerio - Markup parser and manipulator
+
+Express - Routing framework
+
+mongoose - NoSQL database
+
+morgan - Logging middleware
+
+morgan-body - Logging middleware
+
+react-router-dom - Routing library for React with DOM bindings
+
+Face-plusplus-To get user's current emotional stae
+
+chart.js&react-chartkick-To display the stocks charts for a paeriod of 6 months
+
+react-file-base64-To convert the image src to base64 format
+
+react-rss-podcast-player-Listen to podcasts
+
+chatkit-To enter in chatroom with buddies
+
+### API's
+
+Windows based Face recogntion-To get user's face captured via Laptop's camera
+
+Windows based speech recogntion and text to speech-Allows user to give voice command to capture images
+
+## Author 🔑
+
+Iris Cheng
+
+Sheetal B Srikumar
+
+Emad Saadeh
+
+Taylor Walker 
+
+## Acknowledgments 🙏
+
+A bigly thank you to our instructor, Travis & TA's Adam and Mark 
