@@ -60,3 +60,67 @@
 #speech-no {
   color: #FAA050;
 }
+
+.card-camera {
+  border: 0;
+  border-radius: 1rem;
+  box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.card-camera-img-left {
+  background-color: #eeeeee;
+}
+
+@media screen and (max-width: 500px)
+{
+  .card-camera {
+    border: 0;
+    border-radius: 1rem;
+    box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    position: absolute;
+    left: 60px;
+    top: 100px;
+    height: 250px;
+  }
+
+  .card-camera-img-left {
+    background-color: #eeeeee;
+  }
+
+  .card-camera-title {
+    font-size: 18pt;
+    position: relative;
+    left: 0;
+    top:40px;
+  }
+
+  #player {
+    width: 200px;
+    position: relative;
+    left: 0;
+    top: -30px;
+  }
+
+  #capture-button {
+    font-size: 12pt;
+    position: relative;
+    left: 0;
+    top: 20px;
+    border: 2px solid #bdbdbd;
+    background-color: #f4f4f4;
+  }
+
+  #upload-image-button {
+    font-size: 12pt;
+    border: 2px solid #bdbdbd;
+    background-color: #f4f4f4;
+  }
+
+  .camera-instructions {
+    position: absolute;
+    left: -20px;
+    top: 420px;
+  }
+}
