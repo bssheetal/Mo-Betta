@@ -35,8 +35,11 @@
     "morgan": "^1.9.1",
     "node-spotify-api": "^1.0.7",
     "react-chartkick": "^0.3.0",
+    "react-device": "^0.8.1",
+    "react-device-detect": "^1.6.2",
     "react-file-base64": "^1.0.3",
-    "react-reveal": "^1.2.2"
+    "react-reveal": "^1.2.2",
+    "ua-parser-js": "^0.7.19"
   },
   "repository": {
     "type": "git",

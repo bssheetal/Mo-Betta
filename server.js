@@ -13,7 +13,7 @@ var bodyParser = require('body-parser');
 //Scraping
 var axios = require("axios");
 var cheerio = require("cheerio");
-
+var parser = require('ua-parser-js');
 // Chat
 const Chatkit = require('@pusher/chatkit-server')
 // init chatkit

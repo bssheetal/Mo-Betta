@@ -8,8 +8,12 @@ import TextToSpeech from "./utils/TextToSpeech";
 import SpeechRecognition from "./utils/SpeechRecognition"
 import KeyHandler, { KEYUP, KEYDOWN } from 'react-key-handler';
 import Emotionsnavbar from './components/Emotionsnavbar';
+import Device from 'react-device'
 
 const Auth = new AuthService();
+const onChange = (deviceInfo) => {
+  console.log('Browser name', deviceInfo.browser.name)
+}
 
 class App extends Component {
   state = {
@@ -35,6 +39,7 @@ class App extends Component {
   // goToEditProfile = () => {
   //   this.props.history.replace('/profile');
   // };
+
 
   goToCamera = () => {
     this.props.history.replace('/camera');
@@ -230,8 +235,14 @@ class App extends Component {
       .catch(err => console.log(err));
   }
 
+
+
+
+
   render() {
     // console.log(process.env.REACT_APP_SECRET_CODE);
+
+
     const styles = {
       canvas: {
         display: "none"
@@ -311,6 +322,7 @@ class App extends Component {
 
     return (
       <div>
+        <Device onChange={onChange} />
         <Emotionsnavbar MenuStyles={MenuStyles} EmotionIconStyle={EmotionMenuStyles.iconStyle} EmotionIconTextStyle={EmotionMenuStyles.textStyle} />
 
         <div className="App">
