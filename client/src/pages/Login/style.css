@@ -105,3 +105,11 @@
     font-family: 'Parisienne', cursive;
     color: #757575;
   }
+
+
+@media screen and (max-width: 500px)
+{
+  .signin-container {
+    width: 80%;
+  }
+}

@@ -231,7 +231,6 @@ class App extends Component {
   }
 
   render() {
-    console.log(process.env.REACT_APP_SECRET_CODE);
     const styles = {
       canvas: {
         display: "none"
