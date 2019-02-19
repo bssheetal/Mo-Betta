@@ -137,11 +137,12 @@ app.use(function (err, req, res, next) {
 
 
 app.get("/news", isAuthenticated, (req, res) => {
+  console.log("===== news=====");
   // console.log(req.query.q);
-  // console.log(req.headers.referer);
+  console.log(req.headers.referer);
   let ref = "";
   // let splitRef;
-  console.log("=========ref===========");
+  console.log("=========news ref===========");
   refPage = req.headers.referer;
   console.log(ref);
 

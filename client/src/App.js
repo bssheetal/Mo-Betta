@@ -5,7 +5,7 @@ import AuthService from './components/AuthService';
 import withAuth from './components/withAuth';
 import API from './utils/API';
 import TextToSpeech from "./utils/TextToSpeech";
-// import SpeechRecognition from "./utils/SpeechRecognition"
+import SpeechRecognition from "./utils/SpeechRecognition"
 import KeyHandler, { KEYUP, KEYDOWN } from 'react-key-handler';
 import Emotionsnavbar from './components/Emotionsnavbar';
 
@@ -93,16 +93,16 @@ class App extends Component {
   };
 
   speak = () => {
-    // SpeechRecognition.start();
+    SpeechRecognition.start();
   };
 
   getSpeechText = () => {
-    // var speechText = SpeechRecognition.getResult();
-    // this.setState({
-    //   speechText: speechText
-    // });
+    var speechText = SpeechRecognition.getResult();
+    this.setState({
+      speechText: speechText
+    });
 
-    // SpeechRecognition.stop();
+    SpeechRecognition.stop();
     setTimeout(() => {
       console.log(this.state.speechText);
 
@@ -231,6 +231,7 @@ class App extends Component {
   }
 
   render() {
+    // console.log(process.env.REACT_APP_SECRET_CODE);
     const styles = {
       canvas: {
         display: "none"
@@ -348,11 +349,10 @@ class App extends Component {
               <span id="speech-question">Hi {this.state.username}, do you want to take a picture?</span>
               <ul>
                 <li id="speech-yes">
-                  {/* If yes, please look at the camera, press the button "s" and say "yes please". */}
-                  If yes, please click on Capture Image.
+                  If yes, please look at the camera, press the button "s" and say "yes please".
                 </li>
                 <li id="speech-yes">
-                  {/* Then after looking at the camera for 3 seconds, please lift your finger up from the key and the picture will automatically be taken. */}
+                  Then after looking at the camera for 3 seconds, please lift your finger up from the key and the picture will automatically be taken.
                 </li>
                 <li id="speech-no">
                   If no, please click on Upload Image
