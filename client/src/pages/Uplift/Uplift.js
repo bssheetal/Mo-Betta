@@ -46,7 +46,10 @@ class Uplift extends Component {
         });
 
         setTimeout(() => {
-            API.scrapeNews(this.props.allResult).then(res => {
+            console.log("====news allresult=====");
+            // console.log(this.props.allResult);
+            
+            API.scrapeNews("uplift").then(res => {
                 this.setState({
                     news: res.data
                 })

@@ -67,6 +67,8 @@ class Productive extends Component {
         }, 1500);
 
         setTimeout(() => {
+            console.log("====news=====");
+            console.log(this.props);
             API.scrapeNews(this.props.allResult).then(res => {
                 this.setState({
                     news: res.data
