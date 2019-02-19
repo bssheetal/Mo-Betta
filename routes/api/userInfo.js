@@ -5,7 +5,7 @@ router.get("/stockinfo/:id",userInfoController.findById);
   
 router.get("/stockinfo",userInfoController.findById);
 
-router.post("/stockinfo", userInfoController.create);
+router.post("/savestockinfo", userInfoController.create);
 
 module.exports = router;
 
