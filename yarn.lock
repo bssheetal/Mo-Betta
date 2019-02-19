@@ -1685,6 +1685,11 @@ load-json-file@^4.0.0:
     pify "^3.0.0"
     strip-bom "^3.0.0"
 
+lodash.debounce@^4.0.8:
+  version "4.0.8"
+  resolved "https://registry.yarnpkg.com/lodash.debounce/-/lodash.debounce-4.0.8.tgz#82d79bff30a67c4005ffd5e2515300ad9ca4d7af"
+  integrity sha1-gteb/zCmfEAF/9XiUVMArZyk168=
+
 lodash.includes@^4.3.0:
   version "4.3.0"
   resolved "https://registry.yarnpkg.com/lodash.includes/-/lodash.includes-4.3.0.tgz#60bb98a87cb923c68ca1e51325483314849f553f"
@@ -2406,6 +2411,20 @@ react-chartkick@^0.3.0:
   dependencies:
     chartkick "^3.0.0"
 
+react-device-detect@^1.6.2:
+  version "1.6.2"
+  resolved "https://registry.yarnpkg.com/react-device-detect/-/react-device-detect-1.6.2.tgz#2587e4d1dc15bdfce7a1bf5417624ecd2a2fc31f"
+  integrity sha512-XIBgwIfpGAknm7tXe/YNbx4ieIR7IyFI3KNfSQk4UjHVy97UHe/nB7iJj8R/dDsI+I/ZzPR4HJ39Gh5tI4nhxw==
+
+react-device@^0.8.1:
+  version "0.8.1"
+  resolved "https://registry.yarnpkg.com/react-device/-/react-device-0.8.1.tgz#a0872b90a5d3db02b433e47de437c50ffe13e5df"
+  integrity sha512-3XabfDdHQNUL9ohzEB223tY/lUAN4fHna//4YSbrqvl7sWfH4fhJOEVIwp1eOiy5LHgiirn+a2xFa3i1MgaXeA==
+  dependencies:
+    lodash.debounce "^4.0.8"
+    react "^15.4.2"
+    ua-parser-js "^0.7.12"
+
 react-file-base64@^1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/react-file-base64/-/react-file-base64-1.0.3.tgz#4174efa79445b139902ecc2730fc417efe79cb88"
@@ -2425,7 +2444,7 @@ react-reveal@^1.2.2:
   dependencies:
     prop-types "^15.5.10"
 
-react@^15.6.1:
+react@^15.4.2, react@^15.6.1:
   version "15.6.2"
   resolved "https://registry.yarnpkg.com/react/-/react-15.6.2.tgz#dba0434ab439cfe82f108f0f511663908179aa72"
   integrity sha1-26BDSrQ5z+gvEI8PURZjkIF5qnI=
@@ -3077,7 +3096,7 @@ type-is@~1.6.16:
     media-typer "0.3.0"
     mime-types "~2.1.18"
 
-ua-parser-js@^0.7.18:
+ua-parser-js@^0.7.12, ua-parser-js@^0.7.18, ua-parser-js@^0.7.19:
   version "0.7.19"
   resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-0.7.19.tgz#94151be4c0a7fb1d001af7022fdaca4642659e4b"
   integrity sha512-T3PVJ6uz8i0HzPxOF9SWzWAlfN/DavlpQqepn22xgve/5QecC+XMCAtmUNnY7C9StehaV6exjUCI801lOI7QlQ==

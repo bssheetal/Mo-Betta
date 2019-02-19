@@ -10,11 +10,18 @@ module.exports = {
       },
 
     
-    // Create a new userinfo
+    // Create a new userinfo and save the stock
     create: function(req, res) {
       db.UserInfo.create(req.body).then(function(dbUserInfo) {
         res.json(dbUserInfo);
       });
+    },
+
+    //get the saved stock
+    findsaved:function(req,res)
+    {
+      db.UserInfo.find({username:req.body.username})
+      res.json(data);
     }
            
   };

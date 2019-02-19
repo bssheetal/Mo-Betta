@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import AuthService from '../../components/AuthService';
 import { Link } from 'react-router-dom';
 import './style.css';
+import FindBrowser from '../../components/Browser'
+
 
 class Login extends Component {
   constructor() {
@@ -9,6 +11,7 @@ class Login extends Component {
     this.Auth = new AuthService();
 
     this.state = {
+      Browser:"",
       emailErrMsg: "",
       passwordErrMsg: ""
     };
@@ -63,8 +66,10 @@ class Login extends Component {
   };
 
   render() {
-    return (
+    return (   
       <div className="container signin-container">
+      <FindBrowser></FindBrowser>
+      
         <div className="row">
           <div className="col-lg-10 col-xl-9 mx-auto">
             <div className="card card-signin flex-row my-5">
