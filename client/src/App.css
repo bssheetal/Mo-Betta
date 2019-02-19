@@ -72,16 +72,15 @@
   background-color: #eeeeee;
 }
 
-@media screen and (max-width: 500px)
+@media screen and (max-width: 450px)
 {
   .card-camera {
     border: 0;
     border-radius: 1rem;
-    box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0.5rem 1rem 0 rgba(185, 145, 145, 0.1);
     overflow: hidden;
     position: absolute;
-    left: 60px;
-    top: 100px;
+    top: -150px;
     height: 250px;
   }
 
@@ -93,7 +92,7 @@
     font-size: 18pt;
     position: relative;
     left: 0;
-    top:40px;
+    top:20px;
   }
 
   #player {
@@ -105,9 +104,6 @@
 
   #capture-button {
     font-size: 12pt;
-    position: relative;
-    left: 0;
-    top: 20px;
     border: 2px solid #bdbdbd;
     background-color: #f4f4f4;
   }
@@ -116,6 +112,9 @@
     font-size: 12pt;
     border: 2px solid #bdbdbd;
     background-color: #f4f4f4;
+    position: relative;
+    left: 0;
+    top: -20px;
   }
 
   .camera-instructions {

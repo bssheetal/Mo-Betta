@@ -7,11 +7,11 @@
     font-weight: 900;
   }
 
-  @media screen and (max-width: 500px)
+  @media screen and (max-width: 450px)
 {
   .signup-container {
     width: 100%;
     position: absolute;
-    left: 14%;
+    left: 2%;
   }
 }
