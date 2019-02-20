@@ -29,11 +29,12 @@ class Hungry extends Component {
         linechartelements: {},
         isLoading: false,
         parentComponent: "hungry",
-        newsDisplay: "block",
-        podcastDisplay: "block",
+        newsDisplay: "none",
+        podcastDisplay: "none",
         musicDisplay: "block",
         videoDisplay: "block",
         chatDisplay: "block",
+        recipeDisplay: "none",
         menuRight: "50px",
         menuTop: "120px",
         menuBtnWidth: "36px",
@@ -42,7 +43,12 @@ class Hungry extends Component {
         itemTextFontSize: "12pt",
         emotionIconFontSize: "3rem",
         emotionTextFontSize: "12pt",
-        pageTitleFontSize: "28pt"
+        pageTitleFontSize: "28pt",
+        recipeVideo1: "",
+        recipeVideo2: "",
+        recipeVideo3: "",
+        recipeVideo4: "",
+        recipeVideo5: ""
     };
 
     componentDidMount() {
@@ -62,7 +68,8 @@ class Hungry extends Component {
                 podcastDisplay: "none",
                 musicDisplay: "none",
                 videoDisplay: "none",
-                chatDisplay: "none"
+                chatDisplay: "none",
+                recipeDisplay: "none"
             });
         }, 1000);
 
@@ -112,10 +119,58 @@ class Hungry extends Component {
     getRecipes(searchTerm) {
         API.food(searchTerm)
             .then(res => {
-                console.log(res.data);
+
+                console.log(res.data.slice(0, 5));
+
                 this.setState({
-                    recipes: res.data
+                    recipes: res.data.slice(0, 5)
                 });
+
+                API.video(res.data[0].title, 1)
+                    .then(response => {
+                        console.log(response.data);
+                        this.setState({
+                            recipeVideo1: response.data
+                        });
+                    })
+                    .catch(err => console.log(err));
+
+                API.video(res.data[1].title, 1)
+                    .then(response => {
+                        console.log(response.data);
+                        this.setState({
+                            recipeVideo2: response.data
+                        });
+                    })
+                    .catch(err => console.log(err));
+
+                API.video(res.data[2].title, 1)
+                    .then(response => {
+                        console.log(response.data);
+                        this.setState({
+                            recipeVideo3: response.data
+                        });
+                    })
+                    .catch(err => console.log(err));
+
+                API.video(res.data[3].title, 1)
+                    .then(response => {
+                        console.log(response.data);
+                        this.setState({
+                            recipeVideo4: response.data
+                        });
+                    })
+                    .catch(err => console.log(err));
+
+                API.video(res.data[4].title, 1)
+                    .then(response => {
+                        console.log(response.data);
+                        this.setState({
+                            recipeVideo5: response.data
+                        });
+                    })
+                    .catch(err => console.log(err));
+
             })
             .catch(err => console.log(err));
     };
@@ -123,33 +178,93 @@ class Hungry extends Component {
     handleOnClickImageButtonOne = e => {
         e.preventDefault();
         // var elem = document.getElementById("recipes");
-        // if (elem) elem.remove();
+        // if (elem) {
+        //     console.log("haha");
+        //     elem.remove();
+        // } else {
+        //     console.log("bammer");
+        // };
 
         this.getRecipes("chili soup");
+
+        setTimeout(() => {
+            this.setState({
+                newsDisplay: "none",
+                podcastDisplay: "none",
+                musicDisplay: "none",
+                videoDisplay: "none",
+                chatDisplay: "none",
+                recipeDisplay: "block"
+            });
+        }, 3000);
     };
 
     handleOnClickImageButtonTwo = e => {
         e.preventDefault();
 
         this.getRecipes("pasta");
+
+        setTimeout(() => {
+            this.setState({
+                newsDisplay: "none",
+                podcastDisplay: "none",
+                musicDisplay: "none",
+                videoDisplay: "none",
+                chatDisplay: "none",
+                recipeDisplay: "block"
+            });
+        }, 3000);
     };
 
     handleOnClickImageButtonThree = e => {
         e.preventDefault();
 
         this.getRecipes("omelette");
+
+        setTimeout(() => {
+            this.setState({
+                newsDisplay: "none",
+                podcastDisplay: "none",
+                musicDisplay: "none",
+                videoDisplay: "none",
+                chatDisplay: "none",
+                recipeDisplay: "block"
+            });
+        }, 3000);
     };
 
     handleOnClickImageButtonFour = e => {
         e.preventDefault();
 
         this.getRecipes("potato soup");
+
+        setTimeout(() => {
+            this.setState({
+                newsDisplay: "none",
+                podcastDisplay: "none",
+                musicDisplay: "none",
+                videoDisplay: "none",
+                chatDisplay: "none",
+                recipeDisplay: "block"
+            });
+        }, 3000);
     };
 
     handleOnClickImageButtonFive = e => {
         e.preventDefault();
 
         this.getRecipes("croissant");
+
+        setTimeout(() => {
+            this.setState({
+                newsDisplay: "none",
+                podcastDisplay: "none",
+                musicDisplay: "none",
+                videoDisplay: "none",
+                chatDisplay: "none",
+                recipeDisplay: "block"
+            });
+        }, 3000);
     };
 
 
@@ -161,7 +276,8 @@ class Hungry extends Component {
             podcastDisplay: "none",
             musicDisplay: "none",
             videoDisplay: "none",
-            chatDisplay: "none"
+            chatDisplay: "none",
+            recipeDisplay: "none"
         });
     };
 
@@ -173,7 +289,8 @@ class Hungry extends Component {
             podcastDisplay: "block",
             musicDisplay: "none",
             videoDisplay: "none",
-            chatDisplay: "none"
+            chatDisplay: "none",
+            recipeDisplay: "none"
         });
     };
 
@@ -185,7 +302,8 @@ class Hungry extends Component {
             podcastDisplay: "none",
             musicDisplay: "none",
             videoDisplay: "none",
-            chatDisplay: "block"
+            chatDisplay: "block",
+            recipeDisplay: "none"
         });
     };
 
@@ -197,7 +315,8 @@ class Hungry extends Component {
             podcastDisplay: "none",
             musicDisplay: "block",
             videoDisplay: "none",
-            chatDisplay: "none"
+            chatDisplay: "none",
+            recipeDisplay: "none"
         });
     };
 
@@ -209,9 +328,11 @@ class Hungry extends Component {
             podcastDisplay: "none",
             musicDisplay: "none",
             videoDisplay: "block",
-            chatDisplay: "none"
+            chatDisplay: "none",
+            recipeDisplay: "none"
         });
     };
+
 
 
     renderCardNews = (styles) => {
@@ -368,7 +489,7 @@ class Hungry extends Component {
                             <div className="container text-center small-right-section activity-icons">
                                 <br></br>
 
-                                <div className="productive-icons icon-newspaper" style={pageStyles.itemIcon}>
+                                {/* <div className="productive-icons icon-newspaper" style={pageStyles.itemIcon}>
                                     <Rotate>
                                         <i className="fas fa-newspaper" onClick={this.handleOnClickIconNews}></i>
                                         <p id="item-text" style={pageStyles.itemText}>News</p>
@@ -380,7 +501,7 @@ class Hungry extends Component {
                                         <i className="fas fa-podcast" onClick={this.handleOnClickIconPodcast}></i>
                                         <p id="item-text" style={pageStyles.itemText}>Podcast</p>
                                     </Rotate>
-                                </div>
+                                </div> */}
 
                                 <div className="productive-icons icon-music" style={pageStyles.itemIcon}>
                                     <Rotate>
@@ -418,8 +539,131 @@ class Hungry extends Component {
                             <img className="food-image mt-3 mb-4" src={imgFood5} alt="food5" onClick={this.handleOnClickImageButtonFive}></img>
                         </div>
 
-                        <section className="container" id="recipes">
-                            {this.state.recipes.map((recipe, index) => (
+                        <section className="container recipe-container" style={smallScreenStyles.recipeContainer}>
+
+                            {this.state.recipeDisplay === "block"
+                                ?
+                                <div>
+                                    <Card
+                                        key={0}
+                                        title={this.state.recipes[0].title}
+                                    >
+                                        <div className="row">
+                                            <div className="col-sm-4 text-center">
+                                                <img id="card-recipe-image" src={this.state.recipes[0].imageURL}></img>
+                                            </div>
+                                            <div className="col-sm-8 recipe-video" id="recipes" >
+                                                <iframe
+                                                    key={"video" + 0}
+                                                    title={"video" + 0}
+                                                    width="560"
+                                                    height="315"
+                                                    src={this.state.recipeVideo1}
+                                                    frameBorder="0"
+                                                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                                    allowFullScreen
+                                                ></iframe>
+                                            </div>
+                                        </div>
+                                    </Card>
+
+                                    <Card
+                                        key={1}
+                                        title={this.state.recipes[1].title}
+                                    >
+                                        <div className="row">
+                                            <div className="col-sm-4 text-center">
+                                                <img id="card-recipe-image" src={this.state.recipes[1].imageURL}></img>
+                                            </div>
+                                            <div className="col-sm-8 recipe-video" id="recipes" >
+                                                <iframe
+                                                    key={"video" + 1}
+                                                    title={"video" + 1}
+                                                    width="560"
+                                                    height="315"
+                                                    src={this.state.recipeVideo2}
+                                                    frameBorder="0"
+                                                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                                    allowFullScreen
+                                                ></iframe>
+                                            </div>
+                                        </div>
+                                    </Card>
+
+                                    <Card
+                                        key={2}
+                                        title={this.state.recipes[2].title}
+                                    >
+                                        <div className="row">
+                                            <div className="col-sm-4 text-center">
+                                                <img id="card-recipe-image" src={this.state.recipes[2].imageURL}></img>
+                                            </div>
+                                            <div className="col-sm-8 recipe-video" id="recipes" >
+                                                <iframe
+                                                    key={"video" + 2}
+                                                    title={"video" + 2}
+                                                    width="560"
+                                                    height="315"
+                                                    src={this.state.recipeVideo3}
+                                                    frameBorder="0"
+                                                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                                    allowFullScreen
+                                                ></iframe>
+                                            </div>
+                                        </div>
+                                    </Card>
+
+                                    <Card
+                                        key={3}
+                                        title={this.state.recipes[3].title}
+                                    >
+                                        <div className="row">
+                                            <div className="col-sm-4 text-center">
+                                                <img id="card-recipe-image" src={this.state.recipes[3].imageURL}></img>
+                                            </div>
+                                            <div className="col-sm-8 recipe-video" id="recipes" >
+                                                <iframe
+                                                    key={"video" + 3}
+                                                    title={"video" + 3}
+                                                    width="560"
+                                                    height="315"
+                                                    src={this.state.recipeVideo4}
+                                                    frameBorder="0"
+                                                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                                    allowFullScreen
+                                                ></iframe>
+                                            </div>
+                                        </div>
+                                    </Card>
+
+                                    <Card
+                                        key={4}
+                                        title={this.state.recipes[4].title}
+                                    >
+                                        <div className="row">
+                                            <div className="col-sm-4 text-center">
+                                                <img id="card-recipe-image" src={this.state.recipes[4].imageURL}></img>
+                                            </div>
+                                            <div className="col-sm-8 recipe-video" id="recipes" >
+                                                <iframe
+                                                    key={"video" + 4}
+                                                    title={"video" + 4}
+                                                    width="560"
+                                                    height="315"
+                                                    src={this.state.recipeVideo5}
+                                                    frameBorder="0"
+                                                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                                    allowFullScreen
+                                                ></iframe>
+                                            </div>
+                                        </div>
+                                    </Card>
+                                </div>
+                                :
+                                false
+                            }
+
+                            {/* {this.state.recipes.map((recipe, index) => (
                                 <Card
                                     key={index}
                                     title={recipe.title}
@@ -428,7 +672,7 @@ class Hungry extends Component {
                                         <div className="col-sm-4 text-center">
                                             <img id="card-recipe-image" src={recipe.imageURL}></img>
                                         </div>
-                                        <div className="col-sm-8 recipe-video">
+                                        <div className="col-sm-8 recipe-video" id="recipes" >
                                             <Video
                                                 searchTerm={recipe.title}
                                                 numberOfResults="1"
@@ -437,7 +681,7 @@ class Hungry extends Component {
                                         </div>
                                     </div>
                                 </Card>
-                            ))}
+                            ))} */}
                         </section>
 
 
@@ -496,6 +740,10 @@ class Hungry extends Component {
             },
             cardChat: {
                 display: this.state.chatDisplay,
+                overflow: "hidden"
+            },
+            recipeContainer: {
+                display: this.state.recipeDisplay,
                 overflow: "hidden"
             }
         };

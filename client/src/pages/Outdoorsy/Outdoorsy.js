@@ -20,8 +20,8 @@ class Outdoorsy extends Component {
         linechartelements: {},
         isLoading: false,
         parentComponent: "outdoorsy",
-        newsDisplay: "block",
-        podcastDisplay: "block",
+        newsDisplay: "none",
+        podcastDisplay: "none",
         musicDisplay: "block",
         videoDisplay: "block",
         chatDisplay: "block",
@@ -315,7 +315,7 @@ class Outdoorsy extends Component {
                             <div className="container text-center small-right-section activity-icons">
                                 <br></br>
 
-                                <div className="productive-icons icon-newspaper" style={pageStyles.itemIcon}>
+                                {/* <div className="productive-icons icon-newspaper" style={pageStyles.itemIcon}>
                                     <Rotate>
                                         <i className="fas fa-newspaper" onClick={this.handleOnClickIconNews}></i>
                                         <p id="item-text" style={pageStyles.itemText}>News</p>
@@ -327,7 +327,7 @@ class Outdoorsy extends Component {
                                         <i className="fas fa-podcast" onClick={this.handleOnClickIconPodcast}></i>
                                         <p id="item-text" style={pageStyles.itemText}>Podcast</p>
                                     </Rotate>
-                                </div>
+                                </div> */}
 
                                 <div className="productive-icons icon-music" style={pageStyles.itemIcon}>
                                     <Rotate>
