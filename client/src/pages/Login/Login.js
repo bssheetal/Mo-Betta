@@ -3,7 +3,7 @@ import AuthService from '../../components/AuthService';
 import { Link } from 'react-router-dom';
 import './style.css';
 import FindBrowser from '../../components/Browser'
-
+import {isIE,isIOS,isMobileSafari} from 'react-device-detect';
 
 class Login extends Component {
   constructor() {
@@ -66,10 +66,15 @@ class Login extends Component {
   };
 
   render() {
-    return (   
+    if (isIE)
+    return <div> IE is not supported. Download Chrome/Opera/Firefox </div>
+    if(isMobileSafari)
+    return <div>Mobile Safari is not supported.Use Android </div>
+    if(isIOS)
+    return <div>Ios is not supported.Use Android </div>
+    return (        
       <div className="container signin-container">
-      <FindBrowser></FindBrowser>
-      
+      {/* <FindBrowser></FindBrowser> */}    
         <div className="row">
           <div className="col-lg-10 col-xl-9 mx-auto">
             <div className="card card-signin flex-row my-5">
