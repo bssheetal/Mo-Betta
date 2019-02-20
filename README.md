@@ -94,7 +94,7 @@ Windows based Face recognition-To get user's face captured via Laptop's camera
 Windows based speech recognition and text to speech-Allows user to give voice command to capture images
 
 Demo
-The demo of the Bootcamp outfitters application can be found here.
+The demo of the Mo-Betta application can be found here.
 
 https://mo-betta.herokuapp.com/login Default username:testuser@gmail.com Password:password
 
