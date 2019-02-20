@@ -10,6 +10,7 @@ class Video extends Component {
     };
 
     componentDidMount() {
+
         API.video(this.props.searchTerm, this.props.numberOfResults)
             .then(res => {
                 console.log(res.data);
@@ -18,6 +19,7 @@ class Video extends Component {
                 });
             })
             .catch(err => console.log(err));
+
     };
 
 
@@ -25,20 +27,20 @@ class Video extends Component {
         return (
             <div className="container carousel-video text-center">
                 {/* <Carousel useKeyboardArrows emulateTouch showThumbs={false}> */}
-                    {this.state.result.map((item, index) => (
-                        <div key={index}>
-                            <iframe
-                                key={"video" + index}
-                                title={"video" + index}
-                                width="560"
-                                height="315"
-                                src={item}
-                                frameBorder="0"
-                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                                allowFullScreen
-                            ></iframe>
-                        </div>
-                    ))}
+                {this.state.result.map((item, index) => (
+                    <div key={index}>
+                        <iframe
+                            key={"video" + index}
+                            title={"video" + index}
+                            width="560"
+                            height="315"
+                            src={item}
+                            frameBorder="0"
+                            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                            allowFullScreen
+                        ></iframe>
+                    </div>
+                ))}
                 {/* </Carousel> */}
             </div>
         );
