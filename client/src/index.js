@@ -2,11 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-
+import Detectdevice from './components/Detectdevice';
 import registerServiceWorker from './registerServiceWorker';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
 import axios from "axios";
-
 // Our Components
 import Login from './pages/Login/Login';
 import Profile from './pages/Profile/Profile';
@@ -26,9 +25,12 @@ if (localStorage.getItem("id_token")) {
     axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('id_token')}`;
 }
 
+
+
 ReactDOM.render(
     <Router>
         <div>
+            <Detectdevice />
             <Navbar />
             <Route exact path="/" component={App} />
             <Route exact path="/login" component={Login} />
