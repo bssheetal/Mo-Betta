@@ -30,7 +30,6 @@ if (localStorage.getItem("id_token")) {
 ReactDOM.render(
     <Router>
         <div>
-            <Detectdevice />
             <Navbar />
             <Route exact path="/" component={App} />
             <Route exact path="/login" component={Login} />
