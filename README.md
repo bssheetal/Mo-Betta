@@ -1,5 +1,5 @@
-App helps to deal with emotions providing various options based on current state of mind and makes the user go into positive frame of mind.
-MERN(Mongo,Express,React and Node) application  in which User's emotions are captured from their facial expression and they are provided with various interests based on their state of emotion
+Artificially Intelligent App helps to deal with emotions providing various options based on current state of mind and makes the user go into positive frame of mind.
+MERN(Mongo,Express,React and Node) application  in which User's emotions are captured from their facial expression and they are provided with various interests based on their state of emotion.
 
 ##  Getting Started 🌲
 
@@ -62,6 +62,7 @@ React.js - user interface library
 Node.js - javascript runtime
 
 #### NPM/Yarn packages
+
 axios - Promise based HTTP client
 
 cheerio - Markup parser and manipulator
@@ -76,9 +77,9 @@ morgan-body - Logging middleware
 
 react-router-dom - Routing library for React with DOM bindings
 
-Face-plusplus-To get user's current emotional stae
+Face-plusplus-node-To get user's current emotional state
 
-chart.js&react-chartkick-To display the stocks charts for a paeriod of 6 months
+chart.js&react-chartkick-To display the stocks charts for a period of 6 months
 
 react-file-base64-To convert the image src to base64 format
 
@@ -88,11 +89,16 @@ chatkit-To enter in chatroom with buddies
 
 ### API's
 
-Windows based Face recogntion-To get user's face captured via Laptop's camera
+Windows based Face recognition-To get user's face captured via Laptop's camera
 
-Windows based speech recogntion and text to speech-Allows user to give voice command to capture images
+Windows based speech recognition and text to speech-Allows user to give voice command to capture images
 
-## Author 🔑
+Demo
+The demo of the Bootcamp outfitters application can be found here.
+
+https://mo-betta.herokuapp.com/login Default username:testuser@gmail.com Password:password
+
+## Authors 🔑
 
 Iris Cheng
 
